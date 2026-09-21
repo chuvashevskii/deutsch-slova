@@ -1,0 +1,186 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { supabase } from '@/shared/api';
+
+import type { Word } from './types';
+
+export const WORDS_PAGE_QUERY_KEY = ['words', 'page'] as const;
+export const WORDS_FACETS_QUERY_KEY = ['words', 'facets'] as const;
+export const WORD_QUERY_KEY = ['words', 'one'] as const;
+export const PROGRESS_QUERY_KEY = ['progress'] as const;
+export const LEARN_QUEUE_QUERY_KEY = ['learn-queue'] as const;
+export const STATS_QUERY_KEY = ['stats'] as const;
+
+/** Строка списка: только то, что видно, без примеров и форм. */
+export interface WordListRow {
+  id: string;
+  rank: number | null;
+  pos: string;
+  head: string;
+  translation: string;
+  genus: string | null;
+  singular: string | null;
+  wortart: string | null;
+  status: 'new' | 'learning' | 'known' | 'declared';
+  /** Человек попросил показать это слово сегодня. */
+  requested: boolean;
+  /** На слово уже отвечали — значит есть что сбрасывать. */
+  has_progress: boolean;
+}
+
+export interface WordsPageResult {
+  total: number;
+  rows: WordListRow[];
+}
+
+export interface WordsPageParams {
+  pos: string[];
+  genus: string[];
+  status: string[];
+  query: string;
+  limit: number;
+  offset: number;
+}
+
+/** Страница списка: отбор, сортировка и счёт делает база. */
+export const useWordsPage = (params: WordsPageParams) =>
+  useQuery({
+    queryKey: [...WORDS_PAGE_QUERY_KEY, params],
+    placeholderData: (previous) => previous,
+    queryFn: async (): Promise<WordsPageResult> => {
+      const { data, error } = await supabase.rpc('words_page', {
+        p_pos: params.pos,
+        p_genus: params.genus,
+        p_status: params.status,
+        p_query: params.query,
+        p_limit: params.limit,
+        p_offset: params.offset,
+      });
+      if (error) throw new Error(error.message);
+      return data as unknown as WordsPageResult;
+    },
+  });
+
+export interface WordsFacets {
+  pos: Record<string, number>;
+  genus: Record<string, number>;
+}
+
+/** Сколько слов каждой части речи и каждого рода — для подписей в фильтре. */
+export const useWordsFacets = () =>
+  useQuery({
+    queryKey: WORDS_FACETS_QUERY_KEY,
+    staleTime: Infinity,
+    queryFn: async (): Promise<WordsFacets> => {
+      const { data, error } = await supabase.rpc('words_facets');
+      if (error) throw new Error(error.message);
+      return data as unknown as WordsFacets;
+    },
+  });
+
+/** Сколько слов выучено в одной части частотного списка. */
+export interface FrequencyBand {
+  total: number;
+  known: number;
+  learning: number;
+  declared: number;
+}
+
+export interface ProgressSummary {
+  total: number;
+  new: number;
+  learning: number;
+  known: number;
+  /** Помечено «знаю» рукой. Считается отдельно от заслуженного «знаю». */
+  declared: number;
+  requested: number;
+  nounsWithGenus: number;
+  /** Ключи: 1-500, 501-1000, 1001-2000, 2001-4500 и none — слова без ранга. */
+  bands: Record<string, FrequencyBand>;
+}
+
+/**
+ * Состав колоды и продвижение по частотному списку. Живёт здесь, а не
+ * в списке, потому что нужен и шапке на каждом экране, и статистике.
+ */
+export const useProgressSummary = () =>
+  useQuery({
+    queryKey: PROGRESS_QUERY_KEY,
+    queryFn: async (): Promise<ProgressSummary> => {
+      const { data, error } = await supabase.rpc('progress_summary');
+      if (error) throw new Error(error.message);
+      return data as unknown as ProgressSummary;
+    },
+  });
+
+export interface LearnQueueItem {
+  word: Word;
+  card: Record<string, unknown> | null;
+}
+
+export interface LearnQueue {
+  total: number;
+  items: LearnQueueItem[];
+}
+
+/**
+ * Очередь повторений: длина и первые несколько слов целиком. Раньше экран
+ * ради одной карточки забирал весь словарь — очередь считалась на клиенте,
+ * и для неё нужно было знать про каждое слово, наступил ли срок.
+ */
+export const useLearnQueue = (enabled: boolean) =>
+  useQuery({
+    queryKey: LEARN_QUEUE_QUERY_KEY,
+    enabled,
+    queryFn: async (): Promise<LearnQueue> => {
+      const { data, error } = await supabase.rpc('learn_queue', { p_limit: 5 });
+      if (error) throw new Error(error.message);
+      return data as unknown as LearnQueue;
+    },
+  });
+
+export interface StatsSummary {
+  reviewedToday: number;
+  dueNow: number;
+  /** Доля верных среди проверенных ответов. null — проверять было нечего. */
+  accuracy: number | null;
+  /** Сколько ответов вообще проверялось: остальные шли без ввода форм. */
+  checkedReviews: number;
+  /** Части речи, попавшие в точность: у остальных ввод был выключен. */
+  checkedPos: string[];
+  totalReviews: number;
+  forecast: number[];
+  perDay: Record<string, number>;
+  activeDays: number;
+  genusMatrix: Array<{ expected: string; answered: string; n: number }>;
+  ruleErrors: Array<{ label: string; total: number; wrong: number }>;
+}
+
+/**
+ * Агрегаты статистики. Журнал повторений на клиент не выгружается: он растёт
+ * без предела, а экрану нужны пять чисел и две небольшие сводки.
+ */
+export const useStatsSummary = () =>
+  useQuery({
+    queryKey: STATS_QUERY_KEY,
+    queryFn: async (): Promise<StatsSummary> => {
+      const { data, error } = await supabase.rpc('stats_summary', {
+        p_tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      });
+      if (error) throw new Error(error.message);
+      return data as unknown as StatsSummary;
+    },
+  });
+
+/** Полное слово — когда строку списка развернули. */
+export const useWord = (id: string | null) =>
+  useQuery({
+    queryKey: [...WORD_QUERY_KEY, id],
+    enabled: Boolean(id),
+    staleTime: Infinity,
+    queryFn: async (): Promise<Word> => {
+      const { data, error } = await supabase.from('words').select('*').eq('id', id!).single();
+      if (error) throw new Error(error.message);
+      return data as Word;
+    },
+  });

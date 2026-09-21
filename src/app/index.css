@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Charis IPA';
+  src: url('/fonts/charis-ipa.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 45 24% 94%;
+    --surface: 0 0% 100%;
+    --surface-2: 48 33% 97%;
+    --ink: 45 9% 13%;
+    --muted: 45 4% 41%;
+    --faint: 42 6% 55%;
+    --line: 41 23% 83%;
+    --line-soft: 43 30% 89%;
+    --focus: 210 80% 46%;
+
+    --masculine: 210 80% 46%;
+    --feminine: 342 67% 54%;
+    --neuter: 145 67% 37%;
+
+    --akkusativ: 210 74% 37%;
+    --dativ: 165 76% 24%;
+    --genitiv: 246 42% 50%;
+    --preposition: 38 84% 28%;
+
+    --gold: 40 60% 45%;
+    /* Отделяемая приставка: единственный свободный участок круга.
+       Роды и падежи заняли синий, розовый, зелёный и сине-фиолетовый. */
+    --separable: 288 62% 42%;
+    --ok: 88 73% 24%;
+    --bad: 0 56% 41%;
+  }
+
+  [data-theme='dark'] {
+    --bg: 260 8% 9%;
+    --surface: 258 10% 13%;
+    --surface-2: 257 10% 16%;
+    --ink: 45 23% 92%;
+    --muted: 42 6% 63%;
+    --faint: 42 5% 47%;
+    --line: 255 8% 22%;
+    --line-soft: 257 8% 18%;
+    --focus: 210 80% 68%;
+
+    --masculine: 210 80% 68%;
+    --feminine: 342 80% 71%;
+    --neuter: 145 50% 59%;
+
+    --akkusativ: 210 70% 70%;
+    --dativ: 165 45% 56%;
+    --genitiv: 246 70% 78%;
+    --preposition: 38 58% 60%;
+
+    --gold: 38 58% 60%;
+    --separable: 288 70% 76%;
+    --ok: 88 45% 65%;
+    --bad: 0 72% 75%;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-[15px] text-ink antialiased;
+  }
+}
+
+@layer components {
+  .mark-suffix {
+    @apply border-b-2 border-current pb-px;
+  }
+  .mark-ending {
+    @apply border-b-2 border-gold pb-px;
+  }
+  .mark-umlaut {
+    @apply border-b-2 border-dotted border-gold pb-px;
+  }
+  /* Отделяемая приставка: форма, а не цвет. Все оттенки заняты смыслом —
+     род существительного и падежи в управлении, — а золотым на карточке
+     глагола красятся предлоги, с которыми приставка и путалась. */
+  .mark-prefix {
+    @apply font-bold text-separable;
+  }
+  /* Тонкая черта на стыке показывает, где слово разрывается: zu│machen */
+  .mark-prefix-split {
+    @apply border-r border-separable/40 pr-0.5;
+  }
+}
