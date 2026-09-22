@@ -211,6 +211,35 @@ const toPlayable = (file, workDir) => {
 
 const CONTENT_TYPE = { '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4', '.ogg': 'audio/ogg', '.wav': 'audio/wav' };
 
+/**
+ * Облако придерживает того, кто грузит слишком бодро: отвечает 429
+ * «too_many_connections». Локальный стек этого не делает, поэтому
+ * в облако идём осторожнее и на отказ отступаем, а не падаем.
+ *
+ * Ждём вдвое дольше с каждой попыткой. Отказ по существу — неверный
+ * ключ, нет доступа — повторять бессмысленно, он возвращается сразу.
+ */
+const RETRIABLE = new Set([429, 500, 502, 503, 504]);
+const pause = (ms) => new Promise((resolve) => { setTimeout(resolve, ms); });
+
+const sendWithRetry = async (request, what, attempts = 6) => {
+  for (let attempt = 1; ; attempt += 1) {
+    let response;
+    try {
+      response = await request();
+    } catch (error) {
+      if (attempt >= attempts) throw new Error(`${what}: ${error.message}`);
+      await pause(2 ** attempt * 400);
+      continue;
+    }
+    if (response.ok) return response;
+    if (!RETRIABLE.has(response.status) || attempt >= attempts) {
+      throw new Error(`${what}: ${response.status} ${await response.text()}`);
+    }
+    await pause(2 ** attempt * 400);
+  }
+};
+
 const existingObjects = async ({ url, key }) => {
   const seen = new Set();
   for (let offset = 0; ; offset += 1000) {
@@ -264,17 +293,20 @@ const toRow = (word) => {
 const upsertWords = async ({ url, key }, rows) => {
   for (let from = 0; from < rows.length; from += 200) {
     const chunk = rows.slice(from, from + 200);
-    const response = await fetch(`${url}/rest/v1/words?on_conflict=id`, {
-      method: 'POST',
-      headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-        'Content-Type': 'application/json',
-        Prefer: 'resolution=merge-duplicates,return=minimal',
-      },
-      body: JSON.stringify(chunk),
-    });
-    if (!response.ok) throw new Error(`Запись слов: ${response.status} ${await response.text()}`);
+    await sendWithRetry(
+      () =>
+        fetch(`${url}/rest/v1/words?on_conflict=id`, {
+          method: 'POST',
+          headers: {
+            apikey: key,
+            Authorization: `Bearer ${key}`,
+            'Content-Type': 'application/json',
+            Prefer: 'resolution=merge-duplicates,return=minimal',
+          },
+          body: JSON.stringify(chunk),
+        }),
+      'Запись слов',
+    );
   }
 };
 
@@ -362,19 +394,24 @@ const main = async () => {
     const todo = uploads.filter((item) => !already.has(item.path));
     log(`Заливаю озвучку: ${todo.length} файлов (уже в хранилище: ${uploads.length - todo.length})…`);
     let done = 0;
-    await limitConcurrency(todo, 8, async (item) => {
-      const response = await fetch(`${config.url}/storage/v1/object/${BUCKET}/${item.path}`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${config.key}`,
-          'Content-Type': CONTENT_TYPE[item.ext] ?? 'application/octet-stream',
-          'x-upsert': 'true',
-        },
-        body: readFileSync(item.source),
-      });
-      if (!response.ok) throw new Error(`Звук ${item.path}: ${response.status} ${await response.text()}`);
+    // Локальный стек держит восемь потоков, облако на этом захлёбывается.
+    const lanes = config.label === 'локальный стек' ? 8 : 3;
+    await limitConcurrency(todo, lanes, async (item) => {
+      await sendWithRetry(
+        () =>
+          fetch(`${config.url}/storage/v1/object/${BUCKET}/${item.path}`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${config.key}`,
+              'Content-Type': CONTENT_TYPE[item.ext] ?? 'application/octet-stream',
+              'x-upsert': 'true',
+            },
+            body: readFileSync(item.source),
+          }),
+        `Звук ${item.path}`,
+      );
       done += 1;
-      if (done % 500 === 0) log(`    ${done}/${todo.length}`);
+      if (done % 250 === 0) log(`    ${done}/${todo.length}`);
     });
     log(`  залито: ${done}`);
   }
