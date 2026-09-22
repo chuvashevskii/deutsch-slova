@@ -105,9 +105,26 @@ describe('черновые партии', () => {
     }
   });
 
-  it('ранги не повторяются: иначе вторая карточка затрёт первую', () => {
-    const ranks = cards.map((card) => card.rank);
-    expect(new Set(ranks).size).toBe(ranks.length);
+  it('повторяющийся ранг требует своего id — иначе вторая карточка затрёт первую', () => {
+    // Два рода одного слова стоят на одном ранге: «der Deutsche»
+    // и «die Deutsche». Так сделано и в колоде — Bekannte, Erwachsene,
+    // Jugendliche лежат там парами. Идентификатор при этом должен быть
+    // свой, иначе заливка положит одну карточку поверх другой.
+    const byRank = new Map();
+    for (const card of cards) {
+      byRank.set(card.rank, [...(byRank.get(card.rank) ?? []), card]);
+    }
+    for (const [rank, group] of byRank) {
+      if (group.length === 1) continue;
+      const ids = group.map((card) => card.id);
+      expect(ids.filter(Boolean).length, `ранг ${rank}: у каждой карточки свой id`).toBe(group.length);
+      expect(new Set(ids).size, `ранг ${rank}: id не совпадают`).toBe(group.length);
+    }
+  });
+
+  it('идентификаторы уникальны по всем партиям', () => {
+    const ids = cards.map((card) => card.id).filter(Boolean);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('отвергнутые ранги не возвращаются в партии', () => {
