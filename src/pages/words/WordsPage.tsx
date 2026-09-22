@@ -47,6 +47,11 @@ const POS_OPTIONS = [
   { value: 'verb', label: 'глаголы', short: 'глаголы' },
   { value: 'adj', label: 'прилагательные', short: 'прил.' },
   { value: 'adverb', label: 'наречия', short: 'наречия' },
+  // INFO: своя категория, а не членство в двух. В строке слово подписано
+  // «прил. · нареч.», и отбор с тем же именем даёт ровно его. Иначе
+  // отборы пересекаются, счётчики перестают складываться в размер
+  // колоды, а «прилагательные» показывают не то, что в строке написано.
+  { value: 'adj_adverb', label: 'прилагательные и наречия', short: 'прил. · нареч.' },
   { value: 'pronoun', label: 'местоимения', short: 'мест.' },
   { value: 'numeral', label: 'числительные', short: 'числ.' },
   { value: 'conjunction', label: 'союзы', short: 'союзы' },
@@ -317,7 +322,6 @@ export const WordsPage = () => {
     status: filter.status,
     query: filter.query,
     draft: filter.draft,
-    dual: filter.dual,
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
@@ -360,12 +364,8 @@ export const WordsPage = () => {
   const chosenLabels = filter.pos.map((value) => {
     const short = POS_OPTIONS.find((option) => option.value === value)?.short ?? value;
     if (value === 'noun' && genusLabels.length) return `${short}: ${genusLabels.join(', ')}`;
-    if (value === 'adj' && filter.dual) return `${short}: и как наречие`;
     return short;
   });
-  // Отбор «и как наречие» бывает выбран и без самой части речи —
-  // тогда он должен быть виден в подписи сам по себе.
-  if (filter.dual && !filter.pos.includes('adj')) chosenLabels.push('прил. · нареч.');
   const selectSummary =
     chosenLabels.length === 0
       ? 'все слова'
@@ -427,24 +427,6 @@ export const WordsPage = () => {
                       </label>
                     ))
                   : null}
-                {/* INFO: «и как наречие» — подкатегория прилагательного,
-                    как род у существительного. Отдельным пунктом в общем
-                    списке она была бы частью речи, которой не бывает:
-                    такое слово и так уже посчитано в обоих отборах. */}
-                {option.value === 'adj' && facets?.dual ? (
-                  <label className="flex cursor-pointer items-center gap-2.5 border-b border-line-soft bg-surface-2 py-2 pl-9 pr-3 text-[13px]">
-                    <input
-                      type="checkbox"
-                      checked={filter.dual === true}
-                      onChange={() => update({ dual: filter.dual ? null : true })}
-                      className="h-3.5 w-3.5 shrink-0 accent-ink"
-                    />
-                    <span className="min-w-0 flex-1 truncate">и как наречие</span>
-                    <span className="shrink-0 font-mono text-[10.5px] tabular-nums text-faint">
-                      {facets.dual}
-                    </span>
-                  </label>
-                ) : null}
               </div>
             ))}
           </div>

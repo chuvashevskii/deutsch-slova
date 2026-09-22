@@ -42,8 +42,6 @@ export interface WordsPageParams {
   query: string;
   /** true — только черновики, false — только сверенные, null — все. */
   draft: boolean | null;
-  /** true — только слова двух частей речи сразу. */
-  dual: boolean | null;
   limit: number;
   offset: number;
 }
@@ -64,7 +62,6 @@ const fetchWordsPage = async (params: WordsPageParams): Promise<WordsPageResult>
     // INFO: null здесь значит «не отбирать по сверке», и функция ждёт
     // отсутствия аргумента, а не null: у неё умолчание — «все».
     p_draft: params.draft ?? undefined,
-    p_dual: params.dual ?? undefined,
   });
   if (error) throw new Error(error.message);
   return data as unknown as WordsPageResult;
@@ -93,16 +90,14 @@ export const useWordsInfinite = (params: WordsQuery) =>
 export interface WordsFacets {
   /**
    * Сколько слов всего. Приходит от базы, а не складывается из `pos`:
-   * отборы пересекаются — слово двух частей речи считается в обоих,
-   * и сумма больше колоды.
+   * выводить целое из слагаемых значит зависеть от того, что ни одно
+   * из них не забыли.
    */
   total: number;
   pos: Record<string, number>;
   genus: Record<string, number>;
   /** Сколько карточек ждёт сверки. */
   drafts: number;
-  /** Сколько слов принадлежат сразу двум частям речи. */
-  dual: number;
 }
 
 /** Сколько слов каждой части речи и каждого рода — для подписей в фильтре. */

@@ -25,13 +25,6 @@ export interface WordsFilter {
    * карточки: черновик бывает и новым, и уже выученным.
    */
   draft: boolean | null;
-  /**
-   * Только слова двух частей речи сразу — прилагательные, которые
-   * работают и наречиями. Подкатегория прилагательного, как род
-   * у существительного, поэтому отдельным признаком, а не значением
-   * в списке частей речи.
-   */
-  dual: boolean | null;
 }
 
 export const EMPTY_FILTER: WordsFilter = {
@@ -40,7 +33,6 @@ export const EMPTY_FILTER: WordsFilter = {
   status: [],
   query: '',
   draft: null,
-  dual: null,
 };
 
 export const isFilterEmpty = (filter: WordsFilter): boolean =>
@@ -48,8 +40,7 @@ export const isFilterEmpty = (filter: WordsFilter): boolean =>
   filter.genus.length === 0 &&
   filter.status.length === 0 &&
   filter.query === '' &&
-  filter.draft === null &&
-  filter.dual === null;
+  filter.draft === null;
 
 const splitList = (value: string | null): string[] =>
   value ? value.split(',').filter(Boolean) : [];
@@ -63,7 +54,6 @@ export const readFilter = (params: URLSearchParams): WordsFilter => {
     ),
     query: params.get('q') ?? '',
     draft: params.get('draft') === '1' ? true : params.get('draft') === '0' ? false : null,
-    dual: params.get('dual') === '1' ? true : null,
   };
 };
 
@@ -78,7 +68,6 @@ export const writeFilter = (filter: WordsFilter): URLSearchParams => {
   if (filter.status.length) params.set('status', filter.status.join(','));
   if (filter.query) params.set('q', filter.query);
   if (filter.draft !== null) params.set('draft', filter.draft ? '1' : '0');
-  if (filter.dual) params.set('dual', '1');
   return params;
 };
 
