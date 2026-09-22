@@ -30,6 +30,12 @@ export const DAILY_SECTIONS: NavSection[] = [
 // картинку, и два раздела из шести выпадают из общего чёрно-белого ряда.
 export const RARE_SECTIONS: NavSection[] = [
   {
+    to: '/guide',
+    label: 'Как пользоваться',
+    icon: '?',
+    hint: 'Что делает каждый экран и зачем',
+  },
+  {
     to: '/settings',
     label: 'Настройки',
     icon: '⚙\uFE0E',

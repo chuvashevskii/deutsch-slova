@@ -33,6 +33,9 @@ const FeedbackPage = lazy(() =>
 const BacklogPage = lazy(() =>
   import('@/pages/backlog/BacklogPage').then((module) => ({ default: module.BacklogPage })),
 );
+const GuidePage = lazy(() =>
+  import('@/pages/guide/GuidePage').then((module) => ({ default: module.GuidePage })),
+);
 const ReviewPage = lazy(() =>
   import('@/pages/review/ReviewPage').then((module) => ({ default: module.ReviewPage })),
 );
@@ -86,6 +89,14 @@ export const AppRouter = () => (
         element={
           <Suspense fallback={<CardSkeleton />}>
             <FeedbackPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/guide"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <GuidePage />
           </Suspense>
         }
       />
