@@ -1,175 +1,385 @@
 [
   {
-    "rank": 12, "pos": "conjunction", "head": "als",
+    "rank": 12,
+    "pos": "conjunction",
+    "head": "als",
     "translation": "Когда (о прошлом) / чем (в сравнении)",
-    "ipa": "/als/", "pronunciation_ru": "альс",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Als ich klein war, wohnten wir in Berlin.", "Er ist älter als ich."],
-    "examples_ru": ["Когда я был маленьким, мы жили в Берлине.", "Он старше меня."]
+    "ipa": "/als/",
+    "pronunciation_ru": "альс",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Als ich klein war, wohnten wir in Berlin.",
+      "Er ist älter als ich."
+    ],
+    "examples_ru": [
+      "Когда я был маленьким, мы жили в Берлине.",
+      "Он старше меня."
+    ]
   },
   {
-    "rank": 19, "pos": "pronoun", "head": "alle",
+    "rank": 19,
+    "pos": "pronoun",
+    "head": "alle",
     "translation": "Все",
-    "ipa": "/ˈalə/", "pronunciation_ru": "Алэ",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Alle Kinder spielen im Garten.", "Ich habe alle Aufgaben erledigt."],
-    "examples_ru": ["Все дети играют в саду.", "Я сделал все задания."]
+    "ipa": "/ˈalə/",
+    "pronunciation_ru": "Алэ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Alle Kinder spielen im Garten.",
+      "Ich habe alle Aufgaben erledigt."
+    ],
+    "examples_ru": [
+      "Все дети играют в саду.",
+      "Я сделал все задания."
+    ]
   },
   {
-    "rank": 21, "pos": "adverb", "head": "da",
+    "rank": 21,
+    "pos": "adverb",
+    "head": "da",
     "translation": "Вот / тут",
     "wortart": "наречие",
-    "ipa": "/daː/", "pronunciation_ru": "ДА",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Da kommt der Bus!", "Ist jemand da?"],
-    "examples_ru": ["Вот и автобус!", "Есть тут кто-нибудь?"]
+    "ipa": "/daː/",
+    "pronunciation_ru": "ДА",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Da kommt der Bus!",
+      "Ist jemand da?"
+    ],
+    "examples_ru": [
+      "Вот и автобус!",
+      "Есть тут кто-нибудь?"
+    ]
   },
   {
-    "rank": 25, "pos": "conjunction", "head": "wenn",
+    "rank": 25,
+    "pos": "conjunction",
+    "head": "wenn",
     "translation": "Если / когда (о повторяющемся)",
-    "ipa": "/vɛn/", "pronunciation_ru": "вэн",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Wenn es regnet, bleiben wir zu Hause.", "Ruf mich an, wenn du Zeit hast."],
-    "examples_ru": ["Если пойдёт дождь, мы останемся дома.", "Позвони мне, когда будет время."]
+    "ipa": "/vɛn/",
+    "pronunciation_ru": "вэн",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Wenn es regnet, bleiben wir zu Hause.",
+      "Ruf mich an, wenn du Zeit hast."
+    ],
+    "examples_ru": [
+      "Если пойдёт дождь, мы останемся дома.",
+      "Позвони мне, когда будет время."
+    ]
   },
   {
-    "rank": 32, "pos": "pronoun", "head": "kein",
+    "rank": 32,
+    "pos": "pronoun",
+    "head": "kein",
     "translation": "Никакой / ни один",
-    "ipa": "/kaɪ̯n/", "pronunciation_ru": "КАЙН",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Ich habe kein Geld.", "Das ist keine gute Idee."],
-    "examples_ru": ["У меня нет денег.", "Это не лучшая мысль."]
+    "ipa": "/kaɪ̯n/",
+    "pronunciation_ru": "КАЙН",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich habe kein Geld.",
+      "Das ist keine gute Idee."
+    ],
+    "examples_ru": [
+      "У меня нет денег.",
+      "Это не лучшая мысль."
+    ]
   },
   {
-    "rank": 38, "pos": "pronoun", "head": "man",
+    "rank": 38,
+    "pos": "pronoun",
+    "head": "man",
     "translation": "Безличное «люди, кто-то»",
-    "ipa": "/man/", "pronunciation_ru": "ман",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Hier darf man nicht rauchen.", "Man weiß nie."],
-    "examples_ru": ["Здесь нельзя курить.", "Никогда не знаешь."]
+    "ipa": "/man/",
+    "pronunciation_ru": "ман",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Hier darf man nicht rauchen.",
+      "Man weiß nie."
+    ],
+    "examples_ru": [
+      "Здесь нельзя курить.",
+      "Никогда не знаешь."
+    ]
   },
   {
-    "rank": 42, "pos": "noun", "head": "Tag",
+    "rank": 42,
+    "pos": "noun",
+    "head": "Tag",
     "translation": "День",
-    "singular": "der Tag", "plural": "die Tage", "genus": "m", "plural_ending": "e",
-    "ipa": "/taːk/", "pronunciation_ru": "ТАК",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Der Tag war sehr lang.", "Wir treffen uns in drei Tagen."],
-    "examples_ru": ["День был очень долгим.", "Мы встретимся через три дня."]
+    "singular": "der Tag",
+    "plural": "die Tage",
+    "genus": "m",
+    "plural_ending": "e",
+    "ipa": "/taːk/",
+    "pronunciation_ru": "ТАК",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Der Tag war sehr lang.",
+      "Wir treffen uns in drei Tagen."
+    ],
+    "examples_ru": [
+      "День был очень долгим.",
+      "Мы встретимся через три дня."
+    ]
   },
   {
-    "rank": 46, "pos": "adj", "head": "andere",
+    "rank": 46,
+    "pos": "adj",
+    "head": "andere",
     "translation": "Другой",
     "wortart": "прилагательное",
-    "ipa": "/ˈandəʁə/", "pronunciation_ru": "Андэрэ",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Ich möchte eine andere Farbe.", "Die anderen sind schon gegangen."],
-    "examples_ru": ["Я хочу другой цвет.", "Остальные уже ушли."]
+    "ipa": "/ˈandəʁə/",
+    "pronunciation_ru": "Андэрэ",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Ich möchte eine andere Farbe.",
+      "Die anderen sind schon gegangen."
+    ],
+    "examples_ru": [
+      "Я хочу другой цвет.",
+      "Остальные уже ушли."
+    ]
   },
   {
-    "rank": 58, "pos": "pronoun", "head": "nichts",
+    "rank": 58,
+    "pos": "pronoun",
+    "head": "nichts",
     "translation": "Ничего",
-    "ipa": "/nɪçts/", "pronunciation_ru": "НИХЬТС",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Ich habe nichts gesagt.", "Hier gibt es nichts zu sehen."],
-    "examples_ru": ["Я ничего не говорил.", "Здесь нечего смотреть."]
+    "ipa": "/nɪçts/",
+    "pronunciation_ru": "НИХЬТС",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich habe nichts gesagt.",
+      "Hier gibt es nichts zu sehen."
+    ],
+    "examples_ru": [
+      "Я ничего не говорил.",
+      "Здесь нечего смотреть."
+    ]
   },
   {
-    "rank": 64, "pos": "pronoun", "head": "etwas",
+    "rank": 64,
+    "pos": "pronoun",
+    "head": "etwas",
     "translation": "Что-то / немного",
-    "ipa": "/ˈɛtvas/", "pronunciation_ru": "Этвас",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Ich möchte etwas trinken.", "Das ist etwas teuer."],
-    "examples_ru": ["Я хочу что-нибудь выпить.", "Это дороговато."]
+    "ipa": "/ˈɛtvas/",
+    "pronunciation_ru": "Этвас",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich möchte etwas trinken.",
+      "Das ist etwas teuer."
+    ],
+    "examples_ru": [
+      "Я хочу что-нибудь выпить.",
+      "Это дороговато."
+    ]
   },
   {
-    "rank": 70, "pos": "numeral", "head": "zwei",
+    "rank": 70,
+    "pos": "numeral",
+    "head": "zwei",
     "translation": "Два",
     "wortart": "количественное слово",
-    "ipa": "/tsvaɪ̯/", "pronunciation_ru": "ЦВАЙ",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Ich habe zwei Brüder.", "Wir treffen uns um zwei Uhr."],
-    "examples_ru": ["У меня два брата.", "Мы встречаемся в два часа."]
+    "ipa": "/tsvaɪ̯/",
+    "pronunciation_ru": "ЦВАЙ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich habe zwei Brüder.",
+      "Wir treffen uns um zwei Uhr."
+    ],
+    "examples_ru": [
+      "У меня два брата.",
+      "Мы встречаемся в два часа."
+    ]
   },
   {
-    "rank": 76, "pos": "adj", "head": "okay",
+    "rank": 76,
+    "pos": "adj",
+    "head": "okay",
     "translation": "В порядке / нормально",
     "wortart": "прилагательное и наречие",
-    "ipa": "/oˈkeː/", "pronunciation_ru": "оКЭ",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Alles okay bei dir?", "Das Essen war okay."],
-    "examples_ru": ["У тебя всё в порядке?", "Еда была нормальной."]
+    "ipa": "/oˈkeː/",
+    "pronunciation_ru": "оКЭ",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Alles okay bei dir?",
+      "Das Essen war okay."
+    ],
+    "examples_ru": [
+      "У тебя всё в порядке?",
+      "Еда была нормальной."
+    ]
   },
   {
-    "rank": 84, "pos": "adj", "head": "nächste",
+    "rank": 84,
+    "pos": "adj",
+    "head": "nächste",
     "translation": "Следующий / ближайший",
     "wortart": "прилагательное",
-    "ipa": "/ˈnɛːçstə/", "pronunciation_ru": "НЭхьстэ",
-    "rule_status": "exception", "rule_label": "Превосходная степень от nah",
-    "examples_de": ["Nächste Woche fahre ich nach Wien.", "Die nächste Haltestelle ist der Hauptbahnhof."],
-    "examples_ru": ["На следующей неделе я еду в Вену.", "Следующая остановка — главный вокзал."]
+    "ipa": "/ˈnɛːçstə/",
+    "pronunciation_ru": "НЭхьстэ",
+    "rule_status": "exception",
+    "rule_label": "Превосходная степень от nah",
+    "examples_de": [
+      "Nächste Woche fahre ich nach Wien.",
+      "Die nächste Haltestelle ist der Hauptbahnhof."
+    ],
+    "examples_ru": [
+      "На следующей неделе я еду в Вену.",
+      "Следующая остановка — главный вокзал."
+    ]
   },
   {
-    "rank": 87, "pos": "adverb", "head": "gar",
+    "rank": 87,
+    "pos": "adverb",
+    "head": "gar",
     "translation": "Вовсе / совсем (усиливает отрицание)",
     "wortart": "наречие",
-    "ipa": "/ɡaːɐ̯/", "pronunciation_ru": "ГАА",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Das ist gar nicht schlimm.", "Ich habe gar keine Zeit."],
-    "examples_ru": ["Это совсем не страшно.", "У меня совсем нет времени."]
+    "ipa": "/ɡaːɐ̯/",
+    "pronunciation_ru": "ГАА",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Das ist gar nicht schlimm.",
+      "Ich habe gar keine Zeit."
+    ],
+    "examples_ru": [
+      "Это совсем не страшно.",
+      "У меня совсем нет времени."
+    ]
   },
   {
-    "rank": 89, "pos": "noun", "head": "Video",
+    "rank": 89,
+    "pos": "noun",
+    "head": "Video",
     "translation": "Видео",
-    "singular": "das Video", "plural": "die Videos", "genus": "n", "plural_ending": "s",
+    "singular": "das Video",
+    "plural": "die Videos",
+    "genus": "n",
+    "plural_ending": "s",
     "stress_singular": "1",
-    "ipa": "/ˈviːdeo/", "pronunciation_ru": "ВИдэо",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Ich habe ein lustiges Video gesehen.", "Er lädt jede Woche neue Videos hoch."],
-    "examples_ru": ["Я посмотрел смешное видео.", "Он выкладывает новые видео каждую неделю."]
+    "ipa": "/ˈviːdeo/",
+    "pronunciation_ru": "ВИдэо",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich habe ein lustiges Video gesehen.",
+      "Er lädt jede Woche neue Videos hoch."
+    ],
+    "examples_ru": [
+      "Я посмотрел смешное видео.",
+      "Он выкладывает новые видео каждую неделю."
+    ]
   },
   {
-    "rank": 93, "pos": "numeral", "head": "erste",
+    "rank": 93,
+    "pos": "numeral",
+    "head": "erste",
     "translation": "Первый",
-    "ipa": "/ˈeːɐ̯stə/", "pronunciation_ru": "ЭАстэ",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Das ist mein erstes Auto.", "Er wohnt im ersten Stock."],
-    "examples_ru": ["Это моя первая машина.", "Он живёт на втором этаже."]
+    "ipa": "/ˈeːɐ̯stə/",
+    "pronunciation_ru": "ЭАстэ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Das ist mein erstes Auto.",
+      "Er wohnt im ersten Stock."
+    ],
+    "examples_ru": [
+      "Это моя первая машина.",
+      "Он живёт на втором этаже."
+    ]
   },
   {
-    "rank": 102, "pos": "pronoun", "head": "jeder",
+    "rank": 102,
+    "pos": "pronoun",
+    "head": "jeder",
     "translation": "Каждый",
-    "ipa": "/ˈjeːdɐ/", "pronunciation_ru": "ЙЭдэр",
-    "rule_status": "none", "rule_label": "Степеней не образует",
-    "examples_de": ["Jeder Mensch ist anders.", "Ich gehe jeden Tag spazieren."],
-    "examples_ru": ["Каждый человек другой.", "Я гуляю каждый день."]
+    "ipa": "/ˈjeːdɐ/",
+    "pronunciation_ru": "ЙЭдэр",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Jeder Mensch ist anders.",
+      "Ich gehe jeden Tag spazieren."
+    ],
+    "examples_ru": [
+      "Каждый человек другой.",
+      "Я гуляю каждый день."
+    ]
   },
   {
-    "rank": 103, "pos": "adj", "head": "lieb",
+    "rank": 103,
+    "pos": "adj",
+    "head": "lieb",
     "translation": "Милый / добрый",
     "wortart": "прилагательное",
-    "komparativ": "lieber", "superlativ": "am liebsten",
-    "ipa": "/liːp/", "pronunciation_ru": "ЛИП",
-    "rule_status": "high", "rule_label": "Обычное -er / am -sten",
-    "examples_de": ["Das ist sehr lieb von dir.", "Sie hat einen lieben Bruder."],
-    "examples_ru": ["Это очень мило с твоей стороны.", "У неё добрый брат."]
+    "komparativ": "lieber",
+    "superlativ": "am liebsten",
+    "ipa": "/liːp/",
+    "pronunciation_ru": "ЛИП",
+    "rule_status": "high",
+    "rule_label": "Обычное -er / am -sten",
+    "examples_de": [
+      "Das ist sehr lieb von dir.",
+      "Sie hat einen lieben Bruder."
+    ],
+    "examples_ru": [
+      "Это очень мило с твоей стороны.",
+      "У неё добрый брат."
+    ]
   },
   {
-    "rank": 104, "pos": "conjunction", "head": "ob",
+    "rank": 104,
+    "pos": "conjunction",
+    "head": "ob",
     "translation": "Ли (в косвенном вопросе)",
-    "ipa": "/ɔp/", "pronunciation_ru": "оп",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Ich weiß nicht, ob er kommt.", "Sie fragte, ob alles in Ordnung ist."],
-    "examples_ru": ["Я не знаю, придёт ли он.", "Она спросила, всё ли в порядке."]
+    "ipa": "/ɔp/",
+    "pronunciation_ru": "оп",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich weiß nicht, ob er kommt.",
+      "Sie fragte, ob alles in Ordnung ist."
+    ],
+    "examples_ru": [
+      "Я не знаю, придёт ли он.",
+      "Она спросила, всё ли в порядке."
+    ]
   },
   {
-    "rank": 112, "pos": "noun", "head": "Thema",
+    "rank": 112,
+    "pos": "noun",
+    "head": "Thema",
     "translation": "Тема",
-    "singular": "das Thema", "plural": "die Themen", "genus": "n", "plural_ending": "en",
+    "singular": "das Thema",
+    "plural": "die Themen",
+    "genus": "n",
+    "plural_ending": "en",
     "stress_singular": "1",
-    "ipa": "/ˈteːma/", "pronunciation_ru": "ТЭма",
-    "rule_status": "none", "rule_label": "",
-    "examples_de": ["Das ist ein schwieriges Thema.", "Wir haben über viele Themen gesprochen."],
-    "examples_ru": ["Это трудная тема.", "Мы говорили на многие темы."]
+    "ipa": "/ˈteːma/",
+    "pronunciation_ru": "ТЭма",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Das ist ein schwieriges Thema.",
+      "Wir haben über viele Themen gesprochen."
+    ],
+    "examples_ru": [
+      "Это трудная тема.",
+      "Мы говорили на многие темы."
+    ]
   }
 ]
