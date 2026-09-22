@@ -6,7 +6,7 @@ import { cn } from '@/shared/lib/cn';
 import { useNow } from '@/shared/lib/useNow';
 import { LoadError, Skeleton } from '@/shared/ui';
 
-import { dayKey, plural } from './statsFormat';
+import { buildHeatmap, dayKey, plural } from './statsFormat';
 
 const FORECAST_DAYS = 14;
 const HEATMAP_WEEKS = 16;
@@ -87,34 +87,23 @@ export const StatsPage = () => {
   const deckSize = progress?.total ?? 0;
   const forecast = stats?.forecast ?? new Array<number>(FORECAST_DAYS).fill(0);
 
-  // INFO: сетку тепловой карты строит клиент: начало недели и часовой пояс — его
-  // забота, база отдаёт только «день → сколько повторений».
+  // INFO: сетку строит клиент: начало недели и часовой пояс — его забота,
+  // база отдаёт только «день → сколько повторений».
   const heatmap = useMemo(() => {
-    const perDay = stats?.perDay ?? {};
-    const today = new Date(now);
-    const weekdayOffset = (today.getDay() + 6) % 7;
-    const cells: Array<{ key: string; count: number }> = [];
-    for (let back = HEATMAP_WEEKS * 7 - 1 + weekdayOffset; back >= 0; back -= 1) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - back);
-      const key = dayKey(date);
-      cells.push({ key, count: perDay[key] ?? 0 });
-    }
-    const max = Math.max(1, ...Object.values(perDay));
-    const weeks = Math.ceil(cells.length / 7);
+    const grid = buildHeatmap(stats?.perDay ?? {}, new Date(now), HEATMAP_WEEKS);
 
     // INFO: подпись месяца ставится над той неделей, где месяц начался,
     // и только если для неё есть место: иначе «сен» и «окт» наложатся.
     const months: string[] = [];
     let previous = '';
-    for (let week = 0; week < weeks; week += 1) {
-      const first = cells[week * 7];
+    for (let week = 0; week < grid.weeks; week += 1) {
+      const first = grid.cells[week * 7];
       const label = first ? monthOnly.format(new Date(`${first.key}T00:00:00`)) : '';
       months.push(label && label !== previous ? label : '');
       if (label) previous = label;
     }
 
-    return { cells, max, weeks, months, today: dayKey(today) };
+    return { ...grid, months };
   }, [stats, now]);
 
   const pickedHeatmap = useMemo(() => {
@@ -238,48 +227,67 @@ export const StatsPage = () => {
 
       <Section
         title="Что придёт в ближайшие две недели"
-        note={forecastTotal ? `Столбик — карточки одного дня. Всего ${forecastTotal}.` : undefined}
+        note={
+          forecastTotal
+            ? `${shortDay.format(forecastDays[0].date)} — ${shortDay.format(forecastDays[forecastDays.length - 1].date)}, всего ${forecastTotal} ${plural(forecastTotal, 'карточка', 'карточки', 'карточек')}.`
+            : undefined
+        }
       >
         {forecastTotal === 0 ? (
           <Empty>Пока нечего планировать — ни одна карточка ещё не отвечена.</Empty>
         ) : (
-          <>
-            <div className="flex h-24 items-end gap-1 border-b border-line">
-              {forecastDays.map(({ key, date, count }, index) => {
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    aria-label={`${dayMonth.format(date)}: ${count} ${plural(count, 'карточка', 'карточки', 'карточек')}`}
-                    aria-pressed={pickedDay === key}
-                    onClick={() => setPickedDay(pickedDay === key ? null : key)}
-                    className="flex h-full flex-1 flex-col justify-end"
-                  >
+          <div className="rounded-xl border border-line bg-surface p-3.5">
+            {/* INFO: у каждого дня есть своя дорожка во всю высоту. Без неё
+                пустые дни были невидимы, и график из одного столбика читался
+                как обрезанный, а не как спокойная неделя. */}
+            <div className="flex h-28 items-stretch gap-1">
+              {forecastDays.map(({ key, date, count }, index) => (
+                <button
+                  key={key}
+                  type="button"
+                  aria-label={`${dayMonth.format(date)}: ${count} ${plural(count, 'карточка', 'карточки', 'карточек')}`}
+                  aria-pressed={pickedDay === key}
+                  onClick={() => setPickedDay(pickedDay === key ? null : key)}
+                  className="flex flex-1 flex-col gap-1"
+                >
+                  <span className="h-[11px] shrink-0 text-center font-mono text-[9px] leading-[11px] tabular-nums text-muted">
+                    {count || ''}
+                  </span>
+                  <span className="relative min-w-0 flex-1 overflow-hidden rounded-[3px] bg-line-soft">
                     <span
                       className={cn(
-                        'w-full rounded-t-sm',
-                        index === 0 ? 'bg-ink' : 'bg-line',
+                        'absolute inset-x-0 bottom-0 rounded-[3px]',
+                        index === 0 ? 'bg-ink' : 'bg-ink/30',
                         pickedDay === key && 'bg-neuter',
                       )}
-                      style={{ height: count ? `${Math.max(6, (100 * count) / forecastMax)}%` : 2 }}
+                      style={{ height: count ? `${Math.max(4, (100 * count) / forecastMax)}%` : 0 }}
                     />
-                  </button>
-                );
-              })}
+                  </span>
+                </button>
+              ))}
             </div>
-            <div className="mt-1.5 flex justify-between font-mono text-[10px] text-faint">
-              <span>сегодня</span>
-              <span>{shortDay.format(new Date(new Date(now).setDate(new Date(now).getDate() + 7)))}</span>
-              <span>{shortDay.format(new Date(new Date(now).setDate(new Date(now).getDate() + 13)))}</span>
+            {/* INFO: раньше подписей было три — «сегодня», «+7», «+13».
+                Смещение вместо даты читается как загадка; теперь под каждым
+                столбиком стоит число месяца. */}
+            <div className="mt-1.5 flex gap-1">
+              {forecastDays.map(({ key, date }, index) => (
+                <span
+                  key={key}
+                  className={cn(
+                    'flex-1 text-center font-mono text-[9px] tabular-nums',
+                    index === 0 ? 'font-semibold text-ink' : 'text-faint',
+                  )}
+                >
+                  {date.getDate()}
+                </span>
+              ))}
             </div>
-            {/* INFO: раньше подписи были «+7» и «+13» — смещение вместо даты
-                читается как загадка, а число карточек не показывалось вовсе. */}
-            <p className="mt-2 text-[12.5px] text-muted">
+            <p className="mt-2.5 border-t border-line-soft pt-2.5 text-[12.5px] leading-snug text-muted">
               {pickedForecast
                 ? `${dayMonth.format(pickedForecast.date)} — ${pickedForecast.count} ${plural(pickedForecast.count, 'карточка', 'карточки', 'карточек')}`
-                : 'Нажмите на столбик, чтобы увидеть день и число карточек.'}
+                : 'Первый столбик — сегодня. Нажмите на любой, чтобы увидеть дату и число карточек.'}
             </p>
-          </>
+          </div>
         )}
       </Section>
 
@@ -287,68 +295,87 @@ export const StatsPage = () => {
         title="Активность за четыре месяца"
         note={
           stats?.totalReviews
-            ? `Квадрат — день, насыщенность — число ответов. Дней с ответами: ${stats?.activeDays ?? 0}; ответов всего: ${stats?.totalReviews ?? 0}.`
+            ? `Квадрат — день, насыщенность — число ответов. Дней с ответами: ${stats.activeDays ?? 0}; ответов всего: ${stats.totalReviews}.`
             : 'Квадрат — день. Заполнится, как только начнёте отвечать.'
         }
       >
-        <div className="flex gap-1.5">
-          <div className="grid shrink-0 grid-rows-7 gap-[3px] pt-[14px]">
-            {['пн', '', 'ср', '', 'пт', '', 'вс'].map((label, index) => (
-              <span key={index} className="flex items-center font-mono text-[8px] text-faint">
-                {label}
-              </span>
-            ))}
-          </div>
-          <div className="min-w-0 flex-1">
-            {/* INFO: подписи месяцев — единственное, по чему в такой сетке
-                можно понять, куда смотришь. Без них столбцы безымянные. */}
-            <div
-              className="grid gap-[3px] pb-[3px] font-mono text-[8px] text-faint"
-              style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
-            >
-              {heatmap.months.map((label, index) => (
-                <span key={index} className="truncate">
+        <div className="rounded-xl border border-line bg-surface p-3.5">
+          <div className="flex gap-1.5">
+            <div className="grid shrink-0 grid-rows-7 gap-[3px] pt-[14px]">
+              {['пн', '', 'ср', '', 'пт', '', 'вс'].map((label, index) => (
+                <span key={index} className="flex items-center font-mono text-[8px] text-faint">
                   {label}
                 </span>
               ))}
             </div>
-            <div
-              className="grid grid-flow-col grid-rows-7 gap-[3px]"
-              style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
-            >
-              {heatmap.cells.map((cell) => {
-                const date = new Date(`${cell.key}T00:00:00`);
-                return (
-                  <button
-                    key={cell.key}
-                    type="button"
-                    aria-label={`${dayMonth.format(date)}: ${cell.count} ${plural(cell.count, 'ответ', 'ответа', 'ответов')}`}
-                    aria-pressed={pickedDay === cell.key}
-                    onClick={() => setPickedDay(pickedDay === cell.key ? null : cell.key)}
-                    className={cn(
-                      'aspect-square w-full rounded-sm bg-line-soft',
-                      cell.key === heatmap.today && 'ring-1 ring-ink',
-                      pickedDay === cell.key && 'ring-1 ring-feminine',
-                    )}
-                    style={
-                      cell.count
-                        ? {
-                            backgroundColor: 'hsl(var(--neuter))',
-                            opacity: 0.25 + 0.75 * Math.min(1, cell.count / heatmap.max),
-                          }
-                        : undefined
-                    }
-                  />
-                );
-              })}
+            <div className="min-w-0 flex-1">
+              {/* INFO: подписи месяцев — единственное, по чему в такой сетке
+                  можно понять, куда смотришь. Без них столбцы безымянные. */}
+              <div
+                className="grid gap-[3px] pb-[3px] font-mono text-[8px] text-faint"
+                style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
+              >
+                {heatmap.months.map((label, index) => (
+                  <span key={index} className="truncate">
+                    {label}
+                  </span>
+                ))}
+              </div>
+              <div
+                className="grid grid-flow-col grid-rows-7 gap-[3px]"
+                style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
+              >
+                {heatmap.cells.map((cell) => {
+                  // INFO: дни после сегодняшнего занимают место, но не рисуются.
+                  // Иначе последняя неделя обрывается и сетка выглядит обрезанной.
+                  if (cell.future) return <span key={cell.key} className="aspect-square w-full" />;
+
+                  const date = new Date(`${cell.key}T00:00:00`);
+                  return (
+                    <button
+                      key={cell.key}
+                      type="button"
+                      aria-label={`${dayMonth.format(date)}: ${cell.count} ${plural(cell.count, 'ответ', 'ответа', 'ответов')}`}
+                      aria-pressed={pickedDay === cell.key}
+                      onClick={() => setPickedDay(pickedDay === cell.key ? null : cell.key)}
+                      className={cn(
+                        'aspect-square w-full rounded-sm bg-line-soft',
+                        cell.key === heatmap.todayKey && 'ring-1 ring-ink',
+                        pickedDay === cell.key && 'ring-1 ring-feminine',
+                      )}
+                      style={
+                        cell.count
+                          ? {
+                              backgroundColor: 'hsl(var(--neuter))',
+                              opacity: 0.25 + 0.75 * Math.min(1, cell.count / heatmap.max),
+                            }
+                          : undefined
+                      }
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
+          {/* INFO: без легенды насыщенность — просто разные оттенки серо-зелёного,
+              и непонятно, в какую сторону она растёт. */}
+          <div className="mt-2.5 flex items-center justify-end gap-1 font-mono text-[9px] text-faint">
+            <span>реже</span>
+            {[0.25, 0.5, 0.75, 1].map((opacity) => (
+              <span
+                key={opacity}
+                className="h-2.5 w-2.5 rounded-sm"
+                style={{ backgroundColor: 'hsl(var(--neuter))', opacity }}
+              />
+            ))}
+            <span>чаще</span>
+          </div>
+          <p className="mt-2.5 border-t border-line-soft pt-2.5 text-[12.5px] leading-snug text-muted">
+            {pickedHeatmap
+              ? `${dayMonth.format(pickedHeatmap.date)} — ${pickedHeatmap.count} ${plural(pickedHeatmap.count, 'ответ', 'ответа', 'ответов')}`
+              : 'Обведённый квадрат — сегодня. Нажмите на любой, чтобы увидеть день и число ответов.'}
+          </p>
         </div>
-        <p className="mt-2 text-[12.5px] text-muted">
-          {pickedHeatmap
-            ? `${dayMonth.format(pickedHeatmap.date)} — ${pickedHeatmap.count} ${plural(pickedHeatmap.count, 'ответ', 'ответа', 'ответов')}`
-            : 'Обведённый квадрат — сегодня. Нажмите на любой, чтобы увидеть день и число ответов.'}
-        </p>
       </Section>
 
       <Section
