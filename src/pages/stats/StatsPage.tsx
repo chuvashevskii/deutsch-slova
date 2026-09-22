@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useProgressSummary, useStatsSummary } from '@/entities/word';
+import { useLearnQueue, useProgressSummary, useStatsSummary } from '@/entities/word';
 import { cn } from '@/shared/lib/cn';
 import { LoadError, Skeleton } from '@/shared/ui';
 import { useNow } from '@/shared/lib/useNow';
@@ -10,20 +10,6 @@ const FORECAST_DAYS = 14;
 const HEATMAP_WEEKS = 16;
 const GENUS_ORDER = ['m', 'f', 'n'] as const;
 const GENUS_ARTICLE: Record<string, string> = { m: 'der', f: 'die', n: 'das' };
-
-/**
- * Части частотного списка. `size` — сколько слов в этой части у самого
- * списка: без него знаменатель врал бы, будто в части 397 слов, тогда
- * как их 500, а сотни просто нет в колоде. Ровно это и надо видеть.
- * «Без ранга» — слова, которых в списке 4500 нет вовсе.
- */
-const BANDS = [
-  { key: '1-500', label: '1–500', size: 500 },
-  { key: '501-1000', label: '501–1000', size: 500 },
-  { key: '1001-2000', label: '1001–2000', size: 1000 },
-  { key: '2001-4500', label: '2001–4500', size: 2500 },
-  { key: 'none', label: 'без ранга', size: null },
-] as const;
 
 const POS_SHORT: Record<string, string> = {
   noun: 'существительные',
@@ -71,10 +57,15 @@ const Empty = ({ children }: { children: React.ReactNode }) => (
 export const StatsPage = () => {
   const { data: stats, isLoading: statsLoading, isError: statsFailed, refetch } = useStatsSummary();
   const { data: progress, isError: progressFailed } = useProgressSummary();
+  // INFO: длину очереди спрашиваем у самой очереди, с нулевым лимитом:
+  // повторять её правила вторым запросом значит завести два числа,
+  // которые однажды разойдутся.
+  const { data: queue } = useLearnQueue(true, 0);
   const now = useNow();
 
   const reviewedToday = stats?.reviewedToday ?? 0;
-  const dueNow = stats?.dueNow ?? 0;
+  const inQueue = queue?.total ?? 0;
+  const requested = progress?.requested ?? 0;
   const accuracy = stats?.accuracy ?? null;
   const checkedReviews = stats?.checkedReviews ?? 0;
   const checkedPos = stats?.checkedPos ?? [];
@@ -84,7 +75,6 @@ export const StatsPage = () => {
     known: progress?.known ?? 0,
     declared: progress?.declared ?? 0,
   };
-  const bands = progress?.bands ?? {};
   const deckSize = progress?.total ?? 0;
   const forecast = stats?.forecast ?? new Array<number>(FORECAST_DAYS).fill(0);
 
@@ -156,10 +146,16 @@ export const StatsPage = () => {
     <div className="pb-4">
       <div className="grid grid-cols-2 gap-2 py-3">
         <Tile value={String(reviewedToday)} label="ответов сегодня" />
-        <Tile value={String(dueNow)} label="просрочено повторений" />
+        <Tile value={String(inQueue)} label="в очереди сейчас" />
         <Tile value={`${composition.known} / ${deckSize}`} label="выучено слов" />
         <Tile value={accuracy === null ? '—' : `${accuracy}%`} label="ответов без ошибок" />
       </div>
+
+      {requested > 0 ? (
+        <p className="mt-1 px-1 text-[12px] leading-snug text-faint">
+          Из них {requested} — слова, которые вы сами попросили показать сегодня.
+        </p>
+      ) : null}
 
       {accuracy === null ? (
         <p className="mt-1 rounded-lg border border-dashed border-line px-3.5 py-2.5 text-[12.5px] leading-snug text-faint">
@@ -174,42 +170,6 @@ export const StatsPage = () => {
           Остальные в неё не идут.
         </p>
       )}
-
-      <Section
-        title="Путь по частотности"
-        note="Место слова в списке 4500 самых частых. Полоса — вся часть списка; светлым отмечено то, чего в колоде нет вовсе, и это не выучить, пока карточка не заведена."
-      >
-        <div className="flex flex-col gap-2">
-          {BANDS.map((band) => {
-            const data = bands[band.key];
-            if (!data || data.total === 0) return null;
-            // Знаменатель — размер части списка, а не то, что оказалось
-            // в колоде: иначе пробел в колоде выглядел бы как её край.
-            const scale = band.size ?? data.total;
-            const missing = band.size ? band.size - data.total : 0;
-            return (
-              <div key={band.key} className="text-[13px]">
-                <div className="grid grid-cols-[76px_1fr_66px] items-center gap-2.5">
-                  <span className="font-mono text-[11.5px] text-muted">{band.label}</span>
-                  <span className="flex h-2 overflow-hidden rounded-full bg-line-soft">
-                    <i className="block bg-neuter" style={{ width: `${(100 * data.known) / scale}%` }} />
-                    <i className="block bg-gold" style={{ width: `${(100 * data.learning) / scale}%` }} />
-                    <i className="block bg-line" style={{ width: `${(100 * data.declared) / scale}%` }} />
-                  </span>
-                  <span className="text-right font-mono text-[11.5px] tabular-nums text-muted">
-                    {data.known} / {scale}
-                  </span>
-                </div>
-                {missing > 0 ? (
-                  <p className="mt-0.5 pl-[86px] font-mono text-[10.5px] text-faint">
-                    {missing} нет в колоде
-                  </p>
-                ) : null}
-              </div>
-            );
-          })}
-        </div>
-      </Section>
 
       <Section
         title="Состав колоды"

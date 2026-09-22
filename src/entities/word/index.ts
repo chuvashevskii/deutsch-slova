@@ -12,7 +12,6 @@ export {
   WORDS_PAGE_QUERY_KEY,
 } from './model/wordsQuery';
 export type {
-  FrequencyBand,
   LearnQueue,
   ProgressSummary,
   StatsSummary,

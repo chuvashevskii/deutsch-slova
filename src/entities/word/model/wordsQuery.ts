@@ -97,14 +97,6 @@ export const useWordsFacets = () =>
     },
   });
 
-/** Сколько слов выучено в одной части частотного списка. */
-export interface FrequencyBand {
-  total: number;
-  known: number;
-  learning: number;
-  declared: number;
-}
-
 export interface ProgressSummary {
   total: number;
   new: number;
@@ -114,8 +106,6 @@ export interface ProgressSummary {
   declared: number;
   requested: number;
   nounsWithGenus: number;
-  /** Ключи: 1-500, 501-1000, 1001-2000, 2001-4500 и none — слова без ранга. */
-  bands: Record<string, FrequencyBand>;
 }
 
 /**
@@ -147,12 +137,17 @@ export interface LearnQueue {
  * ради одной карточки забирал весь словарь — очередь считалась на клиенте,
  * и для неё нужно было знать про каждое слово, наступил ли срок.
  */
-export const useLearnQueue = (enabled: boolean) =>
+/**
+ * Очередь повторений. `limit` — сколько карточек прислать целиком;
+ * с нулём приходит одна только длина, и это единственный способ узнать
+ * её, не повторяя правила очереди второй раз в другом запросе.
+ */
+export const useLearnQueue = (enabled: boolean, limit = 5) =>
   useQuery({
-    queryKey: LEARN_QUEUE_QUERY_KEY,
+    queryKey: [...LEARN_QUEUE_QUERY_KEY, limit],
     enabled,
     queryFn: async (): Promise<LearnQueue> => {
-      const { data, error } = await supabase.rpc('learn_queue', { p_limit: 5 });
+      const { data, error } = await supabase.rpc('learn_queue', { p_limit: limit });
       if (error) throw new Error(error.message);
       return data as unknown as LearnQueue;
     },
