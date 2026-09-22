@@ -1,16 +1,38 @@
+import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { RequireAuth } from '@/features/auth';
 import { AuthCallbackPage } from '@/pages/auth/AuthCallbackPage';
 import { AuthPage } from '@/pages/auth/AuthPage';
-import { BacklogPage } from '@/pages/backlog/BacklogPage';
-import { FeedbackPage } from '@/pages/feedback/FeedbackPage';
 import { LearnPage } from '@/pages/learn/LearnPage';
-import { MorePage } from '@/pages/more/MorePage';
-import { SettingsPage } from '@/pages/settings/SettingsPage';
-import { StatsPage } from '@/pages/stats/StatsPage';
-import { WordsPage } from '@/pages/words/WordsPage';
+import { CardSkeleton } from '@/shared/ui';
 import { AppLayout } from '@/widgets/app-layout/AppLayout';
+
+/*
+ * INFO: «Учить» и вход грузятся сразу — это первый экран и для вошедшего,
+ * и для нового человека, откладывать их значит добавить лишний круг
+ * к самому частому пути. Остальное подгружается по требованию: список,
+ * статистика и редкие разделы на карточке не нужны, а с телефона каждый
+ * лишний килобайт заметен.
+ */
+const WordsPage = lazy(() =>
+  import('@/pages/words/WordsPage').then((module) => ({ default: module.WordsPage })),
+);
+const StatsPage = lazy(() =>
+  import('@/pages/stats/StatsPage').then((module) => ({ default: module.StatsPage })),
+);
+const MorePage = lazy(() =>
+  import('@/pages/more/MorePage').then((module) => ({ default: module.MorePage })),
+);
+const SettingsPage = lazy(() =>
+  import('@/pages/settings/SettingsPage').then((module) => ({ default: module.SettingsPage })),
+);
+const FeedbackPage = lazy(() =>
+  import('@/pages/feedback/FeedbackPage').then((module) => ({ default: module.FeedbackPage })),
+);
+const BacklogPage = lazy(() =>
+  import('@/pages/backlog/BacklogPage').then((module) => ({ default: module.BacklogPage })),
+);
 
 export const AppRouter = () => (
   <Routes>
@@ -24,14 +46,56 @@ export const AppRouter = () => (
       }
     >
       <Route index element={<LearnPage />} />
-      <Route path="/words" element={<WordsPage />} />
-      <Route path="/stats" element={<StatsPage />} />
-      <Route path="/more" element={<MorePage />} />
-      <Route path="/settings" element={<SettingsPage />} />
-      <Route path="/feedback" element={<FeedbackPage />} />
-      <Route path="/backlog" element={<BacklogPage />} />
+      <Route
+        path="/words"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <WordsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/stats"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <StatsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/more"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <MorePage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <SettingsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/feedback"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <FeedbackPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/backlog"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <BacklogPage />
+          </Suspense>
+        }
+      />
     </Route>
-    {/* Неизвестный адрес ведёт на главную, а не в пустую страницу. */}
+    {/* INFO: неизвестный адрес ведёт на главную, а не в пустую страницу. */}
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
 );
