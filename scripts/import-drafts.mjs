@@ -103,12 +103,32 @@ for (const file of files) {
     rows.push({
       // INFO: идентификатор говорит о происхождении. У карточек из Anki
       // это номер заметки — числовая строка, так что столкнуться нельзя.
-      id: `list-${String(card.rank).padStart(4, '0')}`,
+      //
+      // Один ранг — одна карточка, поэтому ранга в идентификаторе хватает.
+      // Но ранг в схеме не уникален: в колоде 95 рангов заняты двумя
+      // карточками — разными значениями одного слова (finden — находить
+      // и считать) или разными словами с общим номером (lang и lange).
+      // Если такое понадобится и здесь, у карточки должен быть свой `id`;
+      // без него вторая молча затёрла бы первую.
+      id: card.id ?? `list-${String(card.rank).padStart(4, '0')}`,
       ...TEMPLATE,
       ...card,
       confirmed_at: null,
     });
   }
+}
+
+const seen = new Map();
+for (const row of rows) {
+  const clash = seen.get(row.id);
+  if (clash) {
+    console.error(
+      `× одинаковый id «${row.id}»: «${clash}» и «${row.head}». ` +
+        'Если на ранге правда две карточки, задайте каждой свой id в файле партии.',
+    );
+    process.exit(1);
+  }
+  seen.set(row.id, row.head);
 }
 
 const db = createClient(url, key, { auth: { persistSession: false } });
