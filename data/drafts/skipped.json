@@ -1,8 +1,32 @@
 [
-  { "rank": 121, "word": "besser", "covered_by": "gut",
-    "reason": "Неправильная степень слова, которое уже в колоде: карточка gut показывает besser в строке Komparativ. Отдельная карточка гоняла бы то же знание дважды." },
-  { "rank": 380, "word": "eher", "covered_by": "bald",
-    "reason": "То же: карточка bald показывает eher." },
-  { "rank": 1093, "word": "lieber", "covered_by": "lieb, gern",
-    "reason": "То же: lieber стоит в степенях у lieb и у gern." }
+  {
+    "rank": 121,
+    "word": "besser",
+    "covered_by": "gut",
+    "reason": "Неправильная степень слова, которое уже в колоде: карточка gut показывает besser в строке Komparativ. Отдельная карточка гоняла бы то же знание дважды."
+  },
+  {
+    "rank": 274,
+    "word": "beste",
+    "covered_by": "gut",
+    "reason": "Превосходная степень слова из колоды: карточка gut показывает «am besten». Нашлось не сразу — первая проверка сравнивала точные формы, а в списке стоит «beste»."
+  },
+  {
+    "rank": 295,
+    "word": "meiste",
+    "covered_by": "viel",
+    "reason": "Превосходная степень viel: карточка viel показывает «am meisten»."
+  },
+  {
+    "rank": 380,
+    "word": "eher",
+    "covered_by": "bald",
+    "reason": "То же: карточка bald показывает eher."
+  },
+  {
+    "rank": 1093,
+    "word": "lieber",
+    "covered_by": "lieb, gern",
+    "reason": "То же: lieber стоит в степенях у lieb и у gern."
+  }
 ]
