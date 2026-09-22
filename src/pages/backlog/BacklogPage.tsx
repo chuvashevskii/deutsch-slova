@@ -13,7 +13,7 @@ import {
 import { useIsAdmin } from '@/entities/settings';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
-import { Spinner } from '@/shared/ui';
+import { Busy, busyClasses } from '@/shared/ui';
 
 const STATE_TONE: Record<BacklogState, string> = {
   new: 'border border-line-soft text-faint',
@@ -101,10 +101,14 @@ const AddForm = () => {
             },
           );
         }}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-ink bg-ink px-4 py-2.5 text-[14px] font-semibold text-bg disabled:opacity-40"
+        className={cn(
+          'mt-3 flex w-full items-center justify-center rounded-lg border border-ink bg-ink px-4 py-2.5 text-[14px] font-semibold text-bg',
+          busyClasses(add.isPending),
+        )}
       >
-        {add.isPending ? <Spinner /> : null}
-        В бэклог
+        <Busy busy={add.isPending} label="Отправляем">
+          В бэклог
+        </Busy>
       </button>
       {add.isError ? (
         <p className="mt-2 text-[12px] text-bad">Не удалось добавить, попробуйте ещё раз.</p>
@@ -138,7 +142,9 @@ export const BacklogPage = () => {
       ) : null}
 
       <ul className="mt-4 flex flex-col gap-2">
-        {(rows ?? []).map((row) => (
+        {(rows ?? []).map((row) => {
+          const removing = remove.isPending && remove.variables === row.id;
+          return (
           <li key={row.id} className="rounded-xl border border-line bg-surface px-3.5 py-3">
             <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="font-serif text-[16px] font-semibold">{row.word}</span>
@@ -168,14 +174,25 @@ export const BacklogPage = () => {
                           type="button"
                           disabled={setState.isPending}
                           onClick={() => setState.mutate({ id: row.id, state })}
-                          className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] disabled:opacity-40"
+                          className={cn(
+                            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px]',
+                            busyClasses(
+                              setState.isPending &&
+                                setState.variables?.id === row.id &&
+                                setState.variables?.state === state,
+                            ),
+                          )}
                         >
-                          {setState.isPending &&
-                          setState.variables?.id === row.id &&
-                          setState.variables?.state === state ? (
-                            <Spinner />
-                          ) : null}
-                          {BACKLOG_STATE_LABEL[state]}
+                          <Busy
+                            busy={
+                              setState.isPending &&
+                              setState.variables?.id === row.id &&
+                              setState.variables?.state === state
+                            }
+                            label="Сохраняем"
+                          >
+                            {BACKLOG_STATE_LABEL[state]}
+                          </Busy>
                         </button>
                       ))
                   : null}
@@ -183,15 +200,20 @@ export const BacklogPage = () => {
                   type="button"
                   disabled={remove.isPending}
                   onClick={() => remove.mutate(row.id)}
-                  className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad disabled:opacity-40"
+                  className={cn(
+                    'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad',
+                    busyClasses(removing),
+                  )}
                 >
-                  {remove.isPending && remove.variables === row.id ? <Spinner /> : null}
-                  Удалить
+                  <Busy busy={removing} label="Удаляем">
+                    Удалить
+                  </Busy>
                 </button>
               </div>
             ) : null}
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

@@ -17,7 +17,7 @@ import {
 } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, Spinner, WordRowsSkeleton } from '@/shared/ui';
+import { Busy, busyClasses, LoadError, WordRowsSkeleton } from '@/shared/ui';
 import { WordAnswer } from '@/widgets/word-answer/WordAnswer';
 
 import {
@@ -99,6 +99,8 @@ const WordActions = ({ row }: { row: WordListRow }) => {
   const resetProgress = useResetProgress();
   const declared = row.status === 'declared';
   const busy = toggleMark.isPending || resetProgress.isPending;
+  const savingRequested = toggleMark.isPending && toggleMark.variables?.mark === 'requested';
+  const savingKnown = toggleMark.isPending && toggleMark.variables?.mark === 'known';
 
   if (!user) return null;
 
@@ -113,12 +115,14 @@ const WordActions = ({ row }: { row: WordListRow }) => {
         onClick={action('requested', row.requested)}
         aria-pressed={row.requested}
         className={cn(
-          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
+          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
           row.requested && 'border-ink bg-ink text-bg',
+          busyClasses(savingRequested),
         )}
       >
-        {toggleMark.isPending && toggleMark.variables?.mark === 'requested' ? <Spinner /> : null}
-        {row.requested ? 'Убрать из очереди' : 'Учить сегодня'}
+        <Busy busy={savingRequested} label="Сохраняем отметку">
+          {row.requested ? 'Убрать из очереди' : 'Учить сегодня'}
+        </Busy>
       </button>
       <button
         type="button"
@@ -126,22 +130,28 @@ const WordActions = ({ row }: { row: WordListRow }) => {
         onClick={action('known', declared)}
         aria-pressed={declared}
         className={cn(
-          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
+          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
           declared && 'border-ink bg-ink text-bg',
+          busyClasses(savingKnown),
         )}
       >
-        {toggleMark.isPending && toggleMark.variables?.mark === 'known' ? <Spinner /> : null}
-        {declared ? 'Вернуть в колоду' : 'Знаю'}
+        <Busy busy={savingKnown} label="Сохраняем отметку">
+          {declared ? 'Вернуть в колоду' : 'Знаю'}
+        </Busy>
       </button>
       {row.has_progress ? (
         <button
           type="button"
           disabled={busy}
           onClick={() => resetProgress.mutate({ userId: user.id, wordId: row.id })}
-          className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad disabled:opacity-40"
+          className={cn(
+            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad',
+            busyClasses(resetProgress.isPending),
+          )}
         >
-          {resetProgress.isPending ? <Spinner /> : null}
-          Сбросить прогресс
+          <Busy busy={resetProgress.isPending} label="Сбрасываем прогресс">
+            Сбросить прогресс
+          </Busy>
         </button>
       ) : null}
       {toggleMark.isError || resetProgress.isError ? (

@@ -12,7 +12,7 @@ import {
 import { useAuth } from '@/features/auth';
 import { useTheme } from '@/features/theme';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, Skeleton, Spinner } from '@/shared/ui';
+import { Busy, busyClasses, LoadError, Skeleton, Spinner } from '@/shared/ui';
 
 type InputKey = Extract<keyof AnswerSettings, `input_${string}`> | 'ask_genus';
 
@@ -86,12 +86,16 @@ export const SettingsPage = () => {
   // INFO: черновик пуст, пока человек не начал править: показывается то, что
   // пришло из базы. Так поле не приходится досылать эффектом, когда
   // профиль подгрузился.
-  // INFO: какая именно настройка сейчас сохраняется. Одного «идёт
-  // запрос» мало: крутилка должна стоять у той строки, которую тронули,
-  // а не у всех сразу.
-  const [saving, setSaving] = useState<keyof AnswerSettings | null>(null);
   const [draft, setDraft] = useState<string | null>(null);
   const nickname = draft ?? profile?.nickname ?? '';
+
+  // INFO: что именно сохраняется, мутация знает сама — это её аргументы.
+  // Отдельное состояние рядом с ними было лишним и умело разойтись:
+  // крутилка гасла по `onSettled`, а запрос ещё шёл.
+  const savingPatch = saveSettings.isPending ? saveSettings.variables?.patch : undefined;
+  const savingKey = savingPatch
+    ? (Object.keys(savingPatch)[0] as keyof AnswerSettings)
+    : undefined;
 
   // INFO: показать умолчания вместо непрочитанных настроек значит соврать:
   // человек увидит снятые галочки там, где сам их ставил.
@@ -116,13 +120,7 @@ export const SettingsPage = () => {
   }
 
   const update = (patch: Partial<AnswerSettings>) => {
-    if (!user) return;
-    const [key] = Object.keys(patch) as Array<keyof AnswerSettings>;
-    setSaving(key);
-    saveSettings.mutate(
-      { userId: user.id, patch },
-      { onSettled: () => setSaving(null) },
-    );
+    if (user) saveSettings.mutate({ userId: user.id, patch });
   };
 
   const anyInput =
@@ -153,7 +151,7 @@ export const SettingsPage = () => {
                   key={item.key}
                   label={item.label}
                   checked={settings[item.key]}
-                  saving={saving === item.key}
+                  saving={savingKey === item.key}
                   onChange={(value) => update({ [item.key]: value })}
                 />
               ))}
@@ -170,7 +168,7 @@ export const SettingsPage = () => {
           <Toggle
             label="Спрашивать артикль"
             checked={settings.ask_genus}
-            saving={saving === 'ask_genus'}
+            saving={savingKey === 'ask_genus'}
             onChange={(value) => update({ ask_genus: value })}
           />
         </div>
@@ -197,14 +195,13 @@ export const SettingsPage = () => {
               aria-pressed={settings.daily_new_limit === limit}
               onClick={() => update({ daily_new_limit: limit })}
               className={cn(
-                'flex touch-manipulation items-center justify-center gap-1 rounded-lg border border-line bg-surface-2 py-2.5 text-[14px] font-semibold tabular-nums',
+                'flex touch-manipulation items-center justify-center rounded-lg border border-line bg-surface-2 py-2.5 text-[14px] font-semibold tabular-nums',
                 settings.daily_new_limit === limit && 'border-ink bg-ink text-bg',
               )}
             >
-              {limit}
-              {saving === 'daily_new_limit' && settings.daily_new_limit !== limit ? (
-                <Spinner />
-              ) : null}
+              <Busy busy={savingPatch?.daily_new_limit === limit} label="Сохраняем лимит">
+                {limit}
+              </Busy>
             </button>
           ))}
         </div>
@@ -256,10 +253,14 @@ export const SettingsPage = () => {
             onClick={() => {
               if (user) saveNickname.mutate({ userId: user.id, nickname: nickname.trim() });
             }}
-            className="flex shrink-0 items-center gap-2 rounded-lg border border-ink bg-ink px-4 text-[14px] font-semibold text-bg disabled:opacity-40"
+            className={cn(
+              'flex shrink-0 items-center rounded-lg border border-ink bg-ink px-4 text-[14px] font-semibold text-bg',
+              busyClasses(saveNickname.isPending),
+            )}
           >
-            {saveNickname.isPending ? <Spinner /> : null}
-            Сохранить
+            <Busy busy={saveNickname.isPending} label="Сохраняем псевдоним">
+              Сохранить
+            </Busy>
           </button>
         </div>
       </section>

@@ -17,7 +17,7 @@ import { cn } from '@/shared/lib/cn';
 import { useElapsed } from '@/shared/lib/useElapsed';
 import { useCardKeys } from '@/shared/lib/useCardKeys';
 import { useNow } from '@/shared/lib/useNow';
-import { CardSkeleton, LoadError, Skeleton, Spinner } from '@/shared/ui';
+import { Busy, CardSkeleton, LoadError, Skeleton } from '@/shared/ui';
 import { WordAnswer, type WrongAnswers } from '@/widgets/word-answer/WordAnswer';
 
 const GENUS_CHOICES = [
@@ -322,12 +322,12 @@ export const LearnPage = () => {
                     {option.rating}
                   </span>
                   {option.label}
+                  {/* INFO: крутилка встаёт на место срока, а подпись оценки
+                      остаётся: иначе не видно, какую именно кнопку нажали. */}
                   <span className="mt-0.5 block font-mono text-[10px] font-normal text-faint">
-                    {gradingAs === option.rating ? (
-                      <Spinner label="Сохраняем ответ" />
-                    ) : (
-                      formatInterval(new Date(now), previews[option.rating])
-                    )}
+                    <Busy busy={gradingAs === option.rating} label="Сохраняем ответ">
+                      {formatInterval(new Date(now), previews[option.rating])}
+                    </Busy>
                   </span>
                 </button>
               ))}
