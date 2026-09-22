@@ -95,7 +95,17 @@ const TEMPLATE = {
 };
 
 const rows = [];
+// INFO: рядом с партиями лежат служебные файлы — например список
+// отвергнутых рангов. Попав в заливку по маске «*.json», они валили
+// её с невнятной ошибкой про карточку без полей. Партия узнаётся
+// по имени: четыре цифры, дефис, четыре цифры.
+const BATCH = /(^|\/)\d{4}-\d{4}\.json$/;
+
 for (const file of files) {
+  if (!BATCH.test(file)) {
+    console.warn(`⚠ ${file} — не партия, пропускаю`);
+    continue;
+  }
   const batch = JSON.parse(readFileSync(file, 'utf8'));
   for (const card of batch) {
     if (!card.rank || !card.pos || !card.head) {
