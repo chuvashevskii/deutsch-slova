@@ -1,29 +1,29 @@
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '@/features/auth';
+import { RARE_SECTIONS } from '@/shared/config/navigation';
 
 /**
- * Раздел «Ещё» — второй этаж навигации. Внизу экрана помещаются три-четыре
- * вкладки, а разделов больше, и ежедневные — «Учить», «Слова»,
- * «Статистика» — должны оставаться в одно касание. Редкое уходит сюда.
+ * Раздел «Ещё» — второй этаж навигации, и только для телефона. Внизу
+ * экрана помещаются четыре вкладки, а разделов шесть; ежедневные —
+ * «Учить», «Слова», «Статистика» — должны оставаться в одно касание,
+ * редкое уходит сюда.
+ *
+ * На широком экране этой страницы в навигации нет: боковая колонка
+ * показывает все разделы сразу, и лишний переход там ничего не решает.
+ * Сам адрес остаётся рабочим — по нему можно прийти из закладки.
  */
-const LINKS = [
-  { to: '/settings', title: 'Настройки', hint: 'Что спрашивать, сколько новых слов в день, псевдоним' },
-  { to: '/feedback', title: 'Обращения', hint: 'Что не так с карточкой — общий список' },
-  { to: '/backlog', title: 'Бэклог слов', hint: 'Слова на будущее: предложить и посмотреть чужие' },
-] as const;
-
 export const MorePage = () => {
   const { user, signOut } = useAuth();
 
   return (
     <div className="py-4">
       <ul className="overflow-hidden rounded-xl border border-line bg-surface">
-        {LINKS.map((link) => (
+        {RARE_SECTIONS.map((link) => (
           <li key={link.to} className="border-b border-line-soft last:border-b-0">
             <Link to={link.to} className="flex items-baseline gap-3 px-4 py-3.5">
               <span className="min-w-0 flex-1">
-                <span className="block text-[15px] font-semibold">{link.title}</span>
+                <span className="block text-[15px] font-semibold">{link.label}</span>
                 <span className="mt-0.5 block text-[12.5px] leading-snug text-muted">{link.hint}</span>
               </span>
               <span aria-hidden="true" className="text-faint">
