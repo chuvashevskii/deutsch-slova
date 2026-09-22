@@ -17,7 +17,7 @@ import {
 } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, WordRowsSkeleton } from '@/shared/ui';
+import { LoadError, Spinner, WordRowsSkeleton } from '@/shared/ui';
 import { WordAnswer } from '@/widgets/word-answer/WordAnswer';
 
 import {
@@ -113,10 +113,11 @@ const WordActions = ({ row }: { row: WordListRow }) => {
         onClick={action('requested', row.requested)}
         aria-pressed={row.requested}
         className={cn(
-          'rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
+          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
           row.requested && 'border-ink bg-ink text-bg',
         )}
       >
+        {toggleMark.isPending && toggleMark.variables?.mark === 'requested' ? <Spinner /> : null}
         {row.requested ? 'Убрать из очереди' : 'Учить сегодня'}
       </button>
       <button
@@ -125,10 +126,11 @@ const WordActions = ({ row }: { row: WordListRow }) => {
         onClick={action('known', declared)}
         aria-pressed={declared}
         className={cn(
-          'rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
+          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40',
           declared && 'border-ink bg-ink text-bg',
         )}
       >
+        {toggleMark.isPending && toggleMark.variables?.mark === 'known' ? <Spinner /> : null}
         {declared ? 'Вернуть в колоду' : 'Знаю'}
       </button>
       {row.has_progress ? (
@@ -136,8 +138,9 @@ const WordActions = ({ row }: { row: WordListRow }) => {
           type="button"
           disabled={busy}
           onClick={() => resetProgress.mutate({ userId: user.id, wordId: row.id })}
-          className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad disabled:opacity-40"
+          className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad disabled:opacity-40"
         >
+          {resetProgress.isPending ? <Spinner /> : null}
           Сбросить прогресс
         </button>
       ) : null}
@@ -256,6 +259,10 @@ export const WordsPage = () => {
   // Прокрутка в адрес не пишется — смена условий начинает ленту заново.
   const update = (patch: Partial<WordsFilter>) => {
     setParams(writeFilter({ ...filter, ...patch }), { replace: true });
+    // INFO: лента бесконечная, и после смены условий она начинается
+    // заново. Если не вернуть страницу наверх, человек останется
+    // смотреть в пустоту там, где раньше была трёхсотая строка.
+    window.scrollTo({ top: 0 });
   };
 
   // INFO: артикли — ветка существительного. Выбор артикля включает ветку,
@@ -301,7 +308,7 @@ export const WordsPage = () => {
   useEffect(() => {
     const target = sentinel.current;
     if (!target || !hasNextPage) return undefined;
-    // Просим следующую порцию за экран до конца, чтобы лента не замирала.
+    // INFO: просим следующую порцию за экран до конца, чтобы лента не замирала.
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) loadMore();

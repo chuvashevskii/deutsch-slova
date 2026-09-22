@@ -13,6 +13,7 @@ import {
 import { useIsAdmin } from '@/entities/settings';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
+import { Spinner } from '@/shared/ui';
 
 const STATE_TONE: Record<BacklogState, string> = {
   new: 'border border-line-soft text-faint',
@@ -100,8 +101,9 @@ const AddForm = () => {
             },
           );
         }}
-        className="mt-3 w-full rounded-lg border border-ink bg-ink px-4 py-2.5 text-[14px] font-semibold text-bg disabled:opacity-40"
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-ink bg-ink px-4 py-2.5 text-[14px] font-semibold text-bg disabled:opacity-40"
       >
+        {add.isPending ? <Spinner /> : null}
         В бэклог
       </button>
       {add.isError ? (
@@ -166,8 +168,13 @@ export const BacklogPage = () => {
                           type="button"
                           disabled={setState.isPending}
                           onClick={() => setState.mutate({ id: row.id, state })}
-                          className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] disabled:opacity-40"
+                          className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] disabled:opacity-40"
                         >
+                          {setState.isPending &&
+                          setState.variables?.id === row.id &&
+                          setState.variables?.state === state ? (
+                            <Spinner />
+                          ) : null}
                           {BACKLOG_STATE_LABEL[state]}
                         </button>
                       ))
@@ -176,8 +183,9 @@ export const BacklogPage = () => {
                   type="button"
                   disabled={remove.isPending}
                   onClick={() => remove.mutate(row.id)}
-                  className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad disabled:opacity-40"
+                  className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad disabled:opacity-40"
                 >
+                  {remove.isPending && remove.variables === row.id ? <Spinner /> : null}
                   Удалить
                 </button>
               </div>

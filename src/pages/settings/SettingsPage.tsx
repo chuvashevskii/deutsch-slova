@@ -10,8 +10,9 @@ import {
   type AnswerSettings,
 } from '@/entities/settings';
 import { useAuth } from '@/features/auth';
+import { useTheme } from '@/features/theme';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, Skeleton } from '@/shared/ui';
+import { LoadError, Skeleton, Spinner } from '@/shared/ui';
 
 type InputKey = Extract<keyof AnswerSettings, `input_${string}`> | 'ask_genus';
 
@@ -44,14 +45,23 @@ const INPUT_GROUPS: Array<{ title: string; hint: string; items: Array<{ key: Inp
   },
 ];
 
+const THEMES = [
+  { value: 'system', label: 'Как в системе' },
+  { value: 'light', label: 'Светлое' },
+  { value: 'dark', label: 'Тёмное' },
+] as const;
+
 const Toggle = ({
   checked,
   onChange,
   label,
+  saving,
 }: {
   checked: boolean;
   onChange: (value: boolean) => void;
   label: string;
+  /** Галочка уже переключилась, но ответ сервера ещё не пришёл. */
+  saving: boolean;
 }) => (
   <label className="flex cursor-pointer items-center gap-3 py-2">
     <input
@@ -61,6 +71,7 @@ const Toggle = ({
       className="h-[18px] w-[18px] shrink-0 accent-ink"
     />
     <span className="text-[14.5px]">{label}</span>
+    {saving ? <Spinner className="text-muted" /> : null}
   </label>
 );
 
@@ -70,10 +81,15 @@ export const SettingsPage = () => {
   const { data: profile } = useProfile();
   const saveSettings = useSaveSettings();
   const saveNickname = useSaveNickname();
+  const theme = useTheme();
 
   // INFO: черновик пуст, пока человек не начал править: показывается то, что
   // пришло из базы. Так поле не приходится досылать эффектом, когда
   // профиль подгрузился.
+  // INFO: какая именно настройка сейчас сохраняется. Одного «идёт
+  // запрос» мало: крутилка должна стоять у той строки, которую тронули,
+  // а не у всех сразу.
+  const [saving, setSaving] = useState<keyof AnswerSettings | null>(null);
   const [draft, setDraft] = useState<string | null>(null);
   const nickname = draft ?? profile?.nickname ?? '';
 
@@ -101,7 +117,12 @@ export const SettingsPage = () => {
 
   const update = (patch: Partial<AnswerSettings>) => {
     if (!user) return;
-    saveSettings.mutate({ userId: user.id, patch });
+    const [key] = Object.keys(patch) as Array<keyof AnswerSettings>;
+    setSaving(key);
+    saveSettings.mutate(
+      { userId: user.id, patch },
+      { onSettled: () => setSaving(null) },
+    );
   };
 
   const anyInput =
@@ -132,6 +153,7 @@ export const SettingsPage = () => {
                   key={item.key}
                   label={item.label}
                   checked={settings[item.key]}
+                  saving={saving === item.key}
                   onChange={(value) => update({ [item.key]: value })}
                 />
               ))}
@@ -148,6 +170,7 @@ export const SettingsPage = () => {
           <Toggle
             label="Спрашивать артикль"
             checked={settings.ask_genus}
+            saving={saving === 'ask_genus'}
             onChange={(value) => update({ ask_genus: value })}
           />
         </div>
@@ -174,11 +197,38 @@ export const SettingsPage = () => {
               aria-pressed={settings.daily_new_limit === limit}
               onClick={() => update({ daily_new_limit: limit })}
               className={cn(
-                'touch-manipulation rounded-lg border border-line bg-surface-2 py-2.5 text-[14px] font-semibold tabular-nums',
+                'flex touch-manipulation items-center justify-center gap-1 rounded-lg border border-line bg-surface-2 py-2.5 text-[14px] font-semibold tabular-nums',
                 settings.daily_new_limit === limit && 'border-ink bg-ink text-bg',
               )}
             >
               {limit}
+              {saving === 'daily_new_limit' && settings.daily_new_limit !== limit ? (
+                <Spinner />
+              ) : null}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-4 rounded-xl border border-line bg-surface p-4">
+        <h2 className="text-[15px] font-semibold">Оформление</h2>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+          Выбор запоминается в этом браузере, а не в учётной записи: с телефона вечером
+          и за столом днём удобны разные, и таскать один между ними ни к чему.
+        </p>
+        <div className="mt-3 grid grid-cols-3 gap-1.5">
+          {THEMES.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              aria-pressed={theme.choice === option.value}
+              onClick={() => theme.change(option.value)}
+              className={cn(
+                'touch-manipulation rounded-lg border border-line bg-surface-2 py-2.5 text-[13.5px] font-semibold',
+                theme.choice === option.value && 'border-ink bg-ink text-bg',
+              )}
+            >
+              {option.label}
             </button>
           ))}
         </div>
@@ -206,8 +256,9 @@ export const SettingsPage = () => {
             onClick={() => {
               if (user) saveNickname.mutate({ userId: user.id, nickname: nickname.trim() });
             }}
-            className="shrink-0 rounded-lg border border-ink bg-ink px-4 text-[14px] font-semibold text-bg disabled:opacity-40"
+            className="flex shrink-0 items-center gap-2 rounded-lg border border-ink bg-ink px-4 text-[14px] font-semibold text-bg disabled:opacity-40"
           >
+            {saveNickname.isPending ? <Spinner /> : null}
             Сохранить
           </button>
         </div>

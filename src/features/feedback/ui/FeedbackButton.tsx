@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSendFeedback, type FeedbackContext } from '@/entities/feedback';
 import type { Word } from '@/entities/word';
 import { useAuth } from '@/features/auth';
+import { Spinner } from '@/shared/ui';
 
 /**
  * Кнопка «что-то не так» на обороте карточки.
@@ -85,8 +86,9 @@ export const FeedbackButton = ({
               },
             )
           }
-          className="rounded-lg border border-ink bg-ink px-3.5 py-2 text-[13px] font-semibold text-bg disabled:opacity-40"
+          className="flex items-center gap-2 rounded-lg border border-ink bg-ink px-3.5 py-2 text-[13px] font-semibold text-bg disabled:opacity-40"
         >
+          {send.isPending ? <Spinner /> : null}
           Отправить
         </button>
         <button

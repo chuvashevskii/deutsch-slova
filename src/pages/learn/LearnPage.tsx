@@ -15,8 +15,9 @@ import { useAuth } from '@/features/auth';
 import { canon } from '@/shared/lib/german';
 import { cn } from '@/shared/lib/cn';
 import { useElapsed } from '@/shared/lib/useElapsed';
+import { useCardKeys } from '@/shared/lib/useCardKeys';
 import { useNow } from '@/shared/lib/useNow';
-import { CardSkeleton, LoadError } from '@/shared/ui';
+import { CardSkeleton, LoadError, Skeleton, Spinner } from '@/shared/ui';
 import { WordAnswer, type WrongAnswers } from '@/widgets/word-answer/WordAnswer';
 
 const GENUS_CHOICES = [
@@ -33,7 +34,7 @@ export const LearnPage = () => {
     isError: queueFailed,
     refetch: reloadQueue,
   } = useLearnQueue(Boolean(user));
-  const { data: progress } = useProgressSummary();
+  const { data: progress, isPending: progressPending } = useProgressSummary();
   const { data: settings = DEFAULT_SETTINGS } = useUserSettings();
   const answerCard = useAnswerCard();
   const now = useNow();
@@ -43,12 +44,80 @@ export const LearnPage = () => {
   const [checked, setChecked] = useState<{ wrong: WrongAnswers; allCorrect: boolean | null } | null>(
     null,
   );
+  const [gradingAs, setGradingAs] = useState<Grade | null>(null);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
   const head = queue?.items[0];
   const current = head?.word;
   const cardRow = (head?.card ?? undefined) as CardRow | undefined;
   const elapsedMs = useElapsed(current?.id);
+
+  // INFO: всё, что зависит от карточки, считается до ранних возвратов —
+  // иначе хук с клавишами оказался бы за условием, а порядок хуков
+  // обязан быть одинаковым на каждой отрисовке.
+  const fields = current ? answerFields(current, settings) : [];
+  const wantsGenus = current ? asksGenus(current, settings) : false;
+  const nothingAsked = fields.length === 0 && !wantsGenus;
+  const previews = previewIntervals(toFsrsCard(cardRow), new Date(now), settings.desired_retention);
+
+  const reset = () => {
+    setInputs({});
+    setChosenGenus(null);
+    setChecked(null);
+    setGradingAs(null);
+    inputRefs.current = [];
+    // INFO: после ответа фокус уходит в никуда, и следующую карточку
+    // с клавиатуры уже не начать. Возвращаем его в первое поле.
+    requestAnimationFrame(() => inputRefs.current[0]?.focus());
+  };
+
+  /**
+   * Правильность определяется только там, где было что проверять. Если не
+   * спрошено ни формы, ни артикля, результат — null: выводить его из
+   * будущей оценки нельзя, «Снова» означает «покажи пораньше», а не
+   * «я ошибся». Статистика такие ответы не считает.
+   */
+  const handleCheck = () => {
+    if (!current) return;
+    if (nothingAsked) {
+      setChecked({ wrong: {}, allCorrect: null });
+      return;
+    }
+    const wrong: WrongAnswers = {};
+    let allCorrect = true;
+    fields.forEach((field) => {
+      const given = (inputs[field.key] ?? '').trim();
+      if (canon(given) !== canon(field.expected)) {
+        allCorrect = false;
+        wrong[field.key] = given;
+      }
+    });
+    if (wantsGenus && chosenGenus !== current.genus) allCorrect = false;
+    setChecked({ wrong, allCorrect });
+  };
+
+  const handleGrade = (rating: Grade) => {
+    if (!current || !user || answerCard.isPending) return;
+    setGradingAs(rating);
+    answerCard.mutate(
+      {
+        userId: user.id,
+        wordId: current.id,
+        rating,
+        current: cardRow,
+        answeredCorrectly: checked?.allCorrect ?? null,
+        answeredGenus: wantsGenus ? chosenGenus : null,
+        durationMs: elapsedMs(),
+        desiredRetention: settings.desired_retention,
+      },
+      { onSuccess: reset, onError: () => setGradingAs(null) },
+    );
+  };
+
+  useCardKeys({
+    onGrade: current && checked && !answerCard.isPending ? handleGrade : null,
+    onReveal: current && checked === null ? handleCheck : null,
+  });
 
   if (queueLoading) return <CardSkeleton />;
 
@@ -83,75 +152,28 @@ export const LearnPage = () => {
     );
   }
 
-  const fields = answerFields(current, settings);
-  const wantsGenus = asksGenus(current, settings);
-  const nothingAsked = fields.length === 0 && !wantsGenus;
-  const previews = previewIntervals(toFsrsCard(cardRow), new Date(now), settings.desired_retention);
-
-  const reset = () => {
-    setInputs({});
-    setChosenGenus(null);
-    setChecked(null);
-    inputRefs.current = [];
-  };
-
-  /**
-   * Правильность определяется только там, где было что проверять. Если не
-   * спрошено ни формы, ни артикля, результат — null: выводить его из
-   * будущей оценки нельзя, «Снова» означает «покажи пораньше», а не
-   * «я ошибся». Статистика такие ответы не считает.
-   */
-  const handleCheck = () => {
-    if (nothingAsked) {
-      setChecked({ wrong: {}, allCorrect: null });
-      return;
-    }
-    const wrong: WrongAnswers = {};
-    let allCorrect = true;
-    fields.forEach((field) => {
-      const given = (inputs[field.key] ?? '').trim();
-      if (canon(given) !== canon(field.expected)) {
-        allCorrect = false;
-        wrong[field.key] = given;
-      }
-    });
-    if (wantsGenus && chosenGenus !== current.genus) allCorrect = false;
-    setChecked({ wrong, allCorrect });
-  };
-
-  const handleGrade = (rating: Grade) => {
-    if (!user || answerCard.isPending) return;
-    answerCard.mutate(
-      {
-        userId: user.id,
-        wordId: current.id,
-        rating,
-        current: cardRow,
-        answeredCorrectly: checked?.allCorrect ?? null,
-        answeredGenus: wantsGenus ? chosenGenus : null,
-        durationMs: elapsedMs(),
-        desiredRetention: settings.desired_retention,
-      },
-      { onSuccess: reset },
-    );
-  };
-
   const register = registerLabel(current.register);
 
   return (
     <div>
       <div className="flex items-center gap-2 py-3 font-mono text-[11px] text-muted">
-        <span>
-          к повторению <b className="font-medium tabular-nums text-ink">{queue?.total ?? 0}</b>
-        </span>
-        <span className="h-1 w-1 rounded-full bg-line" />
-        <span>
-          учу <b className="font-medium tabular-nums text-ink">{progress?.learning ?? 0}</b>
-        </span>
-        <span className="h-1 w-1 rounded-full bg-line" />
-        <span>
-          знаю <b className="font-medium tabular-nums text-ink">{progress?.known ?? 0}</b>
-        </span>
+        {progressPending ? (
+          <Skeleton className="h-3 w-44" />
+        ) : (
+          <>
+            <span>
+              к повторению <b className="font-medium tabular-nums text-ink">{queue?.total ?? 0}</b>
+            </span>
+            <span className="h-1 w-1 rounded-full bg-line" />
+            <span>
+              учу <b className="font-medium tabular-nums text-ink">{progress?.learning ?? 0}</b>
+            </span>
+            <span className="h-1 w-1 rounded-full bg-line" />
+            <span>
+              знаю <b className="font-medium tabular-nums text-ink">{progress?.known ?? 0}</b>
+            </span>
+          </>
+        )}
       </div>
 
       <article className="overflow-hidden rounded-xl border border-line bg-surface">
@@ -249,6 +271,9 @@ export const LearnPage = () => {
             >
               {nothingAsked ? 'Показать' : 'Проверить'}
             </button>
+            {nothingAsked ? (
+              <p className="mt-2 text-center font-mono text-[10px] text-faint">Enter</p>
+            ) : null}
           </div>
         ) : (
           <div className="border-t border-line-soft px-4 pb-5">
@@ -287,18 +312,30 @@ export const LearnPage = () => {
                   disabled={answerCard.isPending}
                   onClick={() => handleGrade(option.rating)}
                   className={cn(
-                    'touch-manipulation rounded-lg border border-line bg-surface-2 px-1 pb-2 pt-2.5 text-[13px] font-semibold disabled:opacity-50',
+                    'relative touch-manipulation rounded-lg border border-line bg-surface-2 px-1 pb-2 pt-2.5 text-[13px] font-semibold disabled:opacity-50',
                     option.rating === 1 && 'text-bad',
                     option.rating === 4 && 'text-ok',
+                    gradingAs === option.rating && 'border-ink',
                   )}
                 >
+                  <span className="absolute left-1.5 top-1 font-mono text-[9px] font-normal text-faint">
+                    {option.rating}
+                  </span>
                   {option.label}
                   <span className="mt-0.5 block font-mono text-[10px] font-normal text-faint">
-                    {formatInterval(new Date(now), previews[option.rating])}
+                    {gradingAs === option.rating ? (
+                      <Spinner label="Сохраняем ответ" />
+                    ) : (
+                      formatInterval(new Date(now), previews[option.rating])
+                    )}
                   </span>
                 </button>
               ))}
             </div>
+
+            <p className="mt-2 text-center font-mono text-[10px] text-faint">
+              клавиши 1–4 ставят оценку
+            </p>
 
             {answerCard.isError ? (
               <p className="mt-3 rounded-lg bg-bad/10 px-3 py-2 text-[13px] text-bad">

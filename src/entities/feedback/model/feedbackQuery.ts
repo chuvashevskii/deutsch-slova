@@ -36,7 +36,7 @@ export interface FeedbackRow {
  * заливается повторно, и важно то, на что человек смотрел, а не всё
  * подряд. Озвучка и служебные поля в снимке не нужны.
  */
-export const wordSnapshot = (word: Word): Partial<Word> => ({
+const wordSnapshot = (word: Word): Partial<Word> => ({
   id: word.id,
   rank: word.rank,
   pos: word.pos,

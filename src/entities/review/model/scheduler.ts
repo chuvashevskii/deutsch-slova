@@ -31,7 +31,7 @@ export const ANSWER_RATINGS = [
 
 export const DEFAULT_RETENTION = 0.9;
 
-export const createScheduler = (desiredRetention: number = DEFAULT_RETENTION) =>
+const createScheduler = (desiredRetention: number = DEFAULT_RETENTION) =>
   fsrs(generatorParameters({ request_retention: desiredRetention, enable_fuzz: true }));
 
 /** Состояние новой, ещё не показанной карточки. */

@@ -97,7 +97,7 @@ export const umlautShiftIndex = (singular: string, plural: string): number => {
 };
 
 /** Собирает сегменты, вставляя знак ударения и расставляя пометки. */
-export const buildSegments = (word: string, ranges: MarkRange[], stressAt: number): Segment[] => {
+const buildSegments = (word: string, ranges: MarkRange[], stressAt: number): Segment[] => {
   if (!word) return [];
   const markAt = new Array<MarkKind | null>(word.length).fill(null);
   ranges.forEach((range) => {

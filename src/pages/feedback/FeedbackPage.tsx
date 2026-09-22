@@ -10,6 +10,7 @@ import {
 import { useIsAdmin } from '@/entities/settings';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
+import { Spinner } from '@/shared/ui';
 
 const when = (iso: string) =>
   new Date(iso).toLocaleString('ru-RU', {
@@ -130,8 +131,9 @@ export const FeedbackPage = () => {
                     type="button"
                     disabled={resolve.isPending}
                     onClick={() => resolve.mutate({ id: row.id, resolved: !row.resolved_at })}
-                    className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] disabled:opacity-40"
+                    className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] disabled:opacity-40"
                   >
+                    {resolve.isPending && resolve.variables?.id === row.id ? <Spinner /> : null}
                     {row.resolved_at ? 'Вернуть в работу' : 'Разобрано'}
                   </button>
                 ) : null}
@@ -139,8 +141,9 @@ export const FeedbackPage = () => {
                   type="button"
                   disabled={remove.isPending}
                   onClick={() => remove.mutate(row.id)}
-                  className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad disabled:opacity-40"
+                  className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad disabled:opacity-40"
                 >
+                  {remove.isPending && remove.variables === row.id ? <Spinner /> : null}
                   Удалить
                 </button>
               </div>

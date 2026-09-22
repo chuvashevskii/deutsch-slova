@@ -4,6 +4,5 @@ export {
   useFeedback,
   useResolveFeedback,
   useSendFeedback,
-  wordSnapshot,
 } from './model/feedbackQuery';
 export type { FeedbackContext, FeedbackRow } from './model/feedbackQuery';
