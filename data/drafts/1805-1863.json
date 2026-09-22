@@ -151,7 +151,7 @@
     "examples_ru": ["У него сегодня дежурство.", "Спасибо за твои услуги!"] },
 
   { "rank": 1831, "pos": "verb", "head": "klauen", "translation": "Красть",
-    "register": "umgangssprachlich",
+    "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈklaʊ̯ən/", "pronunciation_ru": "КЛАУэн", "stress_infinitive": "1",
     "form_ich": "klaue", "form_du": "klaust", "form_er": "klaut", "form_wir": "klauen", "form_ihr": "klaut",
     "rektion": ["etwas (Akk.)", "jemandem (Dat.) etwas (Akk.)"],
@@ -254,7 +254,7 @@
     "examples_ru": ["Он говорит на диалекте.", "Диалекты очень разные."] },
 
   { "rank": 1846, "pos": "verb", "head": "spinnen", "translation": "Нести чушь / быть не в себе",
-    "register": "umgangssprachlich",
+    "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈʃpɪnən/", "pronunciation_ru": "ШПИнэн", "stress_infinitive": "1",
     "form_ich": "spinne", "form_du": "spinnst", "form_er": "spinnt", "form_wir": "spinnen", "form_ihr": "spinnt",
     "rektion": ["ohne Objekt"],

@@ -7,7 +7,7 @@
     "examples_ru": ["Мнения очень разные.", "Мы работаем с разной скоростью."] },
 
   { "rank": 530, "pos": "adverb", "head": "raus", "translation": "Наружу / на улицу",
-    "wortart": "наречие", "register": "umgangssprachlich",
+    "wortart": "наречие", "register": "umgangssprachlich · разговорный",
     "ipa": "/ʁaʊ̯s/", "pronunciation_ru": "РАУС",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Geh raus!", "Ich muss kurz raus."],
@@ -185,7 +185,7 @@
     "examples_ru": ["Собака прыгает через забор.", "Не прыгай так высоко!"] },
 
   { "rank": 590, "pos": "adj", "head": "cool", "translation": "Классный / крутой",
-    "wortart": "прилагательное и наречие", "register": "umgangssprachlich",
+    "wortart": "прилагательное и наречие", "register": "umgangssprachlich · разговорный",
     "komparativ": "cooler", "superlativ": "am coolsten",
     "ipa": "/kuːl/", "pronunciation_ru": "КУЛЬ",
     "rule_status": "high", "rule_label": "Обычное -er / am -sten",

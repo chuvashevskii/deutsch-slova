@@ -25,6 +25,12 @@ export interface WordsFilter {
    * карточки: черновик бывает и новым, и уже выученным.
    */
   draft: boolean | null;
+  /**
+   * Отбор по частотному списку: false — только слова вне него, true —
+   * только с рангом, null — все. Отсутствие ранга не пропуск, а отсутствие
+   * данных: этих слов нет в списке 4500, и учить их удобно отдельно.
+   */
+  ranked: boolean | null;
 }
 
 export const EMPTY_FILTER: WordsFilter = {
@@ -33,6 +39,7 @@ export const EMPTY_FILTER: WordsFilter = {
   status: [],
   query: '',
   draft: null,
+  ranked: null,
 };
 
 export const isFilterEmpty = (filter: WordsFilter): boolean =>
@@ -40,7 +47,8 @@ export const isFilterEmpty = (filter: WordsFilter): boolean =>
   filter.genus.length === 0 &&
   filter.status.length === 0 &&
   filter.query === '' &&
-  filter.draft === null;
+  filter.draft === null &&
+  filter.ranked === null;
 
 const splitList = (value: string | null): string[] =>
   value ? value.split(',').filter(Boolean) : [];
@@ -54,6 +62,7 @@ export const readFilter = (params: URLSearchParams): WordsFilter => {
     ),
     query: params.get('q') ?? '',
     draft: params.get('draft') === '1' ? true : params.get('draft') === '0' ? false : null,
+    ranked: params.get('ranked') === '1' ? true : params.get('ranked') === '0' ? false : null,
   };
 };
 
@@ -68,6 +77,7 @@ export const writeFilter = (filter: WordsFilter): URLSearchParams => {
   if (filter.status.length) params.set('status', filter.status.join(','));
   if (filter.query) params.set('q', filter.query);
   if (filter.draft !== null) params.set('draft', filter.draft ? '1' : '0');
+  if (filter.ranked !== null) params.set('ranked', filter.ranked ? '1' : '0');
   return params;
 };
 

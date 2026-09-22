@@ -25,6 +25,7 @@ export interface AnswerSettings {
   input_forms: boolean;
   ask_genus: boolean;
   include_drafts: boolean;
+  learn_rankless_only: boolean;
 }
 
 export const DEFAULT_SETTINGS: AnswerSettings = {
@@ -38,6 +39,7 @@ export const DEFAULT_SETTINGS: AnswerSettings = {
   input_forms: false,
   ask_genus: true,
   include_drafts: false,
+  learn_rankless_only: false,
 };
 
 /** Допустимые значения дневного лимита новых слов. */

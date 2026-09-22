@@ -70,7 +70,7 @@
     "examples_ru": ["На лугу пасутся овцы.", "У овцы густая шерсть."] },
 
   { "rank": 1226, "pos": "particle", "head": "tja", "translation": "Ну что ж / да уж",
-    "register": "umgangssprachlich", "ipa": "/t͡ja/", "pronunciation_ru": "ТЬЯ",
+    "register": "umgangssprachlich · разговорный", "ipa": "/t͡ja/", "pronunciation_ru": "ТЬЯ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Tja, da kann man nichts machen.", "Tja, so ist das eben."],
     "examples_ru": ["Ну что ж, тут ничего не поделаешь.", "Да уж, так оно и есть."] },

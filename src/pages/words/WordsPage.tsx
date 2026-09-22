@@ -322,6 +322,7 @@ export const WordsPage = () => {
     status: filter.status,
     query: filter.query,
     draft: filter.draft,
+    ranked: filter.ranked,
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
@@ -462,6 +463,18 @@ export const WordsPage = () => {
             onClick={() => update({ draft: filter.draft === true ? null : true })}
           >
             черновики {facets.drafts}
+          </Chip>
+        ) : null}
+        {/* INFO: слова вне частотного списка. Ранга у них нет не по
+            недосмотру — их нет в списке 4500, — и это другой по природе
+            набор: составные существительные, женские формы профессий,
+            обороты с sein. Брать их отдельно осмысленно. */}
+        {facets?.rankless ? (
+          <Chip
+            active={filter.ranked === false}
+            onClick={() => update({ ranked: filter.ranked === false ? null : false })}
+          >
+            вне списка {facets.rankless}
           </Chip>
         ) : null}
       </div>

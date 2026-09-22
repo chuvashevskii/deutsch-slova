@@ -1,0 +1,58 @@
+[
+  {
+    "id": "list-0864",
+    "head": "töten",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": true,
+    "note": "Пара с umbringen.",
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1234",
+    "head": "losgehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": true,
+    "note": "«Отправляться пешком» сужало слово: losgehen — тронуться с места, не обязательно пешком.",
+    "set": {
+      "translation": "Трогаться с места"
+    }
+  },
+  {
+    "id": "list-1699",
+    "head": "verlangen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": true,
+    "note": "«Настоятельно просить» смягчало слово: verlangen — требование, а не вежливая просьба.",
+    "set": {
+      "translation": "Требовать настоятельно"
+    }
+  },
+  {
+    "id": "list-1259",
+    "head": "Zeichen",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": true,
+    "note": "«Символ» — это Symbol. Основное значение возвращено, скобка разводит с Schild «Табличка / знак».",
+    "set": {
+      "translation": "Знак (символ)"
+    }
+  },
+  {
+    "id": "list-1811",
+    "head": "umbringen",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": true,
+    "note": "«Лишать жизни» — книжный оборот, а umbringen — обиходное слово. Пара с töten разведена пометой, как и положено настоящим синонимам.",
+    "set": {
+      "translation": "Убивать",
+      "register": "umgangssprachlich · разговорный"
+    }
+  }
+]

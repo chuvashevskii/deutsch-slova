@@ -68,7 +68,7 @@
     "examples_ru": ["Слух быстро распространился.", "Распространи, пожалуйста, эту новость."] },
 
   { "rank": 1293, "pos": "adj", "head": "geil", "translation": "Классный / крутой",
-    "wortart": "прилагательное и наречие", "register": "umgangssprachlich",
+    "wortart": "прилагательное и наречие", "register": "umgangssprachlich · разговорный",
     "komparativ": "geiler", "superlativ": "am geilsten",
     "ipa": "/ɡaɪ̯l/", "pronunciation_ru": "ГАЙЛЬ",
     "rule_status": "high", "rule_label": "Обычное -er / am -sten",

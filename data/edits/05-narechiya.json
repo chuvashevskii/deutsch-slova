@@ -1,0 +1,486 @@
+[
+  {
+    "id": "list-1089",
+    "head": "hinunter",
+    "batch": "Наречия",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара с runter: runter — разговорная форма того же слова, у неё помета уже стояла.",
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788623215089",
+    "head": "drinnen",
+    "batch": "Наречия",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара с drin — разговорной формой того же слова.",
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1161",
+    "head": "innen",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Внутри» делил с drinnen и drin.",
+    "set": {
+      "translation": "Изнутри / с внутренней стороны"
+    }
+  },
+  {
+    "id": "list-0812",
+    "head": "herein",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Внутрь» делил с hinein: hinein — от говорящего, herein — к нему.",
+    "set": {
+      "translation": "Сюда внутрь / войдите"
+    }
+  },
+  {
+    "id": "list-1519",
+    "head": "voran",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Вперёд» делил с vorwärts, «впереди» — с vorne.",
+    "set": {
+      "translation": "Вперёд (о продвижении)"
+    }
+  },
+  {
+    "id": "list-1251",
+    "head": "zunächst",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Сначала» и «для начала» делил с zuerst и erstmal.",
+    "set": {
+      "translation": "Прежде всего"
+    }
+  },
+  {
+    "id": "list-0422",
+    "head": "erstmal",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Сначала» делил с zuerst. Помета разговорная остаётся.",
+    "set": {
+      "translation": "Для начала"
+    }
+  },
+  {
+    "id": "list-1081",
+    "head": "zuvor",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«до этого» делил с vorher.",
+    "set": {
+      "translation": "Прежде"
+    }
+  },
+  {
+    "id": "list-1967",
+    "head": "anschließend",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Затем» делил с dann, «после этого» — с danach. Первый вариант «Следом» столкнулся с hinterher, уточнён.",
+    "set": {
+      "translation": "Следом за этим"
+    }
+  },
+  {
+    "id": "list-1104",
+    "head": "ansonsten",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Иначе» делил с sonst.",
+    "set": {
+      "translation": "В остальном"
+    }
+  },
+  {
+    "id": "list-0198",
+    "head": "eben",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«как раз» делил с gerade, «только что» — с vorhin.",
+    "set": {
+      "translation": "Только что"
+    }
+  },
+  {
+    "id": "list-1608",
+    "head": "vorhin",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Только что» делил с eben.",
+    "set": {
+      "translation": "Недавно"
+    }
+  },
+  {
+    "id": "list-1853",
+    "head": "hinzu",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Кроме того» делил с außerdem.",
+    "set": {
+      "translation": "Вдобавок"
+    }
+  },
+  {
+    "id": "list-1047",
+    "head": "herum",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«кругом» делил с rum — разговорной формой того же слова.",
+    "set": {
+      "translation": "Вокруг"
+    }
+  },
+  {
+    "id": "list-1204",
+    "head": "vorüber",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Мимо» делил с vorbei.",
+    "set": {
+      "translation": "Прошло / миновало"
+    }
+  },
+  {
+    "id": "list-0349",
+    "head": "bestimmt",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Наверняка» делил с sicher.",
+    "set": {
+      "translation": "Определённо"
+    }
+  },
+  {
+    "id": "list-0481",
+    "head": "schließlich",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Наконец» делил с endlich.",
+    "set": {
+      "translation": "В конце концов"
+    }
+  },
+  {
+    "id": "list-0530",
+    "head": "raus",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Наружу» делил с hinaus и heraus. Помета разговорная остаётся.",
+    "set": {
+      "translation": "На улицу"
+    }
+  },
+  {
+    "id": "list-0698",
+    "head": "heraus",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Наружу» делил с hinaus: hinaus — от говорящего, heraus — к нему.",
+    "set": {
+      "translation": "Наружу (к говорящему)"
+    }
+  },
+  {
+    "id": "list-0859",
+    "head": "niemals",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Никогда» делил с nie: niemals — усиленное.",
+    "set": {
+      "translation": "Никогда в жизни"
+    }
+  },
+  {
+    "id": "list-0588",
+    "head": "normalerweise",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Обычно» делил с meistens.",
+    "set": {
+      "translation": "Как правило"
+    }
+  },
+  {
+    "id": "list-0595",
+    "head": "allerdings",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Однако» делил с jedoch, «правда» — с echt.",
+    "set": {
+      "translation": "Впрочем"
+    }
+  },
+  {
+    "id": "list-0664",
+    "head": "daher",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Поэтому» делил с deshalb и deswegen, «оттуда» — с dorther.",
+    "set": {
+      "translation": "Оттого"
+    }
+  },
+  {
+    "id": "list-0302",
+    "head": "deswegen",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Поэтому» делил с deshalb.",
+    "set": {
+      "translation": "По этой причине"
+    }
+  },
+  {
+    "id": "1788623343545",
+    "head": "sehr",
+    "batch": "Наречия",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара с voll «Совсем / очень»: у voll помета разговорная стоит, sehr оставался без ярлыка.",
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1556",
+    "head": "vermutlich",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«по всей видимости» делил с offenbar.",
+    "set": {
+      "translation": "Вероятно"
+    }
+  },
+  {
+    "id": "list-0608",
+    "head": "zumindest",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«По крайней мере» делил с immerhin, «хотя бы» — с wenigstens.",
+    "set": {
+      "translation": "Как минимум"
+    }
+  },
+  {
+    "id": "list-1302",
+    "head": "immerhin",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«По крайней мере» делил с zumindest.",
+    "set": {
+      "translation": "Всё-таки"
+    }
+  },
+  {
+    "id": "list-0692",
+    "head": "wieso",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Почему» делил с warum.",
+    "set": {
+      "translation": "Отчего"
+    }
+  },
+  {
+    "id": "list-0414",
+    "head": "ungefähr",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Приблизительно» делил с etwa.",
+    "set": {
+      "translation": "Примерно"
+    }
+  },
+  {
+    "id": "list-0290",
+    "head": "fort",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Прочь» делил с weg.",
+    "set": {
+      "translation": "Вон"
+    }
+  },
+  {
+    "id": "list-1496",
+    "head": "außen",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Снаружи» делил с draußen.",
+    "set": {
+      "translation": "С внешней стороны"
+    }
+  },
+  {
+    "id": "list-1527",
+    "head": "erneut",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Снова» делил с wieder.",
+    "set": {
+      "translation": "Повторно"
+    }
+  },
+  {
+    "id": "list-0420",
+    "head": "her",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«сюда» делил с heran и hierher.",
+    "set": {
+      "translation": "Назад (о времени) / к говорящему"
+    }
+  },
+  {
+    "id": "list-1087",
+    "head": "heran",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«сюда» делил с her и hierher.",
+    "set": {
+      "translation": "Ближе"
+    }
+  },
+  {
+    "id": "list-1298",
+    "head": "ebenfalls",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Также» и «тоже» делил с auch.",
+    "set": {
+      "translation": "Равным образом"
+    }
+  },
+  {
+    "id": "list-0641",
+    "head": "mittlerweile",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«тем временем» делил с inzwischen.",
+    "set": {
+      "translation": "Теперь уже"
+    }
+  },
+  {
+    "id": "list-0252",
+    "head": "trotzdem",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Тем не менее» делил с dennoch — настоящие синонимы, развести можно только точностью.",
+    "set": {
+      "translation": "Несмотря на это"
+    }
+  },
+  {
+    "id": "list-1181",
+    "head": "bloß",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Только» делил с nur и erst.",
+    "set": {
+      "translation": "Лишь"
+    }
+  },
+  {
+    "id": "1788623360454",
+    "head": "nur",
+    "batch": "Наречия",
+    "reason": "уровень 3",
+    "disputed": true,
+    "note": "«Только» делил с erst. У erst подсказка есть, у nur не было — добавлена.",
+    "set": {
+      "definition": "не больше, чем названо"
+    }
+  },
+  {
+    "id": "list-0919",
+    "head": "dahin",
+    "batch": "Наречия",
+    "reason": "уровень 3",
+    "disputed": false,
+    "note": "«Туда» делил с hin. У hin подсказка «от говорящего», здесь — своя.",
+    "set": {
+      "definition": "в названное место"
+    }
+  },
+  {
+    "id": "list-0523",
+    "head": "bereits",
+    "batch": "Наречия",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара со schon: bereits книжнее.",
+    "set": {
+      "register": "formell · книжный"
+    }
+  },
+  {
+    "id": "1788623197931",
+    "head": "schon",
+    "batch": "Наречия",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара с bereits.",
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1367",
+    "head": "meist",
+    "batch": "Наречия",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Чаще всего» делил с meistens.",
+    "set": {
+      "translation": "Большей частью"
+    }
+  }
+]

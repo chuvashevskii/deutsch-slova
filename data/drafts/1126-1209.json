@@ -361,7 +361,7 @@
     "examples_ru": ["Мой папа много работает.", "Спроси у папы!"] },
 
   { "rank": 1209, "pos": "verb", "head": "angucken", "translation": "Смотреть (на кого-л.)",
-    "separable_prefix": "an", "register": "umgangssprachlich",
+    "separable_prefix": "an", "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈanɡʊkn̩/", "pronunciation_ru": "АНгукн", "stress_infinitive": "1",
     "form_ich": "gucke an", "form_du": "guckst an", "form_er": "guckt an", "form_wir": "gucken an", "form_ihr": "guckt an",
     "rektion": ["jemanden (Akk.)", "etwas (Akk.)"],

@@ -31,3 +31,5 @@ export { RektionChips } from './ui/RektionChips';
 export { RuleBadge } from './ui/RuleBadge';
 export { SegmentedText } from './ui/SegmentedText';
 export { WordExamples } from './ui/WordExamples';
+export { NESTS_QUERY_KEY, useNests } from './model/nestsQuery';
+export type { Nest, NestCard, NestKind } from './model/nestsQuery';

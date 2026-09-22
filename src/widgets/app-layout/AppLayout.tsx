@@ -1,9 +1,16 @@
 import { NavLink, Outlet } from 'react-router-dom';
 
+import { useIsAdmin } from '@/entities/settings';
 import { useProgressSummary } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
-import { DAILY_SECTIONS, MOBILE_TABS, RARE_SECTIONS, type NavSection } from '@/shared/config/navigation';
+import {
+  ADMIN_SECTIONS,
+  DAILY_SECTIONS,
+  MOBILE_TABS,
+  RARE_SECTIONS,
+  type NavSection,
+} from '@/shared/config/navigation';
 import { ErrorBoundary, Skeleton } from '@/shared/ui';
 
 // INFO: на узком экране разделы живут внизу, под большим пальцем; на
@@ -47,6 +54,7 @@ const SideLink = ({ section }: { section: NavSection }) => (
 
 export const AppLayout = () => {
   const { user, signOut } = useAuth();
+  const { data: isAdmin } = useIsAdmin();
 
   return (
     <div className="min-h-full lg:flex lg:justify-center lg:gap-8 lg:px-6">
@@ -67,6 +75,14 @@ export const AppLayout = () => {
           {RARE_SECTIONS.map((section) => (
             <SideLink key={section.to} section={section} />
           ))}
+          {isAdmin ? (
+            <>
+              <span className="my-2 border-t border-line-soft" />
+              {ADMIN_SECTIONS.map((section) => (
+                <SideLink key={section.to} section={section} />
+              ))}
+            </>
+          ) : null}
         </nav>
 
         <span className="mt-auto flex flex-col gap-1.5 pb-2">

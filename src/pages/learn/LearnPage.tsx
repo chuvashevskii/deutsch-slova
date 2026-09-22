@@ -189,7 +189,17 @@ export const LearnPage = () => {
               <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[10.5px] text-faint">
                 №{current.rank}
               </span>
-            ) : null}
+            ) : (
+              // INFO: у трети колоды ранга нет — этих слов нет в списке
+              // 4500. Пустое место на их карточке выглядело как потеря
+              // данных; пометка говорит, что данных и не было.
+              <span
+                title="Слова нет в частотном списке: ранга у него не существует"
+                className="rounded-full border border-dashed border-line px-2 py-0.5 font-mono text-[10.5px] text-faint"
+              >
+                вне списка
+              </span>
+            )}
             <span className="rounded-full bg-surface-2 px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-wide text-muted">
               {posLabel(current)}
             </span>

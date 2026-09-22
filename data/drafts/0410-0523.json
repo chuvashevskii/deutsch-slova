@@ -33,7 +33,7 @@
     "examples_ru": ["Это было давно.", "Иди сюда!"] },
 
   { "rank": 422, "pos": "adverb", "head": "erstmal", "translation": "Сначала / для начала",
-    "wortart": "наречие", "register": "umgangssprachlich",
+    "wortart": "наречие", "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈeːɐ̯stmaːl/", "pronunciation_ru": "ЭАстмаль", "stress_word": "1",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Lass uns erstmal essen.", "Ich muss erstmal nachdenken."],

@@ -1,0 +1,1628 @@
+[
+  {
+    "id": "list-0580",
+    "head": "rennen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Мчаться"
+    }
+  },
+  {
+    "id": "list-1686",
+    "head": "fliehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Спасаться бегством"
+    }
+  },
+  {
+    "id": "list-1565",
+    "head": "hauen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Колотить"
+    }
+  },
+  {
+    "id": "list-1239",
+    "head": "fassen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Схватывать"
+    }
+  },
+  {
+    "id": "1788537962826",
+    "head": "buchen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Бронировать (билет, номер)"
+    }
+  },
+  {
+    "id": "list-0679",
+    "head": "gelten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Считаться / иметь силу"
+    }
+  },
+  {
+    "id": "list-1577",
+    "head": "lenken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Управлять / рулить"
+    }
+  },
+  {
+    "id": "list-1960",
+    "head": "leiten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Руководить"
+    }
+  },
+  {
+    "id": "list-1898",
+    "head": "investieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Инвестировать"
+    }
+  },
+  {
+    "id": "list-1908",
+    "head": "anlegen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Закладывать / размещать"
+    }
+  },
+  {
+    "id": "list-1495",
+    "head": "zurückgehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Снижаться"
+    }
+  },
+  {
+    "id": "list-0513",
+    "head": "stecken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Засовывать / втыкать"
+    }
+  },
+  {
+    "id": "list-1374",
+    "head": "einsetzen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Задействовать"
+    }
+  },
+  {
+    "id": "list-1297",
+    "head": "aussuchen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Подыскивать"
+    }
+  },
+  {
+    "id": "list-1827",
+    "head": "auswählen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Отбирать"
+    }
+  },
+  {
+    "id": "list-0943",
+    "head": "erledigen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Улаживать"
+    }
+  },
+  {
+    "id": "list-1035",
+    "head": "leisten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Совершать"
+    }
+  },
+  {
+    "id": "list-1274",
+    "head": "erfüllen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Осуществлять / исполнять"
+    }
+  },
+  {
+    "id": "list-0991",
+    "head": "äußern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Высказывать"
+    }
+  },
+  {
+    "id": "list-1162",
+    "head": "herausfinden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Разузнавать"
+    }
+  },
+  {
+    "id": "list-1802",
+    "head": "klären",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Выяснять"
+    }
+  },
+  {
+    "id": "list-0877",
+    "head": "treiben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Заниматься (спортом)"
+    }
+  },
+  {
+    "id": "list-1697",
+    "head": "jagen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Охотиться"
+    }
+  },
+  {
+    "id": "list-0543",
+    "head": "wirken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Производить впечатление"
+    }
+  },
+  {
+    "id": "list-1570",
+    "head": "trauen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Отваживаться"
+    }
+  },
+  {
+    "id": "list-0538",
+    "head": "sich einigen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Приходить к согласию"
+    }
+  },
+  {
+    "id": "1788537920843",
+    "head": "glauben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Верить"
+    }
+  },
+  {
+    "id": "1788537925400",
+    "head": "denken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Думать"
+    }
+  },
+  {
+    "id": "list-0640",
+    "head": "nachdenken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Размышлять"
+    }
+  },
+  {
+    "id": "1788531703990",
+    "head": "es gibt",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Имеется / существует"
+    }
+  },
+  {
+    "id": "1788537996557",
+    "head": "wohnen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Проживать (где-то)"
+    }
+  },
+  {
+    "id": "1788538015423",
+    "head": "abschließen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Завершать (учёбу, договор)"
+    }
+  },
+  {
+    "id": "1788537997050",
+    "head": "abschließen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Запирать на ключ"
+    }
+  },
+  {
+    "id": "list-1703",
+    "head": "ersetzen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Замещать"
+    }
+  },
+  {
+    "id": "list-0848",
+    "head": "bemerken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Подмечать"
+    }
+  },
+  {
+    "id": "list-1435",
+    "head": "feststellen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Констатировать"
+    }
+  },
+  {
+    "id": "list-1828",
+    "head": "wahrnehmen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Воспринимать"
+    }
+  },
+  {
+    "id": "list-0682",
+    "head": "beschäftigen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Давать работу"
+    }
+  },
+  {
+    "id": "1788538018409",
+    "head": "anmelden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Регистрировать"
+    }
+  },
+  {
+    "id": "list-0832",
+    "head": "aufnehmen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Принимать в состав"
+    }
+  },
+  {
+    "id": "1788528398083",
+    "head": "sich anmelden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Регистрироваться"
+    }
+  },
+  {
+    "id": "list-1354",
+    "head": "lauten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Гласить"
+    }
+  },
+  {
+    "id": "list-0503",
+    "head": "verändern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Видоизменять"
+    }
+  },
+  {
+    "id": "list-0447",
+    "head": "nutzen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Пользоваться"
+    }
+  },
+  {
+    "id": "list-0707",
+    "head": "verwenden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Применять"
+    }
+  },
+  {
+    "id": "1788528360305",
+    "head": "probieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Пробовать на вкус"
+    }
+  },
+  {
+    "id": "1788537946726",
+    "head": "prüfen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Проверять"
+    }
+  },
+  {
+    "id": "list-0722",
+    "head": "ausprobieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Опробовать"
+    }
+  },
+  {
+    "id": "list-0721",
+    "head": "erscheinen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Появляться"
+    }
+  },
+  {
+    "id": "list-1821",
+    "head": "auflegen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вешать трубку"
+    }
+  },
+  {
+    "id": "list-1930",
+    "head": "auskommen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обходиться"
+    }
+  },
+  {
+    "id": "1788525790823",
+    "head": "tauschen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обменивать"
+    }
+  },
+  {
+    "id": "list-1394",
+    "head": "rühren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Размешивать"
+    }
+  },
+  {
+    "id": "list-1566",
+    "head": "zuschauen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Смотреть со стороны"
+    }
+  },
+  {
+    "id": "list-1585",
+    "head": "bezeichnen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обозначать"
+    }
+  },
+  {
+    "id": "list-1722",
+    "head": "einstellen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Принимать на работу / настраивать"
+    }
+  },
+  {
+    "id": "list-1910",
+    "head": "anstellen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Нанимать"
+    }
+  },
+  {
+    "id": "list-0705",
+    "head": "sich befinden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Располагаться"
+    }
+  },
+  {
+    "id": "list-1803",
+    "head": "eröffnen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Открывать (заведение)"
+    }
+  },
+  {
+    "id": "list-0496",
+    "head": "starten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Стартовать"
+    }
+  },
+  {
+    "id": "list-1234",
+    "head": "losgehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Отправляться пешком"
+    }
+  },
+  {
+    "id": "list-1981",
+    "head": "losfahren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Отъезжать"
+    }
+  },
+  {
+    "id": "list-0627",
+    "head": "achten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обращать внимание"
+    }
+  },
+  {
+    "id": "list-1995",
+    "head": "beachten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Соблюдать"
+    }
+  },
+  {
+    "id": "list-1341",
+    "head": "verfolgen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Преследовать"
+    }
+  },
+  {
+    "id": "list-1873",
+    "head": "besprechen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обговаривать"
+    }
+  },
+  {
+    "id": "list-1704",
+    "head": "beibringen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обучать чему-то"
+    }
+  },
+  {
+    "id": "list-1331",
+    "head": "erläutern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Разъяснять"
+    }
+  },
+  {
+    "id": "list-1326",
+    "head": "erwidern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Возражать"
+    }
+  },
+  {
+    "id": "1788538012900",
+    "head": "sich erholen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Восстанавливаться"
+    }
+  },
+  {
+    "id": "list-0430",
+    "head": "sich entspannen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Расслабляться"
+    }
+  },
+  {
+    "id": "list-1590",
+    "head": "ruhen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Покоиться"
+    }
+  },
+  {
+    "id": "list-0489",
+    "head": "entdecken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обнаруживать"
+    }
+  },
+  {
+    "id": "list-1142",
+    "head": "aufgehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Восходить"
+    }
+  },
+  {
+    "id": "1788537816391",
+    "head": "weg sein",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Уйти / быть в отъезде"
+    }
+  },
+  {
+    "id": "list-1366",
+    "head": "empfinden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Испытывать чувство"
+    }
+  },
+  {
+    "id": "list-0549",
+    "head": "spüren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ощущать физически"
+    }
+  },
+  {
+    "id": "list-1320",
+    "head": "stürzen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сваливаться / рухнуть"
+    }
+  },
+  {
+    "id": "list-0690",
+    "head": "erleben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Переживать"
+    }
+  },
+  {
+    "id": "list-0993",
+    "head": "überleben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Выживать"
+    }
+  },
+  {
+    "id": "list-1107",
+    "head": "vorhaben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Намереваться"
+    }
+  },
+  {
+    "id": "1788527140934",
+    "head": "bezahlen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Оплачивать"
+    }
+  },
+  {
+    "id": "list-0480",
+    "head": "drehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вращать"
+    }
+  },
+  {
+    "id": "list-1691",
+    "head": "wenden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Разворачивать"
+    }
+  },
+  {
+    "id": "list-1344",
+    "head": "beantragen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ходатайствовать"
+    }
+  },
+  {
+    "id": "list-1940",
+    "head": "erheben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Собирать (данные)"
+    }
+  },
+  {
+    "id": "list-1591",
+    "head": "zugehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Направляться к"
+    }
+  },
+  {
+    "id": "list-1880",
+    "head": "zukommen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Надвигаться"
+    }
+  },
+  {
+    "id": "list-1998",
+    "head": "sich eignen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Годиться"
+    }
+  },
+  {
+    "id": "list-1833",
+    "head": "besorgen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Доставать"
+    }
+  },
+  {
+    "id": "list-1249",
+    "head": "schätzen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ценить"
+    }
+  },
+  {
+    "id": "list-0744",
+    "head": "betrachten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Рассматривать"
+    }
+  },
+  {
+    "id": "list-0878",
+    "head": "zählen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Считать (числа)"
+    }
+  },
+  {
+    "id": "list-1419",
+    "head": "begreifen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Осознавать"
+    }
+  },
+  {
+    "id": "list-0456",
+    "head": "entstehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Возникать"
+    }
+  },
+  {
+    "id": "list-1597",
+    "head": "auftauchen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Объявляться"
+    }
+  },
+  {
+    "id": "list-0837",
+    "head": "bieten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Предоставлять"
+    }
+  },
+  {
+    "id": "list-1893",
+    "head": "vorschlagen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вносить предложение"
+    }
+  },
+  {
+    "id": "list-0976",
+    "head": "annehmen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Допускать"
+    }
+  },
+  {
+    "id": "list-1369",
+    "head": "vermuten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Подозревать"
+    }
+  },
+  {
+    "id": "list-1427",
+    "head": "grüßen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Здороваться"
+    }
+  },
+  {
+    "id": "list-1652",
+    "head": "akzeptieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Принимать условия"
+    }
+  },
+  {
+    "id": "1788537945649",
+    "head": "kontrollieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Контролировать"
+    }
+  },
+  {
+    "id": "list-0950",
+    "head": "testen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Тестировать"
+    }
+  },
+  {
+    "id": "list-1731",
+    "head": "überprüfen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Перепроверять"
+    }
+  },
+  {
+    "id": "list-1098",
+    "head": "produzieren",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Выпускать продукцию"
+    }
+  },
+  {
+    "id": "list-1492",
+    "head": "stammen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Быть родом"
+    }
+  },
+  {
+    "id": "list-0741",
+    "head": "geschehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Происходить"
+    }
+  },
+  {
+    "id": "list-1932",
+    "head": "verbergen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Скрывать"
+    }
+  },
+  {
+    "id": "1788538031775",
+    "head": "ärgern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Злить"
+    }
+  },
+  {
+    "id": "1788537948199",
+    "head": "ansehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Разглядывать"
+    }
+  },
+  {
+    "id": "list-0209",
+    "head": "gucken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Глядеть"
+    }
+  },
+  {
+    "id": "list-0520",
+    "head": "anschauen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Осматривать"
+    }
+  },
+  {
+    "id": "list-0585",
+    "head": "blicken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Бросать взгляд"
+    }
+  },
+  {
+    "id": "list-1709",
+    "head": "aufwachsen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вырастать (о человеке)"
+    }
+  },
+  {
+    "id": "list-1159",
+    "head": "eingehen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Откликаться"
+    }
+  },
+  {
+    "id": "list-0374",
+    "head": "bestimmen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Определять"
+    }
+  },
+  {
+    "id": "list-0623",
+    "head": "lösen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Развязывать / решать задачу"
+    }
+  },
+  {
+    "id": "list-1117",
+    "head": "beschließen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Принимать решение"
+    }
+  },
+  {
+    "id": "list-1426",
+    "head": "leuchten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сиять"
+    }
+  },
+  {
+    "id": "list-0729",
+    "head": "verbinden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Соединять"
+    }
+  },
+  {
+    "id": "list-1517",
+    "head": "binden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обвязывать"
+    }
+  },
+  {
+    "id": "list-1278",
+    "head": "sinken",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Опускаться"
+    }
+  },
+  {
+    "id": "list-1057",
+    "head": "aufbauen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Выстраивать"
+    }
+  },
+  {
+    "id": "list-1443",
+    "head": "gründen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Основывать"
+    }
+  },
+  {
+    "id": "list-1660",
+    "head": "erstellen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Составлять (документ)"
+    }
+  },
+  {
+    "id": "list-1876",
+    "head": "aufstellen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Устанавливать"
+    }
+  },
+  {
+    "id": "1788528404805",
+    "head": "sagen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Говорить"
+    }
+  },
+  {
+    "id": "list-0795",
+    "head": "mitteilen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Извещать"
+    }
+  },
+  {
+    "id": "list-0861",
+    "head": "melden",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Заявлять"
+    }
+  },
+  {
+    "id": "list-1757",
+    "head": "sichern",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обеспечивать"
+    }
+  },
+  {
+    "id": "list-0726",
+    "head": "schieben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Толкать"
+    }
+  },
+  {
+    "id": "list-0974",
+    "head": "stoßen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ударяться"
+    }
+  },
+  {
+    "id": "list-1699",
+    "head": "verlangen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Настоятельно просить"
+    }
+  },
+  {
+    "id": "1788537955531",
+    "head": "üben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Упражняться"
+    }
+  },
+  {
+    "id": "list-1811",
+    "head": "umbringen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Лишать жизни"
+    }
+  },
+  {
+    "id": "list-0736",
+    "head": "überraschen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Заставать врасплох"
+    }
+  },
+  {
+    "id": "list-1871",
+    "head": "erstaunen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Изумлять"
+    }
+  },
+  {
+    "id": "1788537929323",
+    "head": "kennenlernen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Знакомиться"
+    }
+  },
+  {
+    "id": "list-0484",
+    "head": "erkennen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Распознавать"
+    }
+  },
+  {
+    "id": "1788531467717",
+    "head": "erreichen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Добираться до"
+    }
+  },
+  {
+    "id": "list-0462",
+    "head": "reichen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Быть достаточным"
+    }
+  },
+  {
+    "id": "list-0471",
+    "head": "fangen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ловить"
+    }
+  },
+  {
+    "id": "list-0918",
+    "head": "greifen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Тянуться рукой"
+    }
+  },
+  {
+    "id": "1788537822716",
+    "head": "möchten",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Хотел бы"
+    }
+  },
+  {
+    "id": "list-1303",
+    "head": "anhören",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Выслушивать"
+    }
+  },
+  {
+    "id": "list-1503",
+    "head": "einschalten",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788528371683",
+    "head": "vereinbaren",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1744",
+    "head": "zurückkehren",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "formell · книжный"
+    }
+  },
+  {
+    "id": "list-0999",
+    "head": "zurückkommen",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1899",
+    "head": "stehlen",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-0937",
+    "head": "gelingen",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788537928326",
+    "head": "notieren",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "formell · книжный"
+    }
+  },
+  {
+    "id": "list-1391",
+    "head": "aufschreiben",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788527158886",
+    "head": "machen",
+    "batch": "Глаголы",
+    "reason": "уровень 3",
+    "disputed": false,
+    "set": {
+      "definition": "изготавливать и выполнять"
+    }
+  },
+  {
+    "id": "1788528368632",
+    "head": "gefallen",
+    "batch": "Глаголы",
+    "reason": "уровень 3",
+    "disputed": false,
+    "set": {
+      "definition": "производить приятное впечатление"
+    }
+  },
+  {
+    "id": "list-1413",
+    "head": "vorkommen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "Первый вариант «Встречаться» столкнулся с sich treffen.",
+    "set": {
+      "translation": "Попадаться"
+    }
+  },
+  {
+    "id": "1788538015375",
+    "head": "ausmachen",
+    "batch": "Глаголы",
+    "reason": "уровень 2",
+    "disputed": false,
+    "note": "Пара с vereinbaren: ausmachen разговорнее.",
+    "set": {
+      "register": "umgangssprachlich · разговорный"
+    }
+  },
+  {
+    "id": "list-0963",
+    "head": "sorgen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«обеспечивать» столкнулось с sichern.",
+    "set": {
+      "translation": "Хлопотать"
+    }
+  },
+  {
+    "id": "list-1812",
+    "head": "wagen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«отваживаться» столкнулось с trauen.",
+    "set": {
+      "translation": "Осмеливаться"
+    }
+  },
+  {
+    "id": "list-1042",
+    "head": "aufgeben",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«отказываться» столкнулось с verzichten.",
+    "set": {
+      "translation": "Сдаваться"
+    }
+  },
+  {
+    "id": "1788531476966",
+    "head": "sprechen",
+    "batch": "Глаголы",
+    "reason": "уровень 1",
+    "disputed": false,
+    "note": "«Разговаривать» столкнулось с reden.",
+    "set": {
+      "translation": "Владеть языком"
+    }
+  }
+]

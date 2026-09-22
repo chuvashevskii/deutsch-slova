@@ -371,7 +371,7 @@
     "examples_ru": ["Одного ингредиента не хватает.", "Все ингредиенты готовы."] },
 
   { "rank": 1800, "pos": "adj", "head": "verdammt", "translation": "Чёртов / проклятый",
-    "wortart": "прилагательное и наречие", "register": "umgangssprachlich",
+    "wortart": "прилагательное и наречие", "register": "umgangssprachlich · разговорный",
     "ipa": "/fɛɐ̯ˈdamt/", "pronunciation_ru": "фэрДАМТ", "stress_word": "2",
     "rule_status": "none", "rule_label": "Степеней не образует",
     "examples_de": ["Das ist verdammt schwer.", "Wo ist der verdammte Schlüssel?"],

@@ -1,0 +1,252 @@
+[
+  {
+    "id": "list-1283", "head": "abnehmen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Два несовместимых значения, у каждого свой пример и своё управление: похудеть — без дополнения, снять — с аккузативом.",
+    "set": {
+      "translation": "Худеть",
+      "rektion": ["ohne Objekt"],
+      "examples_de": ["Ich habe fünf Kilo abgenommen.", "Sie hat im Urlaub abgenommen."],
+      "examples_ru": ["Я похудел на пять килограммов.", "Она похудела в отпуске."]
+    },
+    "split": {
+      "id": "list-1283_b",
+      "translation": "Снимать",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Nimm bitte den Hörer ab.", "Er nimmt den Hut ab."],
+      "examples_ru": ["Сними, пожалуйста, трубку.", "Он снимает шляпу."]
+    }
+  },
+  {
+    "id": "list-1424", "head": "behandeln", "batch": "Глаголы", "reason": "разделение",
+    "note": "Лечить больного и обращаться с человеком — разные значения с разными примерами.",
+    "set": {
+      "translation": "Лечить",
+      "rektion": ["jemanden (Akk.)"],
+      "examples_de": ["Der Arzt behandelt den Patienten.", "Die Ärztin behandelt mich seit Jahren."],
+      "examples_ru": ["Врач лечит пациента.", "Эта врач лечит меня много лет."]
+    },
+    "split": {
+      "id": "list-1424_b",
+      "translation": "Обращаться с кем-то",
+      "rektion": ["jemanden (Akk.)"],
+      "examples_de": ["Behandle andere mit Respekt.", "Man hat uns freundlich behandelt."],
+      "examples_ru": ["Относись к другим с уважением.", "С нами обошлись дружелюбно."]
+    }
+  },
+  {
+    "id": "list-0364", "head": "Boden", "batch": "Существительные", "reason": "разделение",
+    "note": "Пол в комнате и почва на грядке — разные вещи, у каждой свой пример.",
+    "set": {
+      "translation": "Пол",
+      "examples_de": ["Der Boden ist nass.", "Der Boden im Flur ist aus Holz."],
+      "examples_ru": ["Пол мокрый.", "Пол в прихожей деревянный."]
+    },
+    "split": {
+      "id": "list-0364_b",
+      "translation": "Почва",
+      "examples_de": ["Die Böden hier sind sehr fruchtbar.", "Der Boden ist zu trocken für Gemüse."],
+      "examples_ru": ["Почвы здесь очень плодородные.", "Почва слишком сухая для овощей."]
+    }
+  },
+  {
+    "id": "list-1030", "head": "Decke", "batch": "Существительные", "reason": "разделение",
+    "note": "Потолок и одеяло — разные вещи, у каждой свой пример.",
+    "set": {
+      "translation": "Потолок",
+      "examples_de": ["Die Lampe hängt an der Decke.", "Die Decke ist frisch gestrichen."],
+      "examples_ru": ["Лампа висит на потолке.", "Потолок свежевыкрашен."]
+    },
+    "split": {
+      "id": "list-1030_b",
+      "translation": "Одеяло",
+      "examples_de": ["Zieh dir eine Decke über!", "Ich brauche noch eine warme Decke."],
+      "examples_ru": ["Накройся одеялом!", "Мне нужно ещё одно тёплое одеяло."]
+    }
+  },
+  {
+    "id": "list-1722", "head": "einstellen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Нанять человека и настроить прибор — разное управление: jemanden против etwas.",
+    "set": {
+      "translation": "Принимать на работу",
+      "rektion": ["jemanden (Akk.)"],
+      "examples_de": ["Die Firma stellt neue Leute ein.", "Wir stellen einen neuen Kollegen ein."],
+      "examples_ru": ["Фирма нанимает новых людей.", "Мы принимаем на работу нового коллегу."]
+    },
+    "split": {
+      "id": "list-1722_b",
+      "translation": "Настраивать",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Stell den Sender richtig ein.", "Ich stelle die Heizung wärmer ein."],
+      "examples_ru": ["Настрой канал правильно.", "Я настраиваю отопление теплее."]
+    }
+  },
+  {
+    "id": "list-1607", "head": "Knopf", "batch": "Существительные", "reason": "разделение",
+    "note": "Пуговица на пальто и кнопка на приборе — разные вещи.",
+    "set": {
+      "translation": "Пуговица",
+      "examples_de": ["Ein Knopf ist abgefallen.", "Der Mantel hat sechs Knöpfe."],
+      "examples_ru": ["Пуговица оторвалась.", "У пальто шесть пуговиц."]
+    },
+    "split": {
+      "id": "list-1607_b",
+      "translation": "Кнопка",
+      "examples_de": ["Drück auf den roten Knopf!", "Der Knopf am Automaten klemmt."],
+      "examples_ru": ["Нажми на красную кнопку!", "Кнопка на автомате заедает."]
+    }
+  },
+  {
+    "id": "list-0166", "head": "los", "batch": "Служебные", "reason": "разделение",
+    "note": "«Избавиться от чего-то» и вопрос «что происходит» — два несвязанных употребления.",
+    "set": {
+      "translation": "Избавиться (от чего-л.)",
+      "examples_de": ["Endlich bin ich das Problem los.", "Ich bin meine Erkältung endlich los."],
+      "examples_ru": ["Наконец-то я избавился от этой проблемы.", "Я наконец избавился от простуды."]
+    },
+    "split": {
+      "id": "list-0166_b",
+      "translation": "Что происходит (в вопросе)",
+      "examples_de": ["Was ist hier los?", "Was ist denn mit dir los?"],
+      "examples_ru": ["Что здесь происходит?", "Да что с тобой такое?"]
+    }
+  },
+  {
+    "id": "list-0623", "head": "lösen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Решать задачу и развязывать узел — разные значения.",
+    "set": {
+      "translation": "Решать задачу",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Wir müssen das Problem lösen.", "Sie löst die Aufgabe in zwei Minuten."],
+      "examples_ru": ["Мы должны решить эту проблему.", "Она решает задачу за две минуты."]
+    },
+    "split": {
+      "id": "list-0623_b",
+      "translation": "Развязывать",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Er löst den Knoten.", "Lös bitte das Seil."],
+      "examples_ru": ["Он развязывает узел.", "Развяжи, пожалуйста, верёвку."]
+    }
+  },
+  {
+    "id": "list-0961", "head": "Ofen", "batch": "Существительные", "reason": "разделение",
+    "note": "Духовка на кухне и печь в комнате — разные вещи.",
+    "set": {
+      "translation": "Духовка",
+      "examples_de": ["Der Kuchen ist im Ofen.", "Heiz den Ofen auf 200 Grad vor."],
+      "examples_ru": ["Пирог в духовке.", "Разогрей духовку до 200 градусов."]
+    },
+    "split": {
+      "id": "list-0961_b",
+      "translation": "Печь",
+      "examples_de": ["Die alten Öfen heizen mit Holz.", "Im Zimmer steht ein alter Ofen."],
+      "examples_ru": ["Старые печи топят дровами.", "В комнате стоит старая печь."]
+    }
+  },
+  {
+    "id": "1788537881841", "head": "riechen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Нюхать и пахнуть — разное управление: etwas (Akk.) против nach etwas (Dat.).",
+    "set": {
+      "translation": "Нюхать",
+      "rektion": ["etw. (Akk.)"],
+      "examples_de": ["Ich rieche das frische Brot.", "Riech mal an der Blume!"],
+      "examples_ru": ["Я нюхаю свежий хлеб.", "Понюхай-ка цветок!"]
+    },
+    "split": {
+      "id": "1788537881841_b",
+      "translation": "Пахнуть",
+      "rektion": ["nach etw. (Dat.)"],
+      "examples_de": ["Die Suppe riecht nach Knoblauch.", "Hier riecht es nach Farbe."],
+      "examples_ru": ["Суп пахнет чесноком.", "Здесь пахнет краской."]
+    }
+  },
+  {
+    "id": "list-1388", "head": "streichen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Красить стену и вычёркивать строку — разные значения.",
+    "set": {
+      "translation": "Красить",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Wir streichen die Wand weiß.", "Er streicht den Zaun grün."],
+      "examples_ru": ["Мы красим стену в белый.", "Он красит забор в зелёный."]
+    },
+    "split": {
+      "id": "list-1388_b",
+      "translation": "Вычёркивать",
+      "rektion": ["etwas (Akk.)"],
+      "examples_de": ["Streich den Satz bitte.", "Wir haben den Termin gestrichen."],
+      "examples_ru": ["Вычеркни, пожалуйста, предложение.", "Мы вычеркнули встречу."]
+    }
+  },
+  {
+    "id": "1788537958762", "head": "studieren", "batch": "Глаголы", "reason": "разделение",
+    "note": "Изучать предмет и учиться в вузе — разное управление: etwas (Akk.) против an etwas (Dat.).",
+    "set": {
+      "translation": "Изучать",
+      "rektion": ["etw. (Akk.)"],
+      "examples_de": ["Ich studiere Medizin.", "Sie studiert Informatik."],
+      "examples_ru": ["Я изучаю медицину.", "Она изучает информатику."]
+    },
+    "split": {
+      "id": "1788537958762_b",
+      "translation": "Учиться в вузе",
+      "rektion": ["an etw. (Dat.)"],
+      "examples_de": ["Er studiert an der Universität Berlin.", "Ich studiere im dritten Semester."],
+      "examples_ru": ["Он учится в университете Берлина.", "Я учусь на третьем семестре."]
+    }
+  },
+  {
+    "id": "list-1840", "head": "zunehmen", "batch": "Глаголы", "reason": "разделение",
+    "note": "Расти в числе и набирать вес — разные значения, у каждого свой пример.",
+    "set": {
+      "translation": "Увеличиваться",
+      "examples_de": ["Der Verkehr nimmt zu.", "Die Zahl der Anmeldungen nimmt zu."],
+      "examples_ru": ["Движение усиливается.", "Число заявок растёт."]
+    },
+    "split": {
+      "id": "list-1840_b",
+      "translation": "Полнеть",
+      "examples_de": ["Im Winter nehme ich immer zu.", "Er hat drei Kilo zugenommen."],
+      "examples_ru": ["Зимой я всегда набираю вес.", "Он набрал три килограмма."]
+    }
+  },
+
+  {
+    "id": "list-1126", "head": "behalten", "batch": "Глаголы", "reason": "уровень 1", "disputed": true,
+    "note": "«запоминать» не подкреплено ни одним примером: оба про «оставить себе». Значение, которому карточка не учит, из перевода снято.",
+    "set": { "translation": "Оставлять себе" }
+  },
+  {
+    "id": "list-1965", "head": "Box", "batch": "Существительные", "reason": "уровень 1", "disputed": true,
+    "note": "«коробка» не подкреплена примерами: оба про аудиоколонку.",
+    "set": { "translation": "Колонка" }
+  },
+  {
+    "id": "list-0215", "head": "Geschichte", "batch": "Существительные", "reason": "уровень 1", "disputed": true,
+    "note": "«рассказ» не подкреплён: в обоих примерах русское слово одно — «история».",
+    "set": { "translation": "История" }
+  },
+  {
+    "id": "list-0309", "head": "Glück", "batch": "Существительные", "reason": "уровень 1", "disputed": true,
+    "note": "«счастье» не подкреплено: оба примера про удачу.",
+    "set": { "translation": "Удача" }
+  },
+  {
+    "id": "1788603830225", "head": "Hals", "batch": "Существительные", "reason": "уровень 1", "disputed": true,
+    "note": "«Шея» не подкреплена: оба примера про боль в горле.",
+    "set": { "translation": "Горло" }
+  },
+  {
+    "id": "list-1199", "head": "Kreis", "batch": "Существительные", "reason": "уровень 1", "disputed": true,
+    "note": "«округ» не подкреплён: оба примера про круг людей.",
+    "set": { "translation": "Круг" }
+  },
+  {
+    "id": "1788537784541", "head": "träumen", "batch": "Глаголы", "reason": "уровень 1", "disputed": true,
+    "note": "«видеть сон» не подкреплено: оба примера про мечту.",
+    "set": { "translation": "Мечтать" }
+  },
+  {
+    "id": "list-0910", "head": "wiegen", "batch": "Глаголы", "reason": "уровень 1", "disputed": true,
+    "note": "«взвешивать» не подкреплено: оба примера про собственный вес.",
+    "set": { "translation": "Весить" }
+  }
+]

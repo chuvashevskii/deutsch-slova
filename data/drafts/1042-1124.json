@@ -139,7 +139,7 @@
     "examples_ru": ["Останови музыку!", "Автобус внезапно остановился."] },
 
   { "rank": 1073, "pos": "particle", "head": "hi", "translation": "Привет",
-    "wortart": "формула вежливости", "register": "umgangssprachlich",
+    "wortart": "формула вежливости", "register": "umgangssprachlich · разговорный",
     "ipa": "/haɪ̯/", "pronunciation_ru": "ХАЙ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Hi, wie geht's?", "Hi zusammen!"],

@@ -1,0 +1,1122 @@
+[
+  {
+    "id": "1788603825471",
+    "head": "Maschine",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Станок / механизм"
+    }
+  },
+  {
+    "id": "list-0926",
+    "head": "Stimmung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Настрой"
+    }
+  },
+  {
+    "id": "list-1256",
+    "head": "Rad",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Колесо"
+    }
+  },
+  {
+    "id": "1788603822428",
+    "head": "Feier",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Празднование"
+    }
+  },
+  {
+    "id": "list-0155",
+    "head": "Ding",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вещь"
+    }
+  },
+  {
+    "id": "list-0168",
+    "head": "Sache",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Дело (вопрос)"
+    }
+  },
+  {
+    "id": "list-0651",
+    "head": "Geschäft",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Дело (бизнес)"
+    }
+  },
+  {
+    "id": "list-1472",
+    "head": "Tat",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Поступок"
+    }
+  },
+  {
+    "id": "list-1385",
+    "head": "Gegenstand",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Объект"
+    }
+  },
+  {
+    "id": "list-0356",
+    "head": "Art",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Разновидность"
+    }
+  },
+  {
+    "id": "list-1666",
+    "head": "Gelegenheit",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Удобный случай"
+    }
+  },
+  {
+    "id": "list-1610",
+    "head": "Erlebnis",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Яркое событие"
+    }
+  },
+  {
+    "id": "list-1711",
+    "head": "Eingang",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вход (дверь)"
+    }
+  },
+  {
+    "id": "list-1825",
+    "head": "Auswahl",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ассортимент / отбор"
+    }
+  },
+  {
+    "id": "1788603834564",
+    "head": "Land",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Страна"
+    }
+  },
+  {
+    "id": "list-0512",
+    "head": "Gruppe",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Группа (людей)"
+    }
+  },
+  {
+    "id": "list-0756",
+    "head": "Bewegung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Движение (перемещение)"
+    }
+  },
+  {
+    "id": "list-1867",
+    "head": "Position",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Позиция"
+    }
+  },
+  {
+    "id": "list-1164",
+    "head": "Lage",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Положение дел"
+    }
+  },
+  {
+    "id": "list-1761",
+    "head": "Brett",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Доска (деревянная)"
+    }
+  },
+  {
+    "id": "list-0599",
+    "head": "Lust",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Охота (настрой)"
+    }
+  },
+  {
+    "id": "list-1637",
+    "head": "Wille",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Воля"
+    }
+  },
+  {
+    "id": "1788586813013",
+    "head": "Tätigkeit",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вид деятельности"
+    }
+  },
+  {
+    "id": "1788586814188",
+    "head": "Unterricht",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Занятие"
+    }
+  },
+  {
+    "id": "1788603951682",
+    "head": "Stunde",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Учебный час"
+    }
+  },
+  {
+    "id": "list-1938",
+    "head": "Gehalt",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Доля вещества"
+    }
+  },
+  {
+    "id": "list-1948",
+    "head": "Aussage",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Высказывание"
+    }
+  },
+  {
+    "id": "list-0697",
+    "head": "Stern",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Звезда (небесная)"
+    }
+  },
+  {
+    "id": "list-1095",
+    "head": "Geräusch",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Посторонний звук"
+    }
+  },
+  {
+    "id": "list-1315",
+    "head": "Ton",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Тон"
+    }
+  },
+  {
+    "id": "list-1259",
+    "head": "Zeichen",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Символ"
+    }
+  },
+  {
+    "id": "list-1253",
+    "head": "Wert",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ценность"
+    }
+  },
+  {
+    "id": "list-1619",
+    "head": "Regenschirm",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Зонт от дождя"
+    }
+  },
+  {
+    "id": "list-1991",
+    "head": "Konzept",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Концепция"
+    }
+  },
+  {
+    "id": "list-1584",
+    "head": "Werkzeug",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Инструмент (рабочий)"
+    }
+  },
+  {
+    "id": "1788603827164",
+    "head": "Auskunft",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Справка"
+    }
+  },
+  {
+    "id": "1788603821161",
+    "head": "Verein",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Объединение"
+    }
+  },
+  {
+    "id": "list-0782",
+    "head": "Gang",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ход / проход"
+    }
+  },
+  {
+    "id": "list-1886",
+    "head": "Runde",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Раунд"
+    }
+  },
+  {
+    "id": "list-1919",
+    "head": "Medizin",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Медицина"
+    }
+  },
+  {
+    "id": "list-1512",
+    "head": "Stoff",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ткань"
+    }
+  },
+  {
+    "id": "1788603838820",
+    "head": "Wagen",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Вагон"
+    }
+  },
+  {
+    "id": "1788603833659",
+    "head": "Ort",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Населённый пункт"
+    }
+  },
+  {
+    "id": "1788603847398",
+    "head": "Platz",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Площадь"
+    }
+  },
+  {
+    "id": "list-1580",
+    "head": "Sitz",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сиденье"
+    }
+  },
+  {
+    "id": "list-1706",
+    "head": "Schale",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Кожура"
+    }
+  },
+  {
+    "id": "list-0571",
+    "head": "Menge",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Количество"
+    }
+  },
+  {
+    "id": "list-1801",
+    "head": "Masse",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Масса"
+    }
+  },
+  {
+    "id": "list-0889",
+    "head": "Augenblick",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Мгновение"
+    }
+  },
+  {
+    "id": "list-1689",
+    "head": "Zeitpunkt",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Момент времени"
+    }
+  },
+  {
+    "id": "list-0605",
+    "head": "See",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Море (открытое)"
+    }
+  },
+  {
+    "id": "1788603829735",
+    "head": "Fuß",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Стопа"
+    }
+  },
+  {
+    "id": "list-0788",
+    "head": "Bereich",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сфера"
+    }
+  },
+  {
+    "id": "list-1171",
+    "head": "Region",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Регион"
+    }
+  },
+  {
+    "id": "list-1196",
+    "head": "Gebiet",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Территория"
+    }
+  },
+  {
+    "id": "list-1599",
+    "head": "Abschluss",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Диплом / завершение учёбы"
+    }
+  },
+  {
+    "id": "list-1381",
+    "head": "Umgebung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Окрестности"
+    }
+  },
+  {
+    "id": "list-1746",
+    "head": "Umfeld",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Среда (обстановка)"
+    }
+  },
+  {
+    "id": "1788603825918",
+    "head": "Bescheid",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Уведомление"
+    }
+  },
+  {
+    "id": "1788603825990",
+    "head": "Postkarte",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Почтовая открытка"
+    }
+  },
+  {
+    "id": "1788603842514",
+    "head": "Ferien",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Каникулы"
+    }
+  },
+  {
+    "id": "1788603847728",
+    "head": "Stadtplan",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Карта города"
+    }
+  },
+  {
+    "id": "1788603840211",
+    "head": "Gleis",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Путь (рельсовый)"
+    }
+  },
+  {
+    "id": "list-1708",
+    "head": "Plattform",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Платформа (площадка)"
+    }
+  },
+  {
+    "id": "list-0811",
+    "head": "Tipp",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Совет"
+    }
+  },
+  {
+    "id": "list-1774",
+    "head": "Hinweis",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Указание"
+    }
+  },
+  {
+    "id": "1788603839897",
+    "head": "Bahn",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Железная дорога"
+    }
+  },
+  {
+    "id": "1788603839946",
+    "head": "Reise",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Путешествие"
+    }
+  },
+  {
+    "id": "1788603841162",
+    "head": "Tour",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Тур"
+    }
+  },
+  {
+    "id": "1788603841773",
+    "head": "Ausflug",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Экскурсия"
+    }
+  },
+  {
+    "id": "list-1295",
+    "head": "Fahrt",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Поездка"
+    }
+  },
+  {
+    "id": "1788603839198",
+    "head": "Rundgang",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Обход"
+    }
+  },
+  {
+    "id": "1788603841850",
+    "head": "Führung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Руководство"
+    }
+  },
+  {
+    "id": "list-0632",
+    "head": "Ahnung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Смутное представление"
+    }
+  },
+  {
+    "id": "list-1602",
+    "head": "Begriff",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Понятие"
+    }
+  },
+  {
+    "id": "1788586813239",
+    "head": "Praktikum",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Стажировка"
+    }
+  },
+  {
+    "id": "list-1777",
+    "head": "Gegensatz",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Контраст"
+    }
+  },
+  {
+    "id": "1788586813540",
+    "head": "Job",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Место работы"
+    }
+  },
+  {
+    "id": "list-1486",
+    "head": "Mühe",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Усилие"
+    }
+  },
+  {
+    "id": "list-1387",
+    "head": "Wirklichkeit",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Действительность"
+    }
+  },
+  {
+    "id": "list-1149",
+    "head": "Heimatland",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Родная страна"
+    }
+  },
+  {
+    "id": "1788603829567",
+    "head": "Hand",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Кисть руки"
+    }
+  },
+  {
+    "id": "list-0233",
+    "head": "Folge",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Последствие"
+    }
+  },
+  {
+    "id": "list-1032",
+    "head": "Serie",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сериал"
+    }
+  },
+  {
+    "id": "list-0957",
+    "head": "Macht",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Власть"
+    }
+  },
+  {
+    "id": "list-1434",
+    "head": "Gewalt",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Насилие"
+    }
+  },
+  {
+    "id": "list-1276",
+    "head": "Verbindung",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Связь"
+    }
+  },
+  {
+    "id": "list-0945",
+    "head": "Schlaf",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Сон (состояние)"
+    }
+  },
+  {
+    "id": "list-0942",
+    "head": "Weise",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Манера"
+    }
+  },
+  {
+    "id": "list-1841",
+    "head": "Methode",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Метод"
+    }
+  },
+  {
+    "id": "list-0477",
+    "head": "Glas",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Стекло"
+    }
+  },
+  {
+    "id": "list-0975",
+    "head": "Scheibe",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ломтик"
+    }
+  },
+  {
+    "id": "1788586808693",
+    "head": "Cafeteria",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Кафетерий"
+    }
+  },
+  {
+    "id": "1788603852362",
+    "head": "Handy",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Мобильник"
+    }
+  },
+  {
+    "id": "list-0659",
+    "head": "Ruhe",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Покой"
+    }
+  },
+  {
+    "id": "1788586813363",
+    "head": "Produkt",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Продукт"
+    }
+  },
+  {
+    "id": "list-0947",
+    "head": "Gut",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Имущество"
+    }
+  },
+  {
+    "id": "list-1328",
+    "head": "Stufe",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ступень"
+    }
+  },
+  {
+    "id": "list-1604",
+    "head": "Ebene",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Плоскость"
+    }
+  },
+  {
+    "id": "1788603848033",
+    "head": "Mitte",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Середина"
+    }
+  },
+  {
+    "id": "1788603850942",
+    "head": "Stockwerk",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Уровень здания"
+    }
+  },
+  {
+    "id": "1788586814338",
+    "head": "Bad",
+    "batch": "Существительные",
+    "reason": "уровень 1",
+    "disputed": false,
+    "set": {
+      "translation": "Ванная / купание"
+    }
+  },
+  {
+    "id": "list-0952",
+    "head": "Oma",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "umgangssprachlich · разговорный"
+    }
+  },
+  {
+    "id": "1788586810162",
+    "head": "Großmutter",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-0783",
+    "head": "Mama",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "umgangssprachlich · разговорный"
+    }
+  },
+  {
+    "id": "1788586810863",
+    "head": "Mutter",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1208",
+    "head": "Papa",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "umgangssprachlich · разговорный"
+    }
+  },
+  {
+    "id": "1788586811013",
+    "head": "Vater",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788603824884",
+    "head": "Information",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "list-1785",
+    "head": "Beginn",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "formell · книжный"
+    }
+  },
+  {
+    "id": "1788603842843",
+    "head": "Anfang",
+    "batch": "Существительные",
+    "reason": "уровень 2",
+    "disputed": false,
+    "set": {
+      "register": "neutral · нейтральный"
+    }
+  },
+  {
+    "id": "1788603828917",
+    "head": "Gesicht",
+    "batch": "Существительные",
+    "reason": "уровень 3",
+    "disputed": false,
+    "set": {
+      "definition": "часть головы"
+    }
+  }
+]

@@ -12,7 +12,7 @@
     "examples_ru": ["Я сейчас в пути.", "По дороге мы сделали перерыв."] },
 
   { "rank": 763, "pos": "pronoun", "head": "sowas", "translation": "Такое / что-то подобное",
-    "register": "umgangssprachlich",
+    "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈzoːvas/", "pronunciation_ru": "ЗОвас", "stress_word": "1",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Sowas habe ich noch nie gesehen.", "Sowas passiert eben."],

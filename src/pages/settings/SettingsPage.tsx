@@ -243,6 +243,28 @@ export const SettingsPage = () => {
       </section>
 
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
+        <h2 className="text-[15px] font-semibold">Слова вне частотного списка</h2>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+          У части колоды нет ранга, и это не пропуск: списка 4500 эти слова не знают. Туда
+          не попадают составные существительные вроде <i>Wetterbericht</i>, женские формы
+          профессий и обороты с <i>sein</i>. Набор по природе другой, и его бывает удобно
+          пройти отдельно — тогда очередь идёт только по ним.
+        </p>
+        <Toggle
+          label="Учить только слова вне списка"
+          checked={settings.learn_rankless_only}
+          saving={savingKey === 'learn_rankless_only'}
+          onChange={(value) => update({ learn_rankless_only: value })}
+        />
+        <p className="mt-2 text-[12.5px] leading-relaxed text-muted">
+          Начатые слова из очереди не исчезают: срок повторения у них уже идёт.{' '}
+          <Link to="/words?ranked=0" className="underline underline-offset-2">
+            Посмотреть список
+          </Link>
+        </p>
+      </section>
+
+      <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Оформление</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
           Выбор запоминается в этом браузере, а не в учётной записи: с телефона вечером

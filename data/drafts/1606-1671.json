@@ -125,7 +125,7 @@
     "examples_ru": ["Мяч катится вниз по склону.", "Сверни ковёр!"] },
 
   { "rank": 1626, "pos": "verb", "head": "scheißen", "translation": "Гадить",
-    "register": "derb",
+    "register": "derb · грубый",
     "ipa": "/ˈʃaɪ̯sn̩/", "pronunciation_ru": "ШАЙсн", "stress_infinitive": "1",
     "form_ich": "scheiße", "form_du": "scheißt", "form_er": "scheißt", "form_wir": "scheißen", "form_ihr": "scheißt",
     "rektion": ["ohne Objekt", "auf etw. (Akk.)"],
@@ -172,7 +172,7 @@
 
   { "rank": 1633, "pos": "noun", "head": "Uni", "translation": "Универ",
     "singular": "die Uni", "plural": "die Unis", "genus": "f",
-    "plural_ending": "s", "stress_singular": "1", "register": "umgangssprachlich",
+    "plural_ending": "s", "stress_singular": "1", "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈʊni/", "pronunciation_ru": "Уни",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Ich muss zur Uni.", "Die Unis sind überfüllt."],

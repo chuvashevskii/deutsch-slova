@@ -212,7 +212,7 @@
     "examples_ru": ["Не наступай в лужу!", "Он вошёл в комнату."] },
 
   { "rank": 720, "pos": "adverb", "head": "dran", "translation": "На очереди",
-    "wortart": "наречие", "register": "umgangssprachlich",
+    "wortart": "наречие", "register": "umgangssprachlich · разговорный",
     "ipa": "/dʁan/", "pronunciation_ru": "ДРАН",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Wer ist dran?", "Jetzt bist du dran."],
@@ -348,7 +348,7 @@
     "examples_ru": ["Погода была экстремальной.", "На улице крайне холодно."] },
 
   { "rank": 750, "pos": "adverb", "head": "drin", "translation": "Внутри",
-    "wortart": "наречие", "register": "umgangssprachlich",
+    "wortart": "наречие", "register": "umgangssprachlich · разговорный",
     "ipa": "/dʁɪn/", "pronunciation_ru": "ДРИН",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Was ist da drin?", "Mehr war nicht drin."],

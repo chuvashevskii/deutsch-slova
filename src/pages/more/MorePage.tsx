@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import { useIsAdmin } from '@/entities/settings';
 import { useAuth } from '@/features/auth';
-import { RARE_SECTIONS } from '@/shared/config/navigation';
+import { ADMIN_SECTIONS, RARE_SECTIONS } from '@/shared/config/navigation';
 
 /**
  * Раздел «Ещё» — второй этаж навигации, и только для телефона. Внизу
@@ -15,11 +16,13 @@ import { RARE_SECTIONS } from '@/shared/config/navigation';
  */
 export const MorePage = () => {
   const { user, signOut } = useAuth();
+  const { data: isAdmin } = useIsAdmin();
+  const links = isAdmin ? [...RARE_SECTIONS, ...ADMIN_SECTIONS] : RARE_SECTIONS;
 
   return (
     <div className="py-4">
       <ul className="overflow-hidden rounded-xl border border-line bg-surface">
-        {RARE_SECTIONS.map((link) => (
+        {links.map((link) => (
           <li key={link.to} className="border-b border-line-soft last:border-b-0">
             <Link to={link.to} className="flex items-baseline gap-3 px-4 py-3.5">
               <span className="min-w-0 flex-1">

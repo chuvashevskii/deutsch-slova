@@ -33,6 +33,9 @@ const FeedbackPage = lazy(() =>
 const BacklogPage = lazy(() =>
   import('@/pages/backlog/BacklogPage').then((module) => ({ default: module.BacklogPage })),
 );
+const ReviewPage = lazy(() =>
+  import('@/pages/review/ReviewPage').then((module) => ({ default: module.ReviewPage })),
+);
 
 export const AppRouter = () => (
   <Routes>
@@ -91,6 +94,17 @@ export const AppRouter = () => (
         element={
           <Suspense fallback={<CardSkeleton />}>
             <BacklogPage />
+          </Suspense>
+        }
+      />
+      {/* INFO: страница администратора колоды. Маршрут открыт всем
+          вошедшим, а содержимое — нет: сама страница отвечает отказом.
+          Прятать маршрут не за чем, прятать нечего. */}
+      <Route
+        path="/review"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <ReviewPage />
           </Suspense>
         }
       />

@@ -42,6 +42,8 @@ export interface WordsPageParams {
   query: string;
   /** true — только черновики, false — только сверенные, null — все. */
   draft: boolean | null;
+  /** true — только со своим рангом, false — только вне списка, null — все. */
+  ranked: boolean | null;
   limit: number;
   offset: number;
 }
@@ -62,6 +64,7 @@ const fetchWordsPage = async (params: WordsPageParams): Promise<WordsPageResult>
     // INFO: null здесь значит «не отбирать по сверке», и функция ждёт
     // отсутствия аргумента, а не null: у неё умолчание — «все».
     p_draft: params.draft ?? undefined,
+    p_ranked: params.ranked ?? undefined,
   });
   if (error) throw new Error(error.message);
   return data as unknown as WordsPageResult;
@@ -98,6 +101,8 @@ export interface WordsFacets {
   genus: Record<string, number>;
   /** Сколько карточек ждёт сверки. */
   drafts: number;
+  /** Сколько слов вне частотного списка: ранга у них нет и не будет. */
+  rankless: number;
 }
 
 /** Сколько слов каждой части речи и каждого рода — для подписей в фильтре. */

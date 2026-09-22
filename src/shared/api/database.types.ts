@@ -262,6 +262,7 @@ export type Database = {
           input_other: boolean
           input_verb_forms: boolean
           input_verb_infinitive: boolean
+          learn_rankless_only: boolean
           updated_at: string
           user_id: string
         }
@@ -276,6 +277,7 @@ export type Database = {
           input_other?: boolean
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
+          learn_rankless_only?: boolean
           updated_at?: string
           user_id: string
         }
@@ -290,10 +292,61 @@ export type Database = {
           input_other?: boolean
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
+          learn_rankless_only?: boolean
           updated_at?: string
           user_id?: string
         }
         Relationships: []
+      }
+      word_edits: {
+        Row: {
+          batch: string
+          created_at: string
+          disputed: boolean
+          field: string
+          id: number
+          new_value: string | null
+          note: string | null
+          old_value: string | null
+          reason: string
+          reverted_at: string | null
+          word_id: string
+        }
+        Insert: {
+          batch: string
+          created_at?: string
+          disputed?: boolean
+          field: string
+          id?: number
+          new_value?: string | null
+          note?: string | null
+          old_value?: string | null
+          reason: string
+          reverted_at?: string | null
+          word_id: string
+        }
+        Update: {
+          batch?: string
+          created_at?: string
+          disputed?: boolean
+          field?: string
+          id?: number
+          new_value?: string | null
+          note?: string | null
+          old_value?: string | null
+          reason?: string
+          reverted_at?: string | null
+          word_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "word_edits_word_id_fkey"
+            columns: ["word_id"]
+            isOneToOne: false
+            referencedRelation: "words"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       word_marks: {
         Row: {
@@ -479,7 +532,39 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      word_edits_view: {
+        Row: {
+          batch: string | null
+          created_at: string | null
+          definition: string | null
+          disputed: boolean | null
+          field: string | null
+          head: string | null
+          id: number | null
+          is_draft: boolean | null
+          new_value: string | null
+          note: string | null
+          old_value: string | null
+          pos: string | null
+          rank: number | null
+          reason: string | null
+          register: string | null
+          reverted_at: string | null
+          superseded: boolean | null
+          translation: string | null
+          word_id: string | null
+          wortart: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "word_edits_word_id_fkey"
+            columns: ["word_id"]
+            isOneToOne: false
+            referencedRelation: "words"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
@@ -489,11 +574,17 @@ export type Database = {
       }
       like_escape: { Args: { p_query: string }; Returns: string }
       progress_summary: { Args: never; Returns: Json }
+      revert_word_edit: { Args: { p_edit: number }; Returns: undefined }
       stats_summary: { Args: { p_tz?: string }; Returns: Json }
       word_category: {
         Args: { p_pos: string; p_wortart: string }
         Returns: string
       }
+      word_label: {
+        Args: { p_pos: string; p_wortart: string }
+        Returns: string
+      }
+      word_nests: { Args: { p_kind?: string }; Returns: Json }
       word_status: {
         Args: { card: Database["public"]["Tables"]["cards"]["Row"] }
         Returns: string
@@ -507,6 +598,7 @@ export type Database = {
           p_offset?: number
           p_pos?: string[]
           p_query?: string
+          p_ranked?: boolean
           p_status?: string[]
         }
         Returns: Json

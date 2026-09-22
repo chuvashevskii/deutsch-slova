@@ -59,21 +59,29 @@ const target = () => {
 const { url, key, label } = target();
 
 /**
- * Обязательные поля схемы, которых в партии нет. Пустая строка и ноль
- * здесь не заглушка «потом заполним», а то же, что стоит у карточек
- * из колоды: этих полей нет ни у одной.
+ * Обязательные поля схемы, которых в партии нет.
+ *
+ * Пустое здесь — `null`, как в колоде из Anki. Раньше стояла пустая
+ * строка, и это было расхождение: интерфейс разницы не видит
+ * (`word.komparativ ? … : null` отсекает оба), поэтому она дожила
+ * до момента, когда понадобилось спросить «заполнено ли поле».
+ * Пустая строка проходит проверку на `null` и молча считается
+ * заполненной — а на этом стоит правило о помете регистра.
+ *
+ * Исключение — `definition`: колонка объявлена NOT NULL, и пустая
+ * строка там законное «пусто». Колода пишет так же.
  */
 const TEMPLATE = {
   definition: '',
   frequency: 0,
   corpus_share: 0,
-  singular: '',
-  plural: '',
+  singular: null,
+  plural: null,
   genus: null,
-  suffix: '',
-  plural_ending: '',
-  stress_singular: '',
-  stress_plural: '',
+  suffix: null,
+  plural_ending: null,
+  stress_singular: null,
+  stress_plural: null,
   form_ich: null,
   form_du: null,
   form_er: null,
@@ -82,15 +90,14 @@ const TEMPLATE = {
   rektion: [],
   forms: [],
   form_labels: [],
-  separable_prefix: '',
-  register: '',
-  stress_infinitive: '',
-  wortart: '',
-  komparativ: '',
-  superlativ: '',
-  stress_word: '',
-  // INFO: пустая строка здесь запрещена проверкой: род правила бывает
-  // только m/f/n или отсутствует вовсе.
+  separable_prefix: null,
+  register: null,
+  stress_infinitive: null,
+  wortart: null,
+  komparativ: null,
+  superlativ: null,
+  stress_word: null,
+  // INFO: род правила бывает только m/f/n или отсутствует вовсе.
   rule_genus: null,
 };
 

@@ -317,7 +317,7 @@
     "examples_ru": ["Фирма известна по всему миру.", "Это всемирная проблема."] },
 
   { "rank": 1401, "pos": "noun", "head": "Zeug", "translation": "Вещи / барахло",
-    "singular": "das Zeug", "plural": "", "genus": "n", "register": "umgangssprachlich",
+    "singular": "das Zeug", "plural": "", "genus": "n", "register": "umgangssprachlich · разговорный",
     "ipa": "/t͡sɔɪ̯k/", "pronunciation_ru": "ЦОЙК",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Räum dein Zeug weg!", "Was ist das für ein Zeug?"],
@@ -363,7 +363,7 @@
 
   { "rank": 1410, "pos": "noun", "head": "Info", "translation": "Информация",
     "singular": "die Info", "plural": "die Infos", "genus": "f",
-    "plural_ending": "s", "stress_singular": "1", "register": "umgangssprachlich",
+    "plural_ending": "s", "stress_singular": "1", "register": "umgangssprachlich · разговорный",
     "ipa": "/ˈɪnfo/", "pronunciation_ru": "Инфо",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Danke für die Info!", "Die Infos stehen auf der Webseite."],
