@@ -1,6 +1,6 @@
 ---
 version: "1.0"
-name: "Zweitausend"
+name: "Deutsch für jeden Tag"
 description: "Спокойный бумажный интерфейс словарного тренажёра. Хром нейтральный, цвет несёт только смысл."
 colors:
   bg: "hsl(45 24% 94%)"

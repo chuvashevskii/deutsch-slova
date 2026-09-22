@@ -22,7 +22,7 @@ export const AppLayout = () => {
     <div className="mx-auto min-h-full max-w-[600px] px-4 pb-24">
       <header className="sticky top-0 z-20 flex items-baseline gap-3 border-b border-line-soft bg-bg py-3">
         <span className="font-serif text-lg font-bold tracking-tight">
-          Zwei<span className="text-feminine">tausend</span>
+          Deutsch
         </span>
         <span className="flex-1" />
         <span className="font-mono text-xs tabular-nums text-muted">

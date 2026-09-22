@@ -91,7 +91,7 @@ export const AuthPage = () => {
   return (
     <main className="mx-auto flex min-h-full max-w-md flex-col justify-center px-4 py-16">
       <h1 className="font-serif text-3xl font-bold tracking-tight">
-        Zwei<span className="text-feminine">tausend</span>
+        Deutsch <span className="text-feminine">für jeden Tag</span>
       </h1>
       <p className="mt-3 text-sm leading-relaxed text-muted">
         Немецкие слова по частотности. На обороте карточки — разбор форм: род, суффикс,
