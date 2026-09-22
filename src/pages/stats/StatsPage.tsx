@@ -1,15 +1,21 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useLearnQueue, useProgressSummary, useStatsSummary } from '@/entities/word';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, Skeleton } from '@/shared/ui';
 import { useNow } from '@/shared/lib/useNow';
+import { LoadError, Skeleton } from '@/shared/ui';
+
+import { dayKey, plural } from './statsFormat';
 
 const FORECAST_DAYS = 14;
 const HEATMAP_WEEKS = 16;
 const GENUS_ORDER = ['m', 'f', 'n'] as const;
 const GENUS_ARTICLE: Record<string, string> = { m: 'der', f: 'die', n: 'das' };
+
+const dayMonth = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' });
+const shortDay = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'short' });
+const monthOnly = new Intl.DateTimeFormat('ru-RU', { month: 'short' });
 
 const POS_SHORT: Record<string, string> = {
   noun: 'существительные',
@@ -55,6 +61,9 @@ const Empty = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const StatsPage = () => {
+  // INFO: выбранный день общий для прогноза и тепловой карты — нажатие
+  // в одном месте не должно оставлять подпись в другом.
+  const [pickedDay, setPickedDay] = useState<string | null>(null);
   const { data: stats, isLoading: statsLoading, isError: statsFailed, refetch } = useStatsSummary();
   const { data: progress, isError: progressFailed } = useProgressSummary();
   // INFO: длину очереди спрашиваем у самой очереди, с нулевым лимитом:
@@ -88,12 +97,31 @@ export const StatsPage = () => {
     for (let back = HEATMAP_WEEKS * 7 - 1 + weekdayOffset; back >= 0; back -= 1) {
       const date = new Date(today);
       date.setDate(date.getDate() - back);
-      const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      const key = dayKey(date);
       cells.push({ key, count: perDay[key] ?? 0 });
     }
     const max = Math.max(1, ...Object.values(perDay));
-    return { cells, max, weeks: Math.ceil(cells.length / 7) };
+    const weeks = Math.ceil(cells.length / 7);
+
+    // INFO: подпись месяца ставится над той неделей, где месяц начался,
+    // и только если для неё есть место: иначе «сен» и «окт» наложатся.
+    const months: string[] = [];
+    let previous = '';
+    for (let week = 0; week < weeks; week += 1) {
+      const first = cells[week * 7];
+      const label = first ? monthOnly.format(new Date(`${first.key}T00:00:00`)) : '';
+      months.push(label && label !== previous ? label : '');
+      if (label) previous = label;
+    }
+
+    return { cells, max, weeks, months, today: dayKey(today) };
   }, [stats, now]);
+
+  const pickedHeatmap = useMemo(() => {
+    if (!pickedDay) return null;
+    const cell = heatmap.cells.find((item) => item.key === pickedDay);
+    return cell ? { date: new Date(`${cell.key}T00:00:00`), count: cell.count } : null;
+  }, [pickedDay, heatmap]);
 
   const genusMatrix = useMemo(() => {
     const matrix: Record<string, Record<string, number>> = {
@@ -117,6 +145,12 @@ export const StatsPage = () => {
   const nounsWithGenus = progress?.nounsWithGenus ?? 0;
   const totalWords = Math.max(1, progress?.total ?? 0);
   const forecastMax = Math.max(1, ...forecast);
+  const forecastDays = forecast.map((count, offset) => {
+    const date = new Date(now);
+    date.setDate(date.getDate() + offset);
+    return { key: dayKey(date), date, count };
+  });
+  const pickedForecast = forecastDays.find((day) => day.key === pickedDay) ?? null;
   const forecastTotal = forecast.reduce((sum, value) => sum + value, 0);
 
   // INFO: нули вместо статистики читаются как «вы ничего не делали».
@@ -204,27 +238,47 @@ export const StatsPage = () => {
 
       <Section
         title="Что придёт в ближайшие две недели"
-        note={forecastTotal ? `Столбик — карточки этого дня. Всего ${forecastTotal}.` : undefined}
+        note={forecastTotal ? `Столбик — карточки одного дня. Всего ${forecastTotal}.` : undefined}
       >
         {forecastTotal === 0 ? (
           <Empty>Пока нечего планировать — ни одна карточка ещё не отвечена.</Empty>
         ) : (
           <>
-            <div className="flex h-20 items-end gap-1">
-              {forecast.map((count, index) => (
-                <div
-                  key={index}
-                  title={`${count} карт.`}
-                  className={cn('flex-1 rounded-t-sm', index === 0 ? 'bg-ink' : 'bg-line')}
-                  style={{ height: count ? `${Math.max(6, (100 * count) / forecastMax)}%` : 0 }}
-                />
-              ))}
+            <div className="flex h-24 items-end gap-1 border-b border-line">
+              {forecastDays.map(({ key, date, count }, index) => {
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    aria-label={`${dayMonth.format(date)}: ${count} ${plural(count, 'карточка', 'карточки', 'карточек')}`}
+                    aria-pressed={pickedDay === key}
+                    onClick={() => setPickedDay(pickedDay === key ? null : key)}
+                    className="flex h-full flex-1 flex-col justify-end"
+                  >
+                    <span
+                      className={cn(
+                        'w-full rounded-t-sm',
+                        index === 0 ? 'bg-ink' : 'bg-line',
+                        pickedDay === key && 'bg-neuter',
+                      )}
+                      style={{ height: count ? `${Math.max(6, (100 * count) / forecastMax)}%` : 2 }}
+                    />
+                  </button>
+                );
+              })}
             </div>
             <div className="mt-1.5 flex justify-between font-mono text-[10px] text-faint">
               <span>сегодня</span>
-              <span>+7</span>
-              <span>+13</span>
+              <span>{shortDay.format(new Date(new Date(now).setDate(new Date(now).getDate() + 7)))}</span>
+              <span>{shortDay.format(new Date(new Date(now).setDate(new Date(now).getDate() + 13)))}</span>
             </div>
+            {/* INFO: раньше подписи были «+7» и «+13» — смещение вместо даты
+                читается как загадка, а число карточек не показывалось вовсе. */}
+            <p className="mt-2 text-[12.5px] text-muted">
+              {pickedForecast
+                ? `${dayMonth.format(pickedForecast.date)} — ${pickedForecast.count} ${plural(pickedForecast.count, 'карточка', 'карточки', 'карточек')}`
+                : 'Нажмите на столбик, чтобы увидеть день и число карточек.'}
+            </p>
           </>
         )}
       </Section>
@@ -233,39 +287,68 @@ export const StatsPage = () => {
         title="Активность за четыре месяца"
         note={
           stats?.totalReviews
-            ? `Квадрат — день, насыщенность — число повторений. Активных дней: ${stats?.activeDays ?? 0}, всего ${stats?.totalReviews ?? 0}.`
+            ? `Квадрат — день, насыщенность — число ответов. Дней с ответами: ${stats?.activeDays ?? 0}; ответов всего: ${stats?.totalReviews ?? 0}.`
             : 'Квадрат — день. Заполнится, как только начнёте отвечать.'
         }
       >
         <div className="flex gap-1.5">
-          <div className="grid shrink-0 grid-rows-7 gap-[3px]">
+          <div className="grid shrink-0 grid-rows-7 gap-[3px] pt-[14px]">
             {['пн', '', 'ср', '', 'пт', '', 'вс'].map((label, index) => (
               <span key={index} className="flex items-center font-mono text-[8px] text-faint">
                 {label}
               </span>
             ))}
           </div>
-          <div
-            className="grid min-w-0 flex-1 grid-flow-col grid-rows-7 gap-[3px]"
-            style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
-          >
-            {heatmap.cells.map((cell) => (
-              <i
-                key={cell.key}
-                title={String(cell.count)}
-                className="aspect-square w-full rounded-sm bg-line-soft"
-                style={
-                  cell.count
-                    ? {
-                        backgroundColor: 'hsl(var(--neuter))',
-                        opacity: 0.25 + 0.75 * Math.min(1, cell.count / heatmap.max),
-                      }
-                    : undefined
-                }
-              />
-            ))}
+          <div className="min-w-0 flex-1">
+            {/* INFO: подписи месяцев — единственное, по чему в такой сетке
+                можно понять, куда смотришь. Без них столбцы безымянные. */}
+            <div
+              className="grid gap-[3px] pb-[3px] font-mono text-[8px] text-faint"
+              style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
+            >
+              {heatmap.months.map((label, index) => (
+                <span key={index} className="truncate">
+                  {label}
+                </span>
+              ))}
+            </div>
+            <div
+              className="grid grid-flow-col grid-rows-7 gap-[3px]"
+              style={{ gridTemplateColumns: `repeat(${heatmap.weeks}, minmax(0, 1fr))` }}
+            >
+              {heatmap.cells.map((cell) => {
+                const date = new Date(`${cell.key}T00:00:00`);
+                return (
+                  <button
+                    key={cell.key}
+                    type="button"
+                    aria-label={`${dayMonth.format(date)}: ${cell.count} ${plural(cell.count, 'ответ', 'ответа', 'ответов')}`}
+                    aria-pressed={pickedDay === cell.key}
+                    onClick={() => setPickedDay(pickedDay === cell.key ? null : cell.key)}
+                    className={cn(
+                      'aspect-square w-full rounded-sm bg-line-soft',
+                      cell.key === heatmap.today && 'ring-1 ring-ink',
+                      pickedDay === cell.key && 'ring-1 ring-feminine',
+                    )}
+                    style={
+                      cell.count
+                        ? {
+                            backgroundColor: 'hsl(var(--neuter))',
+                            opacity: 0.25 + 0.75 * Math.min(1, cell.count / heatmap.max),
+                          }
+                        : undefined
+                    }
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
+        <p className="mt-2 text-[12.5px] text-muted">
+          {pickedHeatmap
+            ? `${dayMonth.format(pickedHeatmap.date)} — ${pickedHeatmap.count} ${plural(pickedHeatmap.count, 'ответ', 'ответа', 'ответов')}`
+            : 'Обведённый квадрат — сегодня. Нажмите на любой, чтобы увидеть день и число ответов.'}
+        </p>
       </Section>
 
       <Section
