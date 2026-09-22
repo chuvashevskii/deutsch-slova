@@ -80,6 +80,7 @@ const TEMPLATE = {
   form_wir: null,
   form_ihr: null,
   rektion: [],
+  forms: [],
   separable_prefix: '',
   register: '',
   stress_infinitive: '',

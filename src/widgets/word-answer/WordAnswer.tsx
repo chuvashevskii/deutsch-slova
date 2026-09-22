@@ -136,6 +136,16 @@ export const WordAnswer = ({
         </>
       ) : null}
 
+      {/* INFO: формы, которым нет своего поля: роды определителя
+          (jeder / jede / jedes), варианты написания (vorne / vorn).
+          Без этой строки в карточке оставалось одно слово из трёх,
+          а остальные молча терялись при заливке. */}
+      {word.forms?.length ? (
+        <FormRow label="Formen">
+          <span className="text-[17px] text-muted">{word.forms.join(' · ')}</span>
+        </FormRow>
+      ) : null}
+
       {word.ipa || word.pronunciation_ru ? (
         <div className="mt-3 flex flex-wrap items-baseline gap-3 border-t border-line-soft pt-3">
           {word.ipa ? <span className="font-ipa text-[15px] text-muted">{word.ipa}</span> : null}

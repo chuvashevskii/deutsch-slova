@@ -343,6 +343,7 @@ export type Database = {
           form_ich: string | null
           form_ihr: string | null
           form_wir: string | null
+          forms: string[]
           frequency: number
           genus: string | null
           head: string
@@ -391,6 +392,7 @@ export type Database = {
           form_ich?: string | null
           form_ihr?: string | null
           form_wir?: string | null
+          forms?: string[]
           frequency?: number
           genus?: string | null
           head: string
@@ -439,6 +441,7 @@ export type Database = {
           form_ich?: string | null
           form_ihr?: string | null
           form_wir?: string | null
+          forms?: string[]
           frequency?: number
           genus?: string | null
           head?: string
