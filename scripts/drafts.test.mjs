@@ -31,9 +31,18 @@ const vowelGroups = (word) => {
   return groups;
 };
 
+const BATCH = /^\d{4}-\d{4}\.json$/;
+
 const cards = readdirSync('data/drafts')
-  .filter((name) => name.endsWith('.json'))
+  .filter((name) => BATCH.test(name))
   .flatMap((name) => JSON.parse(readFileSync(`data/drafts/${name}`, 'utf8')));
+
+/**
+ * Ранги, которые решено не заводить. Живут отдельным файлом, а не
+ * в голове: партий больше двадцати, и через десяток легко написать
+ * карточку, от которой уже отказались.
+ */
+const skipped = JSON.parse(readFileSync('data/drafts/skipped.json', 'utf8'));
 
 describe('черновые партии', () => {
   it('есть что проверять', () => {
@@ -94,5 +103,18 @@ describe('черновые партии', () => {
   it('ранги не повторяются: иначе вторая карточка затрёт первую', () => {
     const ranks = cards.map((card) => card.rank);
     expect(new Set(ranks).size).toBe(ranks.length);
+  });
+
+  it('отвергнутые ранги не возвращаются в партии', () => {
+    const banned = new Map(skipped.map((item) => [item.rank, item.word]));
+    const back = cards.filter((card) => banned.has(card.rank));
+    expect(back.map((card) => `${card.rank} ${card.head}`), 'решено не заводить').toEqual([]);
+  });
+
+  it('у каждого пропуска записано, чем он покрыт', () => {
+    for (const item of skipped) {
+      expect(item.covered_by, `${item.rank} ${item.word}`).toBeTruthy();
+      expect(item.reason, `${item.rank} ${item.word}`).toBeTruthy();
+    }
   });
 });
