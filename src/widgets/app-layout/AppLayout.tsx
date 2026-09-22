@@ -25,12 +25,25 @@ const Brand = () => (
  * Счётчик выученного. Пока сводка не пришла, вместо чисел стоит
  * заглушка: ноль здесь означал бы «ничего не выучено», а мы попросту
  * ещё не знаем.
+ *
+ * Знаменатель — **не размер словаря**, а размер того, что попадает
+ * в «Учить»: черновики туда не идут, пока их не включат настройкой.
+ * Поэтому счётчик показывал 1462, когда в списке слов стояло 2585,
+ * и разница ничем не объяснялась. Подпись её называет.
  */
 const Counter = ({ className }: { className?: string }) => {
   const { data: progress, isPending } = useProgressSummary();
   if (isPending) return <Skeleton className={cn('h-3 w-16', className)} />;
+  const hidden = progress ? Math.max(0, progress.drafts) : 0;
   return (
-    <span className={cn('font-mono text-xs tabular-nums text-muted', className)}>
+    <span
+      title={
+        hidden
+          ? `Выучено из тех, что попадают в «Учить». Черновиков ещё ${hidden}, они сюда не входят, пока не включены в настройках.`
+          : 'Выучено из всей колоды'
+      }
+      className={cn('font-mono text-xs tabular-nums text-muted', className)}
+    >
       {progress?.known ?? 0} / {progress?.total ?? 0}
     </span>
   );

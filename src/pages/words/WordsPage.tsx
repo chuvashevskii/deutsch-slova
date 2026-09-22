@@ -489,6 +489,11 @@ export const WordsPage = () => {
 
       <p className="px-0.5 pb-2 font-mono text-[11px] text-faint">
         {facetTotal === 0 || total === facetTotal ? `${total} слов` : `${total} из ${facetTotal}`}
+        {/* INFO: счётчик в шапке считает не словарь, а то, что попадает
+            в «Учить», и при черновиках он меньше. Разница ничем
+            не объяснялась: вверху 1462, здесь 2585. Теперь из строки
+            видно, из чего она складывается. */}
+        {total === facetTotal && facets?.drafts ? ` · черновиков ${facets.drafts}` : ''}
         {pageRows.length > 0 && pageRows.length < total ? ` · показано ${pageRows.length}` : ''}
       </p>
 
