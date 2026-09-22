@@ -1,10 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import {
-  clampPage,
   EMPTY_FILTER,
   isFilterEmpty,
-  PAGE_SIZE,
   readFilter,
   writeFilter,
   type WordsFilter,
@@ -18,7 +16,7 @@ describe('адрес страницы', () => {
   });
 
   it('переживает запись и чтение', () => {
-    const source = filter({ pos: ['noun', 'verb'], genus: ['f'], status: ['known'], query: 'haus', page: 3 });
+    const source = filter({ pos: ['noun', 'verb'], genus: ['f'], status: ['known'], query: 'haus' });
     expect(readFilter(writeFilter(source))).toEqual(source);
   });
 
@@ -26,15 +24,15 @@ describe('адрес страницы', () => {
     const parsed = readFilter(new URLSearchParams('genus=q&status=нет&page=-5'));
     expect(parsed.genus).toEqual([]);
     expect(parsed.status).toEqual([]);
-    expect(parsed.page).toBe(1);
   });
-});
 
-describe('страницы', () => {
-  it('номер не уходит за последнюю страницу', () => {
-    expect(clampPage(99, PAGE_SIZE * 2)).toBe(2);
-    expect(clampPage(0, 10)).toBe(1);
-    expect(clampPage(1, 0)).toBe(1);
+  it('номер страницы из старых ссылок просто игнорируется', () => {
+    // Список стал бесконечным, и «page» в адресе больше не значит ничего.
+    // Сохранённая кем-то ссылка не должна из-за этого ломаться.
+    expect(readFilter(new URLSearchParams('pos=noun&page=7'))).toEqual({
+      ...EMPTY_FILTER,
+      pos: ['noun'],
+    });
   });
 });
 

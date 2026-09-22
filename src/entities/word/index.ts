@@ -7,7 +7,8 @@ export {
   useStatsSummary,
   useWord,
   useWordsFacets,
-  useWordsPage,
+  useWordsInfinite,
+  WORDS_BATCH,
   WORDS_PAGE_QUERY_KEY,
 } from './model/wordsQuery';
 export type {
@@ -18,6 +19,7 @@ export type {
   WordListRow,
   WordsFacets,
   WordsPageResult,
+  WordsQuery,
 } from './model/wordsQuery';
 export { posLabel, registerLabel, VERB_PERSONS } from './model/types';
 export type { PartOfSpeech, Word } from './model/types';

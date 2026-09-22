@@ -18,14 +18,20 @@ const pageState = {
   isLoading: false,
   isError: false,
   refetch: vi.fn(),
+  fetchNextPage: vi.fn(),
+  hasNextPage: false,
+  isFetchingNextPage: false,
 };
+
+/** Бесконечная выборка отдаёт страницы пачками — так же, как в жизни. */
+const chunks = (...pages: Array<{ total: number; rows: unknown[] }>) => ({ pages });
 
 vi.mock('@/entities/word', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/entities/word')>()),
   useLearnQueue: () => queueState,
   useStatsSummary: () => statsState,
   useProgressSummary: () => progressState,
-  useWordsPage: () => pageState,
+  useWordsInfinite: () => pageState,
   useWordsFacets: () => ({ data: undefined }),
   useWord: () => ({ data: undefined, isLoading: false, isError: false }),
 }));
@@ -106,13 +112,13 @@ describe('«Слова» при сбое загрузки', () => {
   });
 
   it('пустая колода по-прежнему называется пустой', () => {
-    pageState.data = { total: 0, rows: [] };
+    pageState.data = chunks({ total: 0, rows: [] });
     show(<WordsPage />);
     expect(screen.getByText(/В колоде пока нет слов/)).toBeInTheDocument();
   });
 
   it('пустой результат поиска — это «ничего не найдено», а не пустая колода', () => {
-    pageState.data = { total: 0, rows: [] };
+    pageState.data = chunks({ total: 0, rows: [] });
     render(
       <MemoryRouter initialEntries={['/words?q=nesuschestvuyuscheeslovo']}>
         <WordsPage />

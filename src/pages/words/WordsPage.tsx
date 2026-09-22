@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import {
@@ -11,23 +11,26 @@ import {
   posLabel,
   useWord,
   useWordsFacets,
-  useWordsPage,
+  useWordsInfinite,
+  WORDS_BATCH,
   type WordListRow,
 } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
-import { LoadError, Skeleton, WordRowsSkeleton } from '@/shared/ui';
+import { LoadError, WordRowsSkeleton } from '@/shared/ui';
 import { WordAnswer } from '@/widgets/word-answer/WordAnswer';
 
 import {
-  clampPage,
   isFilterEmpty,
-  PAGE_SIZE,
   readFilter,
   writeFilter,
   type ProgressFilter,
   type WordsFilter,
 } from './wordsFilter';
+
+/** В строке существительное показывается с артиклем, остальное словарной формой. */
+const headOf = (word: WordListRow): string =>
+  word.pos === 'noun' && word.singular ? word.singular : word.head;
 
 const GENUS_TEXT: Record<string, string> = {
   m: 'text-masculine',
@@ -145,26 +148,99 @@ const WordActions = ({ row }: { row: WordListRow }) => {
   );
 };
 
-/** Полная карточка приходит отдельным запросом — только для раскрытой строки. */
-const ExpandedWord = ({ row }: { row: WordListRow }) => {
-  const { data: word, isLoading, isError } = useWord(row.id);
-  if (isLoading) {
-    return (
-      <div className="py-2">
-        <Skeleton className="h-4 w-1/3" />
-        <Skeleton className="mt-2 h-4 w-1/2" />
-        <Skeleton className="mt-2 h-3 w-2/3" />
-      </div>
-    );
-  }
-  if (isError || !word) {
-    return <p className="py-3 text-center text-[13px] text-bad">Не удалось загрузить карточку</p>;
-  }
+/**
+ * Строка списка вместе с оборотом карточки.
+ *
+ * Пока карточка едет, строка не раскрывается: вместо неё крутится точка
+ * на месте ранга. Заглушка в раскрытом блоке выглядела хуже — список
+ * подпрыгивал сначала под её высоту, потом под настоящую карточку.
+ */
+const WordRow = ({
+  row,
+  isOpen,
+  onToggle,
+}: {
+  row: WordListRow;
+  isOpen: boolean;
+  onToggle: () => void;
+}) => {
+  const status = row.status as ListStatus;
+  const { data: word, isLoading, isError } = useWord(isOpen ? row.id : null);
+
   return (
-    <>
-      <WordAnswer word={word} />
-      <WordActions row={row} />
-    </>
+    <div>
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-busy={isLoading}
+        onClick={onToggle}
+        className={cn(
+          'grid w-full touch-manipulation grid-cols-[30px_1fr_auto] items-center gap-3 border-b border-line-soft px-3.5 py-2.5 text-left',
+          isOpen && 'bg-surface-2',
+        )}
+      >
+        <span className="flex justify-end text-right font-mono text-[11px] tabular-nums text-faint">
+          {isLoading ? (
+            <span
+              aria-label="Загружаем карточку"
+              className="h-3 w-3 animate-spin rounded-full border border-line border-t-muted"
+            />
+          ) : (
+            (row.rank ?? '·')
+          )}
+        </span>
+        <span className="flex min-w-0 flex-col gap-px">
+          <span className="flex min-w-0 items-baseline gap-2">
+            <span
+              className={cn(
+                'truncate font-serif text-[17.5px] font-semibold leading-tight',
+                row.genus ? GENUS_TEXT[row.genus] : undefined,
+              )}
+            >
+              {headOf(row)}
+            </span>
+            <span className="shrink-0 font-mono text-[9.5px] uppercase tracking-wider text-faint">
+              {posLabel(row)}
+            </span>
+          </span>
+          <span className="truncate text-[12.5px] leading-snug text-muted">{row.translation}</span>
+        </span>
+        <span className="flex shrink-0 items-center gap-1">
+          {row.requested ? (
+            <span
+              title="Стоит в очереди на сегодня"
+              className="whitespace-nowrap rounded-full bg-ink px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider text-bg"
+            >
+              сегодня
+            </span>
+          ) : null}
+          <span
+            className={cn(
+              'whitespace-nowrap rounded-full px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider',
+              status === 'known' && 'bg-ok/10 text-ok',
+              status === 'learning' && 'bg-gold/15 text-preposition',
+              status === 'declared' && 'bg-surface-2 text-muted',
+              status === 'new' && 'border border-line-soft text-faint',
+            )}
+          >
+            {STATUS_LABEL[status]}
+          </span>
+        </span>
+      </button>
+
+      {isOpen && isError ? (
+        <div className="border-b border-line-soft bg-surface-2 px-3.5 py-3">
+          <p className="text-center text-[13px] text-bad">Не удалось загрузить карточку</p>
+        </div>
+      ) : null}
+
+      {isOpen && word ? (
+        <div className="border-b border-line-soft bg-surface-2 px-3.5 pb-4 pt-1.5">
+          <WordAnswer word={word} />
+          <WordActions row={row} />
+        </div>
+      ) : null}
+    </div>
   );
 };
 
@@ -175,12 +251,11 @@ export const WordsPage = () => {
   const filter = useMemo(() => readFilter(params), [params]);
   const { data: facets } = useWordsFacets();
 
-  // INFO: условия и страница живут в адресе, а не в состоянии компонента:
+  // INFO: условия отбора живут в адресе, а не в состоянии компонента:
   // так список переживает перезагрузку и его можно передать ссылкой.
+  // Прокрутка в адрес не пишется — смена условий начинает ленту заново.
   const update = (patch: Partial<WordsFilter>) => {
-    const next = { ...filter, ...patch };
-    if (patch.page === undefined) next.page = 1;
-    setParams(writeFilter(next), { replace: true });
+    setParams(writeFilter({ ...filter, ...patch }), { replace: true });
   };
 
   // INFO: артикли — ветка существительного. Выбор артикля включает ветку,
@@ -202,19 +277,40 @@ export const WordsPage = () => {
     isLoading,
     isError: pageFailed,
     refetch: reloadPage,
-  } = useWordsPage({
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useWordsInfinite({
     pos: filter.pos,
     genus: filter.genus,
     status: filter.status,
     query: filter.query,
-    limit: PAGE_SIZE,
-    offset: (Math.max(1, filter.page) - 1) * PAGE_SIZE,
   });
 
-  const total = pageData?.total ?? 0;
-  const pageRows = pageData?.rows ?? [];
-  const page = clampPage(filter.page, total);
-  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const total = pageData?.pages[0]?.total ?? 0;
+  const pageRows = useMemo(() => (pageData?.pages ?? []).flatMap((chunk) => chunk.rows), [pageData]);
+
+  // INFO: подгрузка по появлению метки в поле зрения. Метка стоит под
+  // последней строкой, и браузер сам сообщает, что до неё долистали, —
+  // это дешевле, чем пересчитывать прокрутку на каждый кадр.
+  const sentinel = useRef<HTMLDivElement | null>(null);
+  const loadMore = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) fetchNextPage().catch(() => undefined);
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  useEffect(() => {
+    const target = sentinel.current;
+    if (!target || !hasNextPage) return undefined;
+    // Просим следующую порцию за экран до конца, чтобы лента не замирала.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) loadMore();
+      },
+      { rootMargin: '600px 0px' },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasNextPage, loadMore, pageRows.length]);
   // INFO: счётчики фильтра живут отдельной выборкой с бесконечным кэшем,
   // и одна неудача оставляла бы их пустыми на всю сессию. Судить по ним
   // о размере колоды поэтому нельзя: список объявил бы её пустой.
@@ -236,9 +332,6 @@ export const WordsPage = () => {
       : chosenLabels.length <= 2
         ? chosenLabels.join(', ')
         : `выбрано ${chosenLabels.length}`;
-
-  const headOf = (word: WordListRow): string =>
-    word.pos === 'noun' && word.singular ? word.singular : word.head;
 
   return (
     <div>
@@ -331,7 +424,7 @@ export const WordsPage = () => {
 
       <p className="px-0.5 pb-2 font-mono text-[11px] text-faint">
         {facetTotal === 0 || total === facetTotal ? `${total} слов` : `${total} из ${facetTotal}`}
-        {pageCount > 1 ? ` · страница ${page} из ${pageCount}` : ''}
+        {pageRows.length > 0 && pageRows.length < total ? ` · показано ${pageRows.length}` : ''}
       </p>
 
       {/* INFO: сбой загрузки показывается отдельно от пустого результата.
@@ -364,96 +457,35 @@ export const WordsPage = () => {
             ) : null}
           </div>
         ) : (
-          pageRows.map((word) => {
-            const status = word.status as ListStatus;
-            const isOpen = openId === word.id;
-            return (
-              <div key={word.id}>
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpenId(isOpen ? null : word.id)}
-                  className={cn(
-                    'grid w-full touch-manipulation grid-cols-[30px_1fr_auto] items-center gap-3 border-b border-line-soft px-3.5 py-2.5 text-left',
-                    isOpen && 'bg-surface-2',
-                  )}
-                >
-                  <span className="text-right font-mono text-[11px] tabular-nums text-faint">
-                    {word.rank ?? '·'}
-                  </span>
-                  <span className="flex min-w-0 flex-col gap-px">
-                    <span className="flex min-w-0 items-baseline gap-2">
-                      <span
-                        className={cn(
-                          'truncate font-serif text-[17.5px] font-semibold leading-tight',
-                          word.genus ? GENUS_TEXT[word.genus] : undefined,
-                        )}
-                      >
-                        {headOf(word)}
-                      </span>
-                      <span className="shrink-0 font-mono text-[9.5px] uppercase tracking-wider text-faint">
-                        {posLabel(word)}
-                      </span>
-                    </span>
-                    <span className="truncate text-[12.5px] leading-snug text-muted">
-                      {word.translation}
-                    </span>
-                  </span>
-                  <span className="flex shrink-0 items-center gap-1">
-                    {word.requested ? (
-                      <span
-                        title="Стоит в очереди на сегодня"
-                        className="whitespace-nowrap rounded-full bg-ink px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider text-bg"
-                      >
-                        сегодня
-                      </span>
-                    ) : null}
-                    <span
-                      className={cn(
-                        'whitespace-nowrap rounded-full px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider',
-                        status === 'known' && 'bg-ok/10 text-ok',
-                        status === 'learning' && 'bg-gold/15 text-preposition',
-                        status === 'declared' && 'bg-surface-2 text-muted',
-                        status === 'new' && 'border border-line-soft text-faint',
-                      )}
-                    >
-                      {STATUS_LABEL[status]}
-                    </span>
-                  </span>
-                </button>
-                {isOpen ? (
-                  <div className="border-b border-line-soft bg-surface-2 px-3.5 pb-4 pt-1.5">
-                    <ExpandedWord row={word} />
-                  </div>
-                ) : null}
-              </div>
-            );
-          })
+          pageRows.map((word) => (
+            <WordRow
+              key={word.id}
+              row={word}
+              isOpen={openId === word.id}
+              onToggle={() => setOpenId(openId === word.id ? null : word.id)}
+            />
+          ))
         )}
       </div>
 
-      {pageCount > 1 ? (
-        <div className="flex items-center justify-between gap-2 py-3">
+      {/* INFO: метка для наблюдателя стоит после списка. Кнопка рядом
+          не дубль: наблюдатель бесполезен тому, кто ходит клавиатурой,
+          а не прокруткой, и молчит, если браузер его не поддержал. */}
+      {hasNextPage ? (
+        <div ref={sentinel} className="flex justify-center py-4">
           <button
             type="button"
-            onClick={() => update({ page: page - 1 })}
-            disabled={page <= 1}
-            className="rounded-lg border border-line px-3.5 py-2 text-[13px] disabled:opacity-40"
+            onClick={loadMore}
+            disabled={isFetchingNextPage}
+            className="rounded-lg border border-line px-4 py-2 text-[13px] text-muted disabled:opacity-50"
           >
-            Назад
-          </button>
-          <span className="font-mono text-[11.5px] tabular-nums text-faint">
-            {page} / {pageCount}
-          </span>
-          <button
-            type="button"
-            onClick={() => update({ page: page + 1 })}
-            disabled={page >= pageCount}
-            className="rounded-lg border border-line px-3.5 py-2 text-[13px] disabled:opacity-40"
-          >
-            Вперёд
+            {isFetchingNextPage ? 'Загружаем…' : 'Показать ещё'}
           </button>
         </div>
+      ) : null}
+
+      {!hasNextPage && pageRows.length > WORDS_BATCH ? (
+        <p className="py-4 text-center font-mono text-[11px] text-faint">это все {total} слов</p>
       ) : null}
     </div>
   );

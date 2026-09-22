@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 import { supabase } from '@/shared/api';
 
@@ -42,22 +42,41 @@ export interface WordsPageParams {
   offset: number;
 }
 
-/** Страница списка: отбор, сортировка и счёт делает база. */
-export const useWordsPage = (params: WordsPageParams) =>
-  useQuery({
+/** Сколько строк тянем за раз. Список бесконечный, это размер порции. */
+export const WORDS_BATCH = 50;
+
+export type WordsQuery = Omit<WordsPageParams, 'limit' | 'offset'>;
+
+const fetchWordsPage = async (params: WordsPageParams): Promise<WordsPageResult> => {
+  const { data, error } = await supabase.rpc('words_page', {
+    p_pos: params.pos,
+    p_genus: params.genus,
+    p_status: params.status,
+    p_query: params.query,
+    p_limit: params.limit,
+    p_offset: params.offset,
+  });
+  if (error) throw new Error(error.message);
+  return data as unknown as WordsPageResult;
+};
+
+/**
+ * Список порциями по мере прокрутки.
+ *
+ * Отбор и счёт по-прежнему делает база: каждая порция приходит со своим
+ * общим числом найденного, поэтому знать, когда остановиться, можно без
+ * отдельного запроса. Следующее смещение считается по уже полученным
+ * строкам, а не по номеру порции: так пропуск или повтор невозможны.
+ */
+export const useWordsInfinite = (params: WordsQuery) =>
+  useInfiniteQuery({
     queryKey: [...WORDS_PAGE_QUERY_KEY, params],
-    placeholderData: (previous) => previous,
-    queryFn: async (): Promise<WordsPageResult> => {
-      const { data, error } = await supabase.rpc('words_page', {
-        p_pos: params.pos,
-        p_genus: params.genus,
-        p_status: params.status,
-        p_query: params.query,
-        p_limit: params.limit,
-        p_offset: params.offset,
-      });
-      if (error) throw new Error(error.message);
-      return data as unknown as WordsPageResult;
+    initialPageParam: 0,
+    queryFn: ({ pageParam }) =>
+      fetchWordsPage({ ...params, limit: WORDS_BATCH, offset: pageParam as number }),
+    getNextPageParam: (lastPage, loadedPages) => {
+      const shown = loadedPages.reduce((count, page) => count + page.rows.length, 0);
+      return shown < lastPage.total ? shown : undefined;
     },
   });
 
