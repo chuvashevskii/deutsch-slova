@@ -17,6 +17,7 @@ import {
 } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
+import { useCloseDetails } from '@/shared/lib/useCloseDetails';
 import { Busy, busyClasses, LoadError, WordRowsSkeleton } from '@/shared/ui';
 import { WordAnswer } from '@/widgets/word-answer/WordAnswer';
 
@@ -27,6 +28,9 @@ import {
   type ProgressFilter,
   type WordsFilter,
 } from './wordsFilter';
+
+/** Длинный запрос в подписи кнопки: полностью он её распирает. */
+const shorten = (text: string): string => (text.length > 24 ? `${text.slice(0, 24)}…` : text);
 
 /** В строке существительное показывается с артиклем, остальное словарной формой. */
 const headOf = (word: WordListRow): string =>
@@ -313,6 +317,7 @@ export const WordsPage = () => {
     status: filter.status,
     query: filter.query,
     draft: filter.draft,
+    dual: filter.dual,
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
@@ -342,8 +347,10 @@ export const WordsPage = () => {
   // INFO: счётчики фильтра живут отдельной выборкой с бесконечным кэшем,
   // и одна неудача оставляла бы их пустыми на всю сессию. Судить по ним
   // о размере колоды поэтому нельзя: список объявил бы её пустой.
-  const facetTotal = Object.values(facets?.pos ?? {}).reduce((sum, value) => sum + value, 0);
+  const facetTotal = facets?.total ?? 0;
   const deckIsEmpty = !pageFailed && !isLoading && total === 0 && isFilterEmpty(filter);
+
+  const posMenu = useCloseDetails();
 
   // INFO: артикль подразумевает существительное, поэтому в подписи он
   // приписывается к нему через двоеточие, а не идёт отдельным пунктом.
@@ -352,8 +359,13 @@ export const WordsPage = () => {
   );
   const chosenLabels = filter.pos.map((value) => {
     const short = POS_OPTIONS.find((option) => option.value === value)?.short ?? value;
-    return value === 'noun' && genusLabels.length ? `${short}: ${genusLabels.join(', ')}` : short;
+    if (value === 'noun' && genusLabels.length) return `${short}: ${genusLabels.join(', ')}`;
+    if (value === 'adj' && filter.dual) return `${short}: и как наречие`;
+    return short;
   });
+  // Отбор «и как наречие» бывает выбран и без самой части речи —
+  // тогда он должен быть виден в подписи сам по себе.
+  if (filter.dual && !filter.pos.includes('adj')) chosenLabels.push('прил. · нареч.');
   const selectSummary =
     chosenLabels.length === 0
       ? 'все слова'
@@ -364,7 +376,7 @@ export const WordsPage = () => {
   return (
     <div>
       <div className="flex items-center gap-1.5 pt-3">
-        <details className="relative min-w-0 flex-1">
+        <details ref={posMenu} className="relative min-w-0 flex-1">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-[13.5px] [&::-webkit-details-marker]:hidden">
             <span className={cn('truncate', chosenLabels.length && 'font-medium')}>
               {selectSummary}
@@ -415,6 +427,24 @@ export const WordsPage = () => {
                       </label>
                     ))
                   : null}
+                {/* INFO: «и как наречие» — подкатегория прилагательного,
+                    как род у существительного. Отдельным пунктом в общем
+                    списке она была бы частью речи, которой не бывает:
+                    такое слово и так уже посчитано в обоих отборах. */}
+                {option.value === 'adj' && facets?.dual ? (
+                  <label className="flex cursor-pointer items-center gap-2.5 border-b border-line-soft bg-surface-2 py-2 pl-9 pr-3 text-[13px]">
+                    <input
+                      type="checkbox"
+                      checked={filter.dual === true}
+                      onChange={() => update({ dual: filter.dual ? null : true })}
+                      className="h-3.5 w-3.5 shrink-0 accent-ink"
+                    />
+                    <span className="min-w-0 flex-1 truncate">и как наречие</span>
+                    <span className="shrink-0 font-mono text-[10.5px] tabular-nums text-faint">
+                      {facets.dual}
+                    </span>
+                  </label>
+                ) : null}
               </div>
             ))}
           </div>
@@ -483,16 +513,27 @@ export const WordsPage = () => {
         {isLoading && pageRows.length === 0 ? (
           <WordRowsSkeleton />
         ) : pageRows.length === 0 ? (
-          <div className="p-10 text-center text-sm text-muted">
-            {pageFailed ? 'Список не загрузился' : deckIsEmpty ? 'В колоде пока нет слов' : 'Ничего не найдено'}
+          <div className="flex flex-col items-center gap-3 px-6 py-10 text-center text-sm text-muted">
+            <p>
+              {pageFailed
+                ? 'Список не загрузился'
+                : deckIsEmpty
+                  ? 'В колоде пока нет слов'
+                  : 'Ничего не найдено'}
+            </p>
             {/* INFO: искали слово и не нашли — самый естественный момент
-                предложить завести его на будущее. */}
+                предложить завести его на будущее.
+
+                Колонкой, а не в строку: ссылка была inline-block и вставала
+                вплотную к тексту, без отбивки и без переноса. Длинный
+                запрос в подписи обрезается — иначе кнопка вылезает
+                за карточку. */}
             {!isLoading && !pageFailed && !deckIsEmpty && filter.query.trim() ? (
               <Link
                 to={`/backlog?word=${encodeURIComponent(filter.query.trim())}`}
-                className="mt-3 inline-block rounded-lg border border-line px-3.5 py-2 text-[13px] font-medium text-ink"
+                className="max-w-full rounded-lg border border-line px-3.5 py-2 text-[13px] font-medium text-ink"
               >
-                Предложить «{filter.query.trim()}» в бэклог
+                Предложить «{shorten(filter.query.trim())}» в бэклог
               </Link>
             ) : null}
           </div>

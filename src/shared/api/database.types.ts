@@ -490,6 +490,10 @@ export type Database = {
       like_escape: { Args: { p_query: string }; Returns: string }
       progress_summary: { Args: never; Returns: Json }
       stats_summary: { Args: { p_tz?: string }; Returns: Json }
+      word_categories: {
+        Args: { p_pos: string; p_wortart: string }
+        Returns: string[]
+      }
       word_status: {
         Args: { card: Database["public"]["Tables"]["cards"]["Row"] }
         Returns: string
@@ -498,6 +502,7 @@ export type Database = {
       words_page: {
         Args: {
           p_draft?: boolean
+          p_dual?: boolean
           p_genus?: string[]
           p_limit?: number
           p_offset?: number
