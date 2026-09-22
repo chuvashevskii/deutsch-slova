@@ -45,6 +45,11 @@ const INPUT_GROUPS: Array<{ title: string; hint: string; items: Array<{ key: Inp
     hint: 'Одно поле — само слово.',
     items: [{ key: 'input_other', label: 'Слово' }],
   },
+  {
+    title: 'Формы по родам',
+    hint: 'jeder / jede / jedes и подобные. Спрашиваются только там, где у формы есть своё место: варианты написания вроде vorne / vorn не спрашиваются — слота у них нет.',
+    items: [{ key: 'input_forms', label: 'Формы по родам' }],
+  },
 ];
 
 const THEMES = [

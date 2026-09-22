@@ -81,6 +81,7 @@ const TEMPLATE = {
   form_ihr: null,
   rektion: [],
   forms: [],
+  form_labels: [],
   separable_prefix: '',
   register: '',
   stress_infinitive: '',

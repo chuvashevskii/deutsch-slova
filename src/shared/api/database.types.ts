@@ -256,6 +256,7 @@ export type Database = {
           daily_new_limit: number
           desired_retention: number
           include_drafts: boolean
+          input_forms: boolean
           input_noun_plural: boolean
           input_noun_singular: boolean
           input_other: boolean
@@ -269,6 +270,7 @@ export type Database = {
           daily_new_limit?: number
           desired_retention?: number
           include_drafts?: boolean
+          input_forms?: boolean
           input_noun_plural?: boolean
           input_noun_singular?: boolean
           input_other?: boolean
@@ -282,6 +284,7 @@ export type Database = {
           daily_new_limit?: number
           desired_retention?: number
           include_drafts?: boolean
+          input_forms?: boolean
           input_noun_plural?: boolean
           input_noun_singular?: boolean
           input_other?: boolean
@@ -342,6 +345,7 @@ export type Database = {
           form_er: string | null
           form_ich: string | null
           form_ihr: string | null
+          form_labels: string[]
           form_wir: string | null
           forms: string[]
           frequency: number
@@ -391,6 +395,7 @@ export type Database = {
           form_er?: string | null
           form_ich?: string | null
           form_ihr?: string | null
+          form_labels?: string[]
           form_wir?: string | null
           forms?: string[]
           frequency?: number
@@ -440,6 +445,7 @@ export type Database = {
           form_er?: string | null
           form_ich?: string | null
           form_ihr?: string | null
+          form_labels?: string[]
           form_wir?: string | null
           forms?: string[]
           frequency?: number

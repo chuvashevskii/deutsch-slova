@@ -138,9 +138,24 @@ export const WordAnswer = ({
 
       {/* INFO: формы, которым нет своего поля: роды определителя
           (jeder / jede / jedes), варианты написания (vorne / vorn).
-          Без этой строки в карточке оставалось одно слово из трёх,
-          а остальные молча терялись при заливке. */}
-      {word.forms?.length ? (
+          Без них в карточке оставалось одно слово из трёх, а остальные
+          молча терялись при заливке.
+
+          Подписанные формы идут отдельными строками — как Singular
+          и Plural у существительного: у каждой своё место, и её можно
+          спросить вводом. Неподписанные остаются одной строкой:
+          у вариантов написания слота нет, спрашивать там нечего. */}
+      {word.forms?.length && word.form_labels?.length === word.forms.length ? (
+        word.forms.map((form, index) => (
+          <FormRow
+            key={`${word.form_labels?.[index]}-${form}`}
+            label={word.form_labels?.[index] ?? ''}
+            wrongAnswer={wrongAnswers[`forms_${index}`]}
+          >
+            <SegmentedText segments={plainSegments(form, null)} />
+          </FormRow>
+        ))
+      ) : word.forms?.length ? (
         <FormRow label="Formen">
           <span className="text-[17px] text-muted">{word.forms.join(' · ')}</span>
         </FormRow>

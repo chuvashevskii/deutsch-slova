@@ -22,6 +22,7 @@ export interface AnswerSettings {
   input_verb_infinitive: boolean;
   input_verb_forms: boolean;
   input_other: boolean;
+  input_forms: boolean;
   ask_genus: boolean;
   include_drafts: boolean;
 }
@@ -34,6 +35,7 @@ export const DEFAULT_SETTINGS: AnswerSettings = {
   input_verb_infinitive: false,
   input_verb_forms: false,
   input_other: false,
+  input_forms: false,
   ask_genus: true,
   include_drafts: false,
 };
