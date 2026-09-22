@@ -88,16 +88,6 @@
     "examples_ru": [
       "У меня нет денег.",
       "Это не лучшая мысль."
-    ],
-    "forms": [
-      "kein",
-      "keine",
-      "kein"
-    ],
-    "form_labels": [
-      "der",
-      "die",
-      "das"
     ]
   },
   {
@@ -157,16 +147,6 @@
     "examples_ru": [
       "Я хочу другой цвет.",
       "Остальные уже ушли."
-    ],
-    "forms": [
-      "anderer",
-      "andere",
-      "anderes"
-    ],
-    "form_labels": [
-      "der",
-      "die",
-      "das"
     ]
   },
   {
@@ -260,16 +240,6 @@
     "examples_ru": [
       "На следующей неделе я еду в Вену.",
       "Следующая остановка — главный вокзал."
-    ],
-    "forms": [
-      "nächster",
-      "nächste",
-      "nächstes"
-    ],
-    "form_labels": [
-      "der",
-      "die",
-      "das"
     ]
   },
   {
@@ -330,16 +300,6 @@
     "examples_ru": [
       "Это моя первая машина.",
       "Он живёт на втором этаже."
-    ],
-    "forms": [
-      "erster",
-      "erste",
-      "erstes"
-    ],
-    "form_labels": [
-      "der",
-      "die",
-      "das"
     ]
   },
   {
@@ -358,16 +318,6 @@
     "examples_ru": [
       "Каждый человек другой.",
       "Я гуляю каждый день."
-    ],
-    "forms": [
-      "jeder",
-      "jede",
-      "jedes"
-    ],
-    "form_labels": [
-      "der",
-      "die",
-      "das"
     ]
   },
   {
