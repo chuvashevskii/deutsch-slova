@@ -11,13 +11,18 @@ const HEATMAP_WEEKS = 16;
 const GENUS_ORDER = ['m', 'f', 'n'] as const;
 const GENUS_ARTICLE: Record<string, string> = { m: 'der', f: 'die', n: 'das' };
 
-/** Части частотного списка. «Без ранга» — слов нет в списке 4500. */
+/**
+ * Части частотного списка. `size` — сколько слов в этой части у самого
+ * списка: без него знаменатель врал бы, будто в части 397 слов, тогда
+ * как их 500, а сотни просто нет в колоде. Ровно это и надо видеть.
+ * «Без ранга» — слова, которых в списке 4500 нет вовсе.
+ */
 const BANDS = [
-  { key: '1-500', label: '1–500' },
-  { key: '501-1000', label: '501–1000' },
-  { key: '1001-2000', label: '1001–2000' },
-  { key: '2001-4500', label: '2001–4500' },
-  { key: 'none', label: 'без ранга' },
+  { key: '1-500', label: '1–500', size: 500 },
+  { key: '501-1000', label: '501–1000', size: 500 },
+  { key: '1001-2000', label: '1001–2000', size: 1000 },
+  { key: '2001-4500', label: '2001–4500', size: 2500 },
+  { key: 'none', label: 'без ранга', size: null },
 ] as const;
 
 const POS_SHORT: Record<string, string> = {
@@ -80,15 +85,7 @@ export const StatsPage = () => {
     declared: progress?.declared ?? 0,
   };
   const bands = progress?.bands ?? {};
-  // INFO: первая тысяча — самая ходовая часть языка, и продвижение по ней
-  // отвечает на вопрос «далеко ли я» лучше любой общей доли.
-  const firstThousand = ['1-500', '501-1000'].reduce(
-    (sum, key) => ({
-      known: sum.known + (bands[key]?.known ?? 0),
-      total: sum.total + (bands[key]?.total ?? 0),
-    }),
-    { known: 0, total: 0 },
-  );
+  const deckSize = progress?.total ?? 0;
   const forecast = stats?.forecast ?? new Array<number>(FORECAST_DAYS).fill(0);
 
   // INFO: сетку тепловой карты строит клиент: начало недели и часовой пояс — его
@@ -158,12 +155,9 @@ export const StatsPage = () => {
   return (
     <div className="pb-4">
       <div className="grid grid-cols-2 gap-2 py-3">
-        <Tile value={String(reviewedToday)} label="повторений сегодня" />
-        <Tile value={String(dueNow)} label="ждёт сейчас" />
-        <Tile
-          value={`${firstThousand.known} / ${firstThousand.total}`}
-          label="выучено из первой тысячи"
-        />
+        <Tile value={String(reviewedToday)} label="ответов сегодня" />
+        <Tile value={String(dueNow)} label="просрочено повторений" />
+        <Tile value={`${composition.known} / ${deckSize}`} label="выучено слов" />
         <Tile value={accuracy === null ? '—' : `${accuracy}%`} label="ответов без ошибок" />
       </div>
 
@@ -183,26 +177,34 @@ export const StatsPage = () => {
 
       <Section
         title="Путь по частотности"
-        note="Место слова в списке 4500 самых частых. Знаменатель — сколько слов этой части есть в колоде, а не размер части: чего в колоде нет, того и не выучить."
+        note="Место слова в списке 4500 самых частых. Полоса — вся часть списка; светлым отмечено то, чего в колоде нет вовсе, и это не выучить, пока карточка не заведена."
       >
         <div className="flex flex-col gap-2">
           {BANDS.map((band) => {
             const data = bands[band.key];
             if (!data || data.total === 0) return null;
+            // Знаменатель — размер части списка, а не то, что оказалось
+            // в колоде: иначе пробел в колоде выглядел бы как её край.
+            const scale = band.size ?? data.total;
+            const missing = band.size ? band.size - data.total : 0;
             return (
-              <div
-                key={band.key}
-                className="grid grid-cols-[76px_1fr_62px] items-center gap-2.5 text-[13px]"
-              >
-                <span className="font-mono text-[11.5px] text-muted">{band.label}</span>
-                <span className="flex h-2 overflow-hidden rounded-full bg-line-soft">
-                  <i className="block bg-neuter" style={{ width: `${(100 * data.known) / data.total}%` }} />
-                  <i className="block bg-gold" style={{ width: `${(100 * data.learning) / data.total}%` }} />
-                  <i className="block bg-line" style={{ width: `${(100 * data.declared) / data.total}%` }} />
-                </span>
-                <span className="text-right font-mono text-[11.5px] tabular-nums text-muted">
-                  {data.known} / {data.total}
-                </span>
+              <div key={band.key} className="text-[13px]">
+                <div className="grid grid-cols-[76px_1fr_66px] items-center gap-2.5">
+                  <span className="font-mono text-[11.5px] text-muted">{band.label}</span>
+                  <span className="flex h-2 overflow-hidden rounded-full bg-line-soft">
+                    <i className="block bg-neuter" style={{ width: `${(100 * data.known) / scale}%` }} />
+                    <i className="block bg-gold" style={{ width: `${(100 * data.learning) / scale}%` }} />
+                    <i className="block bg-line" style={{ width: `${(100 * data.declared) / scale}%` }} />
+                  </span>
+                  <span className="text-right font-mono text-[11.5px] tabular-nums text-muted">
+                    {data.known} / {scale}
+                  </span>
+                </div>
+                {missing > 0 ? (
+                  <p className="mt-0.5 pl-[86px] font-mono text-[10.5px] text-faint">
+                    {missing} нет в колоде
+                  </p>
+                ) : null}
               </div>
             );
           })}
