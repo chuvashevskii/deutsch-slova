@@ -1,0 +1,1193 @@
+[
+  {
+    "rank": 1476,
+    "pos": "adj",
+    "head": "hauptsächlich",
+    "translation": "Главным образом",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/ˈhaʊ̯ptzɛçlɪç/",
+    "pronunciation_ru": "ХАУПТзэхьлихь",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Wir essen hauptsächlich Gemüse.",
+      "Das betrifft hauptsächlich junge Leute."
+    ],
+    "examples_ru": [
+      "Мы едим в основном овощи.",
+      "Это касается главным образом молодёжи."
+    ]
+  },
+  {
+    "rank": 1478,
+    "pos": "noun",
+    "head": "Kontrolle",
+    "translation": "Контроль / проверка",
+    "singular": "die Kontrolle",
+    "plural": "die Kontrollen",
+    "genus": "f",
+    "suffix": "e",
+    "plural_ending": "n",
+    "stress_singular": "2",
+    "ipa": "/kɔnˈtʁɔlə/",
+    "pronunciation_ru": "конТРОлэ",
+    "rule_status": "mixed",
+    "rule_label": "-e",
+    "rule_genus": "f",
+    "examples_de": [
+      "Alles ist unter Kontrolle.",
+      "An der Grenze gab es Kontrollen."
+    ],
+    "examples_ru": [
+      "Всё под контролем.",
+      "На границе были проверки."
+    ]
+  },
+  {
+    "rank": 1479,
+    "pos": "verb",
+    "head": "verhindern",
+    "translation": "Предотвращать",
+    "ipa": "/fɛɐ̯ˈhɪndɐn/",
+    "pronunciation_ru": "фэрХИНдэрн",
+    "stress_infinitive": "2",
+    "form_ich": "verhindere",
+    "form_du": "verhinderst",
+    "form_er": "verhindert",
+    "form_wir": "verhindern",
+    "form_ihr": "verhindert",
+    "rektion": [
+      "etwas (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Das konnte niemand verhindern.",
+      "Wir müssen einen Unfall verhindern."
+    ],
+    "examples_ru": [
+      "Этого никто не смог предотвратить.",
+      "Мы должны предотвратить аварию."
+    ]
+  },
+  {
+    "rank": 1480,
+    "pos": "adj",
+    "head": "digital",
+    "translation": "Цифровой",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/diɡiˈtaːl/",
+    "pronunciation_ru": "дигиТАЛЬ",
+    "stress_word": "3",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Wir arbeiten rein digital.",
+      "Das digitale Archiv ist fertig."
+    ],
+    "examples_ru": [
+      "Мы работаем полностью в цифре.",
+      "Цифровой архив готов."
+    ]
+  },
+  {
+    "rank": 1482,
+    "pos": "adverb",
+    "head": "runter",
+    "translation": "Вниз",
+    "wortart": "наречие",
+    "register": "umgangssprachlich",
+    "ipa": "/ˈʁʊntɐ/",
+    "pronunciation_ru": "РУНтэр",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Komm runter!",
+      "Die Preise gehen runter."
+    ],
+    "examples_ru": [
+      "Спускайся!",
+      "Цены идут вниз."
+    ]
+  },
+  {
+    "rank": 1483,
+    "pos": "adj",
+    "head": "menschlich",
+    "translation": "Человеческий / по-человечески",
+    "wortart": "прилагательное и наречие",
+    "komparativ": "menschlicher",
+    "superlativ": "am menschlichsten",
+    "ipa": "/ˈmɛnʃlɪç/",
+    "pronunciation_ru": "МЭНШлихь",
+    "stress_word": "1",
+    "rule_status": "high",
+    "rule_label": "Обычное -er / am -sten",
+    "examples_de": [
+      "Irren ist menschlich.",
+      "Behandle ihn menschlich!"
+    ],
+    "examples_ru": [
+      "Ошибаться — человеческое.",
+      "Обращайся с ним по-человечески!"
+    ]
+  },
+  {
+    "rank": 1485,
+    "pos": "conjunction",
+    "head": "soweit",
+    "translation": "Насколько",
+    "ipa": "/zoˈvaɪ̯t/",
+    "pronunciation_ru": "зоВАЙТ",
+    "stress_word": "2",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Soweit ich weiß, kommt er.",
+      "Soweit alles klar?"
+    ],
+    "examples_ru": [
+      "Насколько я знаю, он придёт.",
+      "Пока всё понятно?"
+    ]
+  },
+  {
+    "rank": 1486,
+    "pos": "noun",
+    "head": "Mühe",
+    "translation": "Усилие / труд",
+    "singular": "die Mühe",
+    "plural": "die Mühen",
+    "genus": "f",
+    "suffix": "e",
+    "plural_ending": "n",
+    "stress_singular": "1",
+    "ipa": "/ˈmyːə/",
+    "pronunciation_ru": "МЮэ",
+    "rule_status": "mixed",
+    "rule_label": "-e",
+    "rule_genus": "f",
+    "examples_de": [
+      "Danke für deine Mühe!",
+      "Es kostet viel Mühe."
+    ],
+    "examples_ru": [
+      "Спасибо за твои старания!",
+      "Это стоит больших усилий."
+    ]
+  },
+  {
+    "rank": 1487,
+    "pos": "noun",
+    "head": "Realität",
+    "translation": "Реальность",
+    "singular": "die Realität",
+    "plural": "die Realitäten",
+    "genus": "f",
+    "suffix": "tät",
+    "plural_ending": "en",
+    "stress_singular": "3",
+    "ipa": "/ʁealiˈtɛːt/",
+    "pronunciation_ru": "рэалиТЭТ",
+    "rule_status": "high",
+    "rule_label": "-tät",
+    "rule_genus": "f",
+    "examples_de": [
+      "Die Realität sieht anders aus.",
+      "Er verliert den Bezug zur Realität."
+    ],
+    "examples_ru": [
+      "Реальность выглядит иначе.",
+      "Он теряет связь с реальностью."
+    ]
+  },
+  {
+    "rank": 1488,
+    "pos": "verb",
+    "head": "nerven",
+    "translation": "Раздражать",
+    "register": "umgangssprachlich",
+    "ipa": "/ˈnɛʁfn̩/",
+    "pronunciation_ru": "НЭРфн",
+    "stress_infinitive": "1",
+    "form_ich": "nerve",
+    "form_du": "nervst",
+    "form_er": "nervt",
+    "form_wir": "nerven",
+    "form_ihr": "nervt",
+    "rektion": [
+      "jemanden (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Der Lärm nervt mich.",
+      "Hör auf, mich zu nerven!"
+    ],
+    "examples_ru": [
+      "Шум меня раздражает.",
+      "Перестань меня доставать!"
+    ]
+  },
+  {
+    "rank": 1489,
+    "pos": "adverb",
+    "head": "nachher",
+    "translation": "Потом",
+    "wortart": "наречие",
+    "ipa": "/naːxˈheːɐ̯/",
+    "pronunciation_ru": "нахХЭР",
+    "stress_word": "2",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Bis nachher!",
+      "Nachher gehen wir spazieren."
+    ],
+    "examples_ru": [
+      "До скорого!",
+      "Потом мы пойдём гулять."
+    ]
+  },
+  {
+    "rank": 1490,
+    "pos": "noun",
+    "head": "Beschreibung",
+    "translation": "Описание",
+    "singular": "die Beschreibung",
+    "plural": "die Beschreibungen",
+    "genus": "f",
+    "suffix": "ung",
+    "plural_ending": "en",
+    "stress_singular": "2",
+    "ipa": "/bəˈʃʁaɪ̯bʊŋ/",
+    "pronunciation_ru": "бэШРАЙбунг",
+    "rule_status": "high",
+    "rule_label": "-ung",
+    "rule_genus": "f",
+    "examples_de": [
+      "Lies zuerst die Beschreibung.",
+      "Die Beschreibungen sind zu kurz."
+    ],
+    "examples_ru": [
+      "Сначала прочитай описание.",
+      "Описания слишком короткие."
+    ]
+  },
+  {
+    "rank": 1492,
+    "pos": "verb",
+    "head": "stammen",
+    "translation": "Происходить / быть родом",
+    "ipa": "/ˈʃtamən/",
+    "pronunciation_ru": "ШТАмэн",
+    "stress_infinitive": "1",
+    "form_ich": "stamme",
+    "form_du": "stammst",
+    "form_er": "stammt",
+    "form_wir": "stammen",
+    "form_ihr": "stammt",
+    "rektion": [
+      "aus etw. (Dat.)",
+      "von jmdm. (Dat.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich stamme aus Polen.",
+      "Das Zitat stammt von Goethe."
+    ],
+    "examples_ru": [
+      "Я родом из Польши.",
+      "Цитата принадлежит Гёте."
+    ]
+  },
+  {
+    "rank": 1493,
+    "pos": "verb",
+    "head": "begrüßen",
+    "translation": "Приветствовать",
+    "ipa": "/bəˈɡʁyːsn̩/",
+    "pronunciation_ru": "бэГРЮсн",
+    "stress_infinitive": "2",
+    "form_ich": "begrüße",
+    "form_du": "begrüßt",
+    "form_er": "begrüßt",
+    "form_wir": "begrüßen",
+    "form_ihr": "begrüßt",
+    "rektion": [
+      "jemanden (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Wir begrüßen unsere Gäste.",
+      "Ich begrüße diese Entscheidung."
+    ],
+    "examples_ru": [
+      "Мы приветствуем наших гостей.",
+      "Я приветствую это решение."
+    ]
+  },
+  {
+    "rank": 1494,
+    "pos": "noun",
+    "head": "Volk",
+    "translation": "Народ",
+    "singular": "das Volk",
+    "plural": "die Völker",
+    "genus": "n",
+    "plural_ending": "er",
+    "ipa": "/fɔlk/",
+    "pronunciation_ru": "ФОЛЬК",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Das Volk hat entschieden.",
+      "Viele Völker leben hier."
+    ],
+    "examples_ru": [
+      "Народ решил.",
+      "Здесь живут многие народы."
+    ]
+  },
+  {
+    "rank": 1495,
+    "pos": "verb",
+    "head": "zurückgehen",
+    "translation": "Снижаться / возвращаться",
+    "separable_prefix": "zurück",
+    "ipa": "/t͡suˈʁʏkɡeːən/",
+    "pronunciation_ru": "цуРЮКгээн",
+    "stress_infinitive": "2",
+    "form_ich": "gehe zurück",
+    "form_du": "gehst zurück",
+    "form_er": "geht zurück",
+    "form_wir": "gehen zurück",
+    "form_ihr": "geht zurück",
+    "rektion": [
+      "ohne Objekt",
+      "auf etw. (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Die Zahlen gehen zurück.",
+      "Geh bitte einen Schritt zurück."
+    ],
+    "examples_ru": [
+      "Цифры снижаются.",
+      "Отойди, пожалуйста, на шаг назад."
+    ]
+  },
+  {
+    "rank": 1496,
+    "pos": "adverb",
+    "head": "außen",
+    "translation": "Снаружи",
+    "wortart": "наречие",
+    "ipa": "/ˈaʊ̯sn̩/",
+    "pronunciation_ru": "АУсн",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Außen ist die Wand weiß.",
+      "Von außen sieht es klein aus."
+    ],
+    "examples_ru": [
+      "Снаружи стена белая.",
+      "Снаружи это выглядит маленьким."
+    ]
+  },
+  {
+    "rank": 1498,
+    "pos": "noun",
+    "head": "Japan",
+    "translation": "Япония",
+    "singular": "das Japan",
+    "plural": "",
+    "genus": "n",
+    "stress_singular": "1",
+    "ipa": "/ˈjaːpan/",
+    "pronunciation_ru": "ЯПан",
+    "rule_status": "high",
+    "rule_label": "Страны и города — без артикля",
+    "rule_genus": "n",
+    "examples_de": [
+      "Japan liegt in Asien.",
+      "Er arbeitet in Japan."
+    ],
+    "examples_ru": [
+      "Япония находится в Азии.",
+      "Он работает в Японии."
+    ]
+  },
+  {
+    "rank": 1499,
+    "pos": "verb",
+    "head": "fürchten",
+    "translation": "Бояться",
+    "ipa": "/ˈfʏʁçtn̩/",
+    "pronunciation_ru": "ФЮРхьтн",
+    "stress_infinitive": "1",
+    "form_ich": "fürchte",
+    "form_du": "fürchtest",
+    "form_er": "fürchtet",
+    "form_wir": "fürchten",
+    "form_ihr": "fürchtet",
+    "rektion": [
+      "etwas (Akk.)",
+      "sich (Akk.) vor etw. (Dat.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich fürchte, das geht nicht.",
+      "Er fürchtet sich vor Spinnen."
+    ],
+    "examples_ru": [
+      "Боюсь, это не получится.",
+      "Он боится пауков."
+    ]
+  },
+  {
+    "rank": 1500,
+    "pos": "adj",
+    "head": "ewig",
+    "translation": "Вечный / целую вечность",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/ˈeːvɪç/",
+    "pronunciation_ru": "Эвихь",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Das dauert ja ewig!",
+      "Nichts ist ewig."
+    ],
+    "examples_ru": [
+      "Это же длится целую вечность!",
+      "Ничто не вечно."
+    ]
+  },
+  {
+    "rank": 1501,
+    "pos": "verb",
+    "head": "erfinden",
+    "translation": "Изобретать",
+    "ipa": "/ɛɐ̯ˈfɪndn̩/",
+    "pronunciation_ru": "эрФИНдн",
+    "stress_infinitive": "2",
+    "form_ich": "erfinde",
+    "form_du": "erfindest",
+    "form_er": "erfindet",
+    "form_wir": "erfinden",
+    "form_ihr": "erfindet",
+    "rektion": [
+      "etwas (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Wer hat das Telefon erfunden?",
+      "Die Geschichte ist erfunden."
+    ],
+    "examples_ru": [
+      "Кто изобрёл телефон?",
+      "История выдумана."
+    ]
+  },
+  {
+    "rank": 1502,
+    "pos": "adj",
+    "head": "negativ",
+    "translation": "Отрицательный",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/ˈneːɡatiːf/",
+    "pronunciation_ru": "НЭгатиф",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Der Test war negativ.",
+      "Denk nicht so negativ!"
+    ],
+    "examples_ru": [
+      "Тест был отрицательным.",
+      "Не думай так негативно!"
+    ]
+  },
+  {
+    "rank": 1503,
+    "pos": "verb",
+    "head": "einschalten",
+    "translation": "Включать",
+    "separable_prefix": "ein",
+    "ipa": "/ˈaɪ̯nʃaltn̩/",
+    "pronunciation_ru": "АЙНшальтн",
+    "stress_infinitive": "1",
+    "form_ich": "schalte ein",
+    "form_du": "schaltest ein",
+    "form_er": "schaltet ein",
+    "form_wir": "schalten ein",
+    "form_ihr": "schaltet ein",
+    "rektion": [
+      "etwas (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Schalt bitte das Radio ein.",
+      "Er schaltete den Computer ein."
+    ],
+    "examples_ru": [
+      "Включи, пожалуйста, радио.",
+      "Он включил компьютер."
+    ]
+  },
+  {
+    "rank": 1504,
+    "pos": "verb",
+    "head": "angreifen",
+    "translation": "Атаковать / нападать",
+    "separable_prefix": "an",
+    "ipa": "/ˈanɡʁaɪ̯fn̩/",
+    "pronunciation_ru": "АНграйфн",
+    "stress_infinitive": "1",
+    "form_ich": "greife an",
+    "form_du": "greifst an",
+    "form_er": "greift an",
+    "form_wir": "greifen an",
+    "form_ihr": "greift an",
+    "rektion": [
+      "jemanden (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Der Hund greift nicht an.",
+      "Er wurde scharf angegriffen."
+    ],
+    "examples_ru": [
+      "Собака не нападает.",
+      "Его резко раскритиковали."
+    ]
+  },
+  {
+    "rank": 1505,
+    "pos": "noun",
+    "head": "Rede",
+    "translation": "Речь / выступление",
+    "singular": "die Rede",
+    "plural": "die Reden",
+    "genus": "f",
+    "suffix": "e",
+    "plural_ending": "n",
+    "stress_singular": "1",
+    "ipa": "/ˈʁeːdə/",
+    "pronunciation_ru": "РЭдэ",
+    "rule_status": "mixed",
+    "rule_label": "-e",
+    "rule_genus": "f",
+    "examples_de": [
+      "Seine Rede war kurz.",
+      "Davon war nie die Rede."
+    ],
+    "examples_ru": [
+      "Его речь была короткой.",
+      "Об этом речи никогда не шло."
+    ]
+  },
+  {
+    "rank": 1506,
+    "pos": "verb",
+    "head": "kleben",
+    "translation": "Клеить / приклеивать",
+    "ipa": "/ˈkleːbn̩/",
+    "pronunciation_ru": "КЛЭбн",
+    "stress_infinitive": "1",
+    "form_ich": "klebe",
+    "form_du": "klebst",
+    "form_er": "klebt",
+    "form_wir": "kleben",
+    "form_ihr": "klebt",
+    "rektion": [
+      "etwas (Akk.)",
+      "an etw. (Dat.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Kleb den Zettel an die Tür.",
+      "Meine Hände kleben."
+    ],
+    "examples_ru": [
+      "Приклей записку на дверь.",
+      "У меня липкие руки."
+    ]
+  },
+  {
+    "rank": 1507,
+    "pos": "adj",
+    "head": "dankbar",
+    "translation": "Благодарный",
+    "wortart": "прилагательное",
+    "komparativ": "dankbarer",
+    "superlativ": "am dankbarsten",
+    "ipa": "/ˈdaŋkbaːɐ̯/",
+    "pronunciation_ru": "ДАНКбар",
+    "stress_word": "1",
+    "rule_status": "high",
+    "rule_label": "Обычное -er / am -sten",
+    "examples_de": [
+      "Ich bin dir sehr dankbar.",
+      "Er ist ein dankbarer Zuhörer."
+    ],
+    "examples_ru": [
+      "Я тебе очень благодарен.",
+      "Он благодарный слушатель."
+    ]
+  },
+  {
+    "rank": 1508,
+    "pos": "verb",
+    "head": "erschöpfen",
+    "translation": "Изматывать / истощать",
+    "ipa": "/ɛɐ̯ˈʃœpfn̩/",
+    "pronunciation_ru": "эрШЁПфн",
+    "stress_infinitive": "2",
+    "form_ich": "erschöpfe",
+    "form_du": "erschöpfst",
+    "form_er": "erschöpft",
+    "form_wir": "erschöpfen",
+    "form_ihr": "erschöpft",
+    "rektion": [
+      "jemanden (Akk.)",
+      "etwas (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Die Reise hat mich erschöpft.",
+      "Die Vorräte sind erschöpft."
+    ],
+    "examples_ru": [
+      "Поездка меня вымотала.",
+      "Запасы исчерпаны."
+    ]
+  },
+  {
+    "rank": 1509,
+    "pos": "adverb",
+    "head": "teilweise",
+    "translation": "Частично",
+    "wortart": "наречие",
+    "ipa": "/ˈtaɪ̯lvaɪ̯zə/",
+    "pronunciation_ru": "ТАЙЛЬвайзэ",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Das stimmt nur teilweise.",
+      "Die Straße ist teilweise gesperrt."
+    ],
+    "examples_ru": [
+      "Это верно лишь отчасти.",
+      "Улица частично перекрыта."
+    ]
+  },
+  {
+    "rank": 1510,
+    "pos": "verb",
+    "head": "murmeln",
+    "translation": "Бормотать",
+    "ipa": "/ˈmʊʁml̩n/",
+    "pronunciation_ru": "МУРмльн",
+    "stress_infinitive": "1",
+    "form_ich": "murmle",
+    "form_du": "murmelst",
+    "form_er": "murmelt",
+    "form_wir": "murmeln",
+    "form_ihr": "murmelt",
+    "rektion": [
+      "etwas (Akk.)",
+      "ohne Objekt"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Er murmelte etwas vor sich hin.",
+      "Murmle nicht, sprich laut!"
+    ],
+    "examples_ru": [
+      "Он что-то пробормотал себе под нос.",
+      "Не бормочи, говори громко!"
+    ]
+  },
+  {
+    "rank": 1511,
+    "pos": "adverb",
+    "head": "beispielsweise",
+    "translation": "Например",
+    "wortart": "наречие",
+    "ipa": "/ˈbaɪ̯ʃpiːlsvaɪ̯zə/",
+    "pronunciation_ru": "БАЙшпильсвайзэ",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Nimm beispielsweise diesen Fall.",
+      "Beispielsweise könnten wir laufen."
+    ],
+    "examples_ru": [
+      "Возьми, например, этот случай.",
+      "Например, мы могли бы пойти пешком."
+    ]
+  },
+  {
+    "rank": 1512,
+    "pos": "noun",
+    "head": "Stoff",
+    "translation": "Ткань / материал",
+    "singular": "der Stoff",
+    "plural": "die Stoffe",
+    "genus": "m",
+    "plural_ending": "e",
+    "ipa": "/ʃtɔf/",
+    "pronunciation_ru": "ШТОФ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Der Stoff fühlt sich weich an.",
+      "Gefährliche Stoffe lagern hier."
+    ],
+    "examples_ru": [
+      "Ткань мягкая на ощупь.",
+      "Здесь хранятся опасные вещества."
+    ]
+  },
+  {
+    "rank": 1513,
+    "pos": "adj",
+    "head": "finanziell",
+    "translation": "Финансовый",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/finanˈt͡si̯ɛl/",
+    "pronunciation_ru": "финанЦИЭЛЬ",
+    "stress_word": "3",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Wir haben finanzielle Probleme.",
+      "Sie unterstützt ihn finanziell."
+    ],
+    "examples_ru": [
+      "У нас финансовые проблемы.",
+      "Она поддерживает его материально."
+    ]
+  },
+  {
+    "rank": 1516,
+    "pos": "noun",
+    "head": "Sand",
+    "translation": "Песок",
+    "singular": "der Sand",
+    "plural": "",
+    "genus": "m",
+    "ipa": "/zant/",
+    "pronunciation_ru": "ЗАНТ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Der Sand ist heiß.",
+      "Kinder spielen im Sand."
+    ],
+    "examples_ru": [
+      "Песок горячий.",
+      "Дети играют в песке."
+    ]
+  },
+  {
+    "rank": 1517,
+    "pos": "verb",
+    "head": "binden",
+    "translation": "Связывать / обвязывать",
+    "ipa": "/ˈbɪndn̩/",
+    "pronunciation_ru": "БИНдн",
+    "stress_infinitive": "1",
+    "form_ich": "binde",
+    "form_du": "bindest",
+    "form_er": "bindet",
+    "form_wir": "binden",
+    "form_ihr": "bindet",
+    "rektion": [
+      "etwas (Akk.)",
+      "an etw. (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Bind dir die Schuhe!",
+      "Der Vertrag bindet beide Seiten."
+    ],
+    "examples_ru": [
+      "Завяжи шнурки!",
+      "Договор связывает обе стороны."
+    ]
+  },
+  {
+    "rank": 1519,
+    "pos": "adverb",
+    "head": "voran",
+    "translation": "Вперёд / впереди",
+    "wortart": "наречие",
+    "ipa": "/foˈʁan/",
+    "pronunciation_ru": "фоРАН",
+    "stress_word": "2",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Die Arbeit geht gut voran.",
+      "Er ging voran."
+    ],
+    "examples_ru": [
+      "Работа хорошо продвигается.",
+      "Он шёл впереди."
+    ]
+  },
+  {
+    "rank": 1520,
+    "pos": "noun",
+    "head": "Planet",
+    "translation": "Планета",
+    "singular": "der Planet",
+    "plural": "die Planeten",
+    "genus": "m",
+    "plural_ending": "en",
+    "stress_singular": "2",
+    "ipa": "/plaˈneːt/",
+    "pronunciation_ru": "плаНЭТ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Die Erde ist ein Planet.",
+      "Acht Planeten umkreisen die Sonne."
+    ],
+    "examples_ru": [
+      "Земля — планета.",
+      "Восемь планет вращаются вокруг Солнца."
+    ]
+  },
+  {
+    "rank": 1521,
+    "pos": "adj",
+    "head": "theoretisch",
+    "translation": "Теоретический / теоретически",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/teoˈʁeːtɪʃ/",
+    "pronunciation_ru": "тэоРЭтиш",
+    "stress_word": "2",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Theoretisch ist das möglich.",
+      "Das ist reine theoretische Physik."
+    ],
+    "examples_ru": [
+      "Теоретически это возможно.",
+      "Это чистая теоретическая физика."
+    ]
+  },
+  {
+    "rank": 1523,
+    "pos": "noun",
+    "head": "Intelligenz",
+    "translation": "Интеллект",
+    "singular": "die Intelligenz",
+    "plural": "",
+    "genus": "f",
+    "stress_singular": "4",
+    "ipa": "/ɪntɛliˈɡɛnt͡s/",
+    "pronunciation_ru": "интэлиГЭНЦ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Künstliche Intelligenz verändert alles.",
+      "Seine Intelligenz ist beeindruckend."
+    ],
+    "examples_ru": [
+      "Искусственный интеллект всё меняет.",
+      "Его интеллект впечатляет."
+    ]
+  },
+  {
+    "rank": 1524,
+    "pos": "adj",
+    "head": "flach",
+    "translation": "Плоский / равнинный",
+    "wortart": "прилагательное",
+    "komparativ": "flacher",
+    "superlativ": "am flachsten",
+    "ipa": "/flax/",
+    "pronunciation_ru": "ФЛАХ",
+    "rule_status": "high",
+    "rule_label": "Обычное -er / am -sten",
+    "examples_de": [
+      "Das Land ist hier sehr flach.",
+      "Nimm einen flachen Teller."
+    ],
+    "examples_ru": [
+      "Местность здесь очень равнинная.",
+      "Возьми плоскую тарелку."
+    ]
+  },
+  {
+    "rank": 1525,
+    "pos": "noun",
+    "head": "Ausdruck",
+    "translation": "Выражение",
+    "singular": "der Ausdruck",
+    "plural": "die Ausdrücke",
+    "genus": "m",
+    "plural_ending": "e",
+    "stress_singular": "1",
+    "ipa": "/ˈaʊ̯sdʁʊk/",
+    "pronunciation_ru": "АУСдрук",
+    "rule_status": "mixed",
+    "rule_label": "Основа глагола без окончания",
+    "rule_genus": "m",
+    "examples_de": [
+      "Das ist ein fester Ausdruck.",
+      "Sein Gesicht verlor jeden Ausdruck."
+    ],
+    "examples_ru": [
+      "Это устойчивое выражение.",
+      "Его лицо потеряло всякое выражение."
+    ]
+  },
+  {
+    "rank": 1526,
+    "pos": "verb",
+    "head": "sich entschließen",
+    "translation": "Решаться",
+    "ipa": "/ɛntˈʃliːsn̩/",
+    "pronunciation_ru": "энтШЛИсн",
+    "stress_infinitive": "2",
+    "form_ich": "entschließe mich",
+    "form_du": "entschließt dich",
+    "form_er": "entschließt sich",
+    "form_wir": "entschließen uns",
+    "form_ihr": "entschließt euch",
+    "rektion": [
+      "sich (Akk.) zu etw. (Dat.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Ich habe mich zum Umzug entschlossen.",
+      "Entschließ dich endlich!"
+    ],
+    "examples_ru": [
+      "Я решился на переезд.",
+      "Решайся уже наконец!"
+    ]
+  },
+  {
+    "rank": 1527,
+    "pos": "adverb",
+    "head": "erneut",
+    "translation": "Снова / повторно",
+    "wortart": "наречие",
+    "ipa": "/ɛɐ̯ˈnɔɪ̯t/",
+    "pronunciation_ru": "эрНОЙТ",
+    "stress_word": "2",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Er versuchte es erneut.",
+      "Erneut gab es Verspätungen."
+    ],
+    "examples_ru": [
+      "Он попробовал снова.",
+      "Снова были задержки."
+    ]
+  },
+  {
+    "rank": 1529,
+    "pos": "noun",
+    "head": "Laut",
+    "translation": "Звук (речи)",
+    "singular": "der Laut",
+    "plural": "die Laute",
+    "genus": "m",
+    "plural_ending": "e",
+    "ipa": "/laʊ̯t/",
+    "pronunciation_ru": "ЛАУТ",
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Dieser Laut ist schwer zu sprechen.",
+      "Sie gab keinen Laut von sich."
+    ],
+    "examples_ru": [
+      "Этот звук трудно произнести.",
+      "Она не издала ни звука."
+    ]
+  },
+  {
+    "rank": 1530,
+    "pos": "verb",
+    "head": "tauchen",
+    "translation": "Нырять / погружаться",
+    "ipa": "/ˈtaʊ̯xn̩/",
+    "pronunciation_ru": "ТАУхн",
+    "stress_infinitive": "1",
+    "form_ich": "tauche",
+    "form_du": "tauchst",
+    "form_er": "taucht",
+    "form_wir": "tauchen",
+    "form_ihr": "taucht",
+    "rektion": [
+      "ohne Objekt",
+      "in etw. (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Im Urlaub tauchen wir viel.",
+      "Plötzlich tauchte er wieder auf."
+    ],
+    "examples_ru": [
+      "В отпуске мы много ныряем.",
+      "Внезапно он снова появился."
+    ]
+  },
+  {
+    "rank": 1532,
+    "pos": "adj",
+    "head": "körperlich",
+    "translation": "Физический / телесный",
+    "wortart": "прилагательное и наречие",
+    "ipa": "/ˈkœʁpɐlɪç/",
+    "pronunciation_ru": "КЁРпэрлихь",
+    "stress_word": "1",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
+    "examples_de": [
+      "Die Arbeit ist körperlich anstrengend.",
+      "Er ist körperlich fit."
+    ],
+    "examples_ru": [
+      "Работа физически тяжёлая.",
+      "Он физически в форме."
+    ]
+  },
+  {
+    "rank": 1533,
+    "pos": "verb",
+    "head": "wiedersehen",
+    "translation": "Снова увидеть",
+    "separable_prefix": "wieder",
+    "ipa": "/ˈviːdɐzeːən/",
+    "pronunciation_ru": "ВИдэрзээн",
+    "stress_infinitive": "1",
+    "form_ich": "sehe wieder",
+    "form_du": "siehst wieder",
+    "form_er": "sieht wieder",
+    "form_wir": "sehen wieder",
+    "form_ihr": "seht wieder",
+    "rektion": [
+      "jemanden (Akk.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Wann sehen wir uns wieder?",
+      "Ich habe ihn nie wiedergesehen."
+    ],
+    "examples_ru": [
+      "Когда мы снова увидимся?",
+      "Я больше никогда его не видел."
+    ]
+  },
+  {
+    "rank": 1535,
+    "pos": "verb",
+    "head": "bekennen",
+    "translation": "Признавать / признаваться",
+    "ipa": "/bəˈkɛnən/",
+    "pronunciation_ru": "бэКЭнэн",
+    "stress_infinitive": "2",
+    "form_ich": "bekenne",
+    "form_du": "bekennst",
+    "form_er": "bekennt",
+    "form_wir": "bekennen",
+    "form_ihr": "bekennt",
+    "rektion": [
+      "etwas (Akk.)",
+      "sich (Akk.) zu etw. (Dat.)"
+    ],
+    "rule_status": "none",
+    "rule_label": "",
+    "examples_de": [
+      "Er bekannte seine Schuld.",
+      "Sie bekennt sich zu ihren Fehlern."
+    ],
+    "examples_ru": [
+      "Он признал свою вину.",
+      "Она признаёт свои ошибки."
+    ]
+  },
+  {
+    "rank": 1536,
+    "pos": "noun",
+    "head": "Bevölkerung",
+    "translation": "Население",
+    "singular": "die Bevölkerung",
+    "plural": "die Bevölkerungen",
+    "genus": "f",
+    "suffix": "ung",
+    "plural_ending": "en",
+    "stress_singular": "2",
+    "ipa": "/bəˈfœlkəʁʊŋ/",
+    "pronunciation_ru": "бэФЁЛЬкэрунг",
+    "rule_status": "high",
+    "rule_label": "-ung",
+    "rule_genus": "f",
+    "examples_de": [
+      "Die Bevölkerung wächst.",
+      "Ein Teil der Bevölkerung protestiert."
+    ],
+    "examples_ru": [
+      "Население растёт.",
+      "Часть населения протестует."
+    ]
+  },
+  {
+    "rank": 1537,
+    "pos": "noun",
+    "head": "Prinzip",
+    "translation": "Принцип",
+    "singular": "das Prinzip",
+    "plural": "die Prinzipien",
+    "genus": "n",
+    "plural_ending": "ien",
+    "stress_singular": "2",
+    "ipa": "/pʁɪnˈt͡siːp/",
+    "pronunciation_ru": "принЦИП",
+    "rule_status": "mixed",
+    "rule_label": "Многие интернационализмы",
+    "rule_genus": "n",
+    "examples_de": [
+      "Im Prinzip bin ich einverstanden.",
+      "Er hat klare Prinzipien."
+    ],
+    "examples_ru": [
+      "В принципе я согласен.",
+      "У него чёткие принципы."
+    ]
+  }
+]
