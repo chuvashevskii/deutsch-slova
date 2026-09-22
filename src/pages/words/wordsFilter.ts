@@ -19,6 +19,12 @@ export interface WordsFilter {
   genus: string[];
   status: ProgressFilter[];
   query: string;
+  /**
+   * Отбор по сверке: true — только черновики, null — все. Отдельно
+   * от `status`, потому что это не состояние знания, а происхождение
+   * карточки: черновик бывает и новым, и уже выученным.
+   */
+  draft: boolean | null;
 }
 
 export const EMPTY_FILTER: WordsFilter = {
@@ -26,13 +32,15 @@ export const EMPTY_FILTER: WordsFilter = {
   genus: [],
   status: [],
   query: '',
+  draft: null,
 };
 
 export const isFilterEmpty = (filter: WordsFilter): boolean =>
   filter.pos.length === 0 &&
   filter.genus.length === 0 &&
   filter.status.length === 0 &&
-  filter.query === '';
+  filter.query === '' &&
+  filter.draft === null;
 
 const splitList = (value: string | null): string[] =>
   value ? value.split(',').filter(Boolean) : [];
@@ -45,6 +53,7 @@ export const readFilter = (params: URLSearchParams): WordsFilter => {
       PROGRESS_VALUES.includes(value as ProgressFilter),
     ),
     query: params.get('q') ?? '',
+    draft: params.get('draft') === '1' ? true : params.get('draft') === '0' ? false : null,
   };
 };
 
@@ -58,6 +67,7 @@ export const writeFilter = (filter: WordsFilter): URLSearchParams => {
   if (filter.genus.length) params.set('genus', filter.genus.join(','));
   if (filter.status.length) params.set('status', filter.status.join(','));
   if (filter.query) params.set('q', filter.query);
+  if (filter.draft !== null) params.set('draft', filter.draft ? '1' : '0');
   return params;
 };
 

@@ -23,6 +23,7 @@ export interface AnswerSettings {
   input_verb_forms: boolean;
   input_other: boolean;
   ask_genus: boolean;
+  include_drafts: boolean;
 }
 
 export const DEFAULT_SETTINGS: AnswerSettings = {
@@ -34,6 +35,7 @@ export const DEFAULT_SETTINGS: AnswerSettings = {
   input_verb_forms: false,
   input_other: false,
   ask_genus: true,
+  include_drafts: false,
 };
 
 /** Допустимые значения дневного лимита новых слов. */

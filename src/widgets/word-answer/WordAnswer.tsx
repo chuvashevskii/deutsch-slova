@@ -18,6 +18,8 @@ import {
   verbFormSegments,
 } from '@/shared/lib/german';
 
+import { DraftNotice } from './DraftNotice';
+
 export type WrongAnswers = Partial<Record<string, string>>;
 
 interface WordAnswerProps {
@@ -47,6 +49,7 @@ export const WordAnswer = ({
 
   return (
     <div>
+      <DraftNotice word={word} />
       {word.pos === 'noun' ? (
         <>
           {word.singular ? (

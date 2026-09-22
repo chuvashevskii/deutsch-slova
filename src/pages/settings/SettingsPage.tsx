@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   DEFAULT_SETTINGS,
@@ -9,6 +10,7 @@ import {
   useUserSettings,
   type AnswerSettings,
 } from '@/entities/settings';
+import { useProgressSummary } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { useTheme } from '@/features/theme';
 import { cn } from '@/shared/lib/cn';
@@ -82,6 +84,7 @@ export const SettingsPage = () => {
   const saveSettings = useSaveSettings();
   const saveNickname = useSaveNickname();
   const theme = useTheme();
+  const { data: progress } = useProgressSummary();
 
   // INFO: черновик пуст, пока человек не начал править: показывается то, что
   // пришло из базы. Так поле не приходится досылать эффектом, когда
@@ -205,6 +208,29 @@ export const SettingsPage = () => {
             </button>
           ))}
         </div>
+      </section>
+
+      <section className="mt-4 rounded-xl border border-line bg-surface p-4">
+        <h2 className="text-[15px] font-semibold">Черновые карточки</h2>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+          Слова, собранные по частотному списку, а не взятые из готовой колоды: разбор у них
+          выведен автоматически и человеком не сверен. В списке слов они видны всегда
+          и помечены, а в «Учить» попадают только с этой настройкой.
+        </p>
+        <Toggle
+          label="Давать черновики в «Учить»"
+          checked={settings.include_drafts}
+          saving={savingKey === 'include_drafts'}
+          onChange={(value) => update({ include_drafts: value })}
+        />
+        {progress?.drafts ? (
+          <p className="mt-2 text-[12.5px] leading-relaxed text-muted">
+            Ждут сверки: {progress.drafts}.{' '}
+            <Link to="/words?draft=1" className="underline underline-offset-2">
+              Посмотреть список
+            </Link>
+          </p>
+        ) : null}
       </section>
 
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">

@@ -8,7 +8,9 @@ export {
   useWord,
   useWordsFacets,
   useWordsInfinite,
+  WORD_QUERY_KEY,
   WORDS_BATCH,
+  WORDS_FACETS_QUERY_KEY,
   WORDS_PAGE_QUERY_KEY,
 } from './model/wordsQuery';
 export type {
@@ -20,6 +22,7 @@ export type {
   WordsPageResult,
   WordsQuery,
 } from './model/wordsQuery';
+export { useConfirmWord } from './model/confirmQuery';
 export { posLabel, registerLabel, VERB_PERSONS } from './model/types';
 export type { PartOfSpeech, Word } from './model/types';
 export { AudioButton } from './ui/AudioButton';

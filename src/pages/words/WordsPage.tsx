@@ -219,6 +219,16 @@ const WordRow = ({
           <span className="truncate text-[12.5px] leading-snug text-muted">{row.translation}</span>
         </span>
         <span className="flex shrink-0 items-center gap-1">
+          {/* INFO: черновик виден до раскрытия строки. Иначе сверять
+              нечего: пришлось бы открывать каждую карточку подряд. */}
+          {row.draft ? (
+            <span
+              title="Черновик: разбор не сверен человеком"
+              className="whitespace-nowrap rounded-full border border-dashed border-gold px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider text-preposition"
+            >
+              черновик
+            </span>
+          ) : null}
           {row.requested ? (
             <span
               title="Стоит в очереди на сегодня"
@@ -302,6 +312,7 @@ export const WordsPage = () => {
     genus: filter.genus,
     status: filter.status,
     query: filter.query,
+    draft: filter.draft,
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
@@ -429,6 +440,18 @@ export const WordsPage = () => {
             {option.label}
           </Chip>
         ))}
+        {/* INFO: отбор по сверке стоит отдельно от состояний знания:
+            черновик бывает и новым, и уже выученным, поэтому в один ряд
+            с «новые / учу / знаю» он не встаёт. Показывается, только
+            когда черновики вообще есть. */}
+        {facets?.drafts ? (
+          <Chip
+            active={filter.draft === true}
+            onClick={() => update({ draft: filter.draft === true ? null : true })}
+          >
+            черновики {facets.drafts}
+          </Chip>
+        ) : null}
       </div>
 
       <input

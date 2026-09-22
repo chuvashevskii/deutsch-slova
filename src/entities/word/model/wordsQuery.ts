@@ -26,6 +26,8 @@ export interface WordListRow {
   requested: boolean;
   /** На слово уже отвечали — значит есть что сбрасывать. */
   has_progress: boolean;
+  /** Разбор собран автоматически и человеком не сверен. */
+  draft: boolean;
 }
 
 export interface WordsPageResult {
@@ -38,6 +40,8 @@ export interface WordsPageParams {
   genus: string[];
   status: string[];
   query: string;
+  /** true — только черновики, false — только сверенные, null — все. */
+  draft: boolean | null;
   limit: number;
   offset: number;
 }
@@ -55,6 +59,9 @@ const fetchWordsPage = async (params: WordsPageParams): Promise<WordsPageResult>
     p_query: params.query,
     p_limit: params.limit,
     p_offset: params.offset,
+    // INFO: null здесь значит «не отбирать по сверке», и функция ждёт
+    // отсутствия аргумента, а не null: у неё умолчание — «все».
+    p_draft: params.draft ?? undefined,
   });
   if (error) throw new Error(error.message);
   return data as unknown as WordsPageResult;
@@ -83,6 +90,8 @@ export const useWordsInfinite = (params: WordsQuery) =>
 export interface WordsFacets {
   pos: Record<string, number>;
   genus: Record<string, number>;
+  /** Сколько карточек ждёт сверки. */
+  drafts: number;
 }
 
 /** Сколько слов каждой части речи и каждого рода — для подписей в фильтре. */
@@ -106,6 +115,11 @@ export interface ProgressSummary {
   declared: number;
   requested: number;
   nounsWithGenus: number;
+  /**
+   * Сколько карточек ждёт сверки. Не зависит от настройки: черновики
+   * есть, даже когда в «Учить» они не попадают.
+   */
+  drafts: number;
 }
 
 /**

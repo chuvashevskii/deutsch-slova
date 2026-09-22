@@ -255,6 +255,7 @@ export type Database = {
           ask_genus: boolean
           daily_new_limit: number
           desired_retention: number
+          include_drafts: boolean
           input_noun_plural: boolean
           input_noun_singular: boolean
           input_other: boolean
@@ -267,6 +268,7 @@ export type Database = {
           ask_genus?: boolean
           daily_new_limit?: number
           desired_retention?: number
+          include_drafts?: boolean
           input_noun_plural?: boolean
           input_noun_singular?: boolean
           input_other?: boolean
@@ -279,6 +281,7 @@ export type Database = {
           ask_genus?: boolean
           daily_new_limit?: number
           desired_retention?: number
+          include_drafts?: boolean
           input_noun_plural?: boolean
           input_noun_singular?: boolean
           input_other?: boolean
@@ -329,6 +332,7 @@ export type Database = {
           audio_plural: string | null
           audio_superlative: string | null
           audio_wir: string | null
+          confirmed_at: string | null
           corpus_share: number
           created_at: string
           definition: string
@@ -376,6 +380,7 @@ export type Database = {
           audio_plural?: string | null
           audio_superlative?: string | null
           audio_wir?: string | null
+          confirmed_at?: string | null
           corpus_share?: number
           created_at?: string
           definition?: string
@@ -423,6 +428,7 @@ export type Database = {
           audio_plural?: string | null
           audio_superlative?: string | null
           audio_wir?: string | null
+          confirmed_at?: string | null
           corpus_share?: number
           created_at?: string
           definition?: string
@@ -482,6 +488,7 @@ export type Database = {
       words_facets: { Args: never; Returns: Json }
       words_page: {
         Args: {
+          p_draft?: boolean
           p_genus?: string[]
           p_limit?: number
           p_offset?: number
