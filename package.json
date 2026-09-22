@@ -19,7 +19,8 @@
     "db:reset": "supabase db reset",
     "generate:types:local": "supabase gen types typescript --local > src/shared/api/database.types.ts",
     "import:anki": "node scripts/import-anki.mjs",
-    "check:deck": "node scripts/check-deck.mjs"
+    "check:deck": "node scripts/check-deck.mjs",
+    "check:contract": "node scripts/check-contract.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

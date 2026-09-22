@@ -62,6 +62,11 @@ const EditRowView = ({ row }: { row: EditRow }) => {
   // Поверх этой правки легла другая: «стало» здесь описывает не словарь,
   // а промежуточный шаг. Откатывать нечего — откатит следующую.
   const superseded = row.superseded === true;
+  // INFO: строка о рождении карточки — «было» пусто, потому что до неё
+  // карточки не существовало. Откат тут значит удаление созданного,
+  // и кнопка обязана называть это своим именем: «Откатить» обещало бы
+  // возврат прежнего значения, а возвращать нечего.
+  const isCreation = row.old_value === null && row.reason === 'разделение';
 
   return (
     <li
@@ -128,13 +133,18 @@ const EditRowView = ({ row }: { row: EditRow }) => {
               busyClasses(reverting),
             )}
           >
-            <Busy busy={reverting} label="Откатываем">
-              Откатить
+            <Busy busy={reverting} label={isCreation ? 'Удаляем' : 'Откатываем'}>
+              {isCreation ? 'Удалить карточку' : 'Откатить'}
             </Busy>
           </button>
         )}
+        {/* INFO: причина отказа приходит из базы словами: «карточка уже
+            согласована», «по ней идёт обучение». Заменять её на общее
+            «не удалось» значит прятать единственное, что объясняет отказ. */}
         {revert.isError && revert.variables === row.id ? (
-          <span className="text-[12px] text-bad">Не удалось откатить</span>
+          <span className="text-[12px] leading-snug text-bad">
+            {revert.error instanceof Error ? revert.error.message : 'Не удалось откатить'}
+          </span>
         ) : null}
       </div>
     </li>
