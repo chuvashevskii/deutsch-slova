@@ -20,7 +20,7 @@
     "examples_ru": ["Это займёт примерно десять минут.", "Там было около ста человек."] },
 
   { "rank": 416, "pos": "noun", "head": "Zukunft", "translation": "Будущее",
-    "singular": "die Zukunft", "plural": "", "genus": "f", "stress_singular": "1",
+    "singular": "die Zukunft", "plural": null, "genus": "f", "stress_singular": "1",
     "ipa": "/ˈt͡suːkʊnft/", "pronunciation_ru": "ЦУкунфт",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["In Zukunft mache ich das anders.", "Niemand kennt die Zukunft."],

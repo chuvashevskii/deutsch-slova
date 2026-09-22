@@ -1,6 +1,6 @@
 [
   { "rank": 1743, "pos": "noun", "head": "Atem", "translation": "Дыхание",
-    "singular": "der Atem", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Atem", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈaːtəm/", "pronunciation_ru": "Атэм",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Hol tief Atem!", "Mir stockte der Atem."],
@@ -64,7 +64,7 @@
 
   { "rank": 1755, "pos": "noun", "head": "Politiker", "translation": "Политик",
     "singular": "der Politiker", "plural": "die Politiker", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "2",
+    "suffix": "er", "plural_ending": null, "stress_singular": "2",
     "ipa": "/poˈliːtɪkɐ/", "pronunciation_ru": "поЛИтикэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Politiker gab ein Interview.", "Die Politiker diskutieren noch."],
@@ -87,7 +87,7 @@
     "examples_ru": ["Регулярно делай резервные копии!", "Это обеспечивает наше будущее."] },
 
   { "rank": 1758, "pos": "noun", "head": "Staub", "translation": "Пыль",
-    "singular": "der Staub", "plural": "", "genus": "m",
+    "singular": "der Staub", "plural": null, "genus": "m",
     "ipa": "/ʃtaʊ̯p/", "pronunciation_ru": "ШТАУП",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Überall liegt Staub.", "Wisch bitte den Staub weg."],
@@ -140,7 +140,7 @@
 
   { "rank": 1766, "pos": "noun", "head": "Schaden", "translation": "Ущерб / вред",
     "singular": "der Schaden", "plural": "die Schäden", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʃaːdn̩/", "pronunciation_ru": "ШАдн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Der Schaden ist groß.", "Die Schäden wurden repariert."],
@@ -162,7 +162,7 @@
     "examples_ru": ["Это стоит сто евро.", "Там было сто человек."] },
 
   { "rank": 1770, "pos": "noun", "head": "Mut", "translation": "Мужество / смелость",
-    "singular": "der Mut", "plural": "", "genus": "m",
+    "singular": "der Mut", "plural": null, "genus": "m",
     "ipa": "/muːt/", "pronunciation_ru": "МУТ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Dazu braucht man Mut.", "Verlier den Mut nicht!"],
@@ -272,7 +272,7 @@
     "examples_ru": ["Буря причинила большой ущерб.", "Что вызвало ошибку?"] },
 
   { "rank": 1785, "pos": "noun", "head": "Beginn", "translation": "Начало",
-    "singular": "der Beginn", "plural": "", "genus": "m", "stress_singular": "2",
+    "singular": "der Beginn", "plural": null, "genus": "m", "stress_singular": "2",
     "ipa": "/bəˈɡɪn/", "pronunciation_ru": "бэГИН",
     "rule_status": "mixed", "rule_label": "Основа глагола без окончания", "rule_genus": "m",
     "examples_de": ["Zu Beginn war alles ruhig.", "Der Beginn ist um acht."],
@@ -341,7 +341,7 @@
     "examples_ru": ["Мы сокращаем расходы.", "Цену сильно снизили."] },
 
   { "rank": 1796, "pos": "noun", "head": "Bayern", "translation": "Бавария",
-    "singular": "das Bayern", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Bayern", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈbaɪ̯ɐn/", "pronunciation_ru": "БАЙэрн",
     "rule_status": "high", "rule_label": "Страны и города — без артикля", "rule_genus": "n",
     "examples_de": ["Bayern liegt im Süden.", "In Bayern spricht man Dialekt."],

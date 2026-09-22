@@ -78,7 +78,7 @@
     "examples_ru": ["Это идёт душе на пользу.", "Он добрая душа."] },
 
   { "rank": 1815, "pos": "noun", "head": "Gold", "translation": "Золото",
-    "singular": "das Gold", "plural": "", "genus": "n",
+    "singular": "das Gold", "plural": null, "genus": "n",
     "ipa": "/ɡɔlt/", "pronunciation_ru": "ГОЛЬТ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Der Ring ist aus Gold.", "Reden ist Silber, Schweigen ist Gold."],
@@ -119,7 +119,7 @@
 
   { "rank": 1826, "pos": "noun", "head": "Daten", "translation": "Данные (мн. ч.)",
     "singular": "die Daten", "plural": "die Daten", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈdaːtn̩/", "pronunciation_ru": "ДАтн",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die Daten sind gespeichert.", "Schütze deine Daten!"],
@@ -184,7 +184,7 @@
 
   { "rank": 1835, "pos": "noun", "head": "Abenteuer", "translation": "Приключение",
     "singular": "das Abenteuer", "plural": "die Abenteuer", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈaːbn̩tɔɪ̯ɐ/", "pronunciation_ru": "Абнтойэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Das war ein echtes Abenteuer!", "Er sucht Abenteuer."],
@@ -223,7 +223,7 @@
     "examples_ru": ["Метод работает хорошо.", "Есть способы получше."] },
 
   { "rank": 1842, "pos": "noun", "head": "Wahnsinn", "translation": "Безумие",
-    "singular": "der Wahnsinn", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Wahnsinn", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈvaːnzɪn/", "pronunciation_ru": "ВАНзин",
     "rule_status": "high", "rule_label": "Составное слово — род по последнему корню", "rule_genus": "m",
     "examples_de": ["Das ist doch Wahnsinn!", "Der reinste Wahnsinn."],
@@ -279,7 +279,7 @@
     "examples_ru": ["Мы расширяем предложение.", "Словарный запас расширяется."] },
 
   { "rank": 1849, "pos": "noun", "head": "Publikum", "translation": "Публика / зрители",
-    "singular": "das Publikum", "plural": "", "genus": "n",
+    "singular": "das Publikum", "plural": null, "genus": "n",
     "suffix": "um", "stress_singular": "1",
     "ipa": "/ˈpuːblikʊm/", "pronunciation_ru": "ПУбликум",
     "rule_status": "mixed", "rule_label": "-um / -tum", "rule_genus": "n",
@@ -303,7 +303,7 @@
 
   { "rank": 1852, "pos": "noun", "head": "Kaiser", "translation": "Император",
     "singular": "der Kaiser", "plural": "die Kaiser", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈkaɪ̯zɐ/", "pronunciation_ru": "КАЙзэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Kaiser regierte lange.", "Die Kaiser residierten in Wien."],
@@ -325,7 +325,7 @@
 
   { "rank": 1855, "pos": "noun", "head": "Täter", "translation": "Преступник",
     "singular": "der Täter", "plural": "die Täter", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈtɛːtɐ/", "pronunciation_ru": "ТЭтэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Täter ist noch flüchtig.", "Die Täter wurden gefasst."],
@@ -362,7 +362,7 @@
 
   { "rank": 1860, "pos": "noun", "head": "Spieler", "translation": "Игрок",
     "singular": "der Spieler", "plural": "die Spieler", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʃpiːlɐ/", "pronunciation_ru": "ШПИлэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Spieler wurde verletzt.", "Elf Spieler stehen auf dem Feld."],

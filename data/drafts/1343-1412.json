@@ -68,7 +68,7 @@
     "examples_ru": ["Ответ гласит: нет.", "Какой у тебя адрес?"] },
 
   { "rank": 1355, "pos": "noun", "head": "Norden", "translation": "Север",
-    "singular": "der Norden", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Norden", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈnɔʁdn̩/", "pronunciation_ru": "НОРдн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Im Norden ist es kälter.", "Wir fahren in den Norden."],
@@ -105,7 +105,7 @@
 
   { "rank": 1363, "pos": "noun", "head": "Medien", "translation": "СМИ (мн. ч.)",
     "singular": "die Medien", "plural": "die Medien", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈmeːdi̯ən/", "pronunciation_ru": "МЭдиэн",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die Medien berichten darüber.", "Soziale Medien verändern alles."],
@@ -141,7 +141,7 @@
 
   { "rank": 1371, "pos": "noun", "head": "Richter", "translation": "Судья",
     "singular": "der Richter", "plural": "die Richter", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʁɪçtɐ/", "pronunciation_ru": "РИХЬтэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Richter verkündete das Urteil.", "Die Richter beraten noch."],
@@ -166,7 +166,7 @@
 
   { "rank": 1375, "pos": "noun", "head": "Hafen", "translation": "Порт / гавань",
     "singular": "der Hafen", "plural": "die Häfen", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈhaːfn̩/", "pronunciation_ru": "ХАфн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Das Schiff läuft in den Hafen ein.", "Die Häfen sind überlastet."],
@@ -195,7 +195,7 @@
     "examples_ru": ["Окрестности очень зелёные.", "В окрестностях есть озёра."] },
 
   { "rank": 1382, "pos": "noun", "head": "Lächeln", "translation": "Улыбка",
-    "singular": "das Lächeln", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Lächeln", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈlɛçl̩n/", "pronunciation_ru": "ЛЭхьльн",
     "rule_status": "high", "rule_label": "Инфинитив как существительное", "rule_genus": "n",
     "examples_de": ["Ihr Lächeln war echt.", "Ein Lächeln kostet nichts."],
@@ -266,7 +266,7 @@
     "examples_ru": ["Запиши это себе!", "Я всё записал."] },
 
   { "rank": 1392, "pos": "noun", "head": "Knie", "translation": "Колено",
-    "singular": "das Knie", "plural": "die Knie", "genus": "n", "plural_ending": "",
+    "singular": "das Knie", "plural": "die Knie", "genus": "n", "plural_ending": null,
     "ipa": "/kniː/", "pronunciation_ru": "КНИ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Mein Knie tut weh.", "Er ging auf die Knie."],
@@ -317,7 +317,7 @@
     "examples_ru": ["Фирма известна по всему миру.", "Это всемирная проблема."] },
 
   { "rank": 1401, "pos": "noun", "head": "Zeug", "translation": "Вещи / барахло",
-    "singular": "das Zeug", "plural": "", "genus": "n", "register": "umgangssprachlich · разговорный",
+    "singular": "das Zeug", "plural": null, "genus": "n", "register": "umgangssprachlich · разговорный",
     "ipa": "/t͡sɔɪ̯k/", "pronunciation_ru": "ЦОЙК",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Räum dein Zeug weg!", "Was ist das für ein Zeug?"],

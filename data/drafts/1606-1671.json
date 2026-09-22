@@ -94,7 +94,7 @@
 
   { "rank": 1620, "pos": "noun", "head": "Felsen", "translation": "Скала",
     "singular": "der Felsen", "plural": "die Felsen", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈfɛlzn̩/", "pronunciation_ru": "ФЭЛЬзн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Der Felsen ragt ins Meer.", "Zwischen den Felsen wächst Moos."],
@@ -253,7 +253,7 @@
     "examples_ru": ["Развитие идёт быстро.", "Ожидаются новые разработки."] },
 
   { "rank": 1648, "pos": "noun", "head": "Syrien", "translation": "Сирия",
-    "singular": "das Syrien", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Syrien", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈzyːʁi̯ən/", "pronunciation_ru": "ЗЮриэн",
     "rule_status": "high", "rule_label": "Страны и города — без артикля", "rule_genus": "n",
     "examples_de": ["Syrien liegt im Nahen Osten.", "Sie kommt aus Syrien."],
@@ -360,7 +360,7 @@
 
   { "rank": 1669, "pos": "noun", "head": "Wunder", "translation": "Чудо",
     "singular": "das Wunder", "plural": "die Wunder", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈvʊndɐ/", "pronunciation_ru": "ВУНдэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Das grenzt an ein Wunder.", "Wunder gibt es immer wieder."],

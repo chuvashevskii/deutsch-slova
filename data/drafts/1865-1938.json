@@ -89,7 +89,7 @@
     "examples_ru": ["Мы ставим палатку.", "Он установил новый рекорд."] },
 
   { "rank": 1877, "pos": "noun", "head": "Ärger", "translation": "Неприятности / злость",
-    "singular": "der Ärger", "plural": "", "genus": "m",
+    "singular": "der Ärger", "plural": null, "genus": "m",
     "suffix": "er", "stress_singular": "1",
     "ipa": "/ˈɛʁɡɐ/", "pronunciation_ru": "ЭРгэр",
     "rule_status": "mixed", "rule_label": "-er", "rule_genus": "m",
@@ -259,7 +259,7 @@
 
   { "rank": 1907, "pos": "noun", "head": "Viertel", "translation": "Квартал / четверть",
     "singular": "das Viertel", "plural": "die Viertel", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈfɪʁtl̩/", "pronunciation_ru": "ФИРтль",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Wir wohnen im alten Viertel.", "Es ist Viertel nach acht."],
@@ -319,7 +319,7 @@
     "examples_ru": ["Здесь нет сети.", "Паук плетёт паутину."] },
 
   { "rank": 1917, "pos": "noun", "head": "EU", "translation": "ЕС (Европейский союз)",
-    "singular": "die EU", "plural": "", "genus": "f",
+    "singular": "die EU", "plural": null, "genus": "f",
     "ipa": "/eːˈʔuː/", "pronunciation_ru": "эУ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die EU hat 27 Mitglieder.", "Er arbeitet für die EU."],
@@ -357,7 +357,7 @@
     "examples_ru": ["Кастрюля стоит на плите.", "Кастрюли грязные."] },
 
   { "rank": 1923, "pos": "noun", "head": "Menschheit", "translation": "Человечество",
-    "singular": "die Menschheit", "plural": "", "genus": "f",
+    "singular": "die Menschheit", "plural": null, "genus": "f",
     "suffix": "heit", "stress_singular": "1",
     "ipa": "/ˈmɛnʃhaɪ̯t/", "pronunciation_ru": "МЭНШхайт",
     "rule_status": "high", "rule_label": "-heit", "rule_genus": "f",

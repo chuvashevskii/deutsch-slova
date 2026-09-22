@@ -450,7 +450,7 @@
     "plural": "die Wecker",
     "genus": "m",
     "suffix": "er",
-    "plural_ending": "",
+    "plural_ending": null,
     "stress_singular": "1",
     "ipa": "/ˈvɛkɐ/",
     "pronunciation_ru": "ВЭкэр",

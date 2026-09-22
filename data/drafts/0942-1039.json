@@ -32,7 +32,7 @@
     "examples_ru": ["Немка выиграла гонку.", "Она немка."] },
 
   { "rank": 945, "pos": "noun", "head": "Schlaf", "translation": "Сон",
-    "singular": "der Schlaf", "plural": "", "genus": "m",
+    "singular": "der Schlaf", "plural": null, "genus": "m",
     "ipa": "/ʃlaːf/", "pronunciation_ru": "ШЛАФ",
     "rule_status": "mixed", "rule_label": "Основа глагола без окончания", "rule_genus": "m",
     "examples_de": ["Ich brauche mehr Schlaf.", "Er fiel in einen tiefen Schlaf."],
@@ -113,7 +113,7 @@
 
   { "rank": 961, "pos": "noun", "head": "Ofen", "translation": "Печь / духовка",
     "singular": "der Ofen", "plural": "die Öfen", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈoːfn̩/", "pronunciation_ru": "Офн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Der Kuchen ist im Ofen.", "Die alten Öfen heizen mit Holz."],
@@ -144,7 +144,7 @@
 
   { "rank": 969, "pos": "noun", "head": "Feuer", "translation": "Огонь / пожар",
     "singular": "das Feuer", "plural": "die Feuer", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈfɔɪ̯ɐ/", "pronunciation_ru": "ФОЙэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Hast du Feuer?", "Das Feuer brannte die ganze Nacht."],
@@ -189,7 +189,7 @@
     "examples_ru": ["Я полагаю, что он придёт.", "Ты примешь посылку?"] },
 
   { "rank": 978, "pos": "noun", "head": "Blut", "translation": "Кровь",
-    "singular": "das Blut", "plural": "", "genus": "n",
+    "singular": "das Blut", "plural": null, "genus": "n",
     "ipa": "/bluːt/", "pronunciation_ru": "БЛУТ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Er kann kein Blut sehen.", "Das Blut fließt durch die Adern."],

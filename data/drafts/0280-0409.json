@@ -51,7 +51,7 @@
     "examples_ru": ["Спокойной ночи!", "Ночи становятся холоднее."] },
 
   { "rank": 309, "pos": "noun", "head": "Glück", "translation": "Удача / счастье",
-    "singular": "das Glück", "plural": "", "genus": "n",
+    "singular": "das Glück", "plural": null, "genus": "n",
     "ipa": "/ɡlʏk/", "pronunciation_ru": "ГЛЮК",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Viel Glück!", "Sie hatte großes Glück."],
@@ -177,7 +177,7 @@
     "examples_ru": ["Ты должен решить сам.", "Мы выбрали красную машину."] },
 
   { "rank": 362, "pos": "noun", "head": "Luft", "translation": "Воздух",
-    "singular": "die Luft", "plural": "", "genus": "f",
+    "singular": "die Luft", "plural": null, "genus": "f",
     "ipa": "/lʊft/", "pronunciation_ru": "ЛУФТ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die Luft ist heute frisch.", "Ich brauche frische Luft."],
@@ -185,7 +185,7 @@
 
   { "rank": 364, "pos": "noun", "head": "Boden", "translation": "Пол / почва",
     "singular": "der Boden", "plural": "die Böden", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈboːdn̩/", "pronunciation_ru": "БОдн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Der Boden ist nass.", "Die Böden hier sind sehr fruchtbar."],

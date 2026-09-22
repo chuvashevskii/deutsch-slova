@@ -22,7 +22,7 @@
     "examples_ru": ["Камень тяжёлый.", "На берегу лежит много камней."] },
 
   { "rank": 659, "pos": "noun", "head": "Ruhe", "translation": "Покой / тишина",
-    "singular": "die Ruhe", "plural": "", "genus": "f",
+    "singular": "die Ruhe", "plural": null, "genus": "f",
     "suffix": "e", "stress_singular": "1",
     "ipa": "/ˈʁuːə/", "pronunciation_ru": "РУэ",
     "rule_status": "mixed", "rule_label": "-e", "rule_genus": "f",
@@ -74,7 +74,7 @@
 
   { "rank": 673, "pos": "noun", "head": "Finger", "translation": "Палец",
     "singular": "der Finger", "plural": "die Finger", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈfɪŋɐ/", "pronunciation_ru": "ФИнэр",
     "rule_status": "mixed", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Ich habe mir den Finger verletzt.", "Er zählt an den Fingern."],
@@ -311,7 +311,7 @@
     "examples_ru": ["Что случилось?", "Такое случается редко."] },
 
   { "rank": 742, "pos": "noun", "head": "Weile", "translation": "Некоторое время",
-    "singular": "die Weile", "plural": "", "genus": "f",
+    "singular": "die Weile", "plural": null, "genus": "f",
     "suffix": "e", "stress_singular": "1",
     "ipa": "/ˈvaɪ̯lə/", "pronunciation_ru": "ВАЙлэ",
     "rule_status": "mixed", "rule_label": "-e", "rule_genus": "f",

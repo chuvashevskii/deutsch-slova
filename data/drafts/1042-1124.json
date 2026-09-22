@@ -39,7 +39,7 @@
 
   { "rank": 1049, "pos": "noun", "head": "Spiegel", "translation": "Зеркало",
     "singular": "der Spiegel", "plural": "die Spiegel", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʃpiːɡl̩/", "pronunciation_ru": "ШПИгль",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Schau in den Spiegel!", "Der Spiegel hängt über dem Waschbecken."],
@@ -93,7 +93,7 @@
     "examples_ru": ["Если пойдёт дождь, останемся дома.", "Позвони, если понадобится помощь."] },
 
   { "rank": 1064, "pos": "noun", "head": "Süden", "translation": "Юг",
-    "singular": "der Süden", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Süden", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈzyːdn̩/", "pronunciation_ru": "ЗЮдн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Wir fahren in den Süden.", "Im Süden ist es wärmer."],
@@ -372,7 +372,7 @@
 
   { "rank": 1124, "pos": "noun", "head": "Messer", "translation": "Нож",
     "singular": "das Messer", "plural": "die Messer", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈmɛsɐ/", "pronunciation_ru": "МЭсэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Das Messer ist stumpf.", "Die Messer liegen in der Schublade."],

@@ -1,6 +1,6 @@
 [
   { "rank": 1939, "pos": "noun", "head": "Plastik", "translation": "Пластик",
-    "singular": "das Plastik", "plural": "", "genus": "n",
+    "singular": "das Plastik", "plural": null, "genus": "n",
     "suffix": "ik", "stress_singular": "1",
     "ipa": "/ˈplastɪk/", "pronunciation_ru": "ПЛАстик",
     "rule_status": "exception", "rule_label": "-ik", "rule_genus": "f",
@@ -24,7 +24,7 @@
 
   { "rank": 1943, "pos": "noun", "head": "Tropfen", "translation": "Капля",
     "singular": "der Tropfen", "plural": "die Tropfen", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈtʁɔpfn̩/", "pronunciation_ru": "ТРОПфн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Ein Tropfen Wasser fiel herab.", "Nimm zehn Tropfen täglich."],
@@ -57,7 +57,7 @@
 
   { "rank": 1947, "pos": "noun", "head": "Kapitel", "translation": "Глава",
     "singular": "das Kapitel", "plural": "die Kapitel", "genus": "n",
-    "plural_ending": "", "stress_singular": "2",
+    "plural_ending": null, "stress_singular": "2",
     "ipa": "/kaˈpɪtl̩/", "pronunciation_ru": "каПИтль",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Lies das erste Kapitel.", "Das Buch hat zwanzig Kapitel."],
@@ -78,7 +78,7 @@
     "examples_ru": ["Возьми с верхней полки.", "Верхние этажи пусты."] },
 
   { "rank": 1950, "pos": "noun", "head": "Großbritannien", "translation": "Великобритания",
-    "singular": "das Großbritannien", "plural": "", "genus": "n", "stress_singular": "3",
+    "singular": "das Großbritannien", "plural": null, "genus": "n", "stress_singular": "3",
     "ipa": "/ɡʁoːsbʁiˈtaniən/", "pronunciation_ru": "гросбриТАниэн",
     "rule_status": "high", "rule_label": "Страны и города — без артикля", "rule_genus": "n",
     "examples_de": ["Großbritannien besteht aus mehreren Teilen.", "Sie lebt in Großbritannien."],
@@ -168,7 +168,7 @@
     "examples_ru": ["Картина висит криво.", "Тут что-то пошло не так."] },
 
   { "rank": 1969, "pos": "noun", "head": "Lärm", "translation": "Шум",
-    "singular": "der Lärm", "plural": "", "genus": "m",
+    "singular": "der Lärm", "plural": null, "genus": "m",
     "ipa": "/lɛʁm/", "pronunciation_ru": "ЛЭРМ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Der Lärm ist unerträglich.", "Macht nicht so viel Lärm!"],
@@ -176,7 +176,7 @@
 
   { "rank": 1970, "pos": "noun", "head": "Besitzer", "translation": "Владелец",
     "singular": "der Besitzer", "plural": "die Besitzer", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "2",
+    "suffix": "er", "plural_ending": null, "stress_singular": "2",
     "ipa": "/bəˈzɪt͡sɐ/", "pronunciation_ru": "бэЗИцэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Besitzer ist nicht da.", "Die Besitzer wechseln oft."],
@@ -207,7 +207,7 @@
     "examples_ru": ["У меня нет доступа к системе.", "Все входы перекрыты."] },
 
   { "rank": 1974, "pos": "noun", "head": "Ukraine", "translation": "Украина",
-    "singular": "die Ukraine", "plural": "", "genus": "f", "stress_singular": "2",
+    "singular": "die Ukraine", "plural": null, "genus": "f", "stress_singular": "2",
     "ipa": "/ukʁaˈiːnə/", "pronunciation_ru": "украИнэ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die Ukraine liegt in Osteuropa.", "Er kommt aus der Ukraine."],
@@ -292,7 +292,7 @@
 
   { "rank": 1985, "pos": "noun", "head": "Verbrechen", "translation": "Преступление",
     "singular": "das Verbrechen", "plural": "die Verbrechen", "genus": "n",
-    "plural_ending": "", "stress_singular": "2",
+    "plural_ending": null, "stress_singular": "2",
     "ipa": "/fɛɐ̯ˈbʁɛçn̩/", "pronunciation_ru": "фэрБРЭхьн",
     "rule_status": "high", "rule_label": "Инфинитив как существительное", "rule_genus": "n",
     "examples_de": ["Das Verbrechen blieb ungeklärt.", "Solche Verbrechen sind selten."],
@@ -314,7 +314,7 @@
     "examples_ru": ["Это было не намеренно.", "У него добрые намерения."] },
 
   { "rank": 1988, "pos": "noun", "head": "Hitze", "translation": "Жара",
-    "singular": "die Hitze", "plural": "", "genus": "f",
+    "singular": "die Hitze", "plural": null, "genus": "f",
     "suffix": "e", "stress_singular": "1",
     "ipa": "/ˈhɪt͡sə/", "pronunciation_ru": "ХИцэ",
     "rule_status": "mixed", "rule_label": "-e", "rule_genus": "f",
@@ -322,7 +322,7 @@
     "examples_ru": ["Жара невыносима.", "В такую жару я остаюсь дома."] },
 
   { "rank": 1989, "pos": "noun", "head": "Schutz", "translation": "Защита",
-    "singular": "der Schutz", "plural": "", "genus": "m",
+    "singular": "der Schutz", "plural": null, "genus": "m",
     "ipa": "/ʃʊt͡s/", "pronunciation_ru": "ШУЦ",
     "rule_status": "mixed", "rule_label": "Основа глагола без окончания", "rule_genus": "m",
     "examples_de": ["Wir suchten Schutz vor dem Regen.", "Der Schutz der Daten ist wichtig."],
@@ -368,7 +368,7 @@
     "examples_ru": ["Она ухаживает за матерью.", "Он ухаживает за своим садом."] },
 
   { "rank": 1997, "pos": "noun", "head": "Amerika", "translation": "Америка",
-    "singular": "das Amerika", "plural": "", "genus": "n", "stress_singular": "2",
+    "singular": "das Amerika", "plural": null, "genus": "n", "stress_singular": "2",
     "ipa": "/aˈmeːʁika/", "pronunciation_ru": "аМЭрика",
     "rule_status": "high", "rule_label": "Страны и города — без артикля", "rule_genus": "n",
     "examples_de": ["Amerika ist weit weg.", "Er wanderte nach Amerika aus."],
@@ -383,7 +383,7 @@
     "examples_ru": ["Ткань хорошо подходит для детей.", "Для этого я не гожусь."] },
 
   { "rank": 1999, "pos": "noun", "head": "Vertrauen", "translation": "Доверие",
-    "singular": "das Vertrauen", "plural": "", "genus": "n", "stress_singular": "2",
+    "singular": "das Vertrauen", "plural": null, "genus": "n", "stress_singular": "2",
     "ipa": "/fɛɐ̯ˈtʁaʊ̯ən/", "pronunciation_ru": "фэрТРАУэн",
     "rule_status": "high", "rule_label": "Инфинитив как существительное", "rule_genus": "n",
     "examples_de": ["Vertrauen muss man sich verdienen.", "Er hat mein Vertrauen verloren."],

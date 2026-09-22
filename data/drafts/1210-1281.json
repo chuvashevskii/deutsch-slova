@@ -56,7 +56,7 @@
     "examples_ru": ["Трава ещё мокрая.", "У берега росли высокие травы."] },
 
   { "rank": 1222, "pos": "noun", "head": "Zuhause", "translation": "Родной дом",
-    "singular": "das Zuhause", "plural": "", "genus": "n", "stress_singular": "2",
+    "singular": "das Zuhause", "plural": null, "genus": "n", "stress_singular": "2",
     "ipa": "/t͡suˈhaʊ̯zə/", "pronunciation_ru": "цуХАУзэ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Hier habe ich ein Zuhause gefunden.", "Ein Zuhause ist mehr als ein Haus."],
@@ -237,7 +237,7 @@
 
   { "rank": 1259, "pos": "noun", "head": "Zeichen", "translation": "Знак",
     "singular": "das Zeichen", "plural": "die Zeichen", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈt͡saɪ̯çn̩/", "pronunciation_ru": "ЦАЙхьн",
     "rule_status": "notsuffix", "rule_label": "-chen",
     "examples_de": ["Das ist ein gutes Zeichen.", "Er gab mir ein Zeichen."],
@@ -266,7 +266,7 @@
     "examples_ru": ["Крыша протекает.", "Крыши красные."] },
 
   { "rank": 1264, "pos": "noun", "head": "Westen", "translation": "Запад",
-    "singular": "der Westen", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Westen", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈvɛstn̩/", "pronunciation_ru": "ВЭСтн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Die Sonne geht im Westen unter.", "Er zog in den Westen."],
@@ -289,7 +289,7 @@
 
   { "rank": 1268, "pos": "noun", "head": "Opfer", "translation": "Жертва",
     "singular": "das Opfer", "plural": "die Opfer", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈɔpfɐ/", "pronunciation_ru": "ОПфэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Es gab zum Glück keine Opfer.", "Er bringt große Opfer."],

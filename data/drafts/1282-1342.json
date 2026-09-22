@@ -17,7 +17,7 @@
 
   { "rank": 1284, "pos": "noun", "head": "Kosten", "translation": "Расходы (мн. ч.)",
     "singular": "die Kosten", "plural": "die Kosten", "genus": "f",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈkɔstn̩/", "pronunciation_ru": "КОСтн",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Die Kosten sind zu hoch.", "Wer übernimmt die Kosten?"],
@@ -40,7 +40,7 @@
     "examples_ru": ["Молодое поколение думает иначе.", "Здесь живут три поколения."] },
 
   { "rank": 1288, "pos": "noun", "head": "Osten", "translation": "Восток",
-    "singular": "der Osten", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Osten", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈɔstn̩/", "pronunciation_ru": "ОСтн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Die Sonne geht im Osten auf.", "Er kommt aus dem Osten des Landes."],
@@ -76,7 +76,7 @@
     "examples_ru": ["Концерт был крутой!", "Классная у тебя машина."] },
 
   { "rank": 1294, "pos": "noun", "head": "Fernsehen", "translation": "Телевидение",
-    "singular": "das Fernsehen", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Fernsehen", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈfɛʁnzeːən/", "pronunciation_ru": "ФЭРНзээн",
     "rule_status": "high", "rule_label": "Инфинитив как существительное", "rule_genus": "n",
     "examples_de": ["Im Fernsehen läuft nichts Gutes.", "Er arbeitet beim Fernsehen."],
@@ -180,7 +180,7 @@
     "examples_ru": ["Успокойся, пожалуйста!", "Музыка меня успокаивает."] },
 
   { "rank": 1312, "pos": "noun", "head": "Chaos", "translation": "Хаос",
-    "singular": "das Chaos", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Chaos", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈkaːɔs/", "pronunciation_ru": "КАос",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["In der Küche herrscht Chaos.", "Nach dem Sturm war überall Chaos."],
@@ -210,7 +210,7 @@
     "examples_ru": ["Звук слишком громкий.", "Важно не что, а как сказано."] },
 
   { "rank": 1317, "pos": "noun", "head": "Dunkelheit", "translation": "Темнота",
-    "singular": "die Dunkelheit", "plural": "", "genus": "f",
+    "singular": "die Dunkelheit", "plural": null, "genus": "f",
     "suffix": "heit", "stress_singular": "1",
     "ipa": "/ˈdʊŋkl̩haɪ̯t/", "pronunciation_ru": "ДУНкльхайт",
     "rule_status": "high", "rule_label": "-heit", "rule_genus": "f",
@@ -225,7 +225,7 @@
     "examples_ru": ["Это общеизвестно.", "В общем это верно."] },
 
   { "rank": 1319, "pos": "noun", "head": "Kindheit", "translation": "Детство",
-    "singular": "die Kindheit", "plural": "", "genus": "f",
+    "singular": "die Kindheit", "plural": null, "genus": "f",
     "suffix": "heit", "stress_singular": "1",
     "ipa": "/ˈkɪnthaɪ̯t/", "pronunciation_ru": "КИНТхайт",
     "rule_status": "high", "rule_label": "-heit", "rule_genus": "f",
@@ -322,7 +322,7 @@
     "examples_ru": ["Это не нужно.", "У нас с собой всё необходимое."] },
 
   { "rank": 1335, "pos": "noun", "head": "Rauch", "translation": "Дым",
-    "singular": "der Rauch", "plural": "", "genus": "m",
+    "singular": "der Rauch", "plural": null, "genus": "m",
     "ipa": "/ʁaʊ̯x/", "pronunciation_ru": "РАУХ",
     "rule_status": "mixed", "rule_label": "Основа глагола без окончания", "rule_genus": "m",
     "examples_de": ["Der Rauch zieht nach oben.", "Wo Rauch ist, ist auch Feuer."],

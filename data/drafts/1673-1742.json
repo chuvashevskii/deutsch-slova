@@ -49,7 +49,7 @@
 
   { "rank": 1687, "pos": "noun", "head": "Kissen", "translation": "Подушка",
     "singular": "das Kissen", "plural": "die Kissen", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈkɪsn̩/", "pronunciation_ru": "КИсн",
     "rule_status": "exception", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Das Kissen ist zu weich.", "Auf dem Sofa liegen Kissen."],
@@ -167,7 +167,7 @@
     "examples_ru": ["Научи меня этой песне!", "Кто тебя этому научил?"] },
 
   { "rank": 1705, "pos": "noun", "head": "Brandenburg", "translation": "Бранденбург",
-    "singular": "das Brandenburg", "plural": "", "genus": "n", "stress_singular": "1",
+    "singular": "das Brandenburg", "plural": null, "genus": "n", "stress_singular": "1",
     "ipa": "/ˈbʁandn̩bʊʁk/", "pronunciation_ru": "БРАНдэнбурк",
     "rule_status": "high", "rule_label": "Страны и города — без артикля", "rule_genus": "n",
     "examples_de": ["Brandenburg liegt um Berlin herum.", "Wir fahren nach Brandenburg."],
@@ -259,7 +259,7 @@
 
   { "rank": 1721, "pos": "noun", "head": "Steuer", "translation": "Руль",
     "singular": "das Steuer", "plural": "die Steuer", "genus": "n",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʃtɔɪ̯ɐ/", "pronunciation_ru": "ШТОЙэр",
     "rule_status": "exception", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Er sitzt am Steuer.", "Lass mich ans Steuer!"],
@@ -291,7 +291,7 @@
 
   { "rank": 1726, "pos": "noun", "head": "Besucher", "translation": "Посетитель",
     "singular": "der Besucher", "plural": "die Besucher", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "2",
+    "suffix": "er", "plural_ending": null, "stress_singular": "2",
     "ipa": "/bəˈzuːxɐ/", "pronunciation_ru": "бэЗУхэр",
     "rule_status": "high", "rule_label": "Мужские лица и профессии", "rule_genus": "m",
     "examples_de": ["Der Besucher wartet draußen.", "Wir hatten viele Besucher."],
@@ -306,7 +306,7 @@
 
   { "rank": 1730, "pos": "noun", "head": "Kilometer", "translation": "Километр",
     "singular": "der Kilometer", "plural": "die Kilometer", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "3",
+    "suffix": "er", "plural_ending": null, "stress_singular": "3",
     "ipa": "/kiloˈmeːtɐ/", "pronunciation_ru": "килоМЭтэр",
     "rule_status": "mixed", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Bis dahin sind es zehn Kilometer.", "Der Kilometer kostet einen Euro."],
@@ -321,7 +321,7 @@
     "examples_ru": ["Проверь цифры ещё раз.", "Всё было тщательно проверено."] },
 
   { "rank": 1733, "pos": "noun", "head": "Stille", "translation": "Тишина",
-    "singular": "die Stille", "plural": "", "genus": "f",
+    "singular": "die Stille", "plural": null, "genus": "f",
     "suffix": "e", "stress_singular": "1",
     "ipa": "/ˈʃtɪlə/", "pronunciation_ru": "ШТИлэ",
     "rule_status": "mixed", "rule_label": "-e", "rule_genus": "f",
@@ -339,7 +339,7 @@
 
   { "rank": 1737, "pos": "noun", "head": "Frieden", "translation": "Мир (отсутствие войны)",
     "singular": "der Frieden", "plural": "die Frieden", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈfʁiːdn̩/", "pronunciation_ru": "ФРИдн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Wir wollen Frieden.", "Der Frieden hielt nicht lange."],
@@ -379,7 +379,7 @@
 
   { "rank": 1742, "pos": "noun", "head": "Löffel", "translation": "Ложка",
     "singular": "der Löffel", "plural": "die Löffel", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈlœfl̩/", "pronunciation_ru": "ЛЁфль",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Nimm einen Löffel Zucker.", "Die Löffel liegen links."],

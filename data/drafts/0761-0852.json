@@ -227,7 +227,7 @@
 
   { "rank": 821, "pos": "noun", "head": "Abendessen", "translation": "Ужин",
     "singular": "das Abendessen", "plural": "die Abendessen", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈaːbn̩tʔɛsn̩/", "pronunciation_ru": "Абнтэсн",
     "rule_status": "high", "rule_label": "Составное слово — род по последнему корню", "rule_genus": "n",
     "examples_de": ["Das Abendessen ist fertig.", "Wir laden dich zum Abendessen ein."],
@@ -243,7 +243,7 @@
 
   { "rank": 824, "pos": "noun", "head": "Schatten", "translation": "Тень",
     "singular": "der Schatten", "plural": "die Schatten", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈʃatn̩/", "pronunciation_ru": "ШАтн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Setz dich in den Schatten!", "Die Bäume werfen lange Schatten."],

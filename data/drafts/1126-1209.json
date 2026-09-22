@@ -104,7 +104,7 @@
 
   { "rank": 1150, "pos": "noun", "head": "Meter", "translation": "Метр",
     "singular": "der Meter", "plural": "die Meter", "genus": "m",
-    "suffix": "er", "plural_ending": "", "stress_singular": "1",
+    "suffix": "er", "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈmeːtɐ/", "pronunciation_ru": "МЭтэр",
     "rule_status": "mixed", "rule_label": "-er", "rule_genus": "m",
     "examples_de": ["Der Raum ist vier Meter breit.", "Wir liefen dreihundert Meter."],
@@ -267,7 +267,7 @@
 
   { "rank": 1184, "pos": "noun", "head": "Daumen", "translation": "Большой палец",
     "singular": "der Daumen", "plural": "die Daumen", "genus": "m",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈdaʊ̯mən/", "pronunciation_ru": "ДАУмэн",
     "rule_status": "mixed", "rule_label": "-en (не инфинитив)", "rule_genus": "m",
     "examples_de": ["Ich drücke dir die Daumen!", "Er hat sich den Daumen verletzt."],

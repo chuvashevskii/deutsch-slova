@@ -87,7 +87,7 @@
     "examples_ru": ["Это против правил.", "Как правило, я прихожу вовремя."] },
 
   { "rank": 565, "pos": "noun", "head": "Liebe", "translation": "Любовь",
-    "singular": "die Liebe", "plural": "", "genus": "f",
+    "singular": "die Liebe", "plural": null, "genus": "f",
     "suffix": "e", "stress_singular": "1",
     "ipa": "/ˈliːbə/", "pronunciation_ru": "ЛИбэ",
     "rule_status": "mixed", "rule_label": "-e", "rule_genus": "f",
@@ -205,7 +205,7 @@
     "examples_ru": ["Отель был хорош, правда дорогой.", "Однако я понял это иначе."] },
 
   { "rank": 599, "pos": "noun", "head": "Lust", "translation": "Желание / охота",
-    "singular": "die Lust", "plural": "", "genus": "f",
+    "singular": "die Lust", "plural": null, "genus": "f",
     "ipa": "/lʊst/", "pronunciation_ru": "ЛУСТ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Hast du Lust auf Kino?", "Ich habe keine Lust."],
@@ -234,7 +234,7 @@
     "examples_ru": ["Они двое похожи.", "Я искал что-то похожее."] },
 
   { "rank": 605, "pos": "noun", "head": "See", "translation": "Море",
-    "singular": "die See", "plural": "", "genus": "f",
+    "singular": "die See", "plural": null, "genus": "f",
     "ipa": "/zeː/", "pronunciation_ru": "ЗЭ",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Wir fahren an die See.", "Die See ist heute ruhig."],
@@ -322,7 +322,7 @@
     "examples_ru": ["В этом нет смысла.", "У человека пять чувств."] },
 
   { "rank": 638, "pos": "noun", "head": "Alltag", "translation": "Повседневная жизнь / будни",
-    "singular": "der Alltag", "plural": "", "genus": "m", "stress_singular": "1",
+    "singular": "der Alltag", "plural": null, "genus": "m", "stress_singular": "1",
     "ipa": "/ˈaltaːk/", "pronunciation_ru": "Альтак",
     "rule_status": "high", "rule_label": "Составное слово — род по последнему корню", "rule_genus": "m",
     "examples_de": ["Der Alltag ist manchmal anstrengend.", "Im Alltag spreche ich Deutsch."],

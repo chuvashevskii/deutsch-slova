@@ -171,7 +171,7 @@
 
   { "rank": 895, "pos": "noun", "head": "Gebäude", "translation": "Здание",
     "singular": "das Gebäude", "plural": "die Gebäude", "genus": "n",
-    "suffix": "e", "plural_ending": "", "stress_singular": "2",
+    "suffix": "e", "plural_ending": null, "stress_singular": "2",
     "ipa": "/ɡəˈbɔɪ̯də/", "pronunciation_ru": "гэБОЙдэ",
     "rule_status": "mixed", "rule_label": "Приставка Ge-", "rule_genus": "n",
     "examples_de": ["Das Gebäude ist sehr alt.", "Die Gebäude stehen leer."],
@@ -227,7 +227,7 @@
 
   { "rank": 917, "pos": "noun", "head": "Weihnachten", "translation": "Рождество",
     "singular": "das Weihnachten", "plural": "die Weihnachten", "genus": "n",
-    "plural_ending": "", "stress_singular": "1",
+    "plural_ending": null, "stress_singular": "1",
     "ipa": "/ˈvaɪ̯naxtn̩/", "pronunciation_ru": "ВАЙнахтн",
     "rule_status": "none", "rule_label": "",
     "examples_de": ["Frohe Weihnachten!", "Zu Weihnachten fahren wir nach Hause."],
