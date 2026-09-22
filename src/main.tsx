@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { AppProviders } from '@/app/providers/AppProviders';
 import { AppRouter } from '@/app/router';
+import { ErrorBoundary } from '@/shared/ui';
 
 import './app/index.css';
 
@@ -11,8 +12,12 @@ if (!container) throw new Error('Не найден корневой элемен
 
 createRoot(container).render(
   <StrictMode>
-    <AppProviders>
-      <AppRouter />
-    </AppProviders>
+    {/* INFO: внешняя граница стоит снаружи провайдеров — она обязана
+        пережить и их собственное падение. */}
+    <ErrorBoundary scope="приложение" offerReload>
+      <AppProviders>
+        <AppRouter />
+      </AppProviders>
+    </ErrorBoundary>
   </StrictMode>,
 );

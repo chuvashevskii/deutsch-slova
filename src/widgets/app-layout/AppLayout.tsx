@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 import { useProgressSummary } from '@/entities/word';
 import { cn } from '@/shared/lib/cn';
+import { ErrorBoundary } from '@/shared/ui';
 
 // INFO: внизу помещаются четыре вкладки. Ежедневное остаётся в одно касание,
 // редкое — настройки, обращения, бэклог — уходит на второй этаж, в «Ещё».
@@ -29,7 +30,11 @@ export const AppLayout = () => {
         </span>
       </header>
 
-      <Outlet />
+      {/* INFO: внутренняя граница вокруг экрана. Падение одного экрана
+          не должно уносить навигацию — с неё можно уйти на рабочий. */}
+      <ErrorBoundary scope="этот экран">
+        <Outlet />
+      </ErrorBoundary>
 
       <nav className="fixed inset-x-0 bottom-0 z-30 flex border-t border-line bg-surface pb-[env(safe-area-inset-bottom,0px)]">
         {TABS.map((tab) => (

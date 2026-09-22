@@ -11,7 +11,16 @@
  *
  *   node scripts/import-anki.mjs [--skip-audio] [--force-audio] [--dry-run]
  *
- * Требуется: запущенный Anki с AnkiConnect и поднятый локальный Supabase.
+ * По умолчанию пишет в локальный стек. Чтобы залить в другой проект,
+ * задайте адрес и служебный ключ переменными окружения и подтвердите
+ * флагом — иначе прод можно перезаписать по случайности:
+ *
+ *   SUPABASE_URL=https://xxx.supabase.co \
+ *   SUPABASE_SERVICE_ROLE_KEY=... \
+ *   node scripts/import-anki.mjs --remote
+ *
+ * Требуется: запущенный Anki с AnkiConnect. Локальный Supabase нужен
+ * только тогда, когда цель — он же.
  */
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -77,13 +86,37 @@ const anki = async (action, params = {}) => {
   return body.result;
 };
 
-/** Ключи локального стека берутся у самого стека — на диске их не держим. */
-const supabaseConfig = () => {
+/**
+ * Куда заливать.
+ *
+ * Локальный стек спрашиваем у него самого — ключи на диске не держим.
+ * Удалённый проект берётся из окружения и требует явного `--remote`:
+ * служебный ключ обходит все политики доступа, и промахнуться проектом
+ * значит переписать чужой словарь.
+ */
+const supabaseTarget = () => {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (url || key) {
+    if (!url || !key) {
+      throw new Error('Заданы не обе переменные: нужны и SUPABASE_URL, и SUPABASE_SERVICE_ROLE_KEY.');
+    }
+    const host = new URL(url).hostname;
+    const isLocal = host === '127.0.0.1' || host === 'localhost';
+    if (!isLocal && !flags.has('--remote')) {
+      throw new Error(
+        `Цель не локальная (${host}). Это может быть прод — добавьте --remote, если правда хотите туда.`,
+      );
+    }
+    return { url: url.replace(/\/$/, ''), key, label: host };
+  }
+
   const status = JSON.parse(execFileSync('npx', ['supabase', 'status', '-o', 'json'], {
     encoding: 'utf8',
     maxBuffer: 1 << 24,
   }));
-  return { url: status.API_URL, key: status.SERVICE_ROLE_KEY };
+  return { url: status.API_URL, key: status.SERVICE_ROLE_KEY, label: 'локальный стек' };
 };
 
 /** Разбор CSV с кавычками: в переводах встречаются запятые. */
@@ -321,7 +354,8 @@ const main = async () => {
 
   if (flags.has('--dry-run')) { log('Пробный прогон, в базу ничего не пишу.'); return; }
 
-  const config = supabaseConfig();
+  const config = supabaseTarget();
+  log(`Цель: ${config.label}`);
 
   if (!flags.has('--skip-audio')) {
     const already = flags.has('--force-audio') ? new Set() : await existingObjects(config);
