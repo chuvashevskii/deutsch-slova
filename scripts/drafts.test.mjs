@@ -63,17 +63,22 @@ describe('черновые партии', () => {
     if (card.pos === 'noun') {
       expect(GENUS.has(card.genus), `род «${card.genus}»`).toBe(true);
       expect(card.singular, 'Singular с артиклем').toMatch(/^(der|die|das) /);
-      expect(card.plural, 'Plural с артиклем').toMatch(/^die /);
+      // Множественного может не быть вовсе — «der Dank», «das Obst».
+      // Пустое поле тут законно, а вот множественное без артикля нет.
+      if (card.plural) expect(card.plural, 'Plural с артиклем').toMatch(/^die /);
       // Ударение отмечается у многосложных: у односложного отмечать нечего.
       if (vowelGroups(card.head) > 1) {
         expect(card.stress_singular, 'ударение существительного').toBeTruthy();
       }
     } else if (vowelGroups(card.head) > 1) {
-      expect(card.stress_word, 'ударение слова').toBeTruthy();
+      // У глагола ударение живёт в своём поле: оно относится к инфинитиву,
+      // а у отделяемых приставок важно, падает оно на приставку или нет.
+      const stress = card.pos === 'verb' ? card.stress_infinitive : card.stress_word;
+      expect(stress, `ударение (${card.pos === 'verb' ? 'инфинитива' : 'слова'})`).toBeTruthy();
     }
 
     // Номер ударения — гласный ряд, и выйти за их число он не может.
-    for (const stress of [card.stress_word, card.stress_singular]) {
+    for (const stress of [card.stress_word, card.stress_singular, card.stress_infinitive]) {
       if (!stress) continue;
       const group = Number.parseInt(String(stress).split('.')[0], 10);
       expect(group, 'номер гласного ряда').toBeGreaterThan(0);
