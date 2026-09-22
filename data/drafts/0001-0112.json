@@ -231,8 +231,8 @@
     "wortart": "прилагательное",
     "ipa": "/ˈnɛːçstə/",
     "pronunciation_ru": "НЭхьстэ",
-    "rule_status": "exception",
-    "rule_label": "Превосходная степень от nah",
+    "rule_status": "none",
+    "rule_label": "Степеней не образует",
     "examples_de": [
       "Nächste Woche fahre ich nach Wien.",
       "Die nächste Haltestelle ist der Hauptbahnhof."
