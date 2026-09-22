@@ -35,6 +35,8 @@ interface RuleBadgeProps {
   ruleGenus?: string | null;
   /** Настоящий род слова — нужен, чтобы показать, чем исключение отличается. */
   genus?: string | null;
+  /** Есть ли у слова степени сравнения на самом деле. */
+  hasDegrees?: boolean;
 }
 
 /**
@@ -54,10 +56,28 @@ interface RuleBadgeProps {
  *
  * У существительного отсутствие правила — наоборот, подсказка: род
  * придётся запомнить. Поэтому им плашка показывается всегда.
+ *
+ * Наречие — случай особый. Степени у него бывают, но у считанных слов:
+ * `gern → lieber`, `bald → eher`, `oft → öfter`. Всё остальное, что
+ * выглядит наречием со степенями, — прилагательное в наречном
+ * употреблении (`schnell`), и в колоде оно так и помечено. Поэтому
+ * чистому наречию «Степеней не образует» говорить незачем: никто
+ * и не ждёт сравнительной степени от «сегодня». Плашка показывается
+ * ему, только когда степени правда есть.
+ *
+ * Прилагательному она нужна и без степеней: сказать *ganzer человек
+ * вполне может, и предупреждение работает.
  */
-export const RuleBadge = ({ status, label, pos, ruleGenus, genus }: RuleBadgeProps) => {
+export const RuleBadge = ({
+  status,
+  label,
+  pos,
+  ruleGenus,
+  genus,
+  hasDegrees = false,
+}: RuleBadgeProps) => {
   const aboutGenus = pos === 'noun';
-  const aboutDegrees = pos === 'adj' || pos === 'adverb';
+  const aboutDegrees = pos === 'adj' || (pos === 'adverb' && hasDegrees);
   if (!aboutGenus && !aboutDegrees) return null;
   // Прилагательному без подписи сказать нечего: значок один, без слов
   // он не читается. Существительному есть — «род придётся запомнить».

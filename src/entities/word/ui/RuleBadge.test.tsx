@@ -47,4 +47,22 @@ describe('плашка правила', () => {
     const { container } = render(<RuleBadge status="none" label="" pos="adverb" />);
     expect(container).toBeEmptyDOMElement();
   });
+
+  it('чистому наречию не сообщает, что степеней нет', () => {
+    // «сегодня» — никто и не ждёт от него сравнительной степени.
+    const { container } = render(
+      <RuleBadge status="none" label="Степеней не образует" pos="adverb" />,
+    );
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('наречию со степенями показывает: gern, bald, oft их правда образуют', () => {
+    render(<RuleBadge status="exception" label="Неправильные степени" pos="adverb" hasDegrees />);
+    expect(screen.getByText('Неправильные степени')).toBeTruthy();
+  });
+
+  it('прилагательному без степеней сообщает всё равно — сказать *ganzer можно', () => {
+    render(<RuleBadge status="none" label="Степеней не образует" pos="adj" />);
+    expect(screen.getByText('Степеней не образует')).toBeTruthy();
+  });
 });

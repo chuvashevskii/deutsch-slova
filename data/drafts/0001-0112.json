@@ -44,7 +44,7 @@
     "ipa": "/daː/",
     "pronunciation_ru": "ДА",
     "rule_status": "none",
-    "rule_label": "Степеней не образует",
+    "rule_label": "",
     "examples_de": [
       "Da kommt der Bus!",
       "Ist jemand da?"
@@ -281,7 +281,7 @@
     "ipa": "/ɡaːɐ̯/",
     "pronunciation_ru": "ГАА",
     "rule_status": "none",
-    "rule_label": "Степеней не образует",
+    "rule_label": "",
     "examples_de": [
       "Das ist gar nicht schlimm.",
       "Ich habe gar keine Zeit."

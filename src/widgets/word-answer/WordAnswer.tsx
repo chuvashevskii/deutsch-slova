@@ -184,6 +184,7 @@ export const WordAnswer = ({
         pos={word.pos}
         ruleGenus={word.rule_genus}
         genus={word.genus}
+        hasDegrees={Boolean(word.komparativ || word.superlativ)}
       />
       <RektionChips rektion={word.rektion} />
       <WordExamples examplesDe={word.examples_de} examplesRu={word.examples_ru} />
