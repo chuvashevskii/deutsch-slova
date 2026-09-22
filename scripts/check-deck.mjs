@@ -141,14 +141,40 @@ const variants = (t) =>
     .map((v) => v.trim())
     .filter(Boolean);
 
+/**
+ * Страница поменьше и отступ при обрыве.
+ *
+ * Тысяча строк по двадцати колонкам — полтора мегабайта на запрос,
+ * и по сети облако такой ответ иногда обрывает: `TypeError: terminated`.
+ * Локально это незаметно, а проверка прода падала на полпути — как раз
+ * там, где она нужнее всего. Пятьсот строк проходят, а три попытки
+ * с удвоением паузы закрывают случайный обрыв.
+ */
+const PAGE = 500;
+const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
+
+const fetchPage = async (db, columns, from) => {
+  let wait = 500;
+  for (let attempt = 1; ; attempt += 1) {
+    const { data, error } = await db
+      .from('words')
+      .select(columns)
+      .order('id')
+      .range(from, from + PAGE - 1);
+    if (!error) return data;
+    if (attempt >= 3) throw new Error(`строки ${from}–${from + PAGE - 1}: ${error.message}`);
+    await sleep(wait);
+    wait *= 2;
+  }
+};
+
 const fetchAll = async (db) => {
   const rows = [];
   const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, ${NULLABLE.join(', ')}`;
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await db.from('words').select(columns).order('id').range(from, from + 999);
-    if (error) throw new Error(error.message);
+  for (let from = 0; ; from += PAGE) {
+    const data = await fetchPage(db, columns, from);
     rows.push(...data);
-    if (data.length < 1000) return rows;
+    if (data.length < PAGE) return rows;
   }
 };
 
