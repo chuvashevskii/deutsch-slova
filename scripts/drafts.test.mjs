@@ -94,9 +94,14 @@ describe('черновые партии', () => {
       expect(group, 'ударение за пределами слова').toBeLessThanOrEqual(vowelGroups(card.head));
     }
 
-    // Подписи к формам идут парой: разъехавшаяся пара молча сдвигает их.
-    if (card.forms || card.form_labels) {
-      expect(card.form_labels?.length ?? 0, 'подписей и форм поровну').toBe(card.forms?.length ?? 0);
+    // Формы без подписей законны — «vorne / vorn» это варианты написания,
+    // спрашивать там нечего. А вот подписи, разъехавшиеся с формами,
+    // молча сдвигают их: подпись окажется у чужой формы.
+    if (card.form_labels?.length) {
+      expect(card.form_labels.length, 'подписей и форм поровну').toBe(card.forms?.length ?? 0);
+    }
+    if (card.form_labels?.length && !card.forms?.length) {
+      expect.fail('подписи есть, а форм нет');
     }
   });
 
