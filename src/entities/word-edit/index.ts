@@ -1,4 +1,4 @@
-export { EDIT_TABLES, editTable, fieldLabel, FIELD_LABEL } from './model/editTable';
+export { EDIT_TABLES, EDIT_TABLE_SHORT, editTable, fieldLabel, FIELD_LABEL } from './model/editTable';
 export type { EditTable } from './model/editTable';
 export { EDIT_MODES, matchesMode } from './model/editFilter';
 export type { EditMode } from './model/editFilter';
