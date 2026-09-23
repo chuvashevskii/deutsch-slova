@@ -1,0 +1,47 @@
+[
+ {"id":"1788623083860","head":"ausländisch","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод примера перевёрнут по смыслу: «sind willkommen» — это «им рады», а стояло «они рады учиться». Ошибка не в слове карточки, а в самом переводе примера.",
+  "set":{"examples_ru":["Иностранным студентам в нашем университете рады.","Он интересуется иностранными культурами."]}},
+
+ {"id":"1788623058396","head":"intelligent","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Интеллектуально развитый» — оборот, которым не говорят, и оба примера сами говорили «умный». «Умный» в колоде свободен: klug стоит «Разумным».",
+  "set":{"translation":"Умный"}},
+
+ {"id":"list-1618","head":"dritte","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Im dritten Stock» — это по-русски четвёртый этаж: у немцев первый этаж не считается. Культурно верно, но на карточке числительного вредно — человек видит «dritten» и «четвёртом» рядом и запоминает сдвиг. Пример заменён.",
+  "set":{"examples_de":["Das ist mein dritter Versuch.","Das ist ihr drittes Kind."],
+         "examples_ru":["Это моя третья попытка.","Это её третий ребёнок."]}},
+
+ {"id":"list-0093","head":"erste","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"То же, что у dritte: «im ersten Stock» переведено «на втором этаже». На карточке числительного такое соседство учит сдвигу.",
+  "set":{"examples_de":["Das ist mein erstes Auto.","Sie kam als Erste an."],
+         "examples_ru":["Это моя первая машина.","Она пришла первой."]}},
+
+ {"id":"1788622892334","head":"blau","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"В примере стояло tiefblau — другое слово, внутри которого заголовок просто лежит. Самого blau он не показывал.",
+  "set":{"examples_de":["Das Meer ist blau.","Seine Augen sind blau."],
+         "examples_ru":["Море синее.","У него голубые глаза."]}},
+
+ {"id":"1788622835978","head":"braun","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"В примере стояло dunkelbraun, и перевод говорил «каштановые» — ни слова, ни цвета карточки там не было.",
+  "set":{"examples_de":["Der Tisch ist braun.","Die Schuhe sind braun."],
+         "examples_ru":["Стол коричневый.","Ботинки коричневые."]}},
+
+ {"id":"1788622826104","head":"gelb","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"В примере стояло knallgelb — составное слово вместо самого gelb.",
+  "set":{"examples_de":["Die Blume ist gelb.","Die Blätter werden im Herbst gelb."],
+         "examples_ru":["Этот цветок жёлтый.","Осенью листья желтеют."]}},
+
+ {"id":"list-1174","head":"gewiss","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал наречие «наверняка» — другое значение, которого перевод не обещает.",
+  "set":{"examples_de":["Ein gewisser Herr Müller hat angerufen.","Aus gewissen Gründen kam er nicht."],
+         "examples_ru":["Звонил некий господин Мюллер.","По определённым причинам он не пришёл."]}},
+
+ {"id":"list-0871","head":"anstrengend","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод «Утомительный», а второй пример говорил «напряжённая».",
+  "set":{"examples_ru":["День был очень утомительным.","Это утомительная работа."]}},
+
+ {"id":"list-1629","head":"hübsch","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод «Красивый», а первый пример говорил «хорошо выглядишь» — это gut aussehen.",
+  "set":{"examples_ru":["Ты красиво выглядишь.","Это красивое платье."]}}
+]

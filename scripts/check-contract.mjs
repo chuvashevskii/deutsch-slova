@@ -161,6 +161,60 @@ const CONTRACT = [
 const { url, key, label } = target();
 const db = createClient(url, key, { auth: { persistSession: false } });
 
+/**
+ * `reset_all_progress` в общий список не входит: служебным ключом её
+ * не вызвать — она берёт `auth.uid()`, а у ключа пользователя нет, —
+ * и вызвать «как есть» нельзя тем более, потому что она удаляет.
+ *
+ * Поэтому здесь свой ход: заводится пустой пользователь, функция
+ * зовётся от его имени и не удаляет ничего, потому что у него ничего
+ * нет. Возвращённые нули это и доказывают — если хоть одно не ноль,
+ * значит задет чужой прогресс, и проверка обязана закричать.
+ *
+ * Стоит это того, что именно такой каст однажды и разошёлся: экран
+ * читал `items` у ответа, где их не было, и молча показывал пустую
+ * очередь. `as unknown as` ошибку не ловит — её ловит только вызов.
+ */
+const checkResetShape = async () => {
+  const admin = createClient(url, key, { auth: { persistSession: false } });
+  const email = `contract-probe-${Date.now()}@local.invalid`;
+  const password = `probe-${Math.random().toString(36).slice(2)}`;
+
+  const { data: created, error: createError } = await admin.auth.admin.createUser({
+    email,
+    password,
+    email_confirm: true,
+  });
+  if (createError) return { skipped: createError.message };
+
+  try {
+    const { data: signed, error: signError } = await admin.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (signError) return { skipped: signError.message };
+
+    const asUser = createClient(url, key, {
+      auth: { persistSession: false },
+      global: { headers: { Authorization: `Bearer ${signed.session.access_token}` } },
+    });
+    const { data, error } = await asUser.rpc('reset_all_progress');
+    if (error) return { miss: [`вызов не прошёл: ${error.message}`] };
+
+    const miss = ['cards', 'reviews', 'marks'].filter((f) => typeof data?.[f] !== 'number');
+    // Пустой пользователь обязан получить нули. Не ноль — значит функция
+    // зацепила чужое, и это страшнее любого расхождения полей.
+    for (const field of ['cards', 'reviews', 'marks']) {
+      if (typeof data?.[field] === 'number' && data[field] !== 0) {
+        miss.push(`${field} = ${data[field]} у пустого пользователя`);
+      }
+    }
+    return { miss };
+  } finally {
+    await admin.auth.admin.deleteUser(created.user.id);
+  }
+};
+
 console.log(`\nСтык базы и приложения — ${label}\n`);
 let broken = 0;
 
@@ -180,6 +234,17 @@ for (const item of CONTRACT) {
   } else {
     console.log(`  ✓ ${item.what}`);
   }
+}
+
+const reset = await checkResetShape();
+if (reset.skipped) {
+  console.log(`  · reset_all_progress: не проверено — ${reset.skipped}`);
+} else if (reset.miss.length) {
+  console.log(`  ✗ reset_all_progress: ${reset.miss.join(', ')}`);
+  console.log('      читает: src/pages/settings/SettingsPage.tsx — done.cards / reviews / marks');
+  broken += 1;
+} else {
+  console.log('  ✓ reset_all_progress');
 }
 
 console.log(broken ? `\nСтык разошёлся: ${broken}\n` : '\nСтык сходится\n');

@@ -1,12 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import {
-  STATUS_LABEL,
-  useResetProgress,
-  useToggleMark,
-  type ListStatus,
-} from '@/entities/review';
+import { STATUS_LABEL, useResetProgress, useToggleMark, type ListStatus } from '@/entities/review';
 import {
   posLabel,
   useWord,
@@ -18,7 +13,7 @@ import {
 import { useAuth } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
 import { useCloseDetails } from '@/shared/lib/useCloseDetails';
-import { Busy, busyClasses, LoadError, WordRowsSkeleton } from '@/shared/ui';
+import { Busy, busyClasses, LoadError, StableLabel, WordRowsSkeleton } from '@/shared/ui';
 import { WordAnswer } from '@/widgets/word-answer/WordAnswer';
 
 import {
@@ -101,6 +96,10 @@ const Chip = ({
 /**
  * Действия над словом в раскрытой строке. Отдельной кнопки «отменить»
  * нет: нажатие по стоящей отметке её снимает.
+ *
+ * «Сбросить прогресс» стоит отдельной строкой, а не третьим в ряду:
+ * она появляется и исчезает вместе с прогрессом, и в общем ряду её
+ * появление сдвигало бы обе отметки.
  */
 const WordActions = ({ row }: { row: WordListRow }) => {
   const { user } = useAuth();
@@ -117,44 +116,52 @@ const WordActions = ({ row }: { row: WordListRow }) => {
     toggleMark.mutate({ userId: user.id, wordId: row.id, mark, active });
 
   return (
-    <div className="mt-3 flex flex-wrap gap-1.5 border-t border-line-soft pt-3">
-      <button
-        type="button"
-        disabled={busy || declared}
-        onClick={action('requested', row.requested)}
-        aria-pressed={row.requested}
-        className={cn(
-          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
-          row.requested && 'border-ink bg-ink text-bg',
-          busyClasses(savingRequested),
-        )}
-      >
-        <Busy busy={savingRequested} label="Сохраняем отметку">
-          {row.requested ? 'Убрать из очереди' : 'Учить сегодня'}
-        </Busy>
-      </button>
-      <button
-        type="button"
-        disabled={busy}
-        onClick={action('known', declared)}
-        aria-pressed={declared}
-        className={cn(
-          'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
-          declared && 'border-ink bg-ink text-bg',
-          busyClasses(savingKnown),
-        )}
-      >
-        <Busy busy={savingKnown} label="Сохраняем отметку">
-          {declared ? 'Вернуть в колоду' : 'Знаю'}
-        </Busy>
-      </button>
+    <div className="mt-3 border-t border-line-soft pt-3">
+      <div className="flex flex-wrap gap-1.5">
+        <button
+          type="button"
+          disabled={busy || declared}
+          onClick={action('requested', row.requested)}
+          aria-pressed={row.requested}
+          className={cn(
+            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
+            row.requested && 'border-ink bg-ink text-bg',
+            busyClasses(savingRequested),
+          )}
+        >
+          <Busy busy={savingRequested} label="Сохраняем отметку">
+            <StableLabel
+              shown={row.requested ? 'Убрать из очереди' : 'Учить сегодня'}
+              other={row.requested ? 'Учить сегодня' : 'Убрать из очереди'}
+            />
+          </Busy>
+        </button>
+        <button
+          type="button"
+          disabled={busy}
+          onClick={action('known', declared)}
+          aria-pressed={declared}
+          className={cn(
+            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium',
+            declared && 'border-ink bg-ink text-bg',
+            busyClasses(savingKnown),
+          )}
+        >
+          <Busy busy={savingKnown} label="Сохраняем отметку">
+            <StableLabel
+              shown={declared ? 'Вернуть в колоду' : 'Знаю'}
+              other={declared ? 'Знаю' : 'Вернуть в колоду'}
+            />
+          </Busy>
+        </button>
+      </div>
       {row.has_progress ? (
         <button
           type="button"
           disabled={busy}
           onClick={() => resetProgress.mutate({ userId: user.id, wordId: row.id })}
           className={cn(
-            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad',
+            'mt-1.5 flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium text-bad',
             busyClasses(resetProgress.isPending),
           )}
         >
@@ -164,7 +171,7 @@ const WordActions = ({ row }: { row: WordListRow }) => {
         </button>
       ) : null}
       {toggleMark.isError || resetProgress.isError ? (
-        <span className="w-full text-[12px] text-bad">Не удалось сохранить, попробуйте ещё раз.</span>
+        <p className="mt-1.5 text-[12px] text-bad">Не удалось сохранить, попробуйте ещё раз.</p>
       ) : null}
     </div>
   );
@@ -326,7 +333,10 @@ export const WordsPage = () => {
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
-  const pageRows = useMemo(() => (pageData?.pages ?? []).flatMap((chunk) => chunk.rows), [pageData]);
+  const pageRows = useMemo(
+    () => (pageData?.pages ?? []).flatMap((chunk) => chunk.rows),
+    [pageData],
+  );
 
   // INFO: подгрузка по появлению метки в поле зрения. Метка стоит под
   // последней строкой, и браузер сам сообщает, что до неё долистали, —
@@ -418,7 +428,10 @@ export const WordsPage = () => {
                           className="h-3.5 w-3.5 shrink-0 accent-ink"
                         />
                         <span
-                          className={cn('min-w-0 flex-1 truncate font-serif', GENUS_TEXT[genus.value])}
+                          className={cn(
+                            'min-w-0 flex-1 truncate font-serif',
+                            GENUS_TEXT[genus.value],
+                          )}
                         >
                           {genus.label}
                         </span>

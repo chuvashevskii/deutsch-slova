@@ -10,6 +10,7 @@ import {
   useUserSettings,
   type AnswerSettings,
 } from '@/entities/settings';
+import { useProgressSize, useResetAllProgress } from '@/entities/review';
 import { useProgressSummary } from '@/entities/word';
 import { useAuth } from '@/features/auth';
 import { useTheme } from '@/features/theme';
@@ -19,11 +20,110 @@ import { Busy, busyClasses, LoadError, Skeleton, Spinner } from '@/shared/ui';
 type InputKey = Extract<keyof AnswerSettings, `input_${string}`> | 'ask_genus';
 
 /**
+ * Полный сброс обучения.
+ *
+ * Действие необратимое, поэтому в один клик его сделать нельзя: кнопка
+ * сперва разворачивает предупреждение с числами, и только вторая кнопка
+ * удаляет. Двухшаговость выбрана вместо `confirm()`: системное окно
+ * не показывает, сколько именно уйдёт, а число ответов — это главное,
+ * что человек должен увидеть перед тем, как согласиться.
+ *
+ * После удаления экран остаётся на месте и показывает, что удалено.
+ * Просили подтвердить, что сброс прошёл, и «готово» этого не
+ * доказывает: доказывают числа, пришедшие из самой базы.
+ */
+const ResetAll = () => {
+  const reset = useResetAllProgress();
+  const [asking, setAsking] = useState(false);
+  const { data: size } = useProgressSize(asking);
+  const done = reset.data;
+
+  return (
+    <section className="mt-4 rounded-xl border border-bad/40 bg-surface p-4">
+      <h2 className="text-[15px] font-semibold text-bad">Сбросить весь прогресс</h2>
+      <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+        Колода останется нетронутой — уйдёт только то, что накопили вы: состояние всех карточек,
+        журнал ответов и отметки рукой. Все слова снова станут новыми, статистика и тепловая карта
+        обнулятся. Вернуть это нельзя.
+      </p>
+
+      {done ? (
+        <p className="mt-3 rounded-lg bg-surface-2 px-3 py-2.5 text-[13px] leading-relaxed">
+          <span className="font-semibold">Сброс прошёл.</span> Удалено: карточек с прогрессом —{' '}
+          {done.cards}, ответов в журнале — {done.reviews}, отметок — {done.marks}. Обучение
+          начинается заново.
+          <button
+            type="button"
+            onClick={() => {
+              reset.reset();
+              setAsking(false);
+            }}
+            className="ml-1 underline underline-offset-2"
+          >
+            Понятно
+          </button>
+        </p>
+      ) : asking ? (
+        <div className="mt-3 rounded-lg border border-bad/40 bg-bad/5 px-3 py-3">
+          {/* INFO: числа названы той же строкой, что и после удаления, —
+              чтобы обещание и отчёт можно было сличить глазами. */}
+          <p className="text-[13px] leading-relaxed">
+            Будет удалено: карточек с прогрессом — {size ? size.cards : '…'}, ответов в журнале —{' '}
+            {size ? size.reviews : '…'}, и все отметки рукой. Точно сбросить?
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={reset.isPending}
+              onClick={() => reset.mutate()}
+              className={cn(
+                'flex items-center rounded-lg border border-bad bg-bad px-4 py-2 text-[13.5px] font-semibold text-bg',
+                busyClasses(reset.isPending),
+              )}
+            >
+              <Busy busy={reset.isPending} label="Сбрасываем прогресс">
+                Да, сбросить всё
+              </Busy>
+            </button>
+            <button
+              type="button"
+              disabled={reset.isPending}
+              onClick={() => setAsking(false)}
+              className="rounded-lg border border-line px-4 py-2 text-[13.5px] font-medium"
+            >
+              Отмена
+            </button>
+          </div>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setAsking(true)}
+          className="mt-3 rounded-lg border border-bad px-4 py-2 text-[13.5px] font-semibold text-bad"
+        >
+          Сбросить прогресс
+        </button>
+      )}
+
+      {reset.isError ? (
+        <p className="mt-3 text-[12.5px] text-bad">
+          Не удалось сбросить. Проверьте соединение и попробуйте ещё раз — ничего не удалено.
+        </p>
+      ) : null}
+    </section>
+  );
+};
+
+/**
  * Галочки отдельные на каждую группу форм, а не один переключатель ввода:
  * цена очень разная. Пять форм спряжения с телефона — марафон, а одно поле
  * множественного числа — секунды.
  */
-const INPUT_GROUPS: Array<{ title: string; hint: string; items: Array<{ key: InputKey; label: string }> }> = [
+const INPUT_GROUPS: Array<{
+  title: string;
+  hint: string;
+  items: Array<{ key: InputKey; label: string }>;
+}> = [
   {
     title: 'Существительное',
     hint: 'Единственное вы обычно и так знаете — множественное в немецком отдельная боль.',
@@ -105,9 +205,7 @@ export const SettingsPage = () => {
   // Отдельное состояние рядом с ними было лишним и умело разойтись:
   // крутилка гасла по `onSettled`, а запрос ещё шёл.
   const savingPatch = saveSettings.isPending ? saveSettings.variables?.patch : undefined;
-  const savingKey = savingPatch
-    ? (Object.keys(savingPatch)[0] as keyof AnswerSettings)
-    : undefined;
+  const savingKey = savingPatch ? (Object.keys(savingPatch)[0] as keyof AnswerSettings) : undefined;
 
   // INFO: показать умолчания вместо непрочитанных настроек значит соврать:
   // человек увидит снятые галочки там, где сам их ставил.
@@ -147,8 +245,8 @@ export const SettingsPage = () => {
       <section className="rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Что вводить с клавиатуры</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          По умолчанию карточка ничего не спрашивает: показывает перевод, вы вспоминаете слово
-          и открываете ответ. Включите то, что хотите писать руками.
+          По умолчанию карточка ничего не спрашивает: показывает перевод, вы вспоминаете слово и
+          открываете ответ. Включите то, что хотите писать руками.
         </p>
 
         {INPUT_GROUPS.map((group) => (
@@ -196,8 +294,8 @@ export const SettingsPage = () => {
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Новых слов в день</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          Сколько незнакомых слов добавлять к повторениям за сессию. Просроченные повторения
-          в этот счёт входят: если долгов больше лимита, новых не будет вовсе.
+          Сколько незнакомых слов добавлять к повторениям за сессию. Просроченные повторения в этот
+          счёт входят: если долгов больше лимита, новых не будет вовсе.
         </p>
         <div className="mt-3 grid grid-cols-5 gap-1.5">
           {NEW_LIMITS.map((limit) => (
@@ -222,9 +320,9 @@ export const SettingsPage = () => {
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Черновые карточки</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          Слова, собранные по частотному списку, а не взятые из готовой колоды: разбор у них
-          выведен автоматически и человеком не сверен. В списке слов они видны всегда
-          и помечены, а в «Учить» попадают только с этой настройкой.
+          Слова, собранные по частотному списку, а не взятые из готовой колоды: разбор у них выведен
+          автоматически и человеком не сверен. В списке слов они видны всегда и помечены, а в
+          «Учить» попадают только с этой настройкой.
         </p>
         <Toggle
           label="Давать черновики в «Учить»"
@@ -245,10 +343,10 @@ export const SettingsPage = () => {
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Слова вне частотного списка</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          У части колоды нет ранга, и это не пропуск: списка 4500 эти слова не знают. Туда
-          не попадают составные существительные вроде <i>Wetterbericht</i>, женские формы
-          профессий и обороты с <i>sein</i>. Набор по природе другой, и его бывает удобно
-          пройти отдельно — тогда очередь идёт только по ним.
+          У части колоды нет ранга, и это не пропуск: списка 4500 эти слова не знают. Туда не
+          попадают составные существительные вроде <i>Wetterbericht</i>, женские формы профессий и
+          обороты с <i>sein</i>. Набор по природе другой, и его бывает удобно пройти отдельно —
+          тогда очередь идёт только по ним.
         </p>
         <Toggle
           label="Учить только слова вне списка"
@@ -267,8 +365,8 @@ export const SettingsPage = () => {
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Оформление</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          Выбор запоминается в этом браузере, а не в учётной записи: с телефона вечером
-          и за столом днём удобны разные, и таскать один между ними ни к чему.
+          Выбор запоминается в этом браузере, а не в учётной записи: с телефона вечером и за столом
+          днём удобны разные, и таскать один между ними ни к чему.
         </p>
         <div className="mt-3 grid grid-cols-3 gap-1.5">
           {THEMES.map((option) => (
@@ -291,8 +389,8 @@ export const SettingsPage = () => {
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
         <h2 className="text-[15px] font-semibold">Псевдоним</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          Им подписаны ваши строки в обращениях и бэклоге — эти списки общие. Почта туда
-          не попадает.
+          Им подписаны ваши строки в обращениях и бэклоге — эти списки общие. Почта туда не
+          попадает.
         </p>
         <div className="mt-3 flex gap-2">
           <input
@@ -305,7 +403,10 @@ export const SettingsPage = () => {
           <button
             type="button"
             disabled={
-              !user || !nickname.trim() || nickname.trim() === profile?.nickname || saveNickname.isPending
+              !user ||
+              !nickname.trim() ||
+              nickname.trim() === profile?.nickname ||
+              saveNickname.isPending
             }
             onClick={() => {
               if (user) saveNickname.mutate({ userId: user.id, nickname: nickname.trim() });
@@ -321,6 +422,8 @@ export const SettingsPage = () => {
           </button>
         </div>
       </section>
+
+      <ResetAll />
 
       {saveSettings.isError || saveNickname.isError ? (
         <p className="mt-4 rounded-lg bg-bad/10 px-3 py-2 text-[13px] text-bad">

@@ -1,0 +1,21 @@
+[
+ {"id":"list-0565","head":"Liebe","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример — поговорка, и русский её эквивалент слова «любовь» не содержит вовсе: карточка про любовь, а в переводе сердце и желудок.",
+  "set":{"examples_de":["Ihre Liebe hält seit Jahren.","Sie tut das aus Liebe."],
+         "examples_ru":["Их любовь длится годами.","Она делает это из любви."]}},
+
+ {"id":"1788603848721","head":"Miete","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Два примера были одним предложением в единственном и множественном числе, да ещё с одинаковым переводом.",
+  "set":{"examples_de":["Die Miete steigt jedes Jahr.","Die Mieten sind hier sehr hoch."],
+         "examples_ru":["Арендная плата растёт каждый год.","Арендная плата здесь очень высокая."]}},
+
+ {"id":"list-0783","head":"Mama","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Пример, который я дал в партии множественного, слово в слово совпал с примером карточки Mutter — «ждут перед школой».",
+  "set":{"examples_de":["Meine Mama kocht sehr gut.","Die Mamas tauschen sich im Chat aus."],
+         "examples_ru":["Моя мама очень хорошо готовит.","Мамы переписываются в чате."]}},
+
+ {"id":"list-0926","head":"Stimmung","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Пример, который я дал в партии множественного, повторил пример соседней карточки Laune — «настроения быстро меняются».",
+  "set":{"examples_de":["Die Stimmung war super.","Solche Stimmungen kenne ich."],
+         "examples_ru":["Настрой был отличный.","Такие настроения мне знакомы."]}}
+]

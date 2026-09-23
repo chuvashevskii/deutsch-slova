@@ -1,0 +1,21 @@
+[
+ {"id":"list-1889","head":"Aussicht","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал переносное «перспективы», а карточка о панораме.",
+  "set":{"examples_de":["Die Aussicht ist fantastisch.","Die Aussichten vom Berg sind fantastisch."],
+         "examples_ru":["Вид фантастический.","Виды с горы фантастические."]}},
+
+ {"id":"list-1878","head":"Bühne","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример переведён «Театры закрыты» — это Theater, а не Bühne.",
+  "set":{"examples_de":["Sie steht auf der Bühne.","Beide Bühnen sind leer."],
+         "examples_ru":["Она стоит на сцене.","Обе сцены пусты."]}},
+
+ {"id":"list-1875","head":"Charakter","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про персонажей книги — другое значение слова, перевода «Характер» он не показывал.",
+  "set":{"examples_de":["Er hat einen starken Charakter.","Ihre Charaktere sind sehr verschieden."],
+         "examples_ru":["У него сильный характер.","Их характеры очень разные."]}},
+
+ {"id":"1788603829178","head":"Bein","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Два примера были одним предложением в единственном и множественном числе — второй не добавлял ничего, кроме формы.",
+  "set":{"examples_de":["Mein Bein tut nach dem Sport weh.","Er hat lange Beine."],
+         "examples_ru":["После спорта у меня болит нога.","У него длинные ноги."]}}
+]

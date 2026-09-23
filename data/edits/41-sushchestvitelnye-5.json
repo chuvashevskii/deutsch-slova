@@ -1,0 +1,22 @@
+[
+ {"id":"1788603838474","head":"Verkehr","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод второго примера не имел отношения к немецкому: «Wir stehen im Verkehr» — это «мы стоим в пробке», а стояло «в час пик движение особенно плотное».",
+  "set":{"examples_ru":["Движение сегодня очень плотное.","Мы стоим в пробке."]}},
+
+ {"id":"1788603838820","head":"Wagen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Wagen steht im Zugabteil» — бессмыслица: вагон не стоит внутри купе, он сам часть поезда. И перевод «в третьем составе поезда» этого не спасал.",
+  "set":{"examples_de":["Unser Wagen ist der dritte von vorn.","Beide Wagen sind überfüllt."],
+         "examples_ru":["Наш вагон третий с головы.","Оба вагона переполнены."]}},
+
+ {"id":"1788603837503","head":"Sonne","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был придуман только ради множественного — «два солнца на картине». Солнце одно; требование формы снято, пример заменён на живой.",
+  "set":{"plural":null,
+         "examples_de":["Die Sonne scheint heute den ganzen Tag.","Die Sonne geht im Westen unter."],
+         "examples_ru":["Сегодня солнце светит весь день.","Солнце садится на западе."]}},
+
+ {"id":"1788603846651","head":"Studium","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал «Studien» — форму, которая в речи значит исследования и уже занята карточкой Studie. Множественное у Studium в обиходе не нужно.",
+  "set":{"plural":null,
+         "examples_de":["Mein Studium dauert vier Jahre.","Nach dem Studium sucht er Arbeit."],
+         "examples_ru":["Моя учёба длится четыре года.","После учёбы он ищет работу."]}}
+]

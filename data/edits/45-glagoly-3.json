@@ -1,0 +1,45 @@
+[
+ {"id":"list-1249","head":"schätzen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про «угадай, сколько ей лет» — другое значение слова, перевода «Ценить» он не показывал.",
+  "set":{"examples_de":["Ich schätze ihn sehr.","Ich schätze seine Ehrlichkeit."],
+         "examples_ru":["Я его очень ценю.","Я ценю его честность."]}},
+
+ {"id":"list-0930","head":"räumen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал abräumen «убирать со стола» — это другой глагол.",
+  "set":{"examples_de":["Bitte räumt den Raum bis acht.","Wir räumen die Wohnung bis Freitag."],
+         "examples_ru":["Освободите, пожалуйста, помещение до восьми.","Мы освобождаем квартиру до пятницы."]}},
+
+ {"id":"list-1415","head":"schalten","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример показывал ausschalten «выключать» — отдельный глагол, а не schalten.",
+  "set":{"examples_de":["Schalte auf den anderen Kanal.","Er schaltet in den zweiten Gang."],
+         "examples_ru":["Переключи на другой канал.","Он переключается на вторую передачу."]}},
+
+ {"id":"list-1996","head":"pflegen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод уточняет «за больным», а второй пример был про сад — уточнение и пример расходились.",
+  "set":{"examples_de":["Sie pflegt ihre Mutter.","Der Pfleger pflegt die Patienten."],
+         "examples_ru":["Она ухаживает за матерью.","Медбрат ухаживает за пациентами."]}},
+
+ {"id":"list-0705","head":"sich befinden","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Im dritten Stock» переведено «на четвёртом этаже», а карточка Stock тот же оборот переводит «на третьем». Внутри колоды два разных счёта этажей.",
+  "set":{"examples_ru":["Музей располагается в центре.","Мы располагаемся на третьем этаже."]}},
+
+ {"id":"list-0496","head":"starten","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Во втором примере немецкое «мы запускаем проект» переведено как «проект стартует» — залог разошёлся.",
+  "set":{"examples_de":["Das Flugzeug startet um sieben.","Das Projekt startet im Mai."],
+         "examples_ru":["Самолёт стартует в семь.","Проект стартует в мае."]}},
+
+ {"id":"list-1530","head":"tauchen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал auftauchen «появляться» — у него своя карточка.",
+  "set":{"examples_de":["Im Urlaub tauchen wir viel.","Sie taucht ins kalte Wasser."],
+         "examples_ru":["В отпуске мы много ныряем.","Она ныряет в холодную воду."]}},
+
+ {"id":"list-1611","head":"zucken","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример был про пожимание плечами — и тот же самый стоял у карточки Schulter. Перевода «вздрагивать» он не показывал.",
+  "set":{"examples_de":["Er zuckte kurz.","Mein Auge zuckt."],
+         "examples_ru":["Он коротко вздрогнул.","У меня дёргается глаз."]}},
+
+ {"id":"list-0878","head":"zählen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про «рассчитывать на кого-то» — другое значение, а карточка о счёте чисел.",
+  "set":{"examples_de":["Zähl bis zehn!","Sie zählt das Geld nach."],
+         "examples_ru":["Посчитай до десяти!","Она пересчитывает деньги."]}}
+]

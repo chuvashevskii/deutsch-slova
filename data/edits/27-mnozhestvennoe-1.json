@@ -1,0 +1,153 @@
+[
+ {"id":"list-0172","head":"Problem","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Карточка просит напечатать die Probleme, а в примерах его не было.",
+  "set":{"examples_de":["Das ist kein Problem.","Wir müssen diese Probleme lösen."],
+         "examples_ru":["Это не проблема.","Нам надо решить эти проблемы."]}},
+
+ {"id":"list-0212","head":"Beispiel","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Beispiele, показывала только единственное.",
+  "set":{"examples_de":["Zum Beispiel könnten wir ins Kino gehen.","Nenn mir drei Beispiele."],
+         "examples_ru":["Например, мы могли бы пойти в кино.","Назови мне три примера."]}},
+
+ {"id":"list-0215","head":"Geschichte","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Geschichten, показывала только единственное.",
+  "set":{"examples_de":["Das ist eine lange Geschichte.","Sie kennt viele alte Geschichten."],
+         "examples_ru":["Это долгая история.","Она знает много старых историй."]}},
+
+ {"id":"list-0227","head":"Abend","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Abende, показывала только единственное.",
+  "set":{"examples_de":["Guten Abend!","Die Abende werden schon kühl."],
+         "examples_ru":["Добрый вечер!","Вечера уже становятся прохладными."]}},
+
+ {"id":"list-0339","head":"Schritt","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Schritte, показывала только единственное.",
+  "set":{"examples_de":["Geh einen Schritt zurück!","Ich hörte Schritte im Flur."],
+         "examples_ru":["Отойди на шаг назад!","Я услышал шаги в коридоре."]}},
+
+ {"id":"list-0355","head":"Stimme","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Stimmen, показывала только единственное.",
+  "set":{"examples_de":["Sie hat eine schöne Stimme.","Draußen hörte man laute Stimmen."],
+         "examples_ru":["У неё красивый голос.","Снаружи слышались громкие голоса."]}},
+
+ {"id":"list-0364","head":"Boden","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Böden, показывала только единственное. Соседняя карточка «Почва» множественное показывает.",
+  "set":{"examples_de":["Der Boden ist nass.","Die Böden sind frisch gewischt."],
+         "examples_ru":["Пол мокрый.","Полы только что вымыты."]}},
+
+ {"id":"list-0453","head":"Krieg","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Kriege, показывала только единственное.",
+  "set":{"examples_de":["Der Krieg dauerte vier Jahre.","Europa hat viele Kriege erlebt."],
+         "examples_ru":["Война длилась четыре года.","Европа пережила много войн."]}},
+
+ {"id":"list-0468","head":"Ziel","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Ziele, показывала только единственное.",
+  "set":{"examples_de":["Was ist dein Ziel?","Wir haben klare Ziele."],
+         "examples_ru":["Какая у тебя цель?","У нас ясные цели."]}},
+
+ {"id":"list-0493","head":"Punkt","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Punkte, показывала только единственное.",
+  "set":{"examples_de":["Am Ende steht ein Punkt.","Wir besprechen drei Punkte."],
+         "examples_ru":["В конце стоит точка.","Мы обсуждаем три пункта."]}},
+
+ {"id":"list-0510","head":"Herz","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Herzen, показывала только единственное.",
+  "set":{"examples_de":["Mein Herz schlägt schnell.","Die Nachricht berührte viele Herzen."],
+         "examples_ru":["Моё сердце бьётся быстро.","Новость тронула многие сердца."]}},
+
+ {"id":"list-0544","head":"Erde","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Erden» живёт только в обороте seltene Erden — планета и почва под ногами множественного не имеют. Карточка просила форму, которой человек не скажет; требование снято, как у Glück и Luft.",
+  "set":{"plural":null}},
+
+ {"id":"list-0571","head":"Menge","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Mengen, показывала только единственное.",
+  "set":{"examples_de":["Die Menge an Zucker ist zu groß.","Große Mengen Wasser gehen verloren."],
+         "examples_ru":["Количество сахара слишком велико.","Большие количества воды теряются."]}},
+
+ {"id":"list-0572","head":"Kanal","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Kanäle, показывала только единственное.",
+  "set":{"examples_de":["Der Kanal verbindet zwei Flüsse.","Amsterdam hat viele Kanäle."],
+         "examples_ru":["Канал соединяет две реки.","В Амстердаме много каналов."]}},
+
+ {"id":"list-0601","head":"Gehirn","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Gehirne» в живой речи не говорят: мозг у человека один. Требование снято.",
+  "set":{"plural":null}},
+
+ {"id":"list-0616","head":"Ecke","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Ecken, показывала только единственное.",
+  "set":{"examples_de":["Der Laden ist gleich um die Ecke.","Das Zimmer hat vier Ecken."],
+         "examples_ru":["Магазин прямо за углом.","В комнате четыре угла."]}},
+
+ {"id":"list-0632","head":"Ahnung","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Ahnungen» — форма книжная и редкая, в обиходе слово живёт только в единственном: keine Ahnung. Требование снято.",
+  "set":{"plural":null}},
+
+ {"id":"list-0642","head":"Euro","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Множественное стояло «die Euros», а это форма для монет. Денежная сумма множественного не меняет: zwanzig Euro. Исправлена форма, и первый пример её теперь показывает.",
+  "set":{"plural":"die Euro"}},
+
+ {"id":"list-0643","head":"Tod","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Tode» — оборот книжный (tausend Tode sterben), в обиходе слово без множественного. Требование снято.",
+  "set":{"plural":null}},
+
+ {"id":"list-0731","head":"Aufmerksamkeit","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Aufmerksamkeiten» значит «знаки внимания, подарки» — это другое слово по смыслу, и карточке оно не нужно. Требование снято.",
+  "set":{"plural":null}},
+
+ {"id":"list-0746","head":"Rolle","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Rollen, показывала только единственное.",
+  "set":{"examples_de":["Das spielt keine Rolle.","Er spielte schon viele Rollen."],
+         "examples_ru":["Это не играет роли.","Он сыграл уже много ролей."]}},
+
+ {"id":"list-0756","head":"Bewegung","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Bewegungen, показывала только единственное.",
+  "set":{"examples_de":["Ich brauche mehr Bewegung.","Seine Bewegungen sind langsam."],
+         "examples_ru":["Мне нужно больше движения.","Его движения медленные."]}},
+
+ {"id":"list-0769","head":"Niveau","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Niveaus, показывала только единственное.",
+  "set":{"examples_de":["Der Kurs hat ein hohes Niveau.","Die Niveaus unterscheiden sich stark."],
+         "examples_ru":["У курса высокий уровень.","Уровни сильно различаются."]}},
+
+ {"id":"list-0783","head":"Mama","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Mamas, показывала только единственное.",
+  "set":{"examples_de":["Meine Mama kocht sehr gut.","Die Mamas warten vor der Schule."],
+         "examples_ru":["Моя мама очень хорошо готовит.","Мамы ждут перед школой."]}},
+
+ {"id":"list-0788","head":"Bereich","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Bereiche, показывала только единственное.",
+  "set":{"examples_de":["Sie arbeitet im medizinischen Bereich.","Die Firma hat drei Bereiche."],
+         "examples_ru":["Она работает в медицинской сфере.","У фирмы три сферы."]}},
+
+ {"id":"list-0789","head":"Entscheidung","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Entscheidungen, показывала только единственное.",
+  "set":{"examples_de":["Das war eine schwere Entscheidung.","Solche Entscheidungen brauchen Zeit."],
+         "examples_ru":["Это было трудное решение.","Такие решения требуют времени."]}},
+
+ {"id":"list-0798","head":"Recht","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Rechte, показывала только единственное.",
+  "set":{"examples_de":["Jeder hat das Recht auf Bildung.","Die Rechte der Kinder sind geschützt."],
+         "examples_ru":["У каждого есть право на образование.","Права детей защищены."]}},
+
+ {"id":"list-0820","head":"Form","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Formen, показывала только единственное.",
+  "set":{"examples_de":["Der Kuchen hat eine runde Form.","Die Kekse haben verschiedene Formen."],
+         "examples_ru":["У пирога круглая форма.","У печений разные формы."]}},
+
+ {"id":"list-0822","head":"Gesellschaft","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Gesellschaften, показывала только единственное.",
+  "set":{"examples_de":["Die Gesellschaft verändert sich.","Moderne Gesellschaften altern."],
+         "examples_ru":["Общество меняется.","Современные общества стареют."]}},
+
+ {"id":"list-0840","head":"Sicherheit","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Sicherheiten» значит «залоги, обеспечение» — банковский термин, а не множественное от безопасности. Требование снято.",
+  "set":{"plural":null}},
+
+ {"id":"list-0889","head":"Augenblick","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"Просит die Augenblicke, показывала только единственное.",
+  "set":{"examples_de":["Einen Augenblick, bitte!","Es gibt Augenblicke, die man nie vergisst."],
+         "examples_ru":["Минуточку, пожалуйста!","Есть мгновения, которых не забываешь."]}},
+
+ {"id":"list-0920","head":"Vergangenheit","batch":"Множественное","reason":"уровень 1","disputed":false,
+  "note":"«Die Vergangenheiten» в обиходе не говорят: прошлое одно. Требование снято.",
+  "set":{"plural":null}}
+]

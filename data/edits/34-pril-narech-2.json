@@ -1,0 +1,25 @@
+[
+ {"id":"list-1282","head":"ordentlich","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод «Аккуратный», а примеры говорили «как следует» и «приличный» — слова не было ни в одном.",
+  "set":{"examples_de":["Räum dein Zimmer ordentlich auf!","Sie ist ein ordentlicher Mensch."],
+         "examples_ru":["Убери комнату аккуратно!","Она аккуратный человек."]}},
+
+ {"id":"list-0835","head":"regelmäßig","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про грамматику — «правильный глагол», значение, которого перевод не обещает.",
+  "set":{"examples_de":["Ich gehe regelmäßig schwimmen.","Er hat einen regelmäßigen Tagesablauf."],
+         "examples_ru":["Я регулярно хожу плавать.","У него регулярный распорядок дня."]}},
+
+ {"id":"list-1968","head":"schief","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал schiefgehen — отдельный глагол, а не прилагательное.",
+  "set":{"examples_de":["Das Bild hängt schief.","Die Mauer ist leicht schief."],
+         "examples_ru":["Картина висит криво.","Стена слегка кривая."]}},
+
+ {"id":"list-0178","head":"super","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «отлично» — это перевод toll, карточка рядом.",
+  "set":{"examples_de":["Das Essen war super!","Das klappt super."],
+         "examples_ru":["Еда была супер!","Это работает супер."]}},
+
+ {"id":"list-1090","head":"positiv","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «о хорошем» — самого слова в нём не было.",
+  "set":{"examples_ru":["Результат был положительным.","Думай положительно!"]}}
+]

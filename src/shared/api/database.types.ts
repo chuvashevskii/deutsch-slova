@@ -574,6 +574,7 @@ export type Database = {
       }
       like_escape: { Args: { p_query: string }; Returns: string }
       progress_summary: { Args: never; Returns: Json }
+      reset_all_progress: { Args: never; Returns: Json }
       revert_word_edit: { Args: { p_edit: number }; Returns: undefined }
       stats_summary: { Args: { p_tz?: string }; Returns: Json }
       word_category: {

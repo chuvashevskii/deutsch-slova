@@ -1,0 +1,7 @@
+[
+  { "id": "list-0166", "head": "los", "batch": "Близнецы", "reason": "уровень 1", "disputed": false,
+    "note": "Оба примера были одной конструкцией «bin … los» с переставленным endlich — второй не показывал ничего нового. Заменён на другой оборот: модальный глагол с los sein.",
+    "set": {
+      "examples_de": ["Endlich bin ich das Problem los.", "Er will seine Schulden endlich los sein."],
+      "examples_ru": ["Наконец-то я избавился от проблемы.", "Он хочет наконец избавиться от долгов."] } }
+]

@@ -1,0 +1,13 @@
+[
+ {"id":"list-0878","head":"zählen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Модель auf jmdn. описывает «рассчитывать на кого-то» — значение, которому карточка «Считать (числа)» не учит. Пример с ним убран как чужой, обещание снято следом.",
+  "set":{"rektion":["etwas (Akk.)"]}},
+
+ {"id":"list-1611","head":"zucken","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Модель mit etw. описывает mit den Schultern zucken — «пожимать плечами», отдельный оборот. Карточка о вздрагивании.",
+  "set":{"rektion":["ohne Objekt"]}},
+
+ {"id":"list-1847","head":"mischen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Модель sich in etw. описывает sich einmischen «вмешиваться» — другой глагол.",
+  "set":{"rektion":["etwas (Akk.)"]}}
+]

@@ -1,0 +1,27 @@
+[
+ {"id":"list-0360","head":"entscheiden","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «выбрали» — это auswählen.",
+  "set":{"examples_ru":["Ты должен решить сам.","Мы решили взять красную машину."]}},
+
+ {"id":"1788538020802","head":"erinnern","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Ich erinnere meinen Bruder» без дополнения по-немецки незакончено: напоминают всегда о чём-то.",
+  "set":{"examples_de":["Ich erinnere meinen Bruder an sein Versprechen.","Sie erinnert mich an den Termin."],
+         "examples_ru":["Я напоминаю брату о его обещании.","Она напоминает мне о встрече."]}},
+
+ {"id":"list-0690","head":"erleben","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «видел» — слова карточки в нём не было.",
+  "set":{"examples_ru":["Мы многое пережили вместе.","Такого я ещё никогда не переживал."]}},
+
+ {"id":"list-1906","head":"fördern","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример говорил «развивает» — это entwickeln.",
+  "set":{"examples_ru":["Школа поощряет таланты.","Это способствует здоровью."]}},
+
+ {"id":"list-0432","head":"leiden","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «болеют» — перевода «Страдать» он не показывал.",
+  "set":{"examples_ru":["Он страдает от стресса.","Многие страдают этой болезнью."]}},
+
+ {"id":"list-1847","head":"mischen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал sich einmischen «вмешиваться» — это другой глагол.",
+  "set":{"examples_de":["Misch die Farben!","Der Barkeeper mischt die Getränke."],
+         "examples_ru":["Смешай краски!","Бармен смешивает напитки."]}}
+]

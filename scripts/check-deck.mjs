@@ -19,6 +19,8 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
 
+import { pluralShown, prepositionShown, prepositionsOf } from './deck-rules.mjs';
+
 const flags = new Set(process.argv.slice(2).filter((a) => a.startsWith('--')));
 const csvPath = (() => {
   const i = process.argv.indexOf('--csv');
@@ -305,20 +307,17 @@ const headUnseen = words.filter((w) => {
 // Ищется только предложное управление: падеж без предлога («etwas
 // (Akk.)») в предложении буквой не выражен, и проверить его строкой
 // нельзя.
-const PREP_MODEL = /^\s*([a-zäöüA-ZÄÖÜ]+)\s+(?:etw|jmdm|jmdn|sich)/;
 let rektionChecked = 0;
 const rektionUnseen = words.filter((w) => {
   if (w.pos !== 'verb') return false;
-  const preps = (w.rektion ?? [])
-    .map((model) => PREP_MODEL.exec(model)?.[1]?.toLowerCase())
-    .filter(Boolean);
+  const preps = prepositionsOf(w.rektion);
   if (!preps.length) return false;
   const examples = (w.examples_de ?? []).join(' ').toLowerCase();
   if (!examples.trim()) return false;
   rektionChecked += 1;
   // INFO: предлог слипается с местоимением — `darüber`, `damit`, —
   // и там управление показано. Границу слева не требуем.
-  return !preps.some((prep) => new RegExp(`${prep}(?![a-zäöüß])`).test(examples));
+  return !preps.some((prep) => prepositionShown(prep, examples));
 });
 
 // ── Проверка 8. Множественное показано в примерах ───────────────────────
@@ -334,7 +333,7 @@ const pluralUnseen = words.filter((w) => {
   const examples = (w.examples_de ?? []).join(' ').toLowerCase();
   if (!examples.trim()) return false;
   pluralChecked += 1;
-  return !new RegExp(`(?<![a-zäöüß])${plural}(?![a-zäöüß])`).test(examples);
+  return !pluralShown(plural, examples);
 });
 
 // ── Проверка 9. Примеры карточки не близнецы ────────────────────────────

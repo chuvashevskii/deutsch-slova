@@ -1,0 +1,35 @@
+[
+ {"id":"1788603838036","head":"Fahrkarte","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Перевод карточки был вставлен в предложение целиком — «два билета на транспорт до Кёльна». По-русски так не говорят.",
+  "set":{"examples_ru":["Я покупаю билет на поезд.","Я покупаю два билета до Кёльна."]}},
+
+ {"id":"list-1140","head":"Figur","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про персонажей книги — другое значение, перевода «Фигура» он не показывал.",
+  "set":{"examples_de":["Sie hat eine gute Figur.","Die Figuren aus Holz sind alt."],
+         "examples_ru":["У неё хорошая фигура.","Деревянные фигуры старые."]}},
+
+ {"id":"list-0233","head":"Folge","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про серию сериала — другое значение слова.",
+  "set":{"examples_de":["Das hatte schlimme Folgen.","Das kann üble Folgen haben."],
+         "examples_ru":["Это имело плохие последствия.","Это может иметь скверные последствия."]}},
+
+ {"id":"1788586813762","head":"Fernseher","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Fernseher schauen» по-немецки не говорят — смотрят fernsehen, а Fernseher это сам ящик.",
+  "set":{"examples_de":["Ich schalte den Fernseher ein.","Der Fernseher steht im Wohnzimmer."],
+         "examples_ru":["Я включаю телевизор.","Телевизор стоит в гостиной."]}},
+
+ {"id":"list-1037","head":"Hälfte","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Wir teilen uns die Hälften» — так по-немецки не скажут.",
+  "set":{"examples_de":["Die Hälfte reicht mir.","Beide Hälften sind gleich groß."],
+         "examples_ru":["Мне хватит половины.","Обе половины одинаковы."]}},
+
+ {"id":"1788586815986","head":"Herkunft","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"«Meine Herkunft ist Russland» — калька: по-немецки так о себе не говорят.",
+  "set":{"examples_de":["Seine Herkunft ist unbekannt.","Er spricht offen über seine Herkunft."],
+         "examples_ru":["Его происхождение неизвестно.","Он открыто говорит о своём происхождении."]}},
+
+ {"id":"1788586815186","head":"Hilfe","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример слово в слово повторял пример карточки Dank — «Vielen Dank für deine Hilfe!».",
+  "set":{"examples_de":["Ich brauche deine Hilfe.","Ohne deine Hilfe schaffe ich das nicht."],
+         "examples_ru":["Мне нужна твоя помощь.","Без твоей помощи я не справлюсь."]}}
+]

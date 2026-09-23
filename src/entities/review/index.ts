@@ -1,5 +1,11 @@
 export { useAnswerCard } from './model/cardsQuery';
-export { useResetProgress, useToggleMark } from './model/marksQuery';
+export {
+  useProgressSize,
+  useResetAllProgress,
+  useResetProgress,
+  useToggleMark,
+} from './model/marksQuery';
+export type { ProgressSize, ResetSummary } from './model/marksQuery';
 export type { WordMark } from './model/marksQuery';
 export type { AnswerInput, CardRow } from './model/cardsQuery';
 export {

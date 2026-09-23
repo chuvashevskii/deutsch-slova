@@ -1,0 +1,6 @@
+[
+  { "id": "list-1326", "head": "erwidern", "batch": "Порча разбора", "reason": "уровень 1", "disputed": false,
+    "note": "Правка в предыдущей партии вышла неверной: «Sie erwiderte seinen Gruß» — это «ответила на приветствие», вернула его, а не «не нашлась возразить». Второй пример заменён на настоящее возражение.",
+    "set": { "examples_de": ["Er erwiderte nichts.", "Sie erwiderte, das sei nicht möglich."],
+             "examples_ru": ["Он ничего не возразил.", "Она возразила, что это невозможно."] } }
+]

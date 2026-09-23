@@ -1,0 +1,199 @@
+[
+ { "id":"list-0144","head":"ziehen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Карточка заявляет an etw. (Dat.), а оба примера без предлога. Первый заменён на тот, где тянут за что-то.",
+   "set":{"examples_de":["Zieh bitte am Seil!","Das Pferd zieht den Wagen."],
+          "examples_ru":["Потяни, пожалуйста, за верёвку!","Лошадь тянет повозку."]}},
+
+ { "id":"list-0209","head":"gucken","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.), в примерах предлога не было.",
+   "set":{"examples_de":["Guck mal auf die Uhr!","Wir gucken abends oft Filme."],
+          "examples_ru":["Глянь-ка на часы!","Вечерами мы часто смотрим фильмы."]}},
+
+ { "id":"list-0259","head":"klingen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено nach etw. (Dat.) — «звучать как». Второй пример показывает это теперь прямо.",
+   "set":{"examples_de":["Das klingt gut!","Deine Stimme klingt nach Erkältung."],
+          "examples_ru":["Это звучит хорошо!","Твой голос звучит простуженно."]}},
+
+ { "id":"list-0374","head":"bestimmen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено über etw. (Akk.) — «распоряжаться чем-то». Первый пример заменён.",
+   "set":{"examples_de":["Der Chef bestimmt über das Budget.","Der Preis wird vom Markt bestimmt."],
+          "examples_ru":["Бюджет определяет начальник.","Цену определяет рынок."]}},
+
+ { "id":"list-0430","head":"sich entspannen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено bei etw. (Dat.) — за каким занятием расслабляются. В примерах предлога не было.",
+   "set":{"examples_de":["Beim Lesen entspanne ich mich.","Entspann dich, alles ist gut!"],
+          "examples_ru":["За чтением я расслабляюсь.","Расслабься, всё хорошо!"]}},
+
+ { "id":"list-0442","head":"schlagen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено gegen etw. (Akk.). Первый пример про бой часов заменён на удар во что-то.",
+   "set":{"examples_de":["Der Regen schlägt gegen das Fenster.","Er schlägt mit der Faust auf den Tisch."],
+          "examples_ru":["Дождь бьёт в окно.","Он бьёт кулаком по столу."]}},
+
+ { "id":"list-0446","head":"werfen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено mit etw. (Dat.) — «бросаться чем-то». Второй пример заменён.",
+   "set":{"examples_de":["Wirf mir den Ball zu!","Er wirft mit Steinen."],
+          "examples_ru":["Брось мне мяч!","Он бросается камнями."]}},
+
+ { "id":"list-0543","head":"wirken","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf jmdn. (Akk.) — «действовать на кого-то». Первый пример заменён.",
+   "set":{"examples_de":["Die Farbe wirkt beruhigend auf mich.","Er wirkt heute müde."],
+          "examples_ru":["Цвет действует на меня успокаивающе.","Он сегодня производит впечатление усталого."]}},
+
+ { "id":"list-0573","head":"lächeln","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено über etw. (Akk.) — чему улыбаются. Второй пример заменён.",
+   "set":{"examples_de":["Sie lächelt freundlich.","Er lächelte über meinen Witz."],
+          "examples_ru":["Она приветливо улыбается.","Он улыбнулся моей шутке."]}},
+
+ { "id":"list-0580","head":"rennen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено zu etw. (Dat.) — куда мчатся. Второй пример заменён.",
+   "set":{"examples_de":["Er rennt jeden Morgen im Park.","Er rannte zum Bus."],
+          "examples_ru":["Он мчится каждое утро через парк.","Он примчался к автобусу."]}},
+
+ { "id":"list-0585","head":"blicken","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.), а первый пример стоял с aus — предлогом, которого карточка не объявляет.",
+   "set":{"examples_de":["Sie blickte auf die Uhr.","Er blickt nach vorn."],
+          "examples_ru":["Она бросила взгляд на часы.","Он смотрит вперёд."]}},
+
+ { "id":"list-0707","head":"verwenden","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено für etw. (Akk.) — для чего применяют. Второй пример заменён.",
+   "set":{"examples_de":["Verwende bitte kein Salz.","Für die Soße verwendet man Sahne."],
+          "examples_ru":["Не применяй соль, пожалуйста.","Для соуса применяют сливки."]}},
+
+ { "id":"list-0726","head":"schieben","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено in etw. (Akk.) — куда толкают. Первый пример заменён.",
+   "set":{"examples_de":["Schieb den Tisch in die Ecke.","Er schiebt das Fahrrad."],
+          "examples_ru":["Толкни стол в угол.","Он толкает велосипед перед собой."]}},
+
+ { "id":"list-0727","head":"schreien","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено nach jmdm. (Dat.) — кого зовут криком. Второй пример заменён.",
+   "set":{"examples_de":["Schrei nicht so laut!","Das Kind schrie nach seiner Mutter."],
+          "examples_ru":["Не кричи так громко!","Ребёнок кричал, зовя мать."]}},
+
+ { "id":"list-0854","head":"erfahren","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено von jmdm. (Dat.) — от кого узнают. Первый пример заменён.",
+   "set":{"examples_de":["Ich habe es von einem Freund erfahren.","Er erfährt die Wahrheit erst später."],
+          "examples_ru":["Я узнал это от друга.","Правду он узнаёт только позже."]}},
+
+ { "id":"list-0856","head":"retten","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено vor etw. (Dat.) — от чего спасают. Второй пример заменён.",
+   "set":{"examples_de":["Der Arzt hat ihr Leben gerettet.","Er rettete das Kind vor dem Ertrinken."],
+          "examples_ru":["Врач спас ей жизнь.","Он спас ребёнка, тот тонул."]}},
+
+ { "id":"list-0885","head":"schießen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.) — по чему стреляют. Второй пример заменён.",
+   "set":{"examples_de":["Er schoss ein Tor.","Der Jäger schoss auf den Hasen."],
+          "examples_ru":["Он забил гол.","Охотник выстрелил в зайца."]}},
+
+ { "id":"list-1039","head":"laden","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.), а пример стоял с ins — это in, другой предлог.",
+   "set":{"examples_de":["Das Handy lädt gerade.","Wir laden die Kisten auf den Wagen."],
+          "examples_ru":["Телефон сейчас заряжается.","Мы грузим ящики на повозку."]}},
+
+ { "id":"list-1071","head":"trennen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено sich (Akk.) von jmdm. (Dat.), а пример показывал sich trennen без von — с кем расстались, не сказано.",
+   "set":{"examples_de":["Trenn den Müll bitte.","Sie hat sich von ihrem Mann getrennt."],
+          "examples_ru":["Раздели мусор, пожалуйста.","Она рассталась с мужем."]}},
+
+ { "id":"list-1170","head":"schweigen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено über etw. (Akk.) — о чём молчат. Второй пример заменён.",
+   "set":{"examples_de":["Schweig bitte!","Über den Vorfall schweigt er."],
+          "examples_ru":["Молчи, пожалуйста!","О происшествии он молчит."]}},
+
+ { "id":"list-1175","head":"motivieren","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено zu etw. (Dat.) — к чему мотивируют. Первый пример заменён.",
+   "set":{"examples_de":["Das motiviert mich zum Weitermachen.","Der Trainer motiviert die Mannschaft."],
+          "examples_ru":["Это мотивирует меня продолжать.","Тренер мотивирует команду."]}},
+
+ { "id":"list-1313","head":"verteilen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено an jmdn. (Akk.) — кому раздают. Первый пример заменён.",
+   "set":{"examples_de":["Verteil die Blätter an die Schüler.","Die Arbeit wird gerecht verteilt."],
+          "examples_ru":["Раздай листы ученикам.","Работа распределяется справедливо."]}},
+
+ { "id":"list-1323","head":"grinsen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено über etw. (Akk.) — чему ухмыляются. Второй пример заменён.",
+   "set":{"examples_de":["Warum grinst du so?","Er grinste über meinen Fehler."],
+          "examples_ru":["Чего ты так ухмыляешься?","Он ухмыльнулся моей ошибке."]}},
+
+ { "id":"list-1340","head":"weitermachen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено mit etw. (Dat.) — что продолжают. Второй пример заменён.",
+   "set":{"examples_de":["Mach einfach weiter!","Wir machen mit der Arbeit weiter."],
+          "examples_ru":["Просто продолжай!","Мы продолжаем работу."]}},
+
+ { "id":"list-1353","head":"fordern","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено von jmdm. (Dat.) — от кого требуют. Первый пример дополнен.",
+   "set":{"examples_de":["Sie fordern mehr Lohn von der Firma.","Das fordert viel Geduld."],
+          "examples_ru":["Они требуют от фирмы более высокой зарплаты.","Это требует большого терпения."]}},
+
+ { "id":"list-1396","head":"fließen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено in etw. (Akk.) — куда течёт. Первый пример заменён.",
+   "set":{"examples_de":["Der Fluss fließt ins Meer.","Tränen flossen über ihr Gesicht."],
+          "examples_ru":["Река течёт в море.","Слёзы лились по её лицу."]}},
+
+ { "id":"list-1495","head":"zurückgehen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Модель auf etw. (Akk.) описывает другое значение — «восходить к чему-то», которому карточка «Снижаться» не учит. Обещание снято, а не подпёрто выдуманным примером.",
+   "set":{"rektion":["ohne Objekt"]}},
+
+ { "id":"list-1517","head":"binden","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено an etw. (Akk.) — к чему привязывают. Первый пример заменён.",
+   "set":{"examples_de":["Bind das Boot an den Steg!","Der Vertrag bindet beide Seiten."],
+          "examples_ru":["Привяжи лодку к мосткам!","Договор связывает обе стороны."]}},
+
+ { "id":"list-1562","head":"erschrecken","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено vor etw. (Dat.) — чего пугаются. Второй пример заменён.",
+   "set":{"examples_de":["Ich bin furchtbar erschrocken.","Ich erschrak vor dem lauten Knall."],
+          "examples_ru":["Я страшно испугался.","Я испугался громкого хлопка."]}},
+
+ { "id":"list-1577","head":"lenken","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.) — на что направляют. Второй пример заменён.",
+   "set":{"examples_de":["Er lenkt das Auto sicher.","Er lenkte die Aufmerksamkeit auf sich."],
+          "examples_ru":["Он уверенно управляет машиной.","Он направил внимание на себя."]}},
+
+ { "id":"list-1616","head":"unterscheiden","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено sich (Akk.) von etw. (Dat.), а пример показывал sich unterscheiden без von.",
+   "set":{"examples_de":["Ich kann sie nicht unterscheiden.","Er unterscheidet sich von seinem Bruder."],
+          "examples_ru":["Я не могу их различить.","Он отличается от своего брата."]}},
+
+ { "id":"list-1703","head":"ersetzen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено durch etw. (Akk.) — чем замещают. Второй пример дополнен, русский перевод его уже подразумевал.",
+   "set":{"examples_de":["Niemand kann ihn ersetzen.","Wir ersetzen die alten Fenster durch neue."],
+          "examples_ru":["Его никто не может заместить.","Старые окна мы замещаем новыми."]}},
+
+ { "id":"list-1783","head":"drängen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.) — на чём настаивают. Второй пример заменён.",
+   "set":{"examples_de":["Dräng mich nicht!","Er drängt auf eine Antwort."],
+          "examples_ru":["Не торопи меня!","Он настаивает на ответе."]}},
+
+ { "id":"list-1795","head":"reduzieren","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено auf etw. (Akk.) — до чего сокращают. Первый пример дополнен.",
+   "set":{"examples_de":["Wir reduzieren die Kosten auf die Hälfte.","Der Preis wurde stark reduziert."],
+          "examples_ru":["Мы сокращаем расходы наполовину.","Цену сильно уменьшили."]}},
+
+ { "id":"list-1805","head":"zögern","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено mit etw. (Dat.) — с чем медлят. Второй пример заменён.",
+   "set":{"examples_de":["Zögere nicht so lange!","Er zögerte mit der Antwort."],
+          "examples_ru":["Не колеблись так долго!","Он медлил с ответом."]}},
+
+ { "id":"list-1861","head":"herrschen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено über etw. (Akk.) — чем правят. Второй пример дополнен.",
+   "set":{"examples_de":["Im Saal herrschte Stille.","Der König herrschte über ein großes Reich."],
+          "examples_ru":["В зале царила тишина.","Король правил большой державой."]}},
+
+ { "id":"list-1862","head":"kriechen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено unter etw. (Akk.) — подо что заползают. Первый пример заменён.",
+   "set":{"examples_de":["Die Katze kriecht unter das Bett.","Der Verkehr kriecht heute."],
+          "examples_ru":["Кошка заползает под кровать.","Движение сегодня ползёт."]}},
+
+ { "id":"list-1874","head":"vorbeigehen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено an etw. (Dat.) — мимо чего проходят. Первый пример заменён.",
+   "set":{"examples_de":["Wir gehen am Bahnhof vorbei.","Der Schmerz geht vorbei."],
+          "examples_ru":["Мы проходим мимо вокзала.","Боль проходит."]}},
+
+ { "id":"list-1902","head":"zusammenarbeiten","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Заявлено mit jmdm. (Dat.) — с кем сотрудничают. Второй пример заменён.",
+   "set":{"examples_de":["Wir arbeiten eng zusammen.","Wir arbeiten mit einer Agentur zusammen."],
+          "examples_ru":["Мы тесно сотрудничаем.","Мы сотрудничаем с агентством."]}},
+
+ { "id":"list-1320","head":"stürzen","batch":"Управление","reason":"уровень 1","disputed":false,
+   "note":"Модель заявляла sich auf etw., а пример показывает sich in die Arbeit stürzen — предлог in. Исправлена модель, а не пример: оборот с in и есть тот, которому карточка учит.",
+   "set":{"rektion":["ohne Objekt","sich (Akk.) in etw. (Akk.)"]}}
+]

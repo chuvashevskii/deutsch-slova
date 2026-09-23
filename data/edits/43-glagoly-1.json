@@ -1,0 +1,33 @@
+[
+ {"id":"list-1504","head":"angreifen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример переведён «раскритиковали» — слова карточки в нём не было.",
+  "set":{"examples_ru":["Собака не нападает.","Его резко атаковали."]}},
+
+ {"id":"list-1739","head":"aufbrechen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про взлом замка — другое значение, перевода «Отправляться» он не показывал.",
+  "set":{"examples_de":["Wir brechen früh auf.","Sie brachen zum Gipfel auf."],
+         "examples_ru":["Мы отправляемся рано.","Они отправились к вершине."]}},
+
+ {"id":"list-1079","head":"auffallen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример говорил «заметил» — это перевод merken.",
+  "set":{"examples_ru":["Тебе что-нибудь бросилось в глаза?","Он выделяется в любой группе."]}},
+
+ {"id":"list-1995","head":"beachten","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про «не обращал внимания» — это achten auf, карточка рядом.",
+  "set":{"examples_de":["Beachte die Regeln!","Die Vorschriften wurden nicht beachtet."],
+         "examples_ru":["Соблюдай правила!","Предписания не соблюдали."]}},
+
+ {"id":"list-1971","head":"einnehmen","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про шкаф, занимающий место, — другое значение, а карточка о приёме лекарства.",
+  "set":{"examples_de":["Nimm die Tabletten nach dem Essen ein.","Sie nimmt das Mittel regelmäßig ein."],
+         "examples_ru":["Принимай таблетки после еды.","Она регулярно принимает это средство."]}},
+
+ {"id":"list-0661","head":"beobachten","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример говорил «следим» — это verfolgen.",
+  "set":{"examples_ru":["Он наблюдает за птицами.","Мы внимательно наблюдаем за ситуацией."]}},
+
+ {"id":"1788538040425","head":"bitten","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Два примера были об одном и том же — просьбе о помощи, — и второй ничего не добавлял.",
+  "set":{"examples_de":["Sie bittet ihre Schwester um Hilfe.","Ich bitte um Verständnis."],
+         "examples_ru":["Она просит сестру о помощи.","Прошу понимания."]}}
+]

@@ -1,0 +1,26 @@
+[
+ {"id":"1788603847398","head":"Platz","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про занятые места — другое значение, а карточка о площади.",
+  "set":{"examples_de":["Wir treffen uns auf dem Platz.","Auf beiden Plätzen steht ein Denkmal."],
+         "examples_ru":["Мы встречаемся на площади.","На обеих площадях стоит памятник."]}},
+
+ {"id":"list-0564","head":"Regel","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал устойчивый оборот in der Regel, у которого в колоде своя карточка.",
+  "set":{"examples_de":["Das ist gegen die Regeln.","Die Regeln sind für alle gleich."],
+         "examples_ru":["Это против правил.","Правила для всех одинаковы."]}},
+
+ {"id":"list-1256","head":"Rad","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Первый пример был про езду на велосипеде — перевода «Колесо» он не показывал.",
+  "set":{"examples_de":["Das Rad dreht sich.","Die Räder sind kaputt."],
+         "examples_ru":["Колесо вращается.","Колёса сломаны."]}},
+
+ {"id":"list-1280","head":"Schuld","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример показывал Schulden — «долги», а это другое слово, не множественное от вины.",
+  "set":{"examples_de":["Das ist nicht meine Schuld.","Die Schuld liegt bei ihm."],
+         "examples_ru":["Это не моя вина.","Вина лежит на нём."]}},
+
+ {"id":"list-0635","head":"Sinn","batch":"Ручной проход","reason":"уровень 1","disputed":false,
+  "note":"Второй пример был про пять чувств — другое значение слова, перевода «Смысл» он не показывал.",
+  "set":{"examples_de":["Das macht keinen Sinn.","Der Sinn des Lebens beschäftigt ihn."],
+         "examples_ru":["В этом нет смысла.","Смысл жизни его занимает."]}}
+]
