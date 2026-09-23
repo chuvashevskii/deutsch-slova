@@ -33,3 +33,6 @@ export { SegmentedText } from './ui/SegmentedText';
 export { WordExamples } from './ui/WordExamples';
 export { NESTS_QUERY_KEY, useNests } from './model/nestsQuery';
 export type { Nest, NestCard, NestKind } from './model/nestsQuery';
+export { DeterminerEndings } from './ui/DeterminerEndings';
+export { determinerForms } from './model/determiner';
+export type { DeterminerForms } from './model/determiner';

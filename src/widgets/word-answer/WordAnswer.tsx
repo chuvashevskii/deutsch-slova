@@ -1,4 +1,5 @@
 import {
+  DeterminerEndings,
   FormRow,
   RektionChips,
   RuleBadge,
@@ -123,6 +124,11 @@ export const WordAnswer = ({
           <FormRow label="Wort" wrongAnswer={wrongAnswers.head} audio={word.audio_head}>
             <SegmentedText segments={plainSegments(word.head, word.stress_word)} />
           </FormRow>
+          {/* INFO: определитель меняется по роду существительного,
+              и по карточке это ничем не видно: заголовок один, мужского
+              рода. Строкой показывается окончание, а не набор форм —
+              это напоминание о правиле, а не то, что надо заучивать. */}
+          <DeterminerEndings head={word.head} />
           {word.komparativ ? (
             <FormRow label="Komparativ" audio={word.audio_comparative}>
               <SegmentedText segments={plainSegments(word.komparativ, null)} />
