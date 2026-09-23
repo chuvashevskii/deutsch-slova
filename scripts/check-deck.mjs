@@ -170,7 +170,7 @@ const fetchPage = async (db, columns, from) => {
 
 const fetchAll = async (db) => {
   const rows = [];
-  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, examples_de, ${NULLABLE.join(', ')}`;
+  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, examples_de, rektion, ${NULLABLE.join(', ')}`;
   for (let from = 0; ; from += PAGE) {
     const data = await fetchPage(db, columns, from);
     rows.push(...data);
@@ -296,7 +296,64 @@ const headUnseen = words.filter((w) => {
   });
 });
 
-// ── Проверка 7. Форма дефиниции ─────────────────────────────────────────
+// ── Проверка 7. Управление показано в примерах ──────────────────────────
+//
+// Карточка объявляет, с каким предлогом живёт глагол, — и обязана это
+// показать. `wirken` заявляет `auf`, оба примера без него; человек
+// заучивает слово, но не то, как его пристроить в предложение.
+//
+// Ищется только предложное управление: падеж без предлога («etwas
+// (Akk.)») в предложении буквой не выражен, и проверить его строкой
+// нельзя.
+const PREP_MODEL = /^\s*([a-zäöüA-ZÄÖÜ]+)\s+(?:etw|jmdm|jmdn|sich)/;
+let rektionChecked = 0;
+const rektionUnseen = words.filter((w) => {
+  if (w.pos !== 'verb') return false;
+  const preps = (w.rektion ?? [])
+    .map((model) => PREP_MODEL.exec(model)?.[1]?.toLowerCase())
+    .filter(Boolean);
+  if (!preps.length) return false;
+  const examples = (w.examples_de ?? []).join(' ').toLowerCase();
+  if (!examples.trim()) return false;
+  rektionChecked += 1;
+  // INFO: предлог слипается с местоимением — `darüber`, `damit`, —
+  // и там управление показано. Границу слева не требуем.
+  return !preps.some((prep) => new RegExp(`${prep}(?![a-zäöüß])`).test(examples));
+});
+
+// ── Проверка 8. Множественное показано в примерах ───────────────────────
+//
+// Карточка просит напечатать множественное число, а показать его
+// не обязана ничем. Из 1040 существительных с множественным 87%
+// показывают — остальные просят форму, которой человек не видел.
+let pluralChecked = 0;
+const pluralUnseen = words.filter((w) => {
+  if (w.pos !== 'noun' || !w.plural) return false;
+  const plural = w.plural.replace(/^(der|die|das)\s+/i, '').trim().toLowerCase();
+  if (!plural) return false;
+  const examples = (w.examples_de ?? []).join(' ').toLowerCase();
+  if (!examples.trim()) return false;
+  pluralChecked += 1;
+  return !new RegExp(`(?<![a-zäöüß])${plural}(?![a-zäöüß])`).test(examples);
+});
+
+// ── Проверка 9. Примеры карточки не близнецы ────────────────────────────
+//
+// Два примера даются, чтобы показать слово дважды по-разному. Если они
+// отличаются одним словом — «Wir buchen eine Tour» и «Wir buchen zwei
+// Touren», — второй не добавляет ничего.
+let twinsChecked = 0;
+const twinExamples = words.filter((w) => {
+  const examples = w.examples_de ?? [];
+  if (examples.length !== 2) return false;
+  twinsChecked += 1;
+  const [a, b] = examples.map((s) => new Set(s.toLowerCase().split(/\s+/)));
+  if (!a.size || !b.size) return false;
+  const shared = [...a].filter((word) => b.has(word)).length;
+  return shared / Math.max(a.size, b.size) > 0.6;
+});
+
+// ── Проверка 10. Форма дефиниции ────────────────────────────────────────
 // Не блокирующая: в колоде из Anki дефиниции длиннее правила, и обрезать
 // их механически значит потерять то, ради чего они написаны.
 const badDefinition = [];
@@ -328,6 +385,9 @@ console.log('\nОтчётные');
 say(!headUnseen.length, `карточка просит форму, которой не показывает: ${headUnseen.length} (рассмотрено ${headChecked})`);
 console.log(`  · подсказка без соседа по переводу: ${idleDefinition.length} — перечитать, объясняют ли значение`);
 say(!registerInDefinition.length, `помета в поле подсказки: ${registerInDefinition.length}`);
+say(!rektionUnseen.length, `управление не показано в примерах: ${rektionUnseen.length} (рассмотрено ${rektionChecked})`);
+say(!pluralUnseen.length, `множественное не показано в примерах: ${pluralUnseen.length} (рассмотрено ${pluralChecked})`);
+say(!twinExamples.length, `примеры-близнецы: ${twinExamples.length} (рассмотрено ${twinsChecked})`);
 say(!badDefinition.length, `форма дефиниции: ${badDefinition.length} нарушений`);
 
 if (collisions.length) {
@@ -357,6 +417,15 @@ if (flags.has('--list')) {
   }
   for (const w of headUnseen) {
     console.log(`  просит, но не показывает: ${w.head.padEnd(16)} «${(w.examples_de ?? []).join(' | ')}»`);
+  }
+  for (const w of rektionUnseen) {
+    console.log(`  управление не показано: ${w.head.padEnd(16)} [${(w.rektion ?? []).join(', ')}] «${(w.examples_de ?? []).join(' | ')}»`);
+  }
+  for (const w of pluralUnseen) {
+    console.log(`  мн. не показано: ${w.head.padEnd(18)} ${w.plural} «${(w.examples_de ?? []).join(' | ')}»`);
+  }
+  for (const w of twinExamples) {
+    console.log(`  близнецы: ${w.head.padEnd(16)} «${(w.examples_de ?? []).join('» / «')}»`);
   }
   for (const w of registerInDefinition) {
     console.log(`  помета в подсказке: ${w.head.padEnd(14)} «${w.definition}»`);
