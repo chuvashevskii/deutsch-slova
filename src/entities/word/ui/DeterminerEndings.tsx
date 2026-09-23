@@ -4,35 +4,34 @@ const GENUS_CLASS = ['text-masculine', 'text-feminine', 'text-neuter'] as const;
 const GENUS_NAME = ['мужской род', 'женский род', 'средний род'] as const;
 
 /**
- * Окончания определителя по родам — строкой под словом.
+ * Определитель во всех трёх родах — строкой под словом.
  *
  * Цвет тот же, что у рода существительного на всей карточке: мужской
- * синий, женский малиновый, средний зелёный. Другого способа показать
- * род, не дублируя артикль, в колоде нет, и заводить второй ради семи
- * слов не за чем.
+ * синий, женский малиновый, средний зелёный. Другого способа назвать
+ * род, не дублируя артикль, в колоде нет.
  *
- * Основа стоит обычным цветом, окончание — цветом рода: видно, что
- * меняется только хвост. Кавычек вокруг окончания нет: дефис и так
- * говорит, что это хвост, а лишние знаки в строке из трёх слогов
- * читаются хуже самих окончаний.
+ * Сперва показывались окончания — `jed` и `-er · -e · -es`. Слово
+ * целиком читается быстрее: глаз берёт `jede` как слово, а не
+ * складывает его из основы и хвоста, и три образца — der-слова,
+ * ein-слова и `derselbe` — выглядят одинаково, без прочерков
+ * и исключений.
  *
- * У `derselbe` хвост не меняется — меняется артикль внутри слова, —
- * и там показываются формы целиком.
+ * Окончания при этом остались в данных: тест складывает основу
+ * с окончанием и сверяет с формой. Это и есть то, что не даёт
+ * формам разъехаться с правилом.
  */
 export const DeterminerEndings = ({ head }: { head: string }) => {
   const pattern = determinerForms(head);
   if (!pattern) return null;
 
-  const { stem, endings, forms } = pattern;
-  const items = stem ? endings : forms;
+  const { forms } = pattern;
 
   return (
     <p className="mt-1.5 flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5 text-[14px]">
       <span className="mr-0.5 font-mono text-[10px] uppercase tracking-wider text-faint">
         по родам
       </span>
-      {stem ? <span className="font-serif text-muted">{stem}</span> : null}
-      {items.map((item, index) => (
+      {forms.map((item, index) => (
         <span key={GENUS_NAME[index]} className="whitespace-nowrap">
           <span
             title={GENUS_NAME[index]}
@@ -40,7 +39,7 @@ export const DeterminerEndings = ({ head }: { head: string }) => {
           >
             {item}
           </span>
-          {index < items.length - 1 ? <span className="ml-1.5 text-faint">·</span> : null}
+          {index < forms.length - 1 ? <span className="ml-1.5 text-faint">·</span> : null}
         </span>
       ))}
     </p>
