@@ -170,7 +170,7 @@ const fetchPage = async (db, columns, from) => {
 
 const fetchAll = async (db) => {
   const rows = [];
-  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, ${NULLABLE.join(', ')}`;
+  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, examples_de, ${NULLABLE.join(', ')}`;
   for (let from = 0; ; from += PAGE) {
     const data = await fetchPage(db, columns, from);
     rows.push(...data);
@@ -254,7 +254,49 @@ const idleDefinition = words.filter(
 const REGISTER_WORDS = /разговорн|нейтральн|книжн|грубо|просторечн|формальн/i;
 const registerInDefinition = words.filter((w) => REGISTER_WORDS.test((w.definition ?? '').trim()));
 
-// ── Проверка 6. Форма дефиниции ─────────────────────────────────────────
+// ── Проверка 6. Карточка показывает то, что просит ──────────────────────
+//
+// У `mancher` оба примера стояли в других формах — «Manche Leute»,
+// «Manches versteht man» — а ввести карточка просила `mancher`. Человек
+// печатал ту форму, которой его и учили, и получал ошибку.
+//
+// Проверка касается только слов, у которых заголовок — обычная, живая
+// форма: местоимений, частиц, союзов, предлогов, наречий. У глагола
+// в примерах стоят спряжённые формы, у существительного — падежные,
+// и требовать там дословного совпадения значило бы требовать неживых
+// предложений.
+const SHOWS_HEAD = new Set(['pronoun', 'particle', 'conjunction', 'preposition', 'adverb']);
+
+// INFO: проверка молча пропускает карточку без примеров, и однажды это
+// сделало её пустой: `examples_de` не было в списке запрашиваемых
+// колонок, примеры у всех оказались пусты, и проверка отчиталась нулём
+// нарушений, не посмотрев ни на одну карточку. Счётчик рассмотренных
+// не даёт этому повториться.
+let headChecked = 0;
+const headUnseen = words.filter((w) => {
+  if (!SHOWS_HEAD.has(w.pos)) return false;
+  const examples = (w.examples_de ?? []).join(' ').toLowerCase();
+  if (!examples.trim()) return false;
+  headChecked += 1;
+  // INFO: границы слова — по буквам немецкого алфавита: `\b` не считает
+  // ä, ö, ü, ß буквами и рвёт слово посередине.
+  //
+  // Парный союз пишется в заголовке с многоточием — `weder … noch`, —
+  // и целиком в предложении не встречается никогда. Ищутся обе половины
+  // по отдельности: карточка показывает союз, если показала оба слова.
+  const parts = w.head
+    .toLowerCase()
+    .replace(/^sich\s+/, '')
+    .split('…')
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return parts.some((part) => {
+    const at = new RegExp(`(?<![a-zäöüß])${part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![a-zäöüß])`);
+    return !at.test(examples);
+  });
+});
+
+// ── Проверка 7. Форма дефиниции ─────────────────────────────────────────
 // Не блокирующая: в колоде из Anki дефиниции длиннее правила, и обрезать
 // их механически значит потерять то, ради чего они написаны.
 const badDefinition = [];
@@ -283,6 +325,7 @@ say(!blanks.length, `пустые строки вместо NULL: ${blanks.lengt
 say(!collisions.length, `переводы без различителя: ${collisions.length} групп`);
 
 console.log('\nОтчётные');
+say(!headUnseen.length, `карточка просит форму, которой не показывает: ${headUnseen.length} (рассмотрено ${headChecked})`);
 console.log(`  · подсказка без соседа по переводу: ${idleDefinition.length} — перечитать, объясняют ли значение`);
 say(!registerInDefinition.length, `помета в поле подсказки: ${registerInDefinition.length}`);
 say(!badDefinition.length, `форма дефиниции: ${badDefinition.length} нарушений`);
@@ -311,6 +354,9 @@ if (flags.has('--list')) {
   }
   for (const w of idleDefinition) {
     console.log(`  без соседа: ${w.head.padEnd(18)} «${w.translation}» — «${w.definition}»`);
+  }
+  for (const w of headUnseen) {
+    console.log(`  просит, но не показывает: ${w.head.padEnd(16)} «${(w.examples_de ?? []).join(' | ')}»`);
   }
   for (const w of registerInDefinition) {
     console.log(`  помета в подсказке: ${w.head.padEnd(14)} «${w.definition}»`);

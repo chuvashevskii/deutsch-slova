@@ -1,0 +1,18 @@
+[
+  {
+    "id": "list-0559", "head": "mancher", "batch": "Служебные", "reason": "прочее", "disputed": false,
+    "note": "Карточка просила ввести «mancher», а оба примера показывали только «Manche» и «Manches». Второй пример заменён на мужской именительный — теперь форма из заголовка в карточке встречается.",
+    "set": {
+      "examples_de": ["Manche Leute denken anders.", "Mancher Tag ist schwerer als andere."],
+      "examples_ru": ["Иные люди думают иначе.", "Иной день тяжелее других."]
+    }
+  },
+  {
+    "id": "list-0185", "head": "solcher", "batch": "Служебные", "reason": "прочее", "disputed": false,
+    "note": "То же: просила «solcher», показывала «Solche» и «solches».",
+    "set": {
+      "examples_de": ["Solche Fehler passieren jedem.", "Solcher Lärm stört beim Lernen."],
+      "examples_ru": ["Такие ошибки случаются с каждым.", "Такой шум мешает учиться."]
+    }
+  }
+]
