@@ -58,6 +58,23 @@ export const LearnPage = () => {
   const fields = current ? answerFields(current, settings) : [];
   const wantsGenus = current ? asksGenus(current, settings) : false;
   const nothingAsked = fields.length === 0 && !wantsGenus;
+
+  /**
+   * Человек не ввёл ничего: все спрошенные поля пусты и артикль не выбран.
+   *
+   * Отличается от ошибки. Написать `jede` вместо `jeder` — промах,
+   * и его показывают зачёркнутым рядом с верной формой. Не написать
+   * ничего — это «не вспомнил», и зачёркивать там нечего.
+   *
+   * На подсчёт не влияет: невспомненное слово верным не бывает,
+   * и в точность оно идёт как неверное. Разная только надпись.
+   */
+  const answeredNothing =
+    checked !== null &&
+    checked.allCorrect === false &&
+    Object.keys(checked.wrong).length === fields.length &&
+    Object.values(checked.wrong).every((given) => !given) &&
+    (!wantsGenus || chosenGenus === null);
   const previews = previewIntervals(toFsrsCard(cardRow), new Date(now), settings.desired_retention);
 
   const reset = () => {
@@ -287,9 +304,18 @@ export const LearnPage = () => {
           </div>
         ) : (
           <div className="border-t border-line-soft px-4 pb-5">
+            {/* INFO: «есть ошибки» про пустое поле — укор не по делу:
+                человек ничего не написал, значит и ошибиться не мог,
+                он не вспомнил. Вердикты разные, а вот засчитывается
+                и то и другое одинаково: невспомненное слово верным
+                не бывает. */}
             {checked.allCorrect === null ? (
               <p className="py-3 font-mono text-[11px] uppercase tracking-widest text-faint">
                 проверьте себя сами
+              </p>
+            ) : answeredNothing ? (
+              <p className="py-3 font-mono text-[11px] uppercase tracking-widest text-muted">
+                — ответ не введён
               </p>
             ) : (
               <p

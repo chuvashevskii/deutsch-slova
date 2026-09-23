@@ -86,7 +86,12 @@ export const WordAnswer = ({
 
       {word.pos === 'verb' ? (
         <>
-          <FormRow label="Infinitiv" audio={word.audio_head}>
+          {/* INFO: инфинитив спрашивается вводом наравне с формами
+              (`input_verb_infinitive`), и неверный ответ показывается
+              так же — зачёркнутым рядом с верным. Раньше строка его
+              не принимала, и ошибка в инфинитиве пропадала молча:
+              вердикт краснел, а что не так — не говорил. */}
+          <FormRow label="Infinitiv" wrongAnswer={wrongAnswers.head} audio={word.audio_head}>
             <SegmentedText
               segments={infinitiveSegments(word.head, word.separable_prefix, word.stress_infinitive)}
               splitPrefix

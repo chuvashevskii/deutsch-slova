@@ -58,3 +58,46 @@ describe('строка форм', () => {
     expect(screen.getByText('vorne · vorn')).toBeTruthy();
   });
 });
+
+/**
+ * Пустое поле и неверный ответ — разные вещи, и карточка обязана их
+ * различать. Раньше пустая строка отсекалась проверкой на истинность
+ * вместе с отсутствием ответа: вердикт краснел «есть ошибки», а строка
+ * формы не говорила ни слова.
+ */
+describe('что показано на месте ответа', () => {
+  const verb = () =>
+    word({
+      pos: 'verb',
+      head: 'haben',
+      translation: 'Иметь',
+      form_ich: 'habe',
+      form_du: 'hast',
+      form_er: 'hat',
+      form_wir: 'haben',
+      form_ihr: 'habt',
+    });
+
+  it('неверный ответ стоит зачёркнутым рядом с верной формой', () => {
+    render(<WordAnswer word={verb()} wrongAnswers={{ head: 'habben' }} />);
+    expect(screen.getByText('habben')).toBeTruthy();
+  });
+
+  it('пустое поле названо словами, а не оставлено пустым местом', () => {
+    render(<WordAnswer word={verb()} wrongAnswers={{ head: '' }} />);
+    expect(screen.getByText('не введено')).toBeTruthy();
+  });
+
+  it('у верного ответа на строке нет ничего', () => {
+    render(<WordAnswer word={verb()} wrongAnswers={{}} />);
+    expect(screen.queryByText('не введено')).toBeNull();
+  });
+
+  it('инфинитив глагола принимает неверный ответ наравне с прочими формами', () => {
+    // Строка Infinitiv его не принимала, и ошибка в инфинитиве
+    // пропадала молча — при том что он спрашивается вводом.
+    render(<WordAnswer word={verb()} wrongAnswers={{ head: 'habben' }} />);
+    const row = screen.getByText('Infinitiv').parentElement;
+    expect(row?.textContent).toContain('habben');
+  });
+});

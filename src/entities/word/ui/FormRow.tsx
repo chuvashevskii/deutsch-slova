@@ -18,9 +18,16 @@ export const FormRow = ({ label, children, wrongAnswer, audio }: FormRowProps) =
     </span>
     <span className="min-w-0 flex-1 text-xl leading-snug">
       {children}
-      {wrongAnswer ? (
+      {/* INFO: пустая строка здесь — не «нечего показать», а «поле
+          оставили пустым»: неверные ответы попадают сюда только у тех
+          форм, которые спрашивались. Раньше проверка на истинность
+          отсекала её вместе с отсутствием, и карточка отвечала красным
+          «есть ошибки», не показав ни одной. */}
+      {wrongAnswer === undefined || wrongAnswer === null ? null : wrongAnswer ? (
         <span className="ml-2 font-sans text-xs font-normal text-bad line-through">{wrongAnswer}</span>
-      ) : null}
+      ) : (
+        <span className="ml-2 font-sans text-xs font-normal italic text-faint">не введено</span>
+      )}
     </span>
     <AudioButton path={audio ?? null} label={label} />
   </div>
