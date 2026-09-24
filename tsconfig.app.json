@@ -8,6 +8,8 @@
     "module": "esnext",
     "types": ["vite/client"],
     "allowArbitraryExtensions": true,
+    /* Правила колоды лежат обычным JS: их читает и node-скрипт без сборки. */
+    "allowJs": true,
     "skipLibCheck": true,
 
     /* Bundler mode */

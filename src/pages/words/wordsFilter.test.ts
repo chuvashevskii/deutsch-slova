@@ -65,3 +65,27 @@ describe('отбор по частотному списку', () => {
     expect(readFilter(params)).toEqual(filter);
   });
 });
+
+describe('заведённые руками', () => {
+  it('читается из адреса только «да»', () => {
+    expect(readFilter(new URLSearchParams()).own).toBeNull();
+    expect(readFilter(new URLSearchParams('own=1')).own).toBe(true);
+  });
+
+  // «Всё, кроме своих» — это просто словарь, и отдельного состояния
+  // под него нет: own=0 не отбор, а мусор в адресе.
+  it('«нет» в адрес не пишется и из адреса не читается', () => {
+    expect(readFilter(new URLSearchParams('own=0')).own).toBeNull();
+    expect(writeFilter({ ...EMPTY_FILTER, own: false }).has('own')).toBe(false);
+  });
+
+  it('туда и обратно', () => {
+    const params = writeFilter({ ...EMPTY_FILTER, own: true });
+    expect(params.get('own')).toBe('1');
+    expect(readFilter(params).own).toBe(true);
+  });
+
+  it('пустым фильтр с отбором не считается', () => {
+    expect(isFilterEmpty({ ...EMPTY_FILTER, own: true })).toBe(false);
+  });
+});

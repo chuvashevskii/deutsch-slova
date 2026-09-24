@@ -19,7 +19,14 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
 
-import { pluralShown, prepositionShown, prepositionsOf } from './deck-rules.mjs';
+import {
+  definitionProblems,
+  pluralShown,
+  prefixFits,
+  prepositionShown,
+  prepositionsOf,
+  REGISTER_WORDS,
+} from './deck-rules.mjs';
 
 const flags = new Set(process.argv.slice(2).filter((a) => a.startsWith('--')));
 const csvPath = (() => {
@@ -100,6 +107,15 @@ const TABLE = (w) => {
 const NULLABLE = [
   'komparativ',
   'superlativ',
+  // Лица глагола: в колоде пустых строк там ноль, все пропуски — NULL,
+  // и пустое лицо значит «формы не бывает». Заведи кто-то второй способ
+  // сказать «ничего» — оборот карточки показал бы пустую строку вместо
+  // молчания. Добавлены, когда форма заведения научилась их писать.
+  'form_ich',
+  'form_du',
+  'form_er',
+  'form_wir',
+  'form_ihr',
   'singular',
   'plural',
   'plural_ending',
@@ -172,7 +188,7 @@ const fetchPage = async (db, columns, from) => {
 
 const fetchAll = async (db) => {
   const rows = [];
-  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, examples_de, rektion, ${NULLABLE.join(', ')}`;
+  const columns = `id, head, pos, wortart, translation, register, definition, rank, confirmed_at, examples_de, rektion, rule_label, ${NULLABLE.join(', ')}`;
   for (let from = 0; ; from += PAGE) {
     const data = await fetchPage(db, columns, from);
     rows.push(...data);
@@ -253,7 +269,6 @@ const idleDefinition = words.filter(
 // в `register`: иначе чип на лице не появится, а правило «помета
 // обязательна у всех в группе» проверить нечем — половина помет
 // лежит в другом поле.
-const REGISTER_WORDS = /разговорн|нейтральн|книжн|грубо|просторечн|формальн/i;
 const registerInDefinition = words.filter((w) => REGISTER_WORDS.test((w.definition ?? '').trim()));
 
 // ── Проверка 6. Карточка показывает то, что просит ──────────────────────
@@ -353,21 +368,55 @@ const twinExamples = words.filter((w) => {
 });
 
 // ── Проверка 10. Форма дефиниции ────────────────────────────────────────
-// Не блокирующая: в колоде из Anki дефиниции длиннее правила, и обрезать
-// их механически значит потерять то, ради чего они написаны.
+//
+// Блокирующая — с 24.09. Была отчётной, пока в колоде из Anki дефиниции
+// были длиннее правила: обрезать их механически значило потерять то,
+// ради чего они написаны. Ручной проход это снял — из 74 подсказок
+// ни одна не нарушает форму, и правило стало описывать колоду, а не
+// желание. Раз исключений нет, отчётность только прячет появление
+// первого.
+//
+// Правила берутся из общего модуля, а не переписываются здесь: форма
+// заведения судит теми же и тоже блокирующе, и разойтись им нельзя.
 const badDefinition = [];
 for (const w of words) {
-  const d = (w.definition ?? '').trim();
-  if (!d) continue;
-  const problems = [];
-  const count = d.split(/\s+/).length;
-  if (count < 2) problems.push('меньше двух слов');
-  if (count > 5) problems.push(`${count} слов вместо 2–5`);
-  if (d[0] !== d[0].toLowerCase()) problems.push('с заглавной');
-  if (d.endsWith('.')) problems.push('с точкой на конце');
-  if (d.toLowerCase().includes(w.head.toLowerCase())) problems.push('содержит сам ответ');
+  const problems = definitionProblems(w.definition ?? '', w.head);
   if (problems.length) badDefinition.push({ w, problems });
 }
+
+// ── Проверка 11. Снятые подписи ─────────────────────────────────────────
+// Блокирующая, и не из-за орфографии: подпись правила — утверждение о
+// слове, и снимали её тогда, когда утверждение оказывалось ложным.
+//
+// Держать проверку приходится потому, что подпись живёт в колоде Anki,
+// а чинится правкой. Заливка идёт «импорт → черновики → правки», и пока
+// порядок соблюдён, поверх ложной подписи ложится верная. Но стоит
+// прогнать импорт без правок — и колода снова утверждает неправду,
+// молча. Эта проверка делает молчание невозможным.
+const RETIRED_LABELS = [
+  {
+    text: 'Односложное с умлаутом',
+    instead: 'С умлаутом',
+    why: 'односложность неверна у lange (lan-ge) и gesund (ge-sund), а суть правила в умлауте',
+  },
+];
+const retiredLabel = [];
+for (const w of words) {
+  const l = (w.rule_label ?? '').trim();
+  if (!l) continue;
+  const gone = RETIRED_LABELS.find((r) => r.text === l);
+  if (gone) retiredLabel.push({ w, gone });
+}
+
+// ── Проверка 12. Приставка совпадает с началом слова ────────────────────
+//
+// Блокирующая, потому что ошибка немая: `infinitiveSegments` подсвечивает
+// приставку, только когда она совпала с началом слова (после `sich`),
+// а не совпав — молча рисует обычное слово. В колоде совпадают все
+// 145 из 145, так что находка означает опечатку, а не исключение.
+const prefixOff = words.filter(
+  (w) => (w.separable_prefix ?? '').trim() && !prefixFits(w.head, w.separable_prefix),
+);
 
 // ── Отчёт ───────────────────────────────────────────────────────────────
 const drafts = words.filter((w) => !w.confirmed_at).length;
@@ -379,15 +428,30 @@ console.log('Блокирующие проверки');
 say(!badRegister.length, `формат пометы: ${badRegister.length} нарушений`);
 say(!blanks.length, `пустые строки вместо NULL: ${blanks.length}`);
 say(!collisions.length, `переводы без различителя: ${collisions.length} групп`);
+say(!retiredLabel.length, `снятые подписи правил: ${retiredLabel.length}`);
+say(!prefixOff.length, `приставка не совпадает с началом слова: ${prefixOff.length}`);
+say(!badDefinition.length, `форма подсказки: ${badDefinition.length} нарушений`);
+say(!registerInDefinition.length, `помета в поле подсказки: ${registerInDefinition.length}`);
 
 console.log('\nОтчётные');
 say(!headUnseen.length, `карточка просит форму, которой не показывает: ${headUnseen.length} (рассмотрено ${headChecked})`);
 console.log(`  · подсказка без соседа по переводу: ${idleDefinition.length} — перечитать, объясняют ли значение`);
-say(!registerInDefinition.length, `помета в поле подсказки: ${registerInDefinition.length}`);
 say(!rektionUnseen.length, `управление не показано в примерах: ${rektionUnseen.length} (рассмотрено ${rektionChecked})`);
 say(!pluralUnseen.length, `множественное не показано в примерах: ${pluralUnseen.length} (рассмотрено ${pluralChecked})`);
 say(!twinExamples.length, `примеры-близнецы: ${twinExamples.length} (рассмотрено ${twinsChecked})`);
-say(!badDefinition.length, `форма дефиниции: ${badDefinition.length} нарушений`);
+
+if (prefixOff.length) {
+  console.log(`\nПриставка мимо слова — ${prefixOff.length}:`);
+  for (const w of prefixOff) console.log(`  ${w.head.padEnd(20)} приставка «${w.separable_prefix}»`);
+}
+
+if (retiredLabel.length) {
+  console.log(`\nСнятые подписи — ${retiredLabel.length} карточек:`);
+  for (const { w, gone } of retiredLabel) {
+    console.log(`  ${w.head} (${w.id}): «${gone.text}» → «${gone.instead}» — ${gone.why}`);
+  }
+  console.log('  Похоже, правки не накатились: прогоните scripts/apply-edits.mjs.');
+}
 
 if (collisions.length) {
   const byTable = new Map();
@@ -460,6 +524,16 @@ if (csvPath) {
   console.log(`\nТаблица: ${csvPath} (${lines.length - 1} строк)`);
 }
 
-const failed = badRegister.length + blanks.length + collisions.length;
+// «Помета в подсказке» в сумму не входит намеренно: это подмножество
+// нарушений формы, и считать его вторым разом значит удваивать одну
+// и ту же находку. Отдельной строкой она осталась ради названия —
+// у этой ошибки своя причина и своя починка.
+const failed =
+  badRegister.length +
+  blanks.length +
+  collisions.length +
+  retiredLabel.length +
+  badDefinition.length +
+  prefixOff.length;
 console.log(failed ? `\nПроверка не пройдена: ${failed} находок\n` : '\nПроверка пройдена\n');
 process.exit(failed ? 1 : 0);

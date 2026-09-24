@@ -291,7 +291,7 @@
   { "rank": 1192, "pos": "adj", "head": "arm", "translation": "Бедный",
     "wortart": "прилагательное", "komparativ": "ärmer", "superlativ": "am ärmsten",
     "ipa": "/aʁm/", "pronunciation_ru": "АРМ",
-    "rule_status": "mixed", "rule_label": "Односложное с умлаутом",
+    "rule_status": "mixed", "rule_label": "С умлаутом",
     "examples_de": ["Die Familie ist arm.", "Der arme Hund zittert."],
     "examples_ru": ["Семья бедная.", "Бедная собака дрожит."] },
 

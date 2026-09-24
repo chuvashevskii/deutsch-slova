@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 import {
   DEFAULT_SETTINGS,
+  describeSources,
+  LEARN_SOURCES,
   NEW_LIMITS,
+  readSources,
+  toggleSource,
   useProfile,
   useSaveNickname,
   useSaveSettings,
@@ -166,23 +170,31 @@ const Toggle = ({
   checked,
   onChange,
   label,
+  hint,
   saving,
 }: {
   checked: boolean;
   onChange: (value: boolean) => void;
   label: string;
+  /** Строка под подписью: зачем эта галочка. Не у всех она нужна. */
+  hint?: string;
   /** Галочка уже переключилась, но ответ сервера ещё не пришёл. */
   saving: boolean;
 }) => (
-  <label className="flex cursor-pointer items-center gap-3 py-2">
+  <label className="flex cursor-pointer items-start gap-3 py-2">
     <input
       type="checkbox"
       checked={checked}
       onChange={(event) => onChange(event.target.checked)}
-      className="h-[18px] w-[18px] shrink-0 accent-ink"
+      className="mt-0.5 h-[18px] w-[18px] shrink-0 accent-ink"
     />
-    <span className="text-[14.5px]">{label}</span>
-    {saving ? <Spinner className="text-muted" /> : null}
+    <span className="min-w-0 flex-1">
+      <span className="text-[14.5px]">{label}</span>
+      {hint ? (
+        <span className="mt-0.5 block text-[12.5px] leading-relaxed text-muted">{hint}</span>
+      ) : null}
+    </span>
+    {saving ? <Spinner className="mt-1 text-muted" /> : null}
   </label>
 );
 
@@ -341,19 +353,26 @@ export const SettingsPage = () => {
       </section>
 
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">
-        <h2 className="text-[15px] font-semibold">Слова вне частотного списка</h2>
+        <h2 className="text-[15px] font-semibold">Откуда брать слова</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
-          У части колоды нет ранга, и это не пропуск: списка 4500 эти слова не знают. Туда не
-          попадают составные существительные вроде <i>Wetterbericht</i>, женские формы профессий и
-          обороты с <i>sein</i>. Набор по природе другой, и его бывает удобно пройти отдельно —
-          тогда очередь идёт только по ним.
+          Ничего не отмечено — очередь идёт по всей колоде. Отмеченное складывается: «заведённые
+          руками» плюс «отмеченные на сегодня» дадут оба набора, а не их пересечение.
         </p>
-        <Toggle
-          label="Учить только слова вне списка"
-          checked={settings.learn_rankless_only}
-          saving={savingKey === 'learn_rankless_only'}
-          onChange={(value) => update({ learn_rankless_only: value })}
-        />
+        <p className="mt-1.5 font-mono text-[11px] uppercase tracking-wider text-faint">
+          сейчас: {describeSources(settings.learn_sources)}
+        </p>
+        {LEARN_SOURCES.map((source) => (
+          <Toggle
+            key={source.value}
+            label={source.label}
+            hint={source.hint}
+            checked={readSources(settings.learn_sources).includes(source.value)}
+            saving={savingKey === 'learn_sources'}
+            onChange={() =>
+              update({ learn_sources: toggleSource(settings.learn_sources, source.value) })
+            }
+          />
+        ))}
         <p className="mt-2 text-[12.5px] leading-relaxed text-muted">
           Начатые слова из очереди не исчезают: срок повторения у них уже идёт.{' '}
           <Link to="/words?ranked=0" className="underline underline-offset-2">

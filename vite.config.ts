@@ -12,6 +12,11 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/shared/lib/testSetup.ts'],
+    // Фоновые задачи Claude Code разворачивают копию репозитория
+    // в `.claude/worktrees/`. Без этой строки прогон подхватывает и её
+    // — тесты идут дважды, а недоделанная работа соседней ветки
+    // валится здесь и выглядит как поломка своей.
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.claude/worktrees/**'],
     coverage: { provider: 'v8', reporter: ['text', 'html'] },
   },
 });

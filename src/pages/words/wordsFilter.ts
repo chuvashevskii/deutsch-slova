@@ -31,6 +31,15 @@ export interface WordsFilter {
    * данных: этих слов нет в списке 4500, и учить их удобно отдельно.
    */
   ranked: boolean | null;
+  /**
+   * Отбор по происхождению: true — только заведённые руками, null — все.
+   * Читается из номера карточки (`my-0007`), а не из того, кто её завёл:
+   * номер говорит откуда, и остаётся верным при удалённом аккаунте.
+   *
+   * Только «да» и «все»: «всё, кроме своих» — это просто словарь, и
+   * отдельная кнопка под него никому не нужна.
+   */
+  own: boolean | null;
 }
 
 export const EMPTY_FILTER: WordsFilter = {
@@ -40,6 +49,7 @@ export const EMPTY_FILTER: WordsFilter = {
   query: '',
   draft: null,
   ranked: null,
+  own: null,
 };
 
 export const isFilterEmpty = (filter: WordsFilter): boolean =>
@@ -48,7 +58,8 @@ export const isFilterEmpty = (filter: WordsFilter): boolean =>
   filter.status.length === 0 &&
   filter.query === '' &&
   filter.draft === null &&
-  filter.ranked === null;
+  filter.ranked === null &&
+  filter.own === null;
 
 const splitList = (value: string | null): string[] =>
   value ? value.split(',').filter(Boolean) : [];
@@ -63,6 +74,7 @@ export const readFilter = (params: URLSearchParams): WordsFilter => {
     query: params.get('q') ?? '',
     draft: params.get('draft') === '1' ? true : params.get('draft') === '0' ? false : null,
     ranked: params.get('ranked') === '1' ? true : params.get('ranked') === '0' ? false : null,
+    own: params.get('own') === '1' ? true : null,
   };
 };
 
@@ -78,6 +90,7 @@ export const writeFilter = (filter: WordsFilter): URLSearchParams => {
   if (filter.query) params.set('q', filter.query);
   if (filter.draft !== null) params.set('draft', filter.draft ? '1' : '0');
   if (filter.ranked !== null) params.set('ranked', filter.ranked ? '1' : '0');
+  if (filter.own === true) params.set('own', '1');
   return params;
 };
 

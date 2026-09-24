@@ -263,6 +263,7 @@ export type Database = {
           input_verb_forms: boolean
           input_verb_infinitive: boolean
           learn_rankless_only: boolean
+          learn_sources: string[]
           updated_at: string
           user_id: string
         }
@@ -278,6 +279,7 @@ export type Database = {
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
           learn_rankless_only?: boolean
+          learn_sources?: string[]
           updated_at?: string
           user_id: string
         }
@@ -293,6 +295,7 @@ export type Database = {
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
           learn_rankless_only?: boolean
+          learn_sources?: string[]
           updated_at?: string
           user_id?: string
         }
@@ -391,6 +394,7 @@ export type Database = {
           confirmed_at: string | null
           corpus_share: number
           created_at: string
+          created_by: string | null
           definition: string
           examples_de: string[]
           examples_ru: string[]
@@ -441,6 +445,7 @@ export type Database = {
           confirmed_at?: string | null
           corpus_share?: number
           created_at?: string
+          created_by?: string | null
           definition?: string
           examples_de?: string[]
           examples_ru?: string[]
@@ -491,6 +496,7 @@ export type Database = {
           confirmed_at?: string | null
           corpus_share?: number
           created_at?: string
+          created_by?: string | null
           definition?: string
           examples_de?: string[]
           examples_ru?: string[]
@@ -567,6 +573,7 @@ export type Database = {
       }
     }
     Functions: {
+      create_word: { Args: { p_word: Json }; Returns: string }
       is_admin: { Args: never; Returns: boolean }
       learn_queue: {
         Args: { p_limit?: number; p_new_limit?: number }
@@ -577,6 +584,10 @@ export type Database = {
       reset_all_progress: { Args: never; Returns: Json }
       revert_word_edit: { Args: { p_edit: number }; Returns: undefined }
       stats_summary: { Args: { p_tz?: string }; Returns: Json }
+      translation_neighbours: {
+        Args: { p_label: string; p_translation: string }
+        Returns: Json
+      }
       word_category: {
         Args: { p_pos: string; p_wortart: string }
         Returns: string
@@ -597,6 +608,7 @@ export type Database = {
           p_genus?: string[]
           p_limit?: number
           p_offset?: number
+          p_own?: boolean
           p_pos?: string[]
           p_query?: string
           p_ranked?: boolean

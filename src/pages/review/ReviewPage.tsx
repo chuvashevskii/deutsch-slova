@@ -66,7 +66,8 @@ const EditRowView = ({ row }: { row: EditRow }) => {
   // карточки не существовало. Откат тут значит удаление созданного,
   // и кнопка обязана называть это своим именем: «Откатить» обещало бы
   // возврат прежнего значения, а возвращать нечего.
-  const isCreation = row.old_value === null && row.reason === 'разделение';
+  const isCreation =
+    row.old_value === null && (row.reason === 'разделение' || row.reason === 'создание');
 
   return (
     <li

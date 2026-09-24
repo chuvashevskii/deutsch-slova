@@ -36,6 +36,9 @@ const BacklogPage = lazy(() =>
 const GuidePage = lazy(() =>
   import('@/pages/guide/GuidePage').then((module) => ({ default: module.GuidePage })),
 );
+const NewWordPage = lazy(() =>
+  import('@/pages/word-new/NewWordPage').then((m) => ({ default: m.NewWordPage })),
+);
 const ReviewPage = lazy(() =>
   import('@/pages/review/ReviewPage').then((module) => ({ default: module.ReviewPage })),
 );
@@ -111,6 +114,16 @@ export const AppRouter = () => (
       {/* INFO: страница администратора колоды. Маршрут открыт всем
           вошедшим, а содержимое — нет: сама страница отвечает отказом.
           Прятать маршрут не за чем, прятать нечего. */}
+      {/* INFO: маршрут открыт всем вошедшим, а завести карточку может
+          только админ — отказом отвечает функция базы, не роутер. */}
+      <Route
+        path="/words/new"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <NewWordPage />
+          </Suspense>
+        }
+      />
       <Route
         path="/review"
         element={

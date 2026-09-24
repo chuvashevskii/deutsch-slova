@@ -11,7 +11,7 @@ export const EDIT_MODES = [
   { key: 'disputed', label: 'спорные' },
   { key: 'all', label: 'все' },
   { key: 'collisions', label: 'пересечения' },
-  { key: 'splits', label: 'разделённые' },
+  { key: 'splits', label: 'рождённые' },
   { key: 'reverted', label: 'откаченные' },
 ] as const;
 
@@ -43,6 +43,9 @@ export const matchesMode = (
   if (row.superseded === true) return false;
   if (mode === 'all') return true;
   if (mode === 'disputed') return row.disputed === true;
-  if (mode === 'splits') return row.reason === 'разделение';
+  // INFO: отбор о рождении карточки, а не только о разделении:
+  // заведённая руками появляется тем же образом — строкой с пустым
+  // «было», — и откатывается тем же удалением.
+  if (mode === 'splits') return row.reason === 'разделение' || row.reason === 'создание';
   return LEVELS.has(row.reason ?? '');
 };

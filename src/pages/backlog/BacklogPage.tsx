@@ -145,73 +145,87 @@ export const BacklogPage = () => {
         {(rows ?? []).map((row) => {
           const removing = remove.isPending && remove.variables === row.id;
           return (
-          <li key={row.id} className="rounded-xl border border-line bg-surface px-3.5 py-3">
-            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="font-serif text-[16px] font-semibold">{row.word}</span>
-              <span className="min-w-0 flex-1 truncate text-[13px] text-muted">{row.translation}</span>
-              <span
-                className={cn(
-                  'whitespace-nowrap rounded-full px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider',
-                  STATE_TONE[row.state],
-                )}
-              >
-                {BACKLOG_STATE_LABEL[row.state]}
-              </span>
-            </div>
-            {row.note ? (
-              <p className="mt-1 text-[12.5px] leading-snug text-muted">{row.note}</p>
-            ) : null}
-            <p className="mt-1 font-mono text-[10.5px] text-faint">{row.nickname}</p>
-
-            {isAdmin || row.user_id === user?.id ? (
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {isAdmin
-                  ? (['new', 'added', 'rejected'] as BacklogState[])
-                      .filter((state) => state !== row.state)
-                      .map((state) => (
-                        <button
-                          key={state}
-                          type="button"
-                          disabled={setState.isPending}
-                          onClick={() => setState.mutate({ id: row.id, state })}
-                          className={cn(
-                            'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px]',
-                            busyClasses(
-                              setState.isPending &&
-                                setState.variables?.id === row.id &&
-                                setState.variables?.state === state,
-                            ),
-                          )}
-                        >
-                          <Busy
-                            busy={
-                              setState.isPending &&
-                              setState.variables?.id === row.id &&
-                              setState.variables?.state === state
-                            }
-                            label="Сохраняем"
-                          >
-                            {BACKLOG_STATE_LABEL[state]}
-                          </Busy>
-                        </button>
-                      ))
-                  : null}
-                <button
-                  type="button"
-                  disabled={remove.isPending}
-                  onClick={() => remove.mutate(row.id)}
+            <li key={row.id} className="rounded-xl border border-line bg-surface px-3.5 py-3">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span className="font-serif text-[16px] font-semibold">{row.word}</span>
+                <span className="min-w-0 flex-1 truncate text-[13px] text-muted">
+                  {row.translation}
+                </span>
+                <span
                   className={cn(
-                    'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad',
-                    busyClasses(removing),
+                    'whitespace-nowrap rounded-full px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-wider',
+                    STATE_TONE[row.state],
                   )}
                 >
-                  <Busy busy={removing} label="Удаляем">
-                    Удалить
-                  </Busy>
-                </button>
+                  {BACKLOG_STATE_LABEL[row.state]}
+                </span>
               </div>
-            ) : null}
-          </li>
+              {row.note ? (
+                <p className="mt-1 text-[12.5px] leading-snug text-muted">{row.note}</p>
+              ) : null}
+              <p className="mt-1 font-mono text-[10.5px] text-faint">{row.nickname}</p>
+
+              {isAdmin || row.user_id === user?.id ? (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {/* INFO: то самое, ради чего у строки есть состояние
+                    «заведено». Раньше карточку по ней заводили руками
+                    в Anki, и круг замыкался вне приложения. Слово
+                    и перевод уезжают в форму уже вписанными. */}
+                  {isAdmin && row.state !== 'added' ? (
+                    <Link
+                      to={`/words/new?word=${encodeURIComponent(row.word)}`}
+                      className="rounded-lg border border-ink bg-ink px-3 py-1.5 text-[12.5px] font-semibold text-bg"
+                    >
+                      Завести карточку
+                    </Link>
+                  ) : null}
+                  {isAdmin
+                    ? (['new', 'added', 'rejected'] as BacklogState[])
+                        .filter((state) => state !== row.state)
+                        .map((state) => (
+                          <button
+                            key={state}
+                            type="button"
+                            disabled={setState.isPending}
+                            onClick={() => setState.mutate({ id: row.id, state })}
+                            className={cn(
+                              'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px]',
+                              busyClasses(
+                                setState.isPending &&
+                                  setState.variables?.id === row.id &&
+                                  setState.variables?.state === state,
+                              ),
+                            )}
+                          >
+                            <Busy
+                              busy={
+                                setState.isPending &&
+                                setState.variables?.id === row.id &&
+                                setState.variables?.state === state
+                              }
+                              label="Сохраняем"
+                            >
+                              {BACKLOG_STATE_LABEL[state]}
+                            </Busy>
+                          </button>
+                        ))
+                    : null}
+                  <button
+                    type="button"
+                    disabled={remove.isPending}
+                    onClick={() => remove.mutate(row.id)}
+                    className={cn(
+                      'flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12.5px] text-bad',
+                      busyClasses(removing),
+                    )}
+                  >
+                    <Busy busy={removing} label="Удаляем">
+                      Удалить
+                    </Busy>
+                  </button>
+                </div>
+              ) : null}
+            </li>
           );
         })}
       </ul>

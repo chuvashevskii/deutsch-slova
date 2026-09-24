@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { STATUS_LABEL, useResetProgress, useToggleMark, type ListStatus } from '@/entities/review';
+import { useIsAdmin } from '@/entities/settings';
 import {
   posLabel,
   useWord,
@@ -289,6 +290,7 @@ export const WordsPage = () => {
 
   const filter = useMemo(() => readFilter(params), [params]);
   const { data: facets } = useWordsFacets();
+  const { data: isAdmin } = useIsAdmin();
 
   // INFO: условия отбора живут в адресе, а не в состоянии компонента:
   // так список переживает перезагрузку и его можно передать ссылкой.
@@ -330,6 +332,7 @@ export const WordsPage = () => {
     query: filter.query,
     draft: filter.draft,
     ranked: filter.ranked,
+    own: filter.own,
   });
 
   const total = pageData?.pages[0]?.total ?? 0;
@@ -490,6 +493,18 @@ export const WordsPage = () => {
             вне списка {facets.rankless}
           </Chip>
         ) : null}
+        {/* INFO: заведённые руками. Ранга у них нет, значит они лежат
+            в хвосте списка вперемешку с прочими безранговыми, а моложе
+            и слабее они всех — искать их отдельно нужно чаще, чем что
+            бы то ни было. Фишка появляется, только когда свои есть. */}
+        {facets?.own ? (
+          <Chip
+            active={filter.own === true}
+            onClick={() => update({ own: filter.own === true ? null : true })}
+          >
+            заведено руками {facets.own}
+          </Chip>
+        ) : null}
       </div>
 
       <input
@@ -541,13 +556,38 @@ export const WordsPage = () => {
                 вплотную к тексту, без отбивки и без переноса. Длинный
                 запрос в подписи обрезается — иначе кнопка вылезает
                 за карточку. */}
+            {/* INFO: два выхода из пустого поиска, и они разные.
+                В бэклог — «запомнить на потом», карточку заводят позже.
+                Своя карточка — «заведу сейчас»: человек уже искал слово,
+                и это тот самый момент, когда оно ему нужно. */}
             {!isLoading && !pageFailed && !deckIsEmpty && filter.query.trim() ? (
-              <Link
-                to={`/backlog?word=${encodeURIComponent(filter.query.trim())}`}
-                className="max-w-full rounded-lg border border-line px-3.5 py-2 text-[13px] font-medium text-ink"
-              >
-                Предложить «{shorten(filter.query.trim())}» в бэклог
-              </Link>
+              <div className="flex max-w-full flex-col gap-2">
+                {/* INFO: завести карточку может только админ — отказ даёт
+                    функция базы. Дать заполнить всю форму и отказать
+                    на последнем нажатии значит обмануть, поэтому кнопки
+                    у остальных нет вовсе. В бэклоге она админу и
+                    показывалась, а здесь нет: расхождение поймано
+                    перед заливкой в прод. Бэклог при этом для всех. */}
+                {isAdmin ? (
+                  <Link
+                    to={`/words/new?word=${encodeURIComponent(filter.query.trim())}`}
+                    className="max-w-full rounded-lg border border-ink bg-ink px-3.5 py-2 text-[13px] font-semibold text-bg"
+                  >
+                    Завести карточку «{shorten(filter.query.trim())}»
+                  </Link>
+                ) : null}
+                <Link
+                  to={`/backlog?word=${encodeURIComponent(filter.query.trim())}`}
+                  className={cn(
+                    'max-w-full rounded-lg px-3.5 py-2 text-[13px]',
+                    isAdmin
+                      ? 'border border-line font-medium text-ink'
+                      : 'border border-ink bg-ink font-semibold text-bg',
+                  )}
+                >
+                  {isAdmin ? 'Или в бэклог, на потом' : 'В бэклог, на потом'}
+                </Link>
+              </div>
             ) : null}
           </div>
         ) : (

@@ -43,7 +43,14 @@ vi.mock('@/features/auth', async (importOriginal) => ({
 
 vi.mock('@/entities/settings', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/entities/settings')>();
-  return { ...actual, useUserSettings: () => ({ data: actual.DEFAULT_SETTINGS, isLoading: false }) };
+  return {
+    ...actual,
+    useUserSettings: () => ({ data: actual.DEFAULT_SETTINGS, isLoading: false }),
+    // «Слова» спрашивают права, чтобы решить, показывать ли кнопку
+    // заведения карточки. Здесь проверяются состояния загрузки, а не
+    // права, — отвечаем «не админ» и не поднимаем ради этого клиент.
+    useIsAdmin: () => ({ data: false }),
+  };
 });
 
 vi.mock('@/entities/review', async (importOriginal) => ({

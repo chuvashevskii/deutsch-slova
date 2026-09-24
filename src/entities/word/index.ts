@@ -36,3 +36,20 @@ export type { Nest, NestCard, NestKind } from './model/nestsQuery';
 export { DeterminerEndings } from './ui/DeterminerEndings';
 export { determinerForms } from './model/determiner';
 export type { DeterminerForms } from './model/determiner';
+export {
+  checkDraft,
+  emptyDraft,
+  isReady,
+  kindOf,
+  REKTION_MODELS,
+  suggestPrefix,
+  toPayload,
+  VERB_FORM_FIELDS,
+  WORD_KINDS,
+} from './model/newWord';
+export type { Finding, Neighbour, WordDraft, WordKind } from './model/newWord';
+export {
+  NEIGHBOURS_QUERY_KEY,
+  useCreateWord,
+  useTranslationNeighbours,
+} from './model/createWordQuery';

@@ -44,6 +44,8 @@ export interface WordsPageParams {
   draft: boolean | null;
   /** true — только со своим рангом, false — только вне списка, null — все. */
   ranked: boolean | null;
+  /** true — только заведённые руками (номер `my-…`), null — все. */
+  own: boolean | null;
   limit: number;
   offset: number;
 }
@@ -65,6 +67,7 @@ const fetchWordsPage = async (params: WordsPageParams): Promise<WordsPageResult>
     // отсутствия аргумента, а не null: у неё умолчание — «все».
     p_draft: params.draft ?? undefined,
     p_ranked: params.ranked ?? undefined,
+    p_own: params.own ?? undefined,
   });
   if (error) throw new Error(error.message);
   return data as unknown as WordsPageResult;
@@ -103,6 +106,7 @@ export interface WordsFacets {
   drafts: number;
   /** Сколько слов вне частотного списка: ранга у них нет и не будет. */
   rankless: number;
+  own: number;
 }
 
 /** Сколько слов каждой части речи и каждого рода — для подписей в фильтре. */

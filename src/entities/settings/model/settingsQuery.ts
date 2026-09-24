@@ -25,7 +25,12 @@ export interface AnswerSettings {
   input_forms: boolean;
   ask_genus: boolean;
   include_drafts: boolean;
-  learn_rankless_only: boolean;
+  /**
+   * Откуда очередь берёт слова: пусто — вся колода, иначе отмеченные
+   * источники складываются по «или». Заменила `learn_rankless_only`:
+   * та осталась в схеме на одну заливку и больше не читается.
+   */
+  learn_sources: string[];
 }
 
 export const DEFAULT_SETTINGS: AnswerSettings = {
@@ -39,7 +44,7 @@ export const DEFAULT_SETTINGS: AnswerSettings = {
   input_forms: false,
   ask_genus: true,
   include_drafts: false,
-  learn_rankless_only: false,
+  learn_sources: [],
 };
 
 /** Допустимые значения дневного лимита новых слов. */

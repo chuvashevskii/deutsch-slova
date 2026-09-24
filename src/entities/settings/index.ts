@@ -11,4 +11,12 @@ export {
   useSaveSettings,
   useUserSettings,
 } from './model/settingsQuery';
+export {
+  describeSources,
+  isKnownSource,
+  LEARN_SOURCES,
+  readSources,
+  toggleSource,
+} from './model/learnSources';
+export type { LearnSource } from './model/learnSources';
 export type { AnswerSettings, Profile, UserSettings } from './model/settingsQuery';
