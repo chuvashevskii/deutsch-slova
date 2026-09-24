@@ -5,6 +5,7 @@ import {
   DEFAULT_SETTINGS,
   describeSources,
   LEARN_SOURCES,
+  KNOWN_INTERVALS,
   NEW_LIMITS,
   readSources,
   toggleSource,
@@ -327,6 +328,37 @@ export const SettingsPage = () => {
             </button>
           ))}
         </div>
+      </section>
+
+      <section className="mt-4 rounded-xl border border-line bg-surface p-4">
+        <h2 className="text-[15px] font-semibold">Отмеченные «знаю»</h2>
+        <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+          Кнопка «Знаю» в словаре не прячет слово навсегда: она заводит ему сразу зрелую карточку.
+          Слово уходит из очереди и возвращается один раз через этот срок — проверить, что вы его
+          и правда помните. Сдали — следующая встреча вдвое-втрое дальше. Промахнулись — слово
+          падает в «учу», и ровно ради этого всё и сделано.
+        </p>
+        <div className="mt-3 grid grid-cols-5 gap-1.5">
+          {KNOWN_INTERVALS.map((days) => (
+            <button
+              key={days}
+              type="button"
+              aria-pressed={settings.known_interval_days === days}
+              onClick={() => update({ known_interval_days: days })}
+              className={cn(
+                'flex touch-manipulation items-center justify-center rounded-lg border border-line bg-surface-2 py-2.5 text-[14px] font-semibold tabular-nums',
+                settings.known_interval_days === days && 'border-ink bg-ink text-bg',
+              )}
+            >
+              <Busy busy={savingPatch?.known_interval_days === days} label="Сохраняем срок">
+                {days}
+              </Busy>
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-faint">
+          дней до проверки · сейчас {settings.known_interval_days}
+        </p>
       </section>
 
       <section className="mt-4 rounded-xl border border-line bg-surface p-4">

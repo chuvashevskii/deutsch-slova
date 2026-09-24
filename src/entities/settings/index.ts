@@ -2,6 +2,7 @@ export { answerFields, asksGenus } from './model/answerFields';
 export type { AnswerField } from './model/answerFields';
 export {
   DEFAULT_SETTINGS,
+  KNOWN_INTERVALS,
   NEW_LIMITS,
   PROFILE_QUERY_KEY,
   SETTINGS_QUERY_KEY,

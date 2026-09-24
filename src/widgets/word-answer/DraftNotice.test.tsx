@@ -17,8 +17,8 @@ vi.mock('@/entities/word', async (importOriginal) => ({
   useConfirmWord: () => ({ mutate: vi.fn(), isPending: false, isError: false }),
 }));
 
-const word = (confirmed: string | null) =>
-  ({ id: 'list-0042', head: 'Tag', confirmed_at: confirmed }) as unknown as Word;
+const word = (confirmed: string | null, id = 'list-0042') =>
+  ({ id, head: 'Tag', confirmed_at: confirmed }) as unknown as Word;
 
 /**
  * Черновик обязан себя называть. Молча показанный несверенный разбор
@@ -49,5 +49,16 @@ describe('пометка черновика', () => {
     admin.value = true;
     render(<DraftNotice word={word(null)} />);
     expect(screen.getByRole('button', { name: /Согласовать/ })).toBeTruthy();
+  });
+
+  // Поймано на живом прогоне: своей карточке, написанной руками, плашка
+  // обещала, что она «собрана по частотному списку». Её никто не выводил
+  // — её написал человек, и сверять там нечего.
+  it('заведённой руками говорит правду о происхождении', () => {
+    admin.value = false;
+    render(<DraftNotice word={word(null, 'my-0007')} />);
+    expect(screen.getByText(/Черновик — карточка заведена руками/)).toBeTruthy();
+    expect(screen.getByText(/написали вы, а не вывел разбор/)).toBeTruthy();
+    expect(screen.queryByText(/собрана по частотному списку/)).toBeNull();
   });
 });

@@ -262,6 +262,7 @@ export type Database = {
           input_other: boolean
           input_verb_forms: boolean
           input_verb_infinitive: boolean
+          known_interval_days: number
           learn_rankless_only: boolean
           learn_sources: string[]
           updated_at: string
@@ -278,6 +279,7 @@ export type Database = {
           input_other?: boolean
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
+          known_interval_days?: number
           learn_rankless_only?: boolean
           learn_sources?: string[]
           updated_at?: string
@@ -294,6 +296,7 @@ export type Database = {
           input_other?: boolean
           input_verb_forms?: boolean
           input_verb_infinitive?: boolean
+          known_interval_days?: number
           learn_rankless_only?: boolean
           learn_sources?: string[]
           updated_at?: string
@@ -581,6 +584,7 @@ export type Database = {
         Returns: Json
       }
       like_escape: { Args: { p_query: string }; Returns: string }
+      mark_known: { Args: { p_word_id: string }; Returns: string }
       progress_summary: { Args: never; Returns: Json }
       reset_all_progress: { Args: never; Returns: Json }
       revert_word_edit: { Args: { p_edit: number }; Returns: undefined }
@@ -589,6 +593,7 @@ export type Database = {
         Args: { p_exclude?: string; p_label: string; p_translation: string }
         Returns: Json
       }
+      unmark_known: { Args: { p_word_id: string }; Returns: undefined }
       update_word: { Args: { p_id: string; p_patch: Json }; Returns: number }
       word_category: {
         Args: { p_pos: string; p_wortart: string }

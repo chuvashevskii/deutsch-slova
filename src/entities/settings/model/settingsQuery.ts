@@ -31,6 +31,12 @@ export interface AnswerSettings {
    * та осталась в схеме на одну заливку и больше не читается.
    */
   learn_sources: string[];
+  /**
+   * Через сколько дней вернуть на проверку слово, отмеченное «знаю».
+   * Снизу 21 — порог зрелости: меньший срок сделал бы отметку обычным
+   * заучиванием, а она значит «я это уже знаю».
+   */
+  known_interval_days: number;
 }
 
 export const DEFAULT_SETTINGS: AnswerSettings = {
@@ -45,7 +51,11 @@ export const DEFAULT_SETTINGS: AnswerSettings = {
   ask_genus: true,
   include_drafts: false,
   learn_sources: [],
+  known_interval_days: 90,
 };
+
+/** Сроки проверки для отмеченных «знаю». Меньше 21 дня нельзя — это порог зрелости. */
+export const KNOWN_INTERVALS = [30, 60, 90, 180, 365] as const;
 
 /** Допустимые значения дневного лимита новых слов. */
 export const NEW_LIMITS = [10, 20, 30, 40, 50] as const;
