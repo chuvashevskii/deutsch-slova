@@ -205,8 +205,27 @@ export const REKTION_MODELS = [
  * карточку, отчётное предупреждает и пропускает. Так форма и скрипт
  * говорят об одном одними словами.
  */
+/**
+ * Какого поля касается находка.
+ *
+ * Нужно не для красоты: экран правки умеет менять четыре поля, и
+ * показывать на нём «у существительного не выбран род» значит запереть
+ * человека в замечании, которое этим экраном не снять. Метка позволяет
+ * взять только свои.
+ */
+export type FindingField =
+  | 'head'
+  | 'translation'
+  | 'register'
+  | 'definition'
+  | 'examples'
+  | 'genus'
+  | 'forms'
+  | 'prefix';
+
 export interface Finding {
   level: 'блок' | 'замечание';
+  field: FindingField;
   text: string;
 }
 
@@ -242,18 +261,19 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
     (i) => draft.examplesDe[i].trim() && draft.examplesRu[i].trim(),
   );
 
-  if (!head) out.push({ level: 'блок', text: 'Нет самого слова' });
-  if (!draft.translation.trim()) out.push({ level: 'блок', text: 'Нет перевода' });
+  if (!head) out.push({ level: 'блок', field: 'head', text: 'Нет самого слова' });
+  if (!draft.translation.trim()) out.push({ level: 'блок', field: 'translation', text: 'Нет перевода' });
 
   if (!draft.register.trim()) {
-    out.push({ level: 'блок', text: 'Не выбрана помета регистра' });
+    out.push({ level: 'блок', field: 'register', text: 'Не выбрана помета регистра' });
   } else if (!REGISTER_FORM.test(draft.register.trim())) {
-    out.push({ level: 'блок', text: 'Помета написана не по формату' });
+    out.push({ level: 'блок', field: 'register', text: 'Помета написана не по формату' });
   }
 
   if (filledPairs.length < 2) {
     out.push({
       level: 'блок',
+      field: 'examples',
       text: `Примеров ${filledPairs.length} из двух — нужны оба, вместе с переводом`,
     });
   }
@@ -273,23 +293,26 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
     if (bare) {
       out.push({
         level: 'блок',
+        field: 'translation',
         text: `У «${n.head}» тот же перевод и нет ни пометы, ни подсказки — рядом с вашей карточкой их будет не различить. Сначала надо дополнить «${n.head}» или взять другой перевод`,
       });
     } else if (differentiator(n.register, n.definition) === mine) {
       out.push({
         level: 'блок',
+        field: 'translation',
         text: `«${n.head}» переводится так же, и различить их нечем — нужна другая помета или подсказка`,
       });
     } else {
       out.push({
         level: 'замечание',
+        field: 'translation',
         text: `Так же переводится «${n.head}» — различает ${(n.definition ?? '').trim() ? 'подсказка' : 'помета'}`,
       });
     }
   }
 
   if (kind.asks.includes('genus') && !draft.genus) {
-    out.push({ level: 'замечание', text: 'У существительного не выбран род' });
+    out.push({ level: 'замечание', field: 'genus', text: 'У существительного не выбран род' });
   }
 
   const plural = draft.plural
@@ -299,24 +322,30 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
   if (plural && examples.trim() && !pluralShown(plural, examples)) {
     out.push({
       level: 'замечание',
+      field: 'examples',
       text: 'Множественное заявлено, но в примерах его нет — карточка попросит форму, которой человек не видел',
     });
   }
 
   const preps = prepositionsOf(draft.rektion);
   if (preps.length && examples.trim() && !preps.some((p) => prepositionShown(p, examples))) {
-    out.push({ level: 'замечание', text: 'Управление заявлено, а предлога в примерах нет' });
+    out.push({
+      level: 'замечание',
+      field: 'examples',
+      text: 'Управление заявлено, а предлога в примерах нет',
+    });
   }
 
   if (filledPairs.length === 2 && areTwins(draft.examplesDe[0], draft.examplesDe[1])) {
     out.push({
       level: 'замечание',
+      field: 'examples',
       text: 'Примеры отличаются одним словом — второй ничего не добавляет',
     });
   }
 
   if (head && examples.trim() && !headShown(head, examples)) {
-    out.push({ level: 'замечание', text: 'Самого слова в примерах нет' });
+    out.push({ level: 'замечание', field: 'examples', text: 'Самого слова в примерах нет' });
   }
 
   // INFO: блокирующие, а не отчётные. Подсказка — единственное поле,
@@ -344,6 +373,7 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
         .join(', ');
       out.push({
         level: 'замечание',
+        field: 'forms',
         text: `Спряжение заполнено не до конца — пусто у ${empty}. Оставьте так, если формы не бывает, как у «regnen»`,
       });
     }
@@ -356,10 +386,15 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
   if (draft.separable && kind.asks.includes('forms')) {
     const prefix = draft.separablePrefix.trim();
     if (!prefix) {
-      out.push({ level: 'блок', text: 'Глагол отмечен отделяемым, а приставка не указана' });
+      out.push({
+        level: 'блок',
+        field: 'prefix',
+        text: 'Глагол отмечен отделяемым, а приставка не указана',
+      });
     } else if (!prefixFits(head, prefix)) {
       out.push({
         level: 'блок',
+        field: 'prefix',
         text: `«${head || 'Слово'}» не начинается с «${prefix}» — приставка не подсветится`,
       });
     } else {
@@ -373,6 +408,7 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
       if (stuck.length) {
         out.push({
           level: 'замечание',
+          field: 'forms',
           text: `У ${stuck.map((f) => f.label).join(', ')} приставка не оторвана — в колоде пишут «steht auf», а не «aufsteht»`,
         });
       }
@@ -380,7 +416,7 @@ export const checkDraft = (draft: WordDraft, neighbours: Neighbour[]): Finding[]
   }
 
   for (const problem of definitionProblems(draft.definition, head)) {
-    out.push({ level: 'блок', text: `Подсказка: ${problem}` });
+    out.push({ level: 'блок', field: 'definition', text: `Подсказка: ${problem}` });
   }
 
   return out;

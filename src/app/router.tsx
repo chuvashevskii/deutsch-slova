@@ -39,6 +39,9 @@ const GuidePage = lazy(() =>
 const NewWordPage = lazy(() =>
   import('@/pages/word-new/NewWordPage').then((m) => ({ default: m.NewWordPage })),
 );
+const WordEditPage = lazy(() =>
+  import('@/pages/word-edit/WordEditPage').then((m) => ({ default: m.WordEditPage })),
+);
 const ReviewPage = lazy(() =>
   import('@/pages/review/ReviewPage').then((module) => ({ default: module.ReviewPage })),
 );
@@ -121,6 +124,16 @@ export const AppRouter = () => (
         element={
           <Suspense fallback={<CardSkeleton />}>
             <NewWordPage />
+          </Suspense>
+        }
+      />
+      {/* INFO: после «/words/new», иначе «new» попало бы в «:id»
+          и правка пыталась бы открыть карточку с таким номером. */}
+      <Route
+        path="/words/:id/edit"
+        element={
+          <Suspense fallback={<CardSkeleton />}>
+            <WordEditPage />
           </Suspense>
         }
       />

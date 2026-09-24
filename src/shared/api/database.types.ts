@@ -574,6 +574,7 @@ export type Database = {
     }
     Functions: {
       create_word: { Args: { p_word: Json }; Returns: string }
+      delete_word: { Args: { p_id: string }; Returns: string }
       is_admin: { Args: never; Returns: boolean }
       learn_queue: {
         Args: { p_limit?: number; p_new_limit?: number }
@@ -585,9 +586,10 @@ export type Database = {
       revert_word_edit: { Args: { p_edit: number }; Returns: undefined }
       stats_summary: { Args: { p_tz?: string }; Returns: Json }
       translation_neighbours: {
-        Args: { p_label: string; p_translation: string }
+        Args: { p_exclude?: string; p_label: string; p_translation: string }
         Returns: Json
       }
+      update_word: { Args: { p_id: string; p_patch: Json }; Returns: number }
       word_category: {
         Args: { p_pos: string; p_wortart: string }
         Returns: string

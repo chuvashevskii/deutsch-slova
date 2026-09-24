@@ -7,6 +7,7 @@
 > · [спряжение у глагола, необязательное](2026-09-24-spryazhenie-u-svoey-kartochki.md)
 > · [отделяемая приставка](2026-09-24-otdelyaemaya-pristavka.md)
 > · [отбор «заведено руками»](2026-09-24-otbor-zavedyonnyh-rukami.md)
+> · [правка и удаление карточки](2026-09-25-pravka-i-udalenie-kartochki.md)
 
 ## 1. Чего не хватало
 

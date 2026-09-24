@@ -104,6 +104,7 @@ const Chip = ({
  */
 const WordActions = ({ row }: { row: WordListRow }) => {
   const { user } = useAuth();
+  const { data: isAdmin } = useIsAdmin();
   const toggleMark = useToggleMark();
   const resetProgress = useResetProgress();
   const declared = row.status === 'declared';
@@ -155,6 +156,17 @@ const WordActions = ({ row }: { row: WordListRow }) => {
             />
           </Busy>
         </button>
+        {/* INFO: правка рядом с отметками, а не отдельным экраном из меню:
+            опечатку замечают, глядя на карточку, и уходить за ней в другое
+            место человек не станет. Только админу — правит базу. */}
+        {isAdmin ? (
+          <Link
+            to={`/words/${encodeURIComponent(row.id)}/edit`}
+            className="rounded-lg border border-line px-3 py-1.5 text-[12.5px] font-medium"
+          >
+            Править
+          </Link>
+        ) : null}
       </div>
       {row.has_progress ? (
         <button

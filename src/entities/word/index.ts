@@ -47,9 +47,19 @@ export {
   VERB_FORM_FIELDS,
   WORD_KINDS,
 } from './model/newWord';
-export type { Finding, Neighbour, WordDraft, WordKind } from './model/newWord';
+export type { Finding, FindingField, Neighbour, WordDraft, WordKind } from './model/newWord';
 export {
   NEIGHBOURS_QUERY_KEY,
   useCreateWord,
+  useDeleteWord,
   useTranslationNeighbours,
+  useUpdateWord,
 } from './model/createWordQuery';
+export {
+  draftFromWord,
+  EDITABLE_FIELDS,
+  editFindings,
+  editPatch,
+  isOwnCard,
+  kindOfWord,
+} from './model/editWord';
